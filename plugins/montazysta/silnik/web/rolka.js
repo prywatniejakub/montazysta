@@ -12,7 +12,7 @@ function rolka(cfg) {
     const flash = el(c, "t-flash");
     const hook = cfg.hak ? premHook(c, cfg.hak, 0, cfg.hak_do ?? (PC[1] ? PC[1].a : 1.5)) : () => {};
     const re = cfg.wyroznij ? new RegExp(cfg.wyroznij, "i") : null;
-    premCaps(c, voiceWords().filter(w => !EP || w.t < EP.a - .02), { hi: w => re && re.test(w) ? AC : null, calm: CALM });
+    premCaps(c, voiceWords().filter(w => !EP || w.t < EP.a - .02), { hi: w => re && re.test(w) ? AC : null, calm: CALM, top: cfg.napisy_top });
     const kon = EP && cfg.koniec, endc = kon ? el(c, "t-end", `<div class="k">${kon.nad || ""}</div><div class="h">${kon.tytul || ""}</div><div class="m">${kon.pod || ""}</div><div class="b">${kon.przycisk || ""}</div>`) : null,
       btn = endc && endc.querySelector(".b");
     if (kon && kon.kolor) { btn.style.background = kon.kolor; endc.querySelector(".k").style.color = kon.kolor; }

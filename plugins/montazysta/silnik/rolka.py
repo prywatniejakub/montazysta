@@ -5,6 +5,8 @@
   pobierz <url> <projekt>         film z linku do projektu (tylko materiał, do którego masz prawa)
   strona <url> <plik.png>         zrzut strony w widoku telefonu, cała wysokość
   transkrypcja <projekt>          słowa z czasem, ponumerowane fragmenty
+  slowa <projekt> <klucz> [--od --do]    czas każdego słowa, do cięcia w środku fragmentu
+  klatka <projekt> <klucz> <sekunda>     jedna klatka źródła, np. do sprawdzenia, jak wygląda start ujęcia
   lektor <projekt>                darmowy lektor Edge z sekcji lektor
   buduj <projekt>                 klatki, oś czasu, napisy, ścieżka głosu
   klatki <projekt> [--co 0.5]     podgląd: klatki + arkusz chk/sheet.jpg
@@ -73,6 +75,22 @@ def info(a):
         for i, u in enumerate((.1, .5, .9)):
             N.ff("-ss", f"{inf['dl'] * u:.2f}", "-i", plik, "-frames:v", 1, "-vf", "scale=-2:720", P / "podglad" / f"{k}_{i}.jpg")
     print("Klatki w", P / "podglad")
+
+
+def slowa(a):
+    P = N.projekt(a.projekt)
+    tr = json.loads((P / "transkrypcja" / f"{a.klucz}.json").read_text(encoding="utf-8"))
+    for w in tr["slowa"]:
+        if a.od <= w["s"] <= a.do:
+            print(f"{w['s']:7.2f}-{w['e']:7.2f}  {w['w']}")
+
+
+def klatka(a):
+    P = N.projekt(a.projekt)
+    cel = P / "podglad" / f"{a.klucz}_{a.sekunda:.2f}.jpg"
+    cel.parent.mkdir(exist_ok=True)
+    N.ff("-ss", f"{a.sekunda:.3f}", "-i", N.sciezka_zrodla(P, N.spec(P)["zrodla"][a.klucz]), "-frames:v", 1, "-vf", "scale=-2:960", cel)
+    print(cel)
 
 
 def pobierz(a):
@@ -158,6 +176,8 @@ def main():
     p = s.add_parser("strona"); p.add_argument("url"); p.add_argument("plik"); p.set_defaults(f=strona)
     p = s.add_parser("transkrypcja"); p.add_argument("projekt"); p.add_argument("--model", default="small"); p.add_argument("--jezyk", default="pl")
     p.set_defaults(f=lambda a: __import__("transkrypcja").uruchom(N.projekt(a.projekt), a.model, a.jezyk))
+    p = s.add_parser("slowa"); p.add_argument("projekt"); p.add_argument("klucz"); p.add_argument("--od", type=float, default=0); p.add_argument("--do", type=float, default=1e9); p.set_defaults(f=slowa)
+    p = s.add_parser("klatka"); p.add_argument("projekt"); p.add_argument("klucz"); p.add_argument("sekunda", type=float); p.set_defaults(f=klatka)
     p = s.add_parser("lektor"); p.add_argument("projekt"); p.set_defaults(f=lambda a: __import__("lektor").uruchom(N.projekt(a.projekt)))
     p = s.add_parser("buduj"); p.add_argument("projekt"); p.set_defaults(f=lambda a: __import__("obraz").uruchom(N.projekt(a.projekt)))
     p = s.add_parser("klatki"); p.add_argument("projekt"); p.add_argument("--co", type=float, default=.5); p.set_defaults(f=klatki)

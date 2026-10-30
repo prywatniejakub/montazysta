@@ -24,14 +24,14 @@ Silnik: `bash "${CLAUDE_PLUGIN_ROOT}/silnik/rolka" <polecenie>` (dalej: **rolka*
 - **C. Długi film na kilka rolek:** transkrypcja, scenarzysta wybiera 3-5 najmocniejszych momentów, każdy to osobny projekt w trybie A.
 
 ## Proces (kolejność jest twarda)
-1. **Plan.** Zleć agentowi `montazysta:scenarzysta`: podaj cel, adresata, długość, ścieżkę do projektu i transkrypcji. Wraca `plan.md` z hakiem, kolejnością i tabelą CZAS | GŁOS | OBRAZ. Twoje zadanie: sprawdź, czy pierwsze zdanie naprawdę zatrzyma widza.
-2. **Recenzja planu.** Agent `montazysta:recenzent`, tryb SCENARIUSZ. Popraw wszystko, zanim pójdziesz dalej.
-3. **Budowa.** Zapisz `rolka.json`, `rolka buduj <nazwa>`. Przeczytaj `timing.json`: każde słowo napisów. Literówki i błędy transkrypcji popraw w `poprawki`, nazwy własne w `slownik`.
-4. **Klatki.** `rolka klatki <nazwa>`, obejrzyj `chk/sheet.jpg` SAM, potem agent `montazysta:recenzent`, tryb KLATKI. Popraw i powtórz, aż przejdzie. To najtańszy moment na poprawki: sekundy i 0 zł.
-5. **Dźwięk i render.** `rolka dzwiek <nazwa>`, `rolka render <nazwa>` (długie polecenie: uruchom w tle). Jeśli użyto lektora: `rolka glos glos.wav <tekst>`.
+1. **Plan.** Zleć agentowi `montazysta:scenarzysta`: podaj cel, adresata, długość, ścieżkę do projektu i transkrypcji. Wraca `plan.md` z hakiem, kolejnością i tabelą CZAS | GŁOS | OBRAZ. `rolka.json` piszesz Ty, nie scenarzysta. Twoje zadanie: sprawdź, czy pierwsze zdanie naprawdę zatrzyma widza, i obejrzyj jego klatkę startową (`rolka klatka <nazwa> <klucz> <sekunda>`).
+2. **Recenzja planu.** Agent `montazysta:recenzent`, tryb SCENARIUSZ. Uwagi krytyczne poprawiasz sam w `plan.md` (większą zmianę odsyłasz scenarzyście) i puszczasz recenzję jeszcze raz. Bez PRZECHODZI nie idziesz dalej.
+3. **Budowa.** Zapisz `rolka.json`, `rolka buduj <nazwa>`. Przeczytaj `timing.json`: każde słowo napisów. Literówki i błędy transkrypcji popraw w `poprawki`, nazwy własne w `slownik`. Gdy słowo jest ucięte albo cięcie wchodzi w sąsiednie słowo, ustaw `od`/`do` według `rolka slowa`.
+4. **Klatki.** `rolka klatki <nazwa>`, obejrzyj `chk/sheet.jpg` SAM, potem agent `montazysta:recenzent`, tryb KLATKI. Popraw, zbuduj, powtórz, aż przejdzie. Render dopiero po PRZECHODZI, nigdy równolegle z recenzją. To najtańszy moment na poprawki: sekundy i 0 zł.
+5. **Dźwięk i render.** `rolka dzwiek <nazwa>`, `rolka render <nazwa>` (długie polecenie: uruchom w tle). Jeśli użyto lektora: `rolka glos glos.wav <plik z tekstem>`.
 6. **Kontrola.** `rolka kontrola <nazwa>`, obejrzyj klatkę 0, agent `montazysta:recenzent`, tryb KOŃCOWY. Tylko technika; uwaga do treści tutaj znaczy, że wcześniejszy etap coś przepuścił.
-7. **Oddanie.** Podaj ścieżkę do MP4 i otwórz go (`open <plik>`). Powiedz krótko, co zrobiłeś i czego nie sprawdzono.
-8. **Ocena.** Czekaj na ocenę użytkownika, zanim zrobisz kolejne rolki z paczki. Każdą jego uwagę dopisz do `~/Montaz/moje-zasady.md` jedną linią: zasada + powód + data. Następna rolka ma być bez tego błędu.
+7. **Oddanie.** Podaj ścieżkę do MP4, a na Macu otwórz go (`open <plik>`). Powiedz krótko, co zrobiłeś, co zdecydowałeś za użytkownika i czego nie sprawdzono. Rolka sprzedażowa bez danych kontaktu: nie wymyślaj ich, daj CTA ogólne i poproś o adres albo telefon na planszę końcową.
+8. **Ocena.** Czekaj na ocenę użytkownika, zanim zrobisz kolejne rolki z paczki. Każdą jego uwagę dopisz do `~/Montaz/moje-zasady.md` jedną linią: zasada + powód + data. Następna rolka ma być bez tego błędu. Po akceptacji możesz usunąć `klatki/` i `stills/` projektu, bo zajmują setki MB.
 
 ## Czego pilnować
 - Nigdy nie oddajesz filmu, którego klatek nie widziałeś.

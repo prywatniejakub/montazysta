@@ -5,7 +5,7 @@ const cleanW = w => w.replace(/[„”"«»]/g, "");
 const PR = { caps: [], off: [] };
 
 // ---- napisy: słowa [{w,t,e}] -> grupy max 3 słowa / 16 znaków, łamane na interpunkcji, przyimek nie zostaje sam na końcu
-const PRZYIMEK = /^(w|z|na|do|o|u|i|a|po|za|od|we|ze|przed|nad|pod)$/i;
+const PRZYIMEK = /^(w|z|na|do|o|u|i|a|po|za|od|we|ze|ku|przed|nad|pod|dla|bez|przy|przez|między)$/i;
 function premCaps(parent, words, o = {}) {
   const box = el(parent, "p-cap" + (o.calm ? " calm" : "")); if (o.top) box.style.top = o.top + "px";
   const WS = [];

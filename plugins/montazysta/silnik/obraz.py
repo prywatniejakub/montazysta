@@ -1,6 +1,6 @@
 """Buduje rolkę z rolka.json: plan ujęć, klatki JPG 1080x1920, oś czasu napisów, ścieżka głosu i strona rolka.html.
 Dwa tryby: nagranie z własnym głosem (ujecia + fragmenty z transkrypcji) i lektor (lektor.linie + ich ujęcia)."""
-import hashlib, json, re, shutil
+import hashlib, json, pathlib, re, shutil
 import narzedzia as N
 
 MAKS_UJECIE = 2.2      # zmiana obrazu co 1-2 s: dłuższe ujęcie dzieli się na słowie i skacze plan szeroki / zbliżenie
@@ -49,12 +49,17 @@ def kadr(inf, sp):
     return cw, ch, x, y
 
 
-def klatki(P, plik, sp, dl):
-    """Wycina ujęcie do klatek; ten sam fragment przy kolejnej budowie bierze się z pamięci."""
+def klatki(P, plik, sp, dl, wstecz=False):
+    """Wycina ujęcie do klatek; ten sam fragment przy kolejnej budowie bierze się z pamięci.
+    wstecz: obraz bez głosu może zacząć się wcześniej, żeby klip nie skończył się przed cięciem i nie zamroził klatki."""
     inf = sonda(plik)
     v = sp.get("predkosc", 1) or 1
-    od = max(0.0, min(float(sp["od"]), max(0.0, inf["dl"] - .1)))
     need = dl * v + .15
+    od = max(0.0, min(float(sp["od"]), max(0.0, inf["dl"] - .1)))
+    if wstecz and od + need > inf["dl"]:
+        od = max(0.0, inf["dl"] - need)
+        if need > inf["dl"]:
+            print(f"  uwaga: klip {pathlib.Path(plik).name} ma {inf['dl']:.1f} s, a ujęcie wymaga {need:.1f} s: skróć ujęcie albo daj predkosc < 1")
     cw, ch, x, y = kadr(inf, sp)
     klucz = hashlib.sha1(json.dumps([str(plik), round(od, 3), round(need, 3), v, cw, ch, x, y]).encode()).hexdigest()[:10]
     nazwa = "p" + klucz
@@ -82,13 +87,12 @@ def transkrypt(P, k):
 
 
 def zakres(u, tr):
-    """Fragment(y) z transkrypcji albo jawne od/do. Cięcie na granicy słów, z marginesem, bez wchodzenia w sąsiednie słowa."""
-    if "frag" in u:
-        ns = u["frag"] if isinstance(u["frag"], list) else [u["frag"]]
-        fr = {f["n"]: f for f in tr["fragmenty"]}
-        od, do = fr[ns[0]]["od"], fr[ns[-1]]["do"]
-    else:
-        od, do = float(u["od"]), float(u["do"])
+    """Fragment(y) z transkrypcji: cięcie na granicy słów, z marginesem, bez wchodzenia w sąsiednie słowa. Jawne od/do: dokładnie te sekundy."""
+    if "frag" not in u:
+        return float(u["od"]), float(u["do"])
+    ns = u["frag"] if isinstance(u["frag"], list) else [u["frag"]]
+    fr = {f["n"]: f for f in tr["fragmenty"]}
+    od, do = fr[ns[0]]["od"], fr[ns[-1]]["do"]
     przed = [w["e"] for w in tr["slowa"] if w["e"] <= od + .02]
     po = [w["s"] for w in tr["slowa"] if w["s"] >= do - .02]
     return max(od - .05, (przed[-1] + .01) if przed else 0), min(do + .12, (po[0] - .01) if po else do + .12)
@@ -110,8 +114,11 @@ def podziel(od, do, ws, maks):
 
 
 def popraw(w, S):
+    """Poprawka całego słowa: „twoje” nie psuje „twojej”. Interpunkcja i wielka litera zostają."""
+    rdzen = re.sub(r"^\W+|\W+$", "", w)
     for z, na in S.get("poprawki", {}).items():
-        w = re.sub(re.escape(z), na, w, flags=re.I)
+        if rdzen.lower() == z.lower():
+            return w.replace(rdzen, na[:1].upper() + na[1:] if rdzen[:1].isupper() else na)
     return w
 
 
@@ -126,10 +133,10 @@ def plan_nagranie(P, S):
         tr = transkrypt(P, k)
         plik = N.sciezka_zrodla(P, S["zrodla"][k])
         od, do = zakres(u, tr)
-        ws = [w for w in tr["slowa"] if w["s"] >= od - .02 and w["e"] <= do + .02]
+        ws = [w for w in tr["slowa"] if od <= (w["s"] + w["e"]) / 2 <= do]  # słowo należy do ujęcia, gdy jego środek jest w środku cięcia
         segs.append((plik, od, do))
         linie.append({"key": f"u{iu}", "slot": round(t, 3), "text": " ".join(w["w"] for w in ws),
-                      "words": [{"w": popraw(w["w"], S), "t": round(t + w["s"] - od, 3), "e": round(t + w["e"] - od, 3)} for w in ws]})
+                      "words": [{"w": popraw(w["w"], S), "t": round(t + max(w["s"], od) - od, 3), "e": round(t + min(w["e"], do) - od, 3)} for w in ws]})
         for j, (x, y) in enumerate([(od, do)] if u.get("bez_podzialu") else podziel(od, do, ws, maks)):
             wst = u.get("wstawka")
             zoom_baza = sp_zrodla(S, k).get("zoom", 1)
@@ -231,7 +238,7 @@ def uruchom(P):
             src = N.sciezka_zrodla(P, S["zrodla"][tlo["zrodlo"]])
         else:  # koniec gra ruch sprzed cięcia: nigdy zamrożona klatka postaci
             src, sp = ost["src"], {**ost["sp"], "od": max(0, ost["sp"]["od"] - kon.get("sekundy", 2.5))}
-        nm, ile = klatki(P, src, sp, dur - t + .5)
+        nm, ile_kon = klatki(P, src, sp, dur - t + .5, wstecz=True)
         endp = {"name": nm, "a": round(t, 3)}
     else:
         dur = round(t + S.get("zapas", .35), 2)
@@ -240,22 +247,24 @@ def uruchom(P):
     man = {}
     wynik = []
     wstawka_przed = False
+    whipy = 0
     for i, p in enumerate(pieces):
-        nm, ile = klatki(P, p["src"], p["sp"], p["b"] - p["a"])
+        nm, ile = klatki(P, p["src"], p["sp"], p["b"] - p["a"], wstecz=p["wst"])
         man[nm] = ile
         zmiana = i > 0 and (p["wst"] != wstawka_przed or p["src"] != pieces[i - 1]["src"])
         przej = p["przejscie"] or ("whip" if zmiana and (S.get("styl") != "spokojny") else "fade" if S.get("styl") == "spokojny" and zmiana else "ciecie")
+        whipy += przej == "whip"  # przejazdy na zmianę: raz z lewej, raz z prawej
         wynik.append({"name": nm, "a": p["a"], "b": p["b"], "slow": (p["sp"].get("predkosc", 1) or 1) < 1, "wh": przej == "whip", "fade": przej == "fade",
-                      "dir": 1 if i % 4 == 1 else -1, "zmiana": bool(zmiana)})
+                      "dir": 1 if whipy % 2 else -1, "zmiana": bool(zmiana)})
         wstawka_przed = p["wst"]
     if endp:
-        man[endp["name"]] = ile
+        man[endp["name"]] = ile_kon
     (P / "klatki").mkdir(exist_ok=True)
     N.zapisz_js(P / "klatki" / "manifest.js", CLIPN=man)
     T = {"DUR": dur, "lines": linie}
     (P / "timing.json").write_text(json.dumps(T, ensure_ascii=False, indent=0), encoding="utf-8")
     N.zapisz_js(P / "timing.js", TIMING=T)
-    CFG = {k: S.get(k) for k in ("hak", "hak_do", "akcent", "wyroznij", "styl", "znaczek_ai", "koniec")}
+    CFG = {k: S.get(k) for k in ("hak", "hak_do", "akcent", "wyroznij", "styl", "znaczek_ai", "koniec", "napisy_top")}
     CFG["liczniki"] = kotwice(S, linie)
     N.zapisz_js(P / "pieces.js", PIECES=wynik, ENDP=endp, CFG=CFG)
     web = P / "web"

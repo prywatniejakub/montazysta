@@ -27,8 +27,12 @@ Po `transkrypcja` masz `transkrypcja/<klucz>.txt` z ponumerowanymi fragmentami: 
   ]
 }
 ```
+- `hak` jest opcjonalny: 1-2 krótkie linijki na górze od klatki 0 (jedyny tekst, który może mieć dwie linijki). Streszcza sedno, nie powtarza pierwszego zdania słowo w słowo: wtedy dubluje napisy, więc skróć go albo usuń. `hak_do` = do której sekundy stoi.
 - `ujecia` idą po kolei i tworzą film. Możesz je dowolnie przestawiać: najmocniejsze zdanie na początek.
-- `frag` = numer albo lista kolejnych numerów. `od`/`do` = jawne sekundy, gdy trzeba ciąć w środku fragmentu.
+- `frag` = numer albo lista kolejnych numerów, cięcie na granicy słów z małym marginesem.
+- `od`/`do` = dokładnie te sekundy, gdy trzeba ciąć w środku fragmentu. Czas każdego słowa: `rolka slowa <projekt> <klucz> --od 10 --do 20`. Napis dostaje każde słowo, którego środek leży w cięciu.
+- `poprawki` działają na całych słowach, wielkość liter nie ma znaczenia.
+- `napisy_top`: wysokość pasa napisów w px (domyślnie 1190, spokojny 1500). Zmień, gdy napis zasłania twarz.
 - Ujęcie dłuższe niż `maks_ujecie` (domyślnie 2,2 s) dzieli się samo na słowach, a obraz przeskakuje plan szeroki / zbliżenie (`zoom_blisko`, domyślnie 1,22). `bez_podzialu: true` wyłącza to dla jednego ujęcia.
 - `wstawka` podmienia obraz na czas tego ujęcia, głos leci dalej.
 - `cx`, `cy` = środek kadru (0-1) na twarzy; ustal z klatek po `info`. `zoom` na źródle = kadr bazowy.

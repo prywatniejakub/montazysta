@@ -3,7 +3,7 @@
 Każda zasada powstała z oceny prawdziwej rolki przez wymagającego właściciela: coś nie działało, zapisał, co i dlaczego. Stosuj też w sytuacji, której tu nie opisano: patrz na powód. Zasady z `~/Montaz/moje-zasady.md` wygrywają z tym plikiem.
 
 ## 1. Napisy
-- W KAŻDYM wideo, także krótkiej wstawce: po 1-3 słowa, duże, wchodzą razem z głosem i znikają. Nigdy dwie linijki, nigdy całe zdanie. Powód: napisy w 2-3 linijkach, które stoją na ekranie, wyglądają jak montaż sprzed 10 lat.
+- W KAŻDYM wideo, także krótkiej wstawce: po 1-3 słowa, duże, wchodzą razem z głosem i znikają. Nigdy dwie linijki, nigdy całe zdanie. Powód: napisy w 2-3 linijkach, które stoją na ekranie, wyglądają jak montaż sprzed 10 lat. Hak u góry to osobny element: może mieć 2 linijki.
 - Bez białych ramek, pigułek i naklejek pod napisami w stylu dynamicznym.
 - Przyimek („w”, „przed”) nie zostaje sam na końcu napisu (silnik skleja go z następnym słowem).
 - Słowa-klucze wyróżnione kolorem marki (pole `wyroznij`), nie wszystko naraz.

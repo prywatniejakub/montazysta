@@ -46,7 +46,8 @@ window.render = render;
 const PO_FONTACH = [];
 function boot(audio) {
   const q = new URLSearchParams(location.search);
-  Promise.all(LOADS).then(() => document.fonts.ready).then(() => {
+  const czcionki = ["900 88px Montserrat", "700 58px Montserrat"].map(f => document.fonts.load(f, "AąćęłńóśźżĄĆĘŁŃÓŚŹŻ"));  // polskie znaki są w osobnym pliku czcionki
+  Promise.all([...LOADS, ...czcionki]).then(() => document.fonts.ready).then(() => {
     PO_FONTACH.forEach(f => f());
     render(0); window.READY = true;
     if (q.has("render")) return;

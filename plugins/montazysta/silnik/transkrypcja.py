@@ -18,15 +18,33 @@ def model_whisper(nazwa):
     return WhisperModel(nazwa, device="cpu", compute_type="int8", download_root=str(N.DOM / "modele"))
 
 
+def dopnij(ws, x, sr=16000):
+    """Whisper wlicza ciszę do słowa i myli początek nawet o 0,5 s: dopinam każde słowo do energii dźwięku (okno 10 ms)."""
+    import numpy as np
+    okno = sr // 100
+    n = len(x) // okno
+    if not n:
+        return ws
+    rms = np.sqrt(np.mean(x[:n * okno].reshape(n, okno) ** 2, axis=1))
+    prog = max(np.percentile(rms, 99) * .05, 1e-4)
+    for w in ws:
+        a, b = int(w["s"] * 100), min(n, int(w["e"] * 100) + 1)
+        jest = np.nonzero(rms[a:b] > prog)[0]
+        if len(jest):
+            w["s"], w["e"] = round((a + int(jest[0])) / 100, 3), round((a + int(jest[-1]) + 1) / 100, 3)
+    return ws
+
+
 def slowa(model, plik, jezyk, slownik=None):
-    segs, info = model.transcribe(pcm(plik), language=jezyk, beam_size=5, word_timestamps=True, vad_filter=False, initial_prompt=slownik)
+    x = pcm(plik)
+    segs, info = model.transcribe(x, language=jezyk, beam_size=5, word_timestamps=True, vad_filter=False, initial_prompt=slownik)
     out = []
     for s in segs:
         for w in s.words or []:
             t = w.word.strip()
             if t:
                 out.append({"w": t, "s": round(w.start, 3), "e": round(w.end, 3)})
-    return out, info
+    return dopnij(out, x), info
 
 
 def fragmenty(ws):
