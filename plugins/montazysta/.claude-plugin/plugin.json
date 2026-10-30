@@ -1,0 +1,8 @@
+{
+  "name": "montazysta",
+  "displayName": "Montażysta",
+  "description": "Agent montażysta: z surowego materiału robi gotowe rolki 9:16 z napisami, cięciami, muzyką i kontrolą jakości, przez zespół scenarzysta i recenzent.",
+  "author": { "name": "Montażysta" },
+  "license": "UNLICENSED",
+  "keywords": ["rolki", "montaz", "wideo", "reels"]
+}

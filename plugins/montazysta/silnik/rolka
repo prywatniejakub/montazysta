@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Uruchamia silnik z własnego środowiska w ~/.montazysta (tworzy je /montazysta:start).
+TU="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOM="${MONTAZYSTA_DOM:-$HOME/.montazysta}"
+PY="$DOM/venv/bin/python"
+[ -x "$PY" ] || PY="$DOM/venv/Scripts/python.exe"
+if [ ! -x "$PY" ]; then
+  echo "Silnik nie jest zainstalowany. Uruchom /montazysta:start" >&2
+  exit 3
+fi
+exec "$PY" "$TU/rolka.py" "$@"

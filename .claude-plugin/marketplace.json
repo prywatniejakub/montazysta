@@ -1,0 +1,12 @@
+{
+  "name": "montazysta-rolki",
+  "description": "Agent montażysta rolek",
+  "owner": { "name": "Montażysta" },
+  "plugins": [
+    {
+      "name": "montazysta",
+      "source": "./plugins/montazysta",
+      "description": "Z surowego materiału robi gotowe rolki 9:16: napisy, cięcia, muzyka, kontrola jakości."
+    }
+  ]
+}

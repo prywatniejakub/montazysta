@@ -1,0 +1,49 @@
+/* styl.css: zatwierdzony wygląd rolek. Napisy max 3 słowa, pełny kadr, licznik kasynowy, plansza końcowa. Czcionka Montserrat (SIL OFL), działa tak samo na Macu i Windowsie. */
+@font-face { font-family: "Montserrat"; font-weight: 900; src: url(fonts/montserrat-latin-900-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Montserrat"; font-weight: 900; src: url(fonts/montserrat-latin-ext-900-normal.woff2) format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Montserrat"; font-weight: 700; src: url(fonts/montserrat-latin-700-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Montserrat"; font-weight: 700; src: url(fonts/montserrat-latin-ext-700-normal.woff2) format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+#stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+.scene { position: absolute; inset: 0; will-change: transform, opacity; }
+.cam { position: absolute; inset: 0; transform-origin: 50% 45%; }
+.p-full { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+.p-shade { position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 52%, rgba(0,0,0,.42) 78%, rgba(0,0,0,.55) 100%); }
+/* napisy dynamiczne: wielkie litery, biały z grubym czarnym obrysem, wyskok */
+.p-cap { position: absolute; left: 0; right: 0; top: 1190px; height: 0; z-index: 40; pointer-events: none; }
+.p-cap .w { position: absolute; left: 0; right: 0; top: -70px; height: 140px; display: flex; align-items: center; justify-content: center; opacity: 0;
+  font: 900 88px/1 "Montserrat", sans-serif; text-transform: uppercase; color: #fff; white-space: nowrap; letter-spacing: -.01em;
+  -webkit-text-stroke: 18px #000; paint-order: stroke fill; text-shadow: 0 9px 0 rgba(0,0,0,.55); }
+.p-cap .w i { font-style: normal; display: inline-block; }
+.p-cap .w span { margin-right: .24em; } .p-cap .w span:last-child { margin-right: 0; }
+/* napisy spokojne: zwykłe litery na ciemnej szybie */
+.p-cap.calm { top: 1500px; }
+.p-cap.calm .w { font: 700 58px/1.15 "Montserrat", sans-serif; text-transform: none; letter-spacing: 0; -webkit-text-stroke: 0; text-shadow: none; }
+.p-cap.calm .w i { padding: 18px 34px; border-radius: 24px; background: rgba(12,13,16,.62); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+/* hak: 1-2 linijki u góry, widoczny od klatki 0 */
+.p-hook { position: absolute; left: 50px; right: 50px; top: 230px; text-align: center; z-index: 41; opacity: 0;
+  font: 900 92px/1.04 "Montserrat", sans-serif; text-transform: uppercase; color: #fff; letter-spacing: -.015em;
+  -webkit-text-stroke: 20px #000; paint-order: stroke fill; text-shadow: 0 10px 0 rgba(0,0,0,.5); }
+/* duża liczba: licznik kasynowy */
+.p-big { position: absolute; left: 0; right: 0; text-align: center; z-index: 39; opacity: 0; pointer-events: none; }
+.p-big .lab { display: block; margin-top: 10px; font: 900 56px/1 "Montserrat", sans-serif; text-transform: uppercase; color: #fff; -webkit-text-stroke: 12px #000; paint-order: stroke fill; }
+.d-odo { display: inline-flex; align-items: flex-start; font: 900 230px/1 "Montserrat", sans-serif; letter-spacing: -.02em; white-space: nowrap;
+  -webkit-text-stroke: 22px #000; paint-order: stroke fill; filter: drop-shadow(0 12px 0 rgba(0,0,0,.5)); }
+.d-dg { display: inline-block; height: 1em; overflow: hidden; width: .68em; text-align: center; position: relative; }
+.d-st { display: block; line-height: 1em; }
+.d-cm { width: .2em; text-align: center; }
+.d-fx { margin-right: .04em; } .d-sfx { margin-left: .14em; font-size: .42em; align-self: flex-end; margin-bottom: .14em; }
+/* znaczek AI: małe kółko w prawym górnym rogu na ujęciach z postacią AI */
+.aitag { position: absolute; right: 64px; top: 84px; width: 40px; height: 40px; border-radius: 50%; z-index: 45; background: rgba(255,255,255,.07);
+  border: 1.5px solid rgba(255,255,255,.26); color: rgba(255,255,255,.5); font: 700 15px/37px "Montserrat", sans-serif; text-align: center; }
+/* błysk cięcia i plansza końcowa */
+.t-flash { position: absolute; inset: 0; z-index: 30; background: #fff; opacity: 0; pointer-events: none; }
+.t-end { position: absolute; left: 0; right: 0; top: 1010px; bottom: 0; z-index: 50; opacity: 0; background: #fff; border-radius: 64px 64px 0 0;
+  box-shadow: 0 -30px 80px rgba(0,0,0,.4); text-align: center; }
+.t-end .k { position: absolute; left: 0; right: 0; top: 92px; font: 700 38px/1 "Montserrat", sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #c8102e; }
+.t-end .h { position: absolute; left: 40px; right: 40px; top: 160px; font: 900 76px/1.04 "Montserrat", sans-serif; text-transform: uppercase; color: #111; letter-spacing: -.01em; }
+.t-end .m { position: absolute; left: 0; right: 0; top: 362px; font: 700 48px/1 "Montserrat", sans-serif; color: #444; }
+.t-end .b { position: absolute; left: 50%; top: 480px; transform: translateX(-50%); padding: 40px 72px; border-radius: 80px; background: #c8102e;
+  color: #fff; font: 900 52px/1 "Montserrat", sans-serif; white-space: nowrap; box-shadow: 0 18px 50px rgba(0,0,0,.3); opacity: 0; }
