@@ -31,7 +31,7 @@ def sprawdz(_):
         try:
             wiersz(True, f"{p} ({N.program(p)})")
         except SystemExit:
-            wiersz(False, p, "brew install ffmpeg")
+            wiersz(False, p, "uruchom skill montazysta-start")
     try:
         wiersz(True, f"przeglądarka ({N.przegladarka()})")
     except SystemExit:

@@ -1,6 +1,7 @@
 ---
 name: zmontuj
 description: Montażysta rolek i pionowych filmów. Bierze surowy materiał (nagrania, pliki, link do filmu) albo sam tekst i robi gotową rolkę 9:16 z napisami po 1-3 słowa, cięciami co 1-2 s, muzyką i kontrolą jakości, przez zespół scenarzysta i recenzent. Użyj ZAWSZE, gdy użytkownik mówi „zmontuj”, „montaż”, „zrób rolkę”, „rolki”, „reels”, „shorts”, „tiktok”, „przytnij film”, „dodaj napisy”, „potnij to nagranie”, „zrób z tego rolki”, albo daje wideo do obróbki.
+allowed-tools: Bash(bash *montazysta/wtyczka/silnik/rolka*)
 ---
 
 # Montażysta

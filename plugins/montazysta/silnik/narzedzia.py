@@ -8,12 +8,11 @@ FPS = 30
 
 
 def program(nazwa):
-    """ffmpeg / ffprobe: z PATH, z Homebrew albo z ~/.montazysta/bin."""
-    for k in (shutil.which(nazwa), f"/opt/homebrew/bin/{nazwa}", f"/usr/local/bin/{nazwa}",
-              DOM / "bin" / nazwa, DOM / "bin" / f"{nazwa}.exe"):
+    """ffmpeg / ffprobe: najpierw własne z ~/.montazysta/env, potem z systemu."""
+    for k in (DOM / "env" / "bin" / nazwa, shutil.which(nazwa), f"/opt/homebrew/bin/{nazwa}", f"/usr/local/bin/{nazwa}"):
         if k and os.path.exists(k):
             return str(k)
-    raise SystemExit(f"Brak programu {nazwa}. Uruchom instalację: /montazysta:start")
+    raise SystemExit(f"Brak programu {nazwa}. Uruchom skill montazysta-start.")
 
 
 def ff(*args):
@@ -43,7 +42,7 @@ def przegladarka():
         for p in (DOM / "chromium").rglob(wzor):
             if p.is_file():
                 return str(p)
-    raise SystemExit("Brak przeglądarki Chrome. Uruchom instalację: /montazysta:start")
+    raise SystemExit("Brak przeglądarki Chrome. Uruchom skill montazysta-start.")
 
 
 def projekt(sciezka):
