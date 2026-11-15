@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>fmb3 · Dofinansowanie do 16 000 zł</title>
+<link rel="stylesheet" href="../lib/prem.css">
+<link rel="stylesheet" href="../zsz/zs.css">
+<link rel="stylesheet" href="../oze/oze.css">
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/prem.js"></script>
+<script src="../zsz/zs.js"></script>
+<script src="../oze/oze.js"></script>
+<script>
+const DUR = T.DUR, S = k => LS(k);
+const BLUR = "blur(14px) brightness(.5) saturate(.8)";
+const tBez = W("c1", "bez"), tSz = W("c2", "szesnastu"), tZero = W("c4", "zero");
+const tF = W("c5", "falownik"), tM = W("c5", "moc"), tWiek = W("c5", "wiek"), tOdz = W("c8", "oddzwonimy"), tForm = W("c8", "formularz");
+const SHOTS = [
+  { k: "clip", s: "oz_panel4", a: 0, b: tBez - .04, z0: 1.12, push: .1 },
+  { k: "clip", s: "oz_panel2", a: tBez - .04, b: S("c2") - .04, z0: 1.1 },
+  { k: "clip", s: "oz_sky", a: S("c2") - .04, b: S("c3") - .04, z0: 1.1, f: "blur(10px) brightness(.68)", fade: .3 },
+  { k: "clip", s: "oz_tykocin", a: S("c3") - .04, b: S("c4") - .04, z0: 1.12, push: .08, whip: 1 },
+  { k: "clip", s: "oz_estate", a: S("c4") - .04, b: S("c5") - .04, z0: 1.12, push: .08, whip: -1, off: 1 },
+  { k: "clip", s: "oz_panel1", a: S("c5") - .04, b: S("c6") - .04, z0: 1.08, f: BLUR, fade: .3 },
+  { k: "clip", s: "oz_bluehour", a: S("c6") - .04, b: S("c7") - .04, z0: 1.1, whip: 1 },
+  { k: "clip", s: "oz_zakop", a: S("c7") - .04, b: S("c8") - .04, z0: 1.1, whip: -1 },
+  { k: "clip", s: "oz_sky", a: S("c8") - .04, b: DUR + 1, z0: 1.1, f: BLUR, fade: .35 },
+];
+const HI = /^(fotowoltaiką|magazynu|magazyn|dofinansowanie|16|zł|warunki|instalator|0|falownik|moc|wiek|wniosek|ty|wizycie|sprawdź|formularz|minutę|oddzwonimy)/i;
+scene(0, DUR + 1, (c) => {
+  const draw = zsShots(c, SHOTS);
+  el(c, "p-shade");
+  const bat = ozBattery(c);
+  const kw = ozBadge(c, `<small style="margin:0 0 12px">NAWET DO</small>16 000 ZŁ<small>DOFINANSOWANIA</small>`, 520);
+  const zero = ozBadge(c, "AUDYT 0 ZŁ", 300);
+  const steps = ozSteps(c, ["FALOWNIK", "MOC", "WIEK INSTALACJI"]);
+  const ph = ozPhone(c);
+  premCaps(c, ozWords(zsWords({}, [["szesnastu", "tysięcy", "16 000"], ["16 000", "złotych", "16 000 zł"], ["zero", "złotych", "0 zł"]])), { chars: 14, hi: w => HI.test(w) ? OY : null });
+  PR.off.push([tSz - .05, S("c3") - .04]);  // kwotę niesie plakietka, bez podwójnego napisu
+  sfx("POP", S("c2"), -16); sfx("DING", tSz, -14); sfx("DING", S("c4") + .2, -15);
+  [tF, tM, tWiek].forEach(x => sfx("POP", x, -15)); sfx("POP", tOdz - .15, -14); sfx("DING", tOdz + .45, -16);
+  return (lt, t) => {
+    draw(t);
+    bat(t, S("c2") + .25, tSz - .05, tSz - .3);
+    kw(t, tSz - .05, S("c3") - .04);
+    zero(t, S("c4") + .2, tZero - .1);
+    steps(t, [tF, tM, tWiek], S("c6") - .05);
+    ph(t, S("c8") - .04, DUR + 1, tOdz - .15, tOdz + .45);
+    premCapsUpdate(t);
+  };
+}, { push: 0, cut: true });
+boot("fmb3.m4a");
+</script>
+</body>
+</html>

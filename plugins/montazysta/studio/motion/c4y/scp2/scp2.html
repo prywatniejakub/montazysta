@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>scp2 · Scanpol: sprzedawca AI w ich salonie (8 s, pokazowo)</title>
+<link rel="stylesheet" href="../lib/prem.css">
+<style>
+/* znaczek AI (wiedza/feedback-znaczek-ai.md): małe kółko w prawym górnym rogu, cały czas (postać AI w każdym kadrze) */
+.aitag { position: absolute; right: 64px; top: 84px; width: 40px; height: 40px; border-radius: 50%; z-index: 45; background: rgba(255,255,255,.07);
+  border: 1.5px solid rgba(255,255,255,.26); color: rgba(255,255,255,.5); font: 800 15px/37px "Segoe UI", sans-serif; text-align: center; }
+</style>
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/prem.js"></script>
+<script>
+// Styl prem.js (zatwierdzony, wiedza/feedback-c4y-probki-montaz.md): napisy 1-3 słowa z głosem, pełny kadr, bez banerów i ramek.
+// Kling wypalił fałszywe logo w y ok. 1440-1540 od ok. 3 s: kadr z zoomem od góry (ay = 0, z >= 1,38), żeby wypadło za dolną krawędź.
+const DUR = T.DUR, RED = "#ff4a3d";
+const HI = /^(krzysztofie|wirtualny|salonie|nowe|auta|kamerą)/i;
+scene(0, DUR + 1, c => {
+  const cv = el(c, "p-full", `<canvas width="1080" height="1920"></canvas>`).firstChild, ctx = cv.getContext("2d");
+  const AV = useClip("scp2av");
+  el(c, "p-shade");
+  el(c, "aitag", "AI");
+  // przyimek nie zostaje sam na końcu napisu: „w” + „Waszym”, „przed” + „kamerą” jako jedno słowo napisu
+  const W0 = voiceWords(), WS = [];
+  W0.forEach((w, i) => { const p = WS[WS.length - 1]; if (p && p.glue) { p.w += " " + w.w; p.e = w.e; p.glue = false; } else WS.push({ ...w, glue: /^(w|z|na|do|przed)$/i.test(w.w) }); });
+  premCaps(c, WS, { hi: w => HI.test(w.split(" ").pop()) ? RED : null });
+  return (lt, t) => {
+    ctx.fillStyle = "#000"; ctx.fillRect(0, 0, 1080, 1920);
+    const z = 1.38 + .06 * E.io(clamp(t / DUR));
+    premDraw(ctx, frameAt(AV, Math.min(t, T.VEND - .04)), { z, ax: .5, ay: 0 });
+    premCapsUpdate(t);
+  };
+}, { push: 0, cut: true });
+boot("scp2.m4a");
+</script>
+</body>
+</html>

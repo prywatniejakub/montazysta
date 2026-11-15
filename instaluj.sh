@@ -81,4 +81,13 @@ Tu trafia każda ocena: zasada + powód + data. Te zasady wygrywają z domyślny
 EOF
 fi
 
+echo "Kopiuję style montażu 01-24 do $PRACA/studio (Twoje rolki w studiu zostają)"
+if [ -d "$WT/studio" ]; then
+  mkdir -p "$PRACA/studio"
+  cp -R "$WT/studio/." "$PRACA/studio/"
+  chmod +x "$PRACA/studio/ffmpeg/"*.exe "$PRACA/studio/runtime/"*.exe
+  rm -rf "$WT/studio"  # kopia robocza jest w $PRACA/studio, nie trzymamy drugiej
+fi
+
 MONTAZYSTA_DOM="$DOM" MONTAZYSTA_PRACA="$PRACA" bash "$WT/silnik/rolka" sprawdz
+MONTAZYSTA_DOM="$DOM" MONTAZYSTA_PRACA="$PRACA" bash "$WT/silnik/studio" style >/dev/null && echo "  OK    style 01-24 (studio style)"

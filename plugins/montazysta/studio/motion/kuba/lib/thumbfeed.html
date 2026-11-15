@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Thumbnail feed check</title>
+<style>
+  /* How a thumbnail + title look in the YouTube feed (1280x720 sheet): dark home grid next to other videos,
+     light-mode search row, and the tiny phone "up next" size. Shot with thumbshot.py:
+       thumbshot.py thumbfeed.html <out_dir> feed="img=../yt/ep1v2/thumb/t1.png&t=His%20AI%20Game%20Died&ch=Kuba%20Builds%20AI%20Stories"
+     img = path relative to this file; o1, o2 = optional neighbour thumbnails (default: older Kuba thumbnails). */
+  html, body { margin: 0; width: 1280px; height: 720px; overflow: hidden; font-family: Roboto, "Segoe UI", Arial, sans-serif; }
+  .dark { position: absolute; left: 0; top: 0; width: 1280px; height: 392px; background: #0f0f0f; color: #f1f1f1; }
+  .light { position: absolute; left: 0; top: 392px; width: 1280px; height: 328px; background: #fff; color: #0f0f0f; }
+  .lab { position: absolute; font: 600 13px "Segoe UI"; letter-spacing: .08em; text-transform: uppercase; opacity: .45; }
+  .card { position: absolute; top: 40px; width: 392px; }
+  .card img, .row img, .mini img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 12px; background: #333; }
+  .meta { display: flex; gap: 12px; margin-top: 12px; }
+  .av { width: 36px; height: 36px; border-radius: 50%; flex: none; background: linear-gradient(135deg, #3ddc97, #2f5bff); }
+  .tt { font: 500 16px/22px Roboto, "Segoe UI"; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .sub { font: 400 14px/20px Roboto, "Segoe UI"; opacity: .6; margin-top: 4px; }
+  .me { outline: 3px solid #3ddc97; outline-offset: 8px; border-radius: 14px; }
+  .row { position: absolute; left: 32px; top: 40px; width: 720px; display: flex; gap: 16px; }
+  .row .im { width: 360px; flex: none; }
+  .row .tt { font-size: 18px; line-height: 26px; }
+  .mini { position: absolute; left: 820px; top: 40px; width: 420px; }
+  .mini .it { display: flex; gap: 8px; margin-bottom: 12px; }
+  .mini .im { width: 168px; flex: none; }
+  .mini img { border-radius: 8px; }
+  .mini .tt { font-size: 14px; line-height: 20px; }
+  .mini .sub { font-size: 12px; line-height: 18px; }
+</style>
+</head>
+<body>
+<div class="dark"><div class="lab" style="left:32px;top:14px">Home (dark)</div><div id="G"></div></div>
+<div class="light"><div class="lab" style="left:32px;top:14px">Search (light)</div><div class="lab" style="left:820px;top:14px">Phone / up next</div><div id="S"></div></div>
+<script>
+const q = new URLSearchParams(location.search), img = q.get("img") || "", t = q.get("t") || "Title", ch = q.get("ch") || "Kuba Builds AI";
+const o1 = q.get("o1") || "../l2s/thumb/t2.png", o2 = q.get("o2") || "../yt/learnai/thumb/t1.png";
+const others = [[o1, "How to Build an App With AI in 2026 Without Coding (For Beginners)", "Kuba Builds AI"],
+                [o2, "I Ranked Every Way to Learn AI in 2026 (Most Are a Waste of Time)", "Kuba Builds AI Rankings"]];
+const meta = (title, c, v) => `<div class="meta"><div class="av"></div><div><div class="tt">${title}</div><div class="sub">${c}<br>${v}</div></div></div>`;
+const cards = [others[0], [img, t, ch, 1], others[1]];
+document.getElementById("G").innerHTML = cards.map(([src, title, c, me], i) =>
+  `<div class="card" style="left:${32 + i * 416}px"><img class="${me ? "me" : ""}" src="${src}">${meta(title, c, "12K views · 2 days ago")}</div>`).join("");
+document.getElementById("S").innerHTML =
+  `<div class="row"><div class="im"><img src="${img}"></div><div><div class="tt">${t}</div><div class="sub">1.2K views · 3 hours ago</div><div class="sub" style="margin-top:10px">${ch}</div></div></div>
+   <div class="mini">${[[img, t, ch], ...others].map(([s, ti, c]) => `<div class="it"><div class="im"><img src="${s}"></div><div><div class="tt">${ti}</div><div class="sub">${c}</div></div></div>`).join("")}</div>`;
+Promise.all([document.fonts.ready, ...[...document.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; }))])
+  .then(() => requestAnimationFrame(() => requestAnimationFrame(() => { window.READY = true; })));
+</script>
+</body>
+</html>

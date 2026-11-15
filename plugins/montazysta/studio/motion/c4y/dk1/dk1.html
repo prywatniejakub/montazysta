@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>dk1 v2 · Dobre Krzesła: gdzie się je szyje</title>
+<link rel="stylesheet" href="../lib/prem.css">
+<style>
+.endc { position: absolute; inset: 0; z-index: 30; opacity: 0; background: radial-gradient(90% 60% at 50% 40%, #ffffff 0%, #eef6f4 60%, #d6ebe7 100%); }
+.endc img { position: absolute; left: 50%; top: 600px; width: 820px; transform: translateX(-50%); }
+.endc .r { position: absolute; left: 0; right: 0; top: 900px; text-align: center; }
+.endc .r b { display: inline-block; padding: 0 44px; height: 130px; line-height: 130px; border-radius: 65px; background: #12a594; color: #fff; font: 900 70px/130px "Segoe UI Black", sans-serif; }
+.endc .u { position: absolute; left: 0; right: 0; top: 1110px; text-align: center; font: 900 62px/1 "Segoe UI Black", sans-serif; color: #111; }
+.endc .s { position: absolute; left: 0; right: 0; top: 1200px; text-align: center; font: 700 42px/1.3 "Segoe UI", sans-serif; color: #2b4a45; }
+</style>
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="ava.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/prem.js"></script>
+<script>
+const DUR = T.DUR, TL = "#2fd3bf";
+const S = k => LS(k);
+const tZob = W("b1", "zobacz"), tTn = W("b2", "Tniemy"), tSz = W("b2", "szyjemy"), tTa = W("b2", "tapicerujemy"), tJa = W("b3", "jadalni"),
+  tFo = W("b4", "fotele"), tSt = W("b4", "stoliki"), tKo = W("b4", "kolorach"), tUs = W("b5", "Usiadz"), tSh = W("b5", "showroomie"), tRa = W("b6", "Raty");
+const PK = ["pkWoven", "pkWovenB", "pkX", "pkArm", "pkRecl", "pkSwivel", "pkTable"];
+// [co, od, do]  clip:… = klatki filmu, pk:… = packshot, flip = kolory tkanin, mix = szybki przegląd, end = karta
+const CUTS = [
+  ["ava", 0, S("b2")],
+  ["clip:dkPlane", S("b2"), tTn], ["clip:dkSaw", tTn, tSz], ["clip:dkSew2", tSz, tTa], ["clip:dkUph", tTa, S("b3")],
+  ["clip:dkWestaC", S("b3"), tJa], ["clip:dkWestaW", tJa, S("b4")],
+  ["pk:pkWoven", S("b4"), S("b4") + .35], ["pk:pkWovenB", S("b4") + .35, S("b4") + .7], ["pk:pkX", S("b4") + .7, tFo],
+  ["pk:pkArm", tFo, tFo + .35], ["pk:pkRecl", tFo + .35, tFo + .7], ["pk:pkSwivel", tFo + .7, tSt], ["pk:pkTable", tSt, tKo], ["flip", tKo, S("b5")],
+  ["mix", S("b5"), tUs], ["clip:dkShow", tUs, S("b6")], ["end", S("b6"), DUR + 1],
+];
+const PROD = /dk(Plane|Saw|Sew|Uph)/;   // ich film z produkcji: wypalone napisy na środku -> rozmyty pasek pod naszym napisem
+const HI = /^(szyje|polskim|producentem|tniemy|szyjemy|tapicerujemy|jadalni|kolorach|kłobucku)/i;
+PR.off.push([S("b6") - .05, DUR + 1]);
+scene(0, DUR + 1, (c) => {
+  const cv = el(c, "p-full", `<canvas width="1080" height="1920"></canvas>`).firstChild, ctx = cv.getContext("2d");
+  const fr = {}; CUTS.forEach(k => { if (k[0].startsWith("clip:")) fr[k[0]] = useClip(k[0].slice(5)); });
+  const IM = {}; PK.forEach(n => { const i = new Image(); LOADS.push(new Promise(r => { i.onload = i.onerror = r; })); i.src = `pack/${n}.jpg`; IM[n] = i; });
+  el(c, "p-shade"); useClip(window.AVA.clip); // wstępne ładowanie klatek awatarki
+  const hook = () => {};
+  const capBox = premCaps(c, voiceWords(), { hi: w => HI.test(w) ? TL : null });
+  const endc = el(c, "endc", `<img src="logo.png"><div class="r"><b>RATY 0%</b></div><div class="u">dobrekrzesla.pl</div><div class="s">showroom: Kłobuck, ul. Wieluńska 13</div>`);
+  CUTS.slice(1).forEach(k => sfx(k[0].startsWith("pk:") ? "WH_SWING" : "WH_SOFT", k[1] - .05, k[0].startsWith("pk:") ? -20 : -19));
+  sfx("IMP_SOFT", tSh, -12); sfx("IMP_BASS", S("b6"), -10); sfx("DING", tRa + .2, -15);
+  const packDraw = (im, dt) => { ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, 1080, 1920); if (!im || !im.naturalWidth) return;
+    const z = (1 + .08 * Math.max(0, 1 - dt / .15)) * (1 + .03 * dt), s = Math.min(1000 / im.naturalWidth, 1200 / im.naturalHeight) * z, w = im.naturalWidth * s, h = im.naturalHeight * s;
+    ctx.drawImage(im, (1080 - w) / 2, 860 - h / 2, w, h); };
+  return (lt, t) => {
+    ctx.fillStyle = "#000"; ctx.fillRect(0, 0, 1080, 1920);
+    const k = CUTS.find(x => t >= x[1] && t < x[2]) || CUTS[CUTS.length - 1], dt = t - k[1], len = k[2] - k[1];
+    if (k[0] === "ava") { const AVc = fr.ava || (fr.ava = useClip(window.AVA.clip)); premDraw(ctx, frameAt(AVc, t + window.AVA.shift), { z: (window.AVA.z || 1.2) + .06 * E.io(clamp(t / Math.max(1, len))), ax: .5, ay: (window.AVA.ay ?? .25) }); }
+    let prod = false;
+    if (k[0].startsWith("clip:")) {
+      const n = k[0].slice(5); prod = PROD.test(n);
+      const L = cutLook(dt, len, { z0: n.startsWith("dkWesta") ? 1.14 : 1.04, zoomIn: dt < .12 && k[1] > 0 });
+      premDraw(ctx, n === "dkShow" ? frameAt(fr[k[0]], .65 + dt * .25) : frameFit(fr[k[0]], dt, len), { z: L.z, ax: .5, ay: .5, blur: L.blur });
+      if (prod) {   // rozmycie ich napisu (środek kadru)
+        ctx.save(); ctx.beginPath(); ctx.rect(0, 860, 1080, 210); ctx.clip(); ctx.filter = "blur(22px)"; ctx.drawImage(cv, 0, 0); ctx.restore();
+      }
+    } else if (k[0].startsWith("pk:")) packDraw(IM[k[0].slice(3)], dt);
+    else if (k[0] === "flip") packDraw(IM[Math.floor(dt / .18) % 2 ? "pkWovenB" : "pkWoven"], dt % .18);
+    else if (k[0] === "mix") packDraw(IM[PK[Math.floor(dt / .14) % PK.length]], dt % .14);
+    capBox.style.top = (prod ? 965 : k[0].startsWith("pk") || k[0] === "flip" || k[0] === "mix" ? 1640 : 1190) + "px";
+    hook(t); premCapsUpdate(t);
+    if (k[0] === "end") { endc.style.opacity = 1; const u = E.out4(clamp(dt / .3)); endc.style.transform = `translateY(${(1 - u) * 1920}px)`;
+      endc.querySelector("img").style.transform = `translateX(-50%) scale(${mix(.6, 1, outBack(clamp((dt - .15) / .35), 2))})`;
+      const r = endc.querySelector(".r"); r.style.opacity = t >= tRa - .05 ? 1 : 0; r.style.transform = `scale(${t >= tRa - .05 ? mix(.5, 1, outBack(clamp((t - tRa + .05) / .3), 2.4)) : .5})`; }
+    else endc.style.opacity = 0;
+  };
+}, { push: 0, cut: true });
+boot("dk1.m4a");
+</script>
+</body>
+</html>

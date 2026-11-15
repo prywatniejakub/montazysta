@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>o12 · tylko dla właścicieli firm: oto co dostajesz</title>
+<link rel="stylesheet" href="../lib/c4y.css">
+<style>
+.box { position: absolute; left: 50%; top: 1330px; width: 260px; height: 260px; margin-left: -130px; display: flex; align-items: center; justify-content: center; font-size: 200px; line-height: 1; }
+</style>
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/c4yad.js"></script>
+<script src="../lib/c4yodb.js"></script>
+<script>
+// ---------- S1: HOOK (postać, scena C, jak 12)
+HookScene("o12_hook", "WŁAŚCICIELE FIRM", [["<b>Uwaga,</b>", ""], ["tylko dla<br><b>właścicieli firm,</b>", "tylko"], ["w których<br>jeden klient", "ktorych"], ["to <b>kilka<br>tysięcy złotych.</b>", "kilka"]], { sfx: "kilka" });
+
+// ---------- S2: paczka (jak 12): z pudełka wyskakują kolejno rolki pokazywane szukającym, zgłoszenia w telefonie, rozmowy
+scene(LS("b2"), LS("b6"), (c) => {
+  const h = H(c, "Oto co<br>[dostajesz]:", 150, 110);
+  const box = el(c, "box", "📦");
+  const tR = W("b3", "Rolki"), tK = W("b4", "Kazdy"), tD = W("b5", "dzwonisz");
+  const P1 = at(el(c, "pk", `<i>🎬</i><div><b>Rolki o Twojej firmie</b><span>pokazywane tym, którzy szukają tego, co&nbsp;robisz</span></div>`), null, 430);
+  const P2 = at(el(c, "pk", `<i>📲</i><div><b>Zgłoszenia od razu</b><span>prosto do Twojego telefonu</span></div>`), null, 720);
+  const P3 = at(el(c, "pk", `<i>🤝</i><div><b>Rozmowy z ludźmi,</b><span>którzy już wiedzą, kim jesteś</span></div>`), null, 1010);
+  [[P1, tR], [P2, tK], [P3, tD]].forEach(([p, t0]) => { p.t0 = t0 - .1; sfx("WH_SPAWN", t0 - .25, -18); sfx("POP", t0, -12); });
+  sfx("IMP_SOFT", LS("b2"), -12);
+  return (lt, t) => {
+    markIn(h, t, LS("b2") + .2);
+    box.style.transform = `scale(${mix(.7, 1, spring(t - LS("b2"), 2.2, .5)).toFixed(3)}) rotate(${(Math.sin(t * 20) * 3 * Math.max(0, 1 - (t - tR) * 3) * (t > tR - .3 ? 1 : 0)).toFixed(1)}deg)`;
+    [P1, P2, P3].forEach(p => {
+      if (t < p.t0) { p.style.opacity = 0; return; }
+      const k = Math.min(1, spring(t - p.t0, 2.2, .75)), y0 = 1300 - parseFloat(p.style.top);
+      p.style.opacity = clamp((t - p.t0) / .1); p.style.transform = `translateY(${((1 - k) * y0).toFixed(1)}px) scale(${mix(.3, 1, Math.min(1, k)).toFixed(3)})`;
+    });
+  };
+});
+
+// ---------- S3: pieczęć gwarancji: minimum 30 spotkań albo pracujemy bez opłat
+SealScene("b6", "trzydzie", "albo", "albo pracujemy<br>bez opłat");
+
+// ---------- S4: CTA
+CtaScene("b7");
+boot("o12.m4a");
+</script>
+</body>
+</html>

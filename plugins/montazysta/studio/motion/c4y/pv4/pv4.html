@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>pv4 · Sprawdź jedną liczbę</title>
+<link rel="stylesheet" href="../lib/fonts/fonts.css">
+<link rel="stylesheet" href="../lib/prem.css">
+<link rel="stylesheet" href="../pv/pv.css">
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/prem.js"></script>
+<script>window.ACC = "#ffc23a"; window.ACC_DARK = 1;</script>
+<script src="../pv/pv.js"></script>
+<script>
+const DUR = T.DUR, S = k => LS(k);
+const END = "blur(6px) brightness(.58) saturate(1.05)";
+const tZob = W("d2", "zobacz"), tRok = W("d2", "rok"), tMasz = W("d3", "Masz"), tZap = W("d4", "zapłaciłeś");
+const tFal = W("d5", "falownik"), tPan = W("d5", "panele"), tPrz = W("d5", "przewody"), tUst = W("d5", "ustawienia"), tKlik = W("d6", "Kliknij");
+const SHOTS = [
+  { k: "img", s: "dom_zachod", a: 0, b: S("d2") - .04, z0: 1.18, z1: 1.28, ax0: .4, ay0: .68, mir: 1 },
+  { k: "img", s: "dom_zachod", a: S("d2") - .04, b: S("d5") - .04, z0: 1.12, z1: 1.2, ax0: .4, ay0: .64, mir: 1, f: "blur(9px) brightness(.5)", tr: "fade", fd: .3 },
+  { k: "clip", s: "pv_meter", a: S("d5") - .04, b: tFal - .04, z0: 1.04, z1: 1.12, tr: "whip" },
+  { k: "img", s: "falownik", a: tFal - .04, b: tPan - .04, z0: 1.2, z1: 1.28, ax0: .45, ay0: .55, glow: [{ x: 785, y: 1514, r: 85, c: "#ff2a1f", blink: 2.2 }] },
+  { k: "img", s: "panele_brud", a: tPan - .04, b: tPrz - .04, z0: 1.12, z1: 1.2, mir: 1 },
+  { k: "img", s: "przewody", a: tPrz - .04, b: tUst - .04, z0: 1.12, z1: 1.2, ax0: .6, glow: [{ x: 900, y: 1700, r: 160, c: "#ff5a1a", pulse: .8, o: .55 }] },
+  { k: "clip", s: "pv_hands", a: tUst - .04, b: S("d6") - .04, z0: 1.04, z1: 1.12 },
+  { k: "img", s: "dom_wieczor", a: S("d6") - .04, b: DUR + 1, z0: 1.08, z1: 1.16, ay0: .62, f: END, tr: "fade", fd: .45 },
+];
+scene(0, DUR + 1, (c) => {
+  const draw = pvShots(c, SHOTS);
+  el(c, "pv-shade"); el(c, "pv-vig");
+  const ph = pvPhone(c, "year");
+  const cards = pvCards(c, [
+    { a: 0, z: S("d2") - .04, now: 1, t: "MASZ PANELE? / SPRAWDŹ / *JEDNĄ *LICZBĘ", size: 100, y: 250 },
+    { a: S("d2") - .04, z: S("d3") - .04, t: "Ile wyprodukowały / *przez *rok?", cls: "s", size: 80, y: 270 },
+    { a: S("d3") - .04, z: S("d4") - .04, t: "KAŻDY KILOWAT ≈ / *1000 *kWh ROCZNIE", cls: "s", size: 80, y: 270 },
+    { a: S("d4") - .04, z: S("d5") - .04, t: "WYCHODZI / *DUŻO *MNIEJ?", size: 96, y: 270 },
+    { a: S("d5") - .04, z: S("d6") - .04, t: "*BEZPŁATNA / ANALIZA / INSTALACJI", size: 100, y: 260 },
+  ]);
+  const end = pvEnd(c, "Umów analizę instalacji");
+  sfx("IMP_SOFT", S("d4") - .04, -20); sfx("CLICK", tKlik, -18);
+  return (lt, t) => {
+    draw(t); cards(t);
+    ph(t, { a: S("d2") + .05, z: S("d5") - .04, count: [tZob, tRok + .3, 4200], norm: tMasz, bad: S("d4") - .02, warn: tZap });
+    end(t, S("d6") - .04, tKlik);
+  };
+}, { push: 0, cut: true });
+boot("pv4.m4a");
+</script>
+</body>
+</html>

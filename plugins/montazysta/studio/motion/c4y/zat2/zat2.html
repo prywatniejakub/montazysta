@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>zat2 · AI2 „Zatrzymałeś się” v2, dalsza część</title>
+<link rel="stylesheet" href="../lib/c4y.css">
+<link rel="stylesheet" href="../lib/dalsza.css">
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/c4yad.js"></script>
+<script src="../lib/dalsza.js"></script>
+<script>
+// S0: ostatnia klatka hooka („Następna może być o Twojej firmie.”)
+TailScene();
+// S1-S2: robimy takie rolki dla firm, w których klient to kilka tysięcy zł
+PhonesScene(.1, LS("b2"), "Robimy takie<br>[rolki dla firm]", ["b1", "rolki"], ["c03", "c15", "c11"]);
+ChipsScene(LS("b2"), LS("b3"), "Jeden klient to<br>[kilka tysięcy zł]", ["b2", "kilka"], ["b2", "jeden"], ["b2", "zlotych"]);
+// S3-S4: ból słowami właściciela
+FrameScene(LS("b3"), LS("b4"), "Robisz swoją robotę<br>[dobrze].", ["b3", "dobrze"], "zat2_biurko");
+PhoneSticker(LS("b4"), LS("b5"), "Dzwoni do firmy,<br>[którą już widział].", ["b4", "widzial"], "c06", `${ICO.phone}Dzwoni do nich`, ["b4", "dzwoni"], { cls: "red", size: 84 });
+// S5-S8: trzy kroki
+StepFrame("b5", "b6", 1, "Najpierw [film]<br>o Twojej firmie.", "film", "zat2_studio", 1, true);
+StepFrame("b6", "b7", 2, "Potem do ludzi,<br>[którzy szukają]<br>takiej usługi.", "szukaja", "zat2_scroll", -1);
+NotesStep("b7", "b8", 3, "Zgłoszenie od razu<br>[w Twoim telefonie].", "telefonie", ["zglosi", "razu", "telefonie"],
+  [["P", "Piotr, Wrocław", "sprawa spadkowa"], ["E", "Ewa, Łódź", "implanty"], ["T", "Tomasz, Lublin", "sprzedaż mieszkania"]]);
+FrameScene(LS("b8"), LS("b9"), "[Ty dzwonisz.]", ["b8", "ty"], "zat2_telefon2", { hy: 300, size: 120, y: 520, h: 700, imp: true, md: .25, d0: .05, from: .8 });
+// S9-S11: gwarancja i formularz
+CounterScene("b9", "b10");
+SealScene("b10", "b11");
+FormCta("b11", "b12", "4 krótkie pytania<br>[w formularzu].", ["b11", "formularzu"], ["b11", "pytania"]);
+boot("audio.wav");
+</script>
+</body>
+</html>

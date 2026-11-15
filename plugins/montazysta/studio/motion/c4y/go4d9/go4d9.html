@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>go4d9 · Betoniarki (Go4Driver, nowy styl)</title>
+<link rel="stylesheet" href="../lib/c4y.css">
+<link rel="stylesheet" href="../lib/g4d.css">
+<link rel="stylesheet" href="../lib/g4s.css">
+<style>
+.pears { background: radial-gradient(110% 70% at 50% 40%, #1d2410 0%, #0c0d10 70%); }
+.grid { position: absolute; left: 90px; right: 90px; top: 380px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px 20px; }
+.it { height: 230px; position: relative; perspective: 900px; }
+.it > div { position: absolute; inset: 0; display: grid; place-items: center; backface-visibility: hidden; border-radius: 34px; }
+.it .a { font-size: 170px; background: rgba(255,255,255,.05); }
+.it .b { background: rgba(200,242,58,.12); border: 4px solid var(--lime); transform: rotateY(180deg); }
+.it .b svg { width: 190px; }
+.twelve { position: absolute; left: 0; right: 0; top: 150px; text-align: center; font: 900 190px/1 var(--d); color: var(--lime); letter-spacing: -.04em; }
+.portal .bar small { position: absolute; right: 50px; top: 82px; font: 800 38px/1 var(--b); color: #e5383b; }
+.portal .job { padding: 30px 0; }
+.portal .job.lost { outline: 8px solid #e5383b; outline-offset: -4px; border-radius: 16px; padding-left: 18px; padding-right: 18px; }
+.callno { position: absolute; left: 50%; top: 150px; transform: translateX(-50%); padding: 16px 30px; border-radius: 40px; background: #ff3b30; color: #fff; font: 800 42px/1 var(--b); white-space: nowrap; }
+.capbox { position: absolute; inset: 0; z-index: 10; pointer-events: none; }
+</style>
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/g4s.js"></script>
+<script>
+const DUR = T.DUR, S = G4.S;
+const tGrusz = W("b1", "gruszek"), tBeton = W("b1", "Betoniarek"), tDal = W("b2", "Dałam"), tDuz = W("b2", "dużym");
+const tDzw = W("b3", "Dzwonił"), tTaxi = W("b3", "taksówkarz"), tPan = W("b3", "pan"), tA = W("b4", "A"), tNaB = W("b4", "betoniarkę");
+const tGo = W("b5", "Go"), tKier = W("b5", "kierowca"), tTyp = W("b5", "typie"), tAuta = W("b5", "auta"), tNaw = W("b5", "Nawet"), tMar = W("b5", "marce");
+const tDodaj = W("b6", "Dodaj"), tDarmo = W("b6", "darmo"), tEnd = LE("b6") + .15;
+const SHOTS = [
+  [0, "face", { z: "close" }],
+  [tGrusz - .1, "pears", { from: 1 }],
+  [tDal - .1, "face", { z: "wide", from: -1 }],
+  [W("b2", "na") - .1, "portal", { from: 1 }],
+  [tDzw - .12, "call", { from: -1 }],
+  [tA - .12, "face", { z: "close", from: 1 }],
+  [W("b4", "kierowcy") - .05, "face", { z: "wide", punch: [[tNaB, .14]] }],
+  [tGo - .15, "site", { from: 1 }],
+  [tEnd, "end", { from: -1 }],
+];
+const MIX = '<svg viewBox="0 0 120 70"><rect x="4" y="40" width="92" height="10" rx="3" fill="#c8f23a"/><path d="M86 20h18l10 14v16H86z" fill="#c8f23a"/><rect x="92" y="25" width="10" height="9" rx="2" fill="#0c0d10"/><ellipse cx="44" cy="25" rx="36" ry="18" fill="#e8e9ee" transform="rotate(-12 44 25)"/><path d="M14 30l60-14" stroke="#9a9ca6" stroke-width="3"/><circle cx="24" cy="56" r="9" fill="#e8e9ee"/><circle cx="64" cy="56" r="9" fill="#e8e9ee"/><circle cx="100" cy="56" r="9" fill="#e8e9ee"/></svg>';
+
+scene(0, DUR + 1, c => {
+  const L = {};
+  L.face = G4.face(c, { clip: "go4d5av", fx: 547, fy: 758, patch: { src: 90, x: 270, y: 1440, w: 540, h: 120, f: 28 } });
+  // 12 gruszek -> 12 betoniarek
+  L.pears = el(c, "layer pears", `<div class="twelve">12</div><div class="grid">${Array.from({ length: 12 }, () => `<div class="it"><div class="a">🍐</div><div class="b">${MIX}</div></div>`).join("")}</div>`);
+  const items = [...L.pears.querySelectorAll(".it")], twelve = L.pears.querySelector(".twelve");
+  // duży portal „dla wszystkich”
+  const JOBS = [["Kasjer / kasjerka", "4 900 zł"], ["Magazynier", "5 200 zł"], ["Programista Java", "18 000 zł"], ["Opiekunka do dziecka", "35 zł/h"], ["Barista", "31 zł/h"],
+    ["Księgowa", "7 000 zł"], ["Kelner / kelnerka", "28 zł/h"], ["Handlowiec B2B", "6 500 zł"], ["Kierowca betoniarki", "9 500 zł", 1], ["Sprzedawca", "4 800 zł"], ["Fryzjer", "5 000 zł"],
+    ["Ochroniarz", "27 zł/h"], ["Monter", "6 000 zł"], ["Recepcjonistka", "5 100 zł"], ["Pracownik produkcji", "5 300 zł"], ["Grafik", "7 500 zł"]];
+  L.portal = el(c, "layer wad portal", `<div class="doc"><div class="box" style="top:240px">${JOBS.map(([a, b, x]) => `<div class="job${x ? " lost" : ""}">${a}<span>${b}</span></div>`).join("")}</div></div>
+    <div class="bar"><b>Praca dla wszystkich</b><small>48 213 ofert</small></div>`);
+  const pdoc = L.portal.querySelector(".doc"), pcount = L.portal.querySelector("small");
+  // telefony od złych kierowców
+  L.call = G4.call(c, "in");
+  const callno = el(L.call, "callno", "📞 1");
+  const CALLERS = [[tDzw, "🚌", "Kierowca autobusu"], [tTaxi - .1, "🚕", "Taksówkarz"], [tPan - .1, "📦", "Pan od wózka widłowego"]];
+  // prawdziwa strona go4driver.com + arkusz wyboru
+  L.site = G4.site(c, "../g4site/home_top.jpg");
+  const gSel = L.site.glow([16, 1509, 343, 40]), gBtn = L.site.glow([36, 469, 303, 40], 10);
+  const tapBtn = L.site.finger(187, 489)(tDodaj + .05);
+  const dim = el(L.site, "dimbg");
+  const sheet = el(L.site, "sheet", `<div class="st">Typ naczepy</div>` + ["Firanka", "Chłodnia", "Kontener", "Wywrotka", "Cysterna", "Betoniarka (gruszka)"].map(x => `<div class="op"><i></i>${x}</div>`).join(""));
+  const sheetT = sheet.querySelector(".st"), ops = [...sheet.querySelectorAll(".op")];
+  const BRANDS = ["Volvo", "Scania", "MAN", "Mercedes-Benz", "DAF", "Renault Trucks"];
+  const stamp = G4.stamp(L.site, "0 zł");
+  L.end = G4.end(c, "Kierowca szuka po typie auta.<br>Twoja oferta trafia do właściwych.", "Dodaj ofertę za darmo");
+  // napisy (w ramce, którą przesuwamy w górę, gdy otwarty jest arkusz)
+  const capbox = el(c, "capbox");
+  const caps = G4.caps(capbox, [
+    ["b1", "Mam", "gruszek", "mam dwanaście"], ["b1", "gruszek", "Betoniarek", "<span class='k'>gruszek</span>"], ["b1", "Betoniarek", null, "<span class='k'>betoniarek</span>"],
+    ["b2", "Dałam", "na", "dałam ogłoszenie"], ["b2", "na", null, "na dużym portalu"],
+    ["b3", "Dzwonił", "autobusu", "dzwonił kierowca"], ["b3", "autobusu", "taksówkarz", "<span class='k'>autobusu</span>"], ["b3", "taksówkarz", "i", "<span class='k'>taksówkarz</span>"],
+    ["b3", "i", "wózka", "i pan od"], ["b3", "wózka", null, "<span class='k'>wózka widłowego</span>"],
+    ["b4", "A", "potrzebuję", "a ja"], ["b4", "potrzebuję", "na", "potrzebuję kierowcy"], ["b4", "na", null, "na <span class='k'>betoniarkę</span>"],
+    ["b5", "kierowca", "typie", "kierowca szuka po"], ["b5", "typie", "Nawet", "<span class='k'>typie auta</span>"], ["b5", "Nawet", "marce", "nawet po"], ["b5", "marce", null, "<span class='k'>marce</span>"],
+    ["b6", "Dodaj", "za", "dodaj ofertę"], ["b6", "za", "i", "<span class='k'>za darmo</span>"], ["b6", "i", "właściwych", "i trafiaj do"], ["b6", "właściwych", null, "właściwych kierowców"],
+  ]);
+  const hook = at(el(c, "hook", "Masz betoniarki? 👀"), null, 170);
+  const shots = G4.shots(L, SHOTS);
+
+  // dźwięk
+  G4.whooshes(SHOTS);
+  items.forEach((x, i) => sfx("POP", tGrusz + .05 + i * .06, -18));
+  sfx("IMP_SOFT", tBeton, -10); sfx("CLICK", tDuz, -10);
+  CALLERS.forEach(([t0]) => sfx(G4.FX + "phone_ring.mp3", t0, -10, .9));
+  sfx(G4.FX + "vine_boom.mp3", LE("b3") + .05, -12);
+  sfx("CLICK", tTyp, -9); sfx("CLICK", tAuta + .1, -8); sfx("CLICK", tMar + .1, -8);
+  sfx("WH_DATA", tGo - .2, -12); sfx("CLICK", tDodaj + .05, -6); sfx("IMP_BASS", tDarmo, -9); sfx("IMP_SOFT", tEnd, -8);
+
+  const SITECAM = [[tGo - .15, 0, 1], [tKier, 0, 1.02], [tKier + .3, 1150, 1], [tNaw, 1150, 1], [18.25, 1150, 1], [18.45, 230, 1.28, 489], [tEnd, 250, 1.4, 489]];
+  return (lt, t) => {
+    const ph = t - tDzw, shake = ph > 0 && ph < 5 && ((t - tDzw) % 2.0 < .9) ? Math.sin(t * 90) * 7 : 0;
+    const s = shots(t, t >= tDzw - .12 && t < tA - .12 ? shake : 0);
+    // twarz
+    const fs = s.cur === "face" ? s.shot : (s.prev === "face" ? s.prevShot : null);
+    if (fs) L.face.draw(t, fs[2].z, fs[0], fs[2].punch || []);
+    // gruszki -> betoniarki
+    items.forEach((x, i) => { const t0 = tGrusz + .05 + i * .06; x.style.opacity = t >= t0 ? 1 : 0; x.style.transform = `scale(${t >= t0 ? mix(.4, 1, spring(t - t0, 2.6, .5)) : .4})`;
+      const f = P(t, tBeton + i * .04, tBeton + i * .04 + .35, E.io); x.querySelector(".a").style.transform = `rotateY(${f * 180}deg)`; x.querySelector(".b").style.transform = `rotateY(${180 + f * 180}deg)`; });
+    twelve.style.transform = `scale(${1 + .08 * Math.sin(t * 6)})`;
+    // portal: szybkie przewijanie, kierowca betoniarki ginie w tłumie
+    const py = G4.keyAt([[s.t0, 0], [tDzw, 1100]], s.cur === "portal" || s.prev === "portal" ? t : 0, 1.8)[0];
+    pdoc.style.transform = `translateY(${-py}px)`;
+    pcount.style.transform = `scale(${t >= tDuz && t < tDuz + .5 ? 1.25 : 1})`;
+    // telefony
+    let ci = 0; CALLERS.forEach(([t0], j) => { if (t >= t0) ci = j; });
+    const [c0, em, nm] = CALLERS[ci]; L.call.av.textContent = em; L.call.av.style.fontSize = "150px"; L.call.nm.textContent = nm;
+    L.call.nr.textContent = "dzwoni…"; callno.textContent = "📞 " + (ci + 1);
+    L.call.who.style.transform = `translateY(${(1 - E.out4(clamp((t - c0) / .25))) * 160}px)`; L.call.who.style.opacity = clamp((t - c0) / .12);
+    L.call.pulse(t, c0);
+    // strona: przewijanie do filtrów, arkusz typ naczepy -> marka, zbliżenie na „Dodaj ofertę za darmo”, palec, 0 zł
+    const [sy, ss, fo] = G4.keyAt(SITECAM, t); L.site.cam(sy, ss, fo ?? sy + 333);
+    gSel.style.opacity = t >= tKier + .4 && t < tTyp ? 1 : 0;
+    const open = t >= tTyp && t < 18.3;
+    sheet.style.transform = `translateY(${open ? (1 - E.out4(clamp((t - tTyp) / .3))) * 110 : (t >= 18.3 ? E.in(clamp((t - 18.3) / .2)) * 110 : 110)}%)`;
+    dim.style.opacity = open ? clamp((t - tTyp) / .2) : 0;
+    const brands = t >= tNaw;
+    sheetT.textContent = brands ? "Marka" : "Typ naczepy";
+    ops.forEach((o, j) => { o.lastChild.textContent = brands ? BRANDS[j] : ["Firanka", "Chłodnia", "Kontener", "Wywrotka", "Cysterna", "Betoniarka (gruszka)"][j];
+      o.classList.toggle("on", brands ? (j === 0 && t >= tMar + .1) : (j === 5 && t >= tAuta + .1)); });
+    capbox.style.transform = `translateY(${open ? -1080 : 0}px)`;
+    gBtn.style.opacity = t >= tDodaj - .1 && t < tEnd ? .6 + .4 * Math.sin((t - tDodaj) * 9) : 0;
+    tapBtn(t);
+    if (t >= tDarmo && t < tEnd) pop(stamp, t, tDarmo, 2.2, 3.2, .5, "rotate(-6deg)"); else stamp.style.opacity = 0;
+    L.end.upd(t, tEnd);
+    caps(t, tEnd);
+    if (t < tGrusz + .3) { hook.style.opacity = 1; hook.style.transform = "translateX(-50%)"; } else hook.style.opacity = clamp(1 - (t - tGrusz - .3) / .2);
+  };
+}, { push: 0, cut: true });
+boot("go4d9.m4a");
+</script>
+</body>
+</html>

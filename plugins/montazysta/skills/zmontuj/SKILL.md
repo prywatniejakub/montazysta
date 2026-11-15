@@ -1,7 +1,7 @@
 ---
 name: zmontuj
 description: Montażysta rolek i pionowych filmów. Bierze surowy materiał (nagrania, pliki, link do filmu) albo sam tekst i robi gotową rolkę 9:16 z napisami po 1-3 słowa, cięciami co 1-2 s, muzyką i kontrolą jakości, przez zespół scenarzysta i recenzent. Użyj ZAWSZE, gdy użytkownik mówi „zmontuj”, „montaż”, „zrób rolkę”, „rolki”, „reels”, „shorts”, „tiktok”, „przytnij film”, „dodaj napisy”, „potnij to nagranie”, „zrób z tego rolki”, albo daje wideo do obróbki.
-allowed-tools: Bash(bash *montazysta/wtyczka/silnik/rolka*)
+allowed-tools: Bash(bash *montazysta/wtyczka/silnik/rolka*), Bash(bash *montazysta/wtyczka/silnik/studio*)
 ---
 
 # Montażysta
@@ -22,6 +22,14 @@ Silnik: `bash "${CLAUDE_PLUGIN_ROOT}/silnik/rolka" <polecenie>` (dalej: **rolka*
 - **Darmowe B-rolle (0 zł):** `rolka stock <nazwa> "<zapytanie po angielsku>"` (Pexels; `--zrodlo pixabay` drugi bank), obejrzyj arkusz `stock/<slug>.jpg` (Read), potem `rolka stock-pobierz <nazwa> <id> [--x 0.5] [--sek 6]`: klip 1080x1920 trafia do `materialy/` jako nowe źródło.
 - **Obsada na rynek PL (KRYTYCZNE):** osoby w kadrze wyglądają jak Polacy, wygląd środkowoeuropejski, bez osób czarnoskórych. Sprawdzasz KAŻDĄ osobę na arkuszu stocku (także dłonie i tło) przed pobraniem i jeszcze raz na `chk/sheet.jpg`. Recenzent ma to jako błąd krytyczny.
 - **Ujęcia AI (płatne, przez konektor clips4you):** `fal_modele`, potem `fal_generuj` bez kodu pokazuje cenę w $ i zł; zlecasz z kodem dopiero po wyraźnym „tak” użytkownika, wynik `fal_wynik`, plik pobierasz do `materialy/` (curl). Własne zdjęcie albo głos do fal: `wgraj_plik`. Najpierw tania próba (768P, krótko). Postać AI zawsze ze znaczkiem AI; usta tylko `usta_ze_zdjecia` (Kling Avatar v2) albo `usta_na_filmie` (Sync Lipsync v2 pro).
+
+## Style agencji 01-24 (studio)
+Prawdziwe silniki stylów Clips4you leżą w `~/Montaz/studio` (polecenie: `bash "${CLAUDE_PLUGIN_ROOT}/silnik/studio" ...`, dalej **studio**). Gdy użytkownik mówi „styl NN” albo rolka jest dla klienta agencji, robisz ją tutaj, a nie zwykłym silnikiem `rolka`:
+1. `studio style` (lista z numerami), `studio styl <nr>` (przepis, silnik, koszt, notatki). Bez numeru wybierz styl wg pola „kiedy” i powiedz, który numer.
+2. `studio nowy <nr> <nazwa>`: kopia kodu wzoru (script.py, html, js, css) obok wzoru, bez materiałów klienta.
+3. Przeczytaj nowy `script.py` i html: podmień teksty (LINES), kolejność, klipy i grafiki na materiał tej rolki. Klipy ze stocku: `rolka stock` w dowolnym projekcie, plik kopiujesz tam, gdzie styl go czyta (np. `motion/c4y/oze/stock/<id>.mp4` w stylach OZE i 22). Kadry i ruch AI przez konektor (`fal_generuj`), pliki zapisujesz tam, gdzie script.py ich szuka; istniejących plików silnik nie generuje drugi raz.
+4. Kroki: `studio uruchom <nazwa> <kroki>`; kolejność jak w opisie na górze script.py (zwykle `clips voice timing stills`, przegląd arkusza `<nazwa>_arkusz.jpg` albo `stills/`, potem `audio render`). Głos domyślnie darmowy Edge; ElevenLabs (`ELEVEN=1`) tylko po zgodzie na kwotę i z kluczem użytkownika.
+5. Gotowy plik: `studio gdzie <nazwa>` + `/<nazwa>.mp4`. Dalej jak w procesie poniżej: recenzja klatek przed renderem, kontrola `rolka kontrola <plik.mp4>`, oddanie, ocena.
 
 ## Trzy tryby
 - **A. Nagranie z głosem** (gadająca głowa, wywiad, podcast): `rolka transkrypcja <nazwa>`, potem ujęcia z fragmentów.

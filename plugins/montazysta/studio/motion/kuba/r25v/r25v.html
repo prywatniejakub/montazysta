@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>r25v · I built an app by talking into a banana</title>
+<link rel="stylesheet" href="../../lib/base.css">
+<link rel="stylesheet" href="../lib/saas.css">
+<link rel="stylesheet" href="../lib/saas-reel.css">
+<style>
+.vid { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+.shade { position: absolute; left: 0; right: 0; pointer-events: none; }
+.rec { position: absolute; left: 60px; top: 70px; display: flex; align-items: center; gap: 14px; height: 60px; padding: 0 24px; border-radius: 30px; background: rgba(10,12,22,.55); border: 1px solid rgba(255,255,255,.18); backdrop-filter: blur(14px); font: 600 26px var(--font); color: #fff; }
+.rec i { width: 16px; height: 16px; border-radius: 50%; background: #ff4d5e; box-shadow: 0 0 14px #ff4d5e; }
+.wave { position: absolute; display: flex; align-items: center; gap: 12px; padding: 0 44px; overflow: hidden; }
+.wave .mc { width: 92px; height: 92px; flex: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; background: linear-gradient(145deg, #ff7ad9, #b04bff); box-shadow: 0 0 60px rgba(255,122,217,.6); }
+.wave .mc svg { width: 50px; height: 50px; }
+.wave .bars { flex: 1; height: 150px; display: flex; align-items: center; justify-content: space-between; }
+.wave .bars b { width: 12px; border-radius: 6px; background: linear-gradient(180deg, #ffb3ec, #9fb8ff); }
+.wave .tx { position: absolute; left: 44px; right: 120px; font: 500 40px/1.3 var(--font); color: #fff; letter-spacing: -.02em; white-space: normal; }
+.wave .snd { position: absolute; right: 30px; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; background: linear-gradient(135deg, #4f7cff, #8b6cff); }
+.wave .snd svg { width: 38px; height: 38px; }
+.code { position: absolute; left: 34px; right: 34px; top: 80px; font: 500 25px/1.62 Consolas, monospace; color: #cfd8f0; white-space: pre; }
+.code em { font-style: normal; color: #c792ea; } .code u { text-decoration: none; color: #9ff5cf; } .code s { text-decoration: none; color: #6e7a99; }
+.cnt { position: absolute; left: 0; right: 0; bottom: 34px; text-align: center; font: 700 30px var(--font); color: rgba(226,232,250,.75); }
+.cnt b { font: 700 64px var(--font); color: #fff; letter-spacing: -.03em; margin-right: 12px; }
+.app { position: absolute; inset: 0; background: linear-gradient(180deg, #f7f8fc, #eceff7); font-family: var(--font); color: #0e1222; }
+.app .lg { position: absolute; left: 0; right: 0; top: 150px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.app .ic { width: 150px; height: 150px; border-radius: 40px; display: flex; align-items: center; justify-content: center; font: 84px/1 "Segoe UI Emoji"; background: linear-gradient(145deg, #3ddc97, #20a8c8); box-shadow: 0 20px 50px rgba(32,168,200,.35); }
+.app .nm { font: 700 50px var(--font); letter-spacing: -.03em; }
+.app .fld { position: absolute; left: 50px; right: 50px; height: 100px; border-radius: 26px; background: #fff; box-shadow: 0 0 0 2px #dde1ea; font: 500 34px/100px var(--font); padding: 0 32px; color: #0e1222; }
+.app .btn { position: absolute; left: 50px; right: 50px; height: 104px; border-radius: 28px; background: #0e1222; color: #fff; font: 700 36px/104px var(--font); text-align: center; }
+.sheet { position: absolute; left: 0; right: 0; bottom: 0; height: 640px; border-radius: 44px 44px 0 0; background: #fff; box-shadow: 0 -30px 80px rgba(0,0,0,.25); font-family: var(--font); color: #0e1222; }
+.sheet .h { position: absolute; left: 50px; top: 50px; font: 700 40px var(--font); }
+.sheet .pr { position: absolute; left: 50px; top: 120px; font: 800 96px var(--font); letter-spacing: -.04em; }
+.sheet .pr span { font: 600 40px var(--font); color: rgba(14,18,34,.5); }
+.sheet .cd { position: absolute; left: 50px; right: 50px; top: 270px; height: 100px; border-radius: 24px; background: #f1f3f9; font: 600 32px/100px var(--font); padding: 0 30px; color: rgba(14,18,34,.7); }
+.sheet .pay { position: absolute; left: 50px; right: 50px; top: 410px; height: 120px; border-radius: 30px; background: linear-gradient(95deg, #4f7cff, #8b6cff); color: #fff; font: 700 42px/120px var(--font); text-align: center; overflow: hidden; }
+.done { position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; background: #fff; font: 700 46px var(--font); color: #0e1222; }
+.done i { width: 170px; height: 170px; border-radius: 50%; background: #3ddc97; color: #04150b; padding: 34px; box-shadow: 0 0 60px rgba(61,220,151,.6); display: flex; }
+.role { position: absolute; display: flex; align-items: center; gap: 20px; padding: 0 28px; height: 150px; border-radius: 30px; font: 600 34px var(--font); color: #0e1222; }
+.role .av { width: 86px; height: 86px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; flex: none; }
+.role .av svg { width: 46px; height: 46px; }
+.role small { display: block; font: 500 24px var(--font); color: rgba(14,18,34,.5); }
+.one { position: absolute; font: 500 44px/1.3 var(--font); color: #fff; }
+.ban { position: absolute; border-radius: 44px; overflow: hidden; box-shadow: 0 0 0 2px rgba(255,255,255,.25), 0 40px 120px rgba(0,0,0,.6), 0 0 90px rgba(255,122,217,.35); }
+.ban img { width: 100%; height: 100%; object-fit: cover; display: block; }
+</style>
+</head>
+<body>
+<script src="timing.js"></script>
+<script>window.ASSETS = "../../assets/"; window.CLIPBASE = "clips"; window.FRAME = { w: 1080, h: 1920 };</script>
+<script src="../../lib/engine.js"></script>
+<script src="../lib/saas.js"></script>
+<script src="../lib/saas-reel.js"></script>
+<script>
+"use strict";
+clipImgs("avatar", "clips", 76);
+const b1 = wt("b1"), b2 = wt("b2"), b3 = wt("b3"), b4 = wt("b4"), b5 = wt("b5"), b6 = wt("b6");
+const T2 = b2[3] + .25, T3 = LS("b3") - .12, T4 = LS("b4") - .12, T5 = LS("b5") - .12, T6 = LS("b6") - .1, T7 = LS("b7") - .08;
+aurora([[0, .3, .4, .1, .35, .4], [T2, .45, .5, .1, .5, .45], [T3, .55, .5, .2, .2, .5], [T4, .5, .55, .25, .2, .5], [T6, .6, .6, .2, .45, .5], [T7, .8, .75, .3, .3, .55]]);
+
+// ---------------------------------------------------------------- 1. HOOK: Kuba talks into a banana (HeyGen, the same "Reel" voice). Text is on screen at t = 0.
+S(0, T2, (cam, e) => {
+  const cv = canvas(e, 1080, 1920, "vid");
+  const top = at(e, "shade", "", 0, 0, 1080, 760); top.style.background = "linear-gradient(180deg, rgba(4,5,11,.78) 0%, rgba(4,5,11,.45) 45%, rgba(4,5,11,0) 100%)";
+  const bot = at(e, "shade", "", 0, 1500, 1080, 420); bot.style.background = "linear-gradient(0deg, rgba(4,5,11,.55), rgba(4,5,11,0))";
+  const k = el(e, "div", "sub kick", "How I build apps now"); k.style.top = "150px"; k.style.color = "rgba(230,236,255,.85)"; k.style.fontSize = "30px";
+  const h = words(e, "No code.", 280, 118, [-1, -1], { cls: "gradw" }), h2 = words(e, "Just a banana.", 410, 118, [-1, -1, -1], { grad: [2] });
+  const rec = at(e, "rec", "<i></i><span class='num'>REC 00:00</span>", 60, 1790); const rs = rec.querySelector("span");
+  const m1 = words(e, "Okay, it's a mic.", 1560, 84, b2.slice(0, 4), { grad: [3] });
+  sfx("IMP_SOFT", b2[3], -20);
+  return (lt, t) => {
+    // after the clip ends the last frame holds while the camera pushes into the mic on the banana
+    const z = 1 + 1.9 * P(t, b2[0] - .2, b2[3], ioc), cx = mix(.5, .36, P(t, b2[0] - .2, b2[3], ioc)), cy = mix(.5, .51, P(t, b2[0] - .2, b2[3], ioc));
+    drawClip(cv, "avatar", Math.min(lt, 2.5), { zoom: z, cx, cy });
+    h.up(t); h2.up(t); m1.up(t);
+    const o = 1 - P(t, b2[0] - .2, b2[0] + .2, ioc); [k, h, h2].forEach(x => { x.style.opacity = o; x.style.transform = `translateY(${-(1 - o) * 60}px)`; });
+    rec.style.opacity = o; rs.textContent = "REC 00:0" + Math.min(9, Math.floor(t + 1));
+  };
+}, { outD: .35, whoosh: false });
+
+// ---------------------------------------------------------------- 2. "But I really just talk." -> the mic becomes a glowing voice wave (dark)
+let WAVE;
+S(T2 - .1, T3 + .05, (cam, e) => {
+  const h = words(e, "But I really just talk.", 470, 92, b2.slice(4), { grad: [3, 4] });
+  const w = ctr(cam, "gl wave", `<div class="mc">${IC.mic}</div><div class="bars">${Array.from({ length: 22 }, () => "<b></b>").join("")}</div>`, 0, 0, 900, 210);
+  w.style.borderRadius = "105px"; const bars = [...w.querySelectorAll(".bars b")]; WAVE = w;
+  return (lt, t) => { h.up(t); popIn(w, t, T2, "", 1.4, .7);
+    bars.forEach((b, i) => { const v = .25 + .75 * Math.abs(Math.sin(t * 9 + i * .7) * Math.sin(t * 3.1 + i * 1.9)); b.style.height = px(20 + 120 * v); });
+    camSet(cam, [0, 40 - lt * 25, 1 + lt * .03, 8 - lt * 4, 0, 0]); };
+}, { inD: .3, outD: .3 });
+
+// ---------------------------------------------------------------- 3. "I say what I want. AI writes every line of code." -> the wave becomes the chat box, code streams
+const PROMPT = "Build me a meal planner app with login and payments";
+const CODE = ["<s>// meal-planner / app.tsx</s>", "<em>import</em> { auth } <em>from</em> <u>\"./auth\"</u>", "<em>import</em> { stripe } <em>from</em> <u>\"./pay\"</u>", "",
+  "<em>export default function</em> App() {", "  <em>const</em> user = auth.<u>useUser</u>()", "  <em>const</em> plan = stripe.<u>plan</u>(<u>\"pro\"</u>, 9)", "  <em>return</em> &lt;Planner",
+  "    week={mealsFor(user)}", "    onPay={plan.checkout}", "  /&gt;", "}", "", "<em>export async function</em> mealsFor(u) {", "  <em>const</em> diet = <em>await</em> db.<u>diet</u>(u.id)", "  <em>return</em> ai.<u>plan</u>(diet, 7)", "}"];
+S(T3 - .05, T4 + .05, (cam, e) => {
+  const h = words(e, "I say what I want.", 180, 76, b3.slice(0, 5)), h2 = words(e, "AI writes every line.", 280, 76, b3.slice(5, 9), { grad: [0, 3] });
+  const box = ctr(cam, "gl wave", `<div class="mc">${IC.mic}</div><div class="tx"></div><div class="snd">${IC.send}</div>`, 0, -330, 900, 210);
+  box.style.borderRadius = "105px"; const tx = box.querySelector(".tx"), mc = box.querySelector(".mc");
+  const cw = win(cam, 0, 330, 940, 860, { url: "claude · building your app" }); const code = el(cw.bd, "div", "code"), cnt = el(cw.bd, "div", "cnt", "<b class='num'>0</b>lines of code");
+  cnt.style.background = "linear-gradient(0deg, rgba(12,15,28,.95) 40%, rgba(12,15,28,0))"; cnt.style.paddingTop = "40px"; cnt.style.bottom = "0"; cnt.style.paddingBottom = "30px";
+  const nb = cnt.querySelector("b"), tSay = b3[1] - .1, tSend = b3[5] - .05, rip = ripple(cam, 405, -440, "150,160,255");
+  sfx("CLICK", tSend, -18); sfx("WH_SWING", tSend + .15, -24);
+  return (lt, t) => {
+    h.up(t); h2.up(t);
+    morph(box, [[T3, 0, 0, -330, 900, 210, 105], [T3 + .05, .45, 0, -440, 960, 190, 95]], t);
+    mc.style.transform = `scale(${1 + .08 * Math.sin(t * 12) * (t < tSend ? 1 : 0)})`;
+    const typed = t < tSend + .1; tx.style.opacity = 1; mc.style.opacity = 1;
+    typeInto(tx, PROMPT, t, tSay, 34, false); tx.style.fontSize = "34px"; tx.style.left = "150px"; tx.style.top = "32px";
+    if (!typed) tx.style.opacity = 1 - P(t, tSend + .1, tSend + .4);
+    rip(t, tSend); const cam0 = [0, -330, 1]; void cam0;
+    appear(cw, t, tSend + .05, .5, 80);
+    const n = Math.floor(clamp((t - tSend - .25) * 9, 0, CODE.length)); code.innerHTML = CODE.slice(0, n).join("\n") + (n < CODE.length && t > tSend ? "▌" : "");
+    nb.textContent = Math.round(1284 * P(t, tSend + .2, T4, ios)).toLocaleString("en-US");
+    camSet(cam, [0, mix(-60, 60, P(t, T3, T4, ios)), mix(1.0, 1.04, P(t, T3, T4, ios)), 4, -3 + lt * 1.2, 0]);
+  };
+}, { inD: .3, outD: .35 });
+
+// ---------------------------------------------------------------- 4. "One evening later, it's a real app. Login, payments, everything." -> a phone, login, pay $9/mo, done
+S(T4 - .05, T5 + .05, (cam, e) => {
+  const h = words(e, "One evening later…", 200, 78, b4.slice(0, 3)), h2 = words(e, "it's a real app.", 300, 96, b4.slice(3, 7), { grad: [2, 3] });
+  const ph = rphone(cam, 0, 170, 640, 1260);
+  const app = el(ph.scr, "div", "app", `<div class="lg"><div class="ic">🥗</div><div class="nm">Meal Planner</div></div>
+    <div class="fld" style="top:540px">kuba@gmail.com</div><div class="fld" style="top:660px;color:rgba(14,18,34,.35)">••••••••</div><div class="btn" style="top:800px">Log in</div>`);
+  const btn = app.querySelector(".btn"), sh = el(ph.scr, "div", "sheet", `<div class="h">Meal Planner Pro</div><div class="pr">$9<span> / month</span></div><div class="cd">💳  •••• 4242</div><div class="pay">Pay $9</div>`);
+  const pay = sh.querySelector(".pay"), dn = el(ph.scr, "div", "done", `<i>${IC.check}</i>Payment successful`);
+  const tL = b4[7] - .15, tP = b4[8] - .1, tE = b4[9] - .1;
+  const rp1 = ripple(cam, 0, 170 - 630 + 16 + 852, "80,90,140"), rp2 = ripple(cam, 0, 170 - 630 + 16 + 1180 - 640 + 470, "150,160,255");
+  const chips = [["Login", IC.lock], ["Payments", IC.card], ["Database", IC.server], ["Live online", IC.globe]].map(([s2, ic], i) => { const c = ctr(cam, "ok", `${IC.check}${s2}`, (i % 2 ? 1 : -1) * 190, 590 + Math.floor(i / 2) * 110, 360, 80); Object.assign(c.style, { height: "76px", fontSize: "32px", padding: "0 30px", background: "rgba(8,30,22,.9)" }); c.i = i; return c; });
+  sfx("CLICK", tL, -18); sfx("CLICK", tP + .2, -18); sfx("IMP_SOFT", tE + .1, -20);
+  return (lt, t) => {
+    h.up(t); h2.up(t); appear(ph, t, T4, .55, 120);
+    btn.style.transform = `scale(${1 - .05 * pulse(t, tL, .15) * (t > tL ? 1 : 0)})`; rp1(t, tL);
+    const su = P(t, tP - .15, tP + .3, oc); sh.style.transform = `translateY(${(1 - su) * 680}px)`; sh.style.opacity = t > tP - .15 ? 1 : 0;
+    pay.style.transform = `scale(${1 - .05 * pulse(t, tP + .2, .15) * (t > tP + .2 ? 1 : 0)})`; rp2(t, tP + .2);
+    dn.style.opacity = P(t, tE - .1, tE + .15); dn.firstChild.style.transform = `scale(${t > tE - .1 ? Math.max(0, spring(t - tE + .1, 1.8, .5)) : 0})`;
+    chips.forEach(c => { const a = tE + c.i * .12; c.parentNode.style.opacity = t > a ? 1 : 0; c.style.transform = `scale(${t > a ? Math.max(0, spring(t - a, 1.8, .55)) : 0}) rotate(${(c.i % 2 ? 1 : -1) * 4}deg)`; });
+    camSet(cam, [0, mix(80, 0, P(t, T4, T5, ios)), mix(.93, 1.0, P(t, T4, T5, ios)), 0, mix(6, -4, P(t, T4, T5, ios)), 0]);
+  };
+}, { inD: .3, outD: .35 });
+
+// ---------------------------------------------------------------- 5. LIGHT: "Two years ago, that took a whole team."
+const ROLES = [["Frontend dev", "the screens", "#4f7cff"], ["Backend dev", "the server", "#8b6cff"], ["Designer", "the look", "#ff7ad9"], ["Product manager", "the plan", "#ff9a4a"], ["QA tester", "the bugs", "#3ddc97"], ["DevOps", "the launch", "#20a8c8"]];
+const RPOS = ROLES.map((_, i) => [(i % 2 ? 1 : -1) * 250, -110 + Math.floor(i / 2) * 195]);
+S(T5 - .05, T6 + .05, (cam, e) => {
+  const k = el(e, "div", "sub kick", "Two years ago"); k.style.top = "250px"; k.style.fontSize = "30px";
+  const h = words(e, "That took a whole team.", 380, 84, b5.slice(3), { grad: [3, 4] });
+  const R = ROLES.map(([n, s2, c], i) => { const r = ctr(cam, "gll role", `<div class="av" style="background:${c}">${IC.users}</div><div>${n}<small>${s2}</small></div>`, RPOS[i][0], RPOS[i][1], 470, 150); r.i = i; return r; });
+  const mo = ctr(cam, "pill", `<span style="color:#ff4d5e;display:flex">${IC.cal}</span>months of work`, 0, 540, 420, 64);
+  R.forEach((r, i) => sfx("CLICK", b5[3] + i * .09, -30));
+  return (lt, t) => { k.style.opacity = P(t, T5, T5 + .3); h.up(t);
+    R.forEach(r => appear(r, t, T5 + .1 + r.i * .07, .4, 60, `rotate(${(r.i % 2 ? 1 : -1) * 1.5}deg)`)); appear(mo.parentNode, t, b5[6], .45, 30);
+    camSet(cam, [0, 0, mix(.98, 1.03, P(t, T5, T6, ios)), 0, 0, 0]); };
+}, { light: true, inD: .3, outD: .3 });
+
+// ---------------------------------------------------------------- 6. "Now it takes one sentence. And a banana." -> the team collapses into one sentence, then the banana (loop to the hook)
+S(T6 - .05, T7 + .05, (cam, e) => {
+  const h = words(e, "Now: one sentence.", 250, 92, [b6[0], b6[3], b6[4]], { grad: [1, 2] }), h2 = words(e, "And a banana.", 1690, 110, b6.slice(5), { grad: [2] });
+  const R = ROLES.map(([n, , c], i) => { const r = ctr(cam, "gl role", `<div class="av" style="background:${c}">${IC.users}</div><div style="color:#fff">${n}</div>`, RPOS[i][0], RPOS[i][1], 470, 150); r.i = i; return r; });
+  const one = ctr(cam, "bub me one", PROMPT, 0, -250, 820, 170); one.style.maxWidth = "820px"; one.style.fontSize = "42px"; one.style.padding = "30px 38px";
+  const ban = ctr(cam, "ban", `<img src="banana.png">`, 0, 250, 380, 626);
+  const tO = b6[3] - .1, tB = b6[7] - .12;
+  sfx("WH_SOFT", tO - .2, -22); sfx("IMP_SOFT", tB, -16);
+  return (lt, t) => { h.up(t); h2.up(t);
+    R.forEach(r => { const u = P(t, T6 + .05 + r.i * .04, tO + .1, ioe); r.style.opacity = 1 - u; r.style.transform = `translate(${-RPOS[r.i][0] * u}px, ${(-250 - RPOS[r.i][1]) * u}px) scale(${1 - .8 * u})`; r.style.filter = u > .02 ? `blur(${u * 10}px)` : ""; });
+    const so = P(t, tO - .05, tO + .45, oc); one.style.opacity = so; one.style.transform = `scale(${.6 + .4 * oback(so, 1.4)})`;
+    popIn(ban, t, tB, `rotate(${-4 + 2 * Math.sin(t * 2)}deg)`, 1.6, .55);
+    camSet(cam, [0, mix(-60, 40, P(t, T6, T7, ios)), 1, 0, 0, 0]); };
+}, { inD: .3, outD: .3 });
+
+reelCTA(T7, "b7");
+saasBoot("r25v.m4a");
+</script>
+</body>
+</html>

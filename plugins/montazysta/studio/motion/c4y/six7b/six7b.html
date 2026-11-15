@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>six7b · Zwiastun kinowy dla SIX SEVEN Street Food</title>
+<link rel="stylesheet" href="../lib/c4y.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&display=block&subset=latin-ext">
+<style>
+:root { --brand: #e3141b; --gold: #f3d9a4; }
+#bug { display: none; }
+#stage { background: #000; }
+#stage::before { display: none; }
+.full { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+.vig { position: absolute; inset: 0; background: radial-gradient(ellipse 75% 60% at 50% 48%, rgba(0,0,0,0) 45%, rgba(0,0,0,.62) 100%); }
+.bar { position: absolute; left: 0; right: 0; height: 160px; background: #000; z-index: 20; }
+.t { position: absolute; left: 60px; right: 60px; text-align: center; color: #fff; font-family: "Cinzel", serif; font-weight: 700; letter-spacing: .16em;
+  text-shadow: 0 0 30px rgba(0,0,0,.85), 0 4px 18px rgba(0,0,0,.7); z-index: 10; }
+.small { font-size: 56px; line-height: 1.2; font-weight: 500; letter-spacing: .32em; }
+.mid { font-size: 76px; line-height: 1.12; }
+.quote { font-size: 80px; line-height: 1.1; letter-spacing: .06em; color: var(--gold); }
+.loc { font-size: 40px; letter-spacing: .5em; font-weight: 500; }
+.loc b { display: block; width: 120px; height: 3px; margin: 0 auto 26px; background: var(--brand); }
+.title { font-size: 190px; line-height: .9; font-weight: 900; letter-spacing: .04em; }
+.title small { display: block; margin-top: 34px; font-size: 54px; letter-spacing: .62em; font-weight: 700; color: var(--brand); text-shadow: 0 2px 14px rgba(0,0,0,.9); }
+.end { font-size: 66px; padding: 60px 0; background: radial-gradient(ellipse 70% 55% at 50% 50%, rgba(0,0,0,.6), rgba(0,0,0,0) 75%); line-height: 1.2; letter-spacing: .22em; }
+.end em { font-style: normal; display: block; font-size: 38px; letter-spacing: .36em; color: #ffe7b8; margin-top: 28px; font-weight: 500; }
+.flash { position: absolute; inset: 0; background: #fff; opacity: 0; z-index: 15; }
+.dark { position: absolute; inset: 0; background: #000; opacity: 0; z-index: 5; }
+</style>
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script>
+const DUR = T.DUR;
+const FX = "C:/Users/komputer/Desktop/Youtube/motion/kuba/assets/sfx/";
+const t2 = LS("t2"), t3 = LS("t3"), t4 = LS("t4"), t5 = LS("t5"), t6 = LS("t6");
+const tPo = W("t1", "Po"), tGdzie = W("t2", "gdzie"), tNie = W("t4", "nie"), tGocz = W("t6", "Gocz");
+const tP2 = t3 + (t4 - t3) * .55;
+// [klip, od, do, zoom start, zoom koniec, tempo, przesunięcie pionowe]
+const CUTS = [
+  ["tbMacro", 0, tPo - .1, 1.16, 1.05, .6],
+  ["tbTwo", tPo - .1, t2 - .05, 1.05, 1.16, .55],
+  ["tbWide", t2 - .05, tGdzie - .05, 1.0, 1.18, .7],
+  ["tbSpin", tGdzie - .05, t3 - .05, 1.18, 1.06, .6],
+  ["tbPress", t3 - .05, tP2, 1.08, 1.2, .6],
+  ["tbPile", tP2, t4 - .05, 1.2, 1.1, .55],
+  ["tbSauce", t4 - .05, tNie - .05, 1.1, 1.22, .22],
+  ["tbSauce2", tNie - .05, t5 - .1, 1.22, 1.06, .5],
+  ["tbSign", t5 - .1, t6 - .1, 1.0, 1.1, .5],
+  ["tbPov", t6 - .1, DUR + 1, 1.12, 1.0, .5],
+];
+const CARDS = [  // [klasa, html, od, do, y]
+  ["small", "OD TWÓRCÓW HITU", -1, tPo - .1, 860],
+  ["quote", "«PO PROSTU<br>ZAJEBIŚCIE<br>PYSZNE»", tPo - .05, t2 - .05, 720],
+  ["loc", "<b></b>GOCZAŁKOWICE", t2 + .1, tGdzie - .05, 1500],
+  ["mid", "ROŻEN<br>NIGDY NIE ŚPI", W("t2", "rozen") - .05, t3 - .05, 820],
+  ["mid", "SOS<br>NIE BIERZE<br>JEŃCÓW", tNie - .05, t5 - .1, 760],
+];
+
+scene(0, DUR + 1, (c) => {
+  const cv = el(c, "full", `<canvas width="1080" height="1920"></canvas>`).firstChild, ctx = cv.getContext("2d");
+  const fr = {}; CUTS.forEach(k => { fr[k[0]] = useClip(k[0]); });
+  // ziarno: 4 stałe kafle szumu, wybór i przesunięcie zależne od klatki (deterministycznie)
+  const grain = [0, 1, 2, 3].map(g => { const n = document.createElement("canvas"); n.width = 540; n.height = 960; const x = n.getContext("2d"), d = x.createImageData(540, 960); let s = 1234 + g * 777;
+    for (let i = 0; i < d.data.length; i += 4) { s = (s * 16807) % 2147483647; const v = s % 255; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; } x.putImageData(d, 0, 0); return n; });
+  const dark = el(c, "dark");
+  el(c, "vig");
+  const cards = CARDS.map(([k, h, a, z, y]) => { const e = at(el(c, "t " + k, h), null, y); e.a = a; e.z = z; return e; });
+  const title = at(el(c, "t title", `SIX SEVEN<small>STREET FOOD</small>`), null, 700);
+  const end = at(el(c, "t end", `JUŻ TERAZ<br>W GOCZAŁKOWICACH<em>PO PROSTU ZAJEBIŚCIE PYSZNE</em>`), null, 1180);
+  const fl = el(c, "flash");
+  at(el(c, "bar"), null, 0); at(el(c, "bar"), null, 1760);
+  // dźwięk: uderzenia na planszach, skwierczenie przy tortilli, riser przed tytułem
+  sfx("IMP_SOFT", 0, -8); sfx("IMP_BASS", tPo - .05, -6); sfx(FX + "grill_sizzle.mp3", t3, -9); sfx(FX + "grill_sizzle.mp3", t4 - .05, -12);
+  sfx("IMP_BASS", tNie - .05, -5); sfx("RISER", t5 - .15, -12); sfx("IMP_BASS", t5 - .1, -3); sfx("IMP_SOFT", t6 - .1, -8);
+  [t2 - .05, tGdzie - .05, t3 - .05, tP2].forEach(x => sfx("WH_SOFT", x - .05, -18));
+  return (lt, t) => {
+    const k = CUTS.find(x => t >= x[1] && t < x[2]) || CUTS[CUTS.length - 1];
+    const f = fr[k[0]], u = clamp((t - k[1]) / Math.max(.3, k[2] - k[1]));
+    const z = mix(k[3], k[4], E.io(u));
+    ctx.filter = "contrast(1.16) saturate(1.18) sepia(.16) brightness(.9)";
+    ctx.fillStyle = "#000"; ctx.fillRect(0, 0, 1080, 1920);
+    if (f.length) {
+      const i = Math.min(f.length - 1, Math.max(0, Math.round((t - k[1]) * 30 * (k[5] || 1)))), im = f[i];
+      if (im.complete && im.naturalWidth) { const w = 1080 * z, h = 1920 * z; ctx.drawImage(im, (1080 - w) / 2, (1920 - h) / 2, w, h); }
+    }
+    ctx.filter = "none";
+    const fi = Math.round(t * 30); ctx.globalAlpha = .07; ctx.globalCompositeOperation = "overlay";
+    ctx.drawImage(grain[fi % 4], -((fi * 37) % 60), -((fi * 53) % 90), 1140, 2010);
+    ctx.globalAlpha = 1; ctx.globalCompositeOperation = "source-over";
+    // plansze: wejście z rozmycia, powolne powiększenie
+    cards.forEach(e => {
+      if (t >= e.a && t < e.z) { const a = clamp((t - Math.max(0, e.a)) / .35), o = e.a < 0 ? 1 : a; const out = clamp((e.z - t) / .2);
+        e.style.opacity = Math.min(o, out); e.style.filter = `blur(${((1 - (e.a < 0 ? 1 : a)) * 14).toFixed(1)}px)`; e.style.transform = `scale(${(1 + (t - e.a) * .025).toFixed(4)})`; }
+      else e.style.opacity = 0;
+    });
+    dark.style.opacity = t >= t5 - .1 && t < t6 - .1 ? .35 : 0;
+    if (t >= t5 - .1 && t < t6 - .1) { const a = clamp((t - t5 + .1) / .3); title.style.opacity = a; title.style.filter = `blur(${((1 - a) * 18).toFixed(1)}px)`; title.style.transform = `scale(${(1.12 - .12 * E.out(a) + (t - t5) * .02).toFixed(4)})`; }
+    else title.style.opacity = 0;
+    if (t >= t6 - .1) { const a = clamp((t - t6 + .1) / .4); end.style.opacity = a; end.style.filter = `blur(${((1 - a) * 12).toFixed(1)}px)`; } else end.style.opacity = 0;
+    const flashAt = [tPo - .1, tNie - .05, t5 - .1];
+    let fo = 0; flashAt.forEach(x => { if (t >= x && t < x + .14) fo = Math.max(fo, (1 - (t - x) / .14) * .9); }); fl.style.opacity = fo;
+  };
+}, { push: 0, cut: true });
+boot("six7b.m4a");
+</script>
+</body>
+</html>

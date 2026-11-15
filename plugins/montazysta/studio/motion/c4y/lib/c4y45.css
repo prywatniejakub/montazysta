@@ -1,0 +1,9 @@
+/* Clips4you: rolki w formacie 4:5 (1080x1350) do aktualności FB/IG. Ładować PO c4y.css; strona ustawia window.F45 = true
+   przed c4y.js. Ten sam styl co 9:16, tylko niższa scena: hook = te same klatki postaci wykadrowane (HookScene, o.oy),
+   sceny montażu mają w plikach adN_45.html własne pozycje (szerzej, niżej). Render: --size 1080x1350. */
+html, body { height: 1350px; }
+#stage { height: 1350px; }
+/* #stage = mocniejsze niż styl wstrzykiwany przez c4yad.js (ten ładuje się później) */
+#stage .full { height: 1350px; }
+#stage .callout { top: 46px; }
+#stage .cap { top: 1000px; }

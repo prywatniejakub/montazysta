@@ -1,0 +1,9 @@
+/* tyt.css: plansza końcowa i błysk cięcia rolek z nagrań klienta (Tytus) */
+.t-flash { position: absolute; inset: 0; z-index: 30; background: #fff; opacity: 0; pointer-events: none; }
+.t-end { position: absolute; left: 0; right: 0; top: 1010px; bottom: 0; z-index: 50; opacity: 0; background: #fff; border-radius: 64px 64px 0 0;
+  box-shadow: 0 -30px 80px rgba(0,0,0,.4); text-align: center; }
+.t-end .k { position: absolute; left: 0; right: 0; top: 92px; font: 800 40px/1 "Segoe UI", sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #c8102e; }
+.t-end .h { position: absolute; left: 40px; right: 40px; top: 160px; font: 900 84px/1.02 "Segoe UI Black", sans-serif; text-transform: uppercase; color: #111; letter-spacing: -.01em; }
+.t-end .m { position: absolute; left: 0; right: 0; top: 362px; font: 700 52px/1 "Segoe UI", sans-serif; color: #444; }
+.t-end .b { position: absolute; left: 50%; top: 480px; transform: translateX(-50%); padding: 40px 72px; border-radius: 80px; background: linear-gradient(180deg, #e8203f, #b80f2c);
+  color: #fff; font: 900 58px/1 "Segoe UI Black", sans-serif; white-space: nowrap; box-shadow: 0 18px 50px rgba(184,15,44,.45); opacity: 0; }

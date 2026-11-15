@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>shf1 v2 · Shift: kroisz warzywa</title>
+<link rel="stylesheet" href="../lib/prem.css">
+<style>
+.endc { position: absolute; inset: 0; z-index: 30; opacity: 0; background: radial-gradient(90% 60% at 50% 42%, #ff8a4c 0%, #ea5b25 55%, #c4421a 100%); }
+.endc img { position: absolute; left: 50%; top: 520px; width: 620px; transform: translateX(-50%); }
+.endc .u { position: absolute; left: 0; right: 0; top: 1560px; text-align: center; font: 900 58px/1 "Segoe UI Black", sans-serif; color: #fff; letter-spacing: .02em; }
+.brk { position: absolute; width: 70px; height: 70px; border: 0 solid #ff7a2f; z-index: 35; opacity: 0; }
+</style>
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/prem.js"></script>
+<script>
+const DUR = T.DUR, OR = "#ff7a2f";
+const S = k => LS(k);
+const tKu = W("b4", "Kuchnia"), tWa = W("b4", "warsztat"), tSk = W("b4", "sklep"), t50 = W("b6", "piecdziesiat"), t400 = W("b7", "czterysta"), tRob = W("b4", "robisz");
+// [co, od, do, opcje]  img = zdjęcie, clip = klatki, tri = 3 pasy POV, end = karta końcowa
+const CUTS = [
+  ["img:opaska", 0, W("b1", "kroisz") - .02, { ax: .45, ay: .5, z0: 1.0, push: .1, pan: -30 }],
+  ["img:opaska", W("b1", "kroisz") - .02, S("b2"), { ax: .72, ay: .92, z0: 1.55, push: .12 }],
+  ["img:robot", S("b2"), S("b3"), { ax: .5, ay: .3, z0: 1.0, push: .1 }],
+  ["clip:f1Drill", S("b3"), tRob - .02, {}],
+  ["clip:f1Paint", tRob - .02, tKu - .02, {}],
+  ["tri", tKu - .02, S("b5"), {}],
+  ["clip:f1Engine", S("b5"), S("b6"), {}],
+  ["clip:f1App", S("b6"), S("b7"), { z0: 1.3 }],
+  ["clip:f1Grid", S("b7"), S("b8"), { z0: 1.24 }],
+  ["end", S("b8"), DUR + 1, {}],
+];
+const HI = /^(ai|płacą|roboty|opaskę|dłonie|pięćdziesiąt|czterysta|podwójnie)/i;
+PR.off.push([0, S("b2")], [t50 - .05, S("b7")], [t400 - .05, S("b8")]);
+scene(0, DUR + 1, (c) => {
+  const cv = el(c, "p-full", `<canvas width="1080" height="1920"></canvas>`).firstChild, ctx = cv.getContext("2d");
+  const fr = {}; CUTS.forEach(k => { if (k[0].startsWith("clip:")) fr[k[0]] = useClip(k[0].slice(5)); });
+  const TRI = ["sfTom", "sfSand", "sfCandy"].map(useClip);
+  const IM = {}; [["opaska", "opaska-w-uzyciu.jpg"], ["robot", "../shift/src/robots-film-poster.jpg"]].forEach(([n, s]) => { const i = new Image(); LOADS.push(new Promise(r => { i.onload = i.onerror = r; })); i.src = s; IM[n] = i; });
+  el(c, "p-shade");
+  const hook = premHook(c, `Płacą za<br>krojenie<br>warzyw?`, 0, S("b2"));
+  premCaps(c, voiceWords(), { hi: w => HI.test(w) ? OR : null });
+  const o50 = premOdo(c, 2, { suffix: "ZŁ", label: "za godzinę nagrania", top: 560 });
+  const o400 = premOdo(c, 3, { suffix: "ZŁ", label: "za 8 godzin", top: 560, color: OR });
+  const brk = [0, 1, 2, 3].map(i => { const b = el(c, "brk"); const s = ["borderTopWidth", "borderLeftWidth"], s2 = ["borderTopWidth", "borderRightWidth"], s3 = ["borderBottomWidth", "borderLeftWidth"], s4 = ["borderBottomWidth", "borderRightWidth"];
+    [s, s2, s3, s4][i].forEach(p => b.style[p] = "9px"); return b; });
+  const endc = el(c, "endc", `<img src="shift-logo-white.png"><div class="u">joinshift.pl</div>`);
+  const fl = el(c, "p-flash");
+  CUTS.slice(1).forEach(k => sfx("WH_SOFT", k[1] - .06, -20));
+  [tKu, tWa, tSk].forEach(x => sfx("WH_SWING", x - .04, -18));
+  sfx("IMP_SOFT", t50, -11); sfx("DING", t50 + .5, -17); sfx("IMP_SOFT", t400, -10); sfx("DING", t400 + .8, -17); sfx("IMP_BASS", S("b8"), -10);
+  return (lt, t) => {
+    const k = CUTS.find(x => t >= x[1] && t < x[2]) || CUTS[CUTS.length - 1], dt = t - k[1], o = k[3], len = k[2] - k[1];
+    ctx.fillStyle = "#000"; ctx.fillRect(0, 0, 1080, 1920);
+    if (k[0].startsWith("img:")) {
+      const L = cutLook(dt, len, { z0: o.z0, push: o.push, punch: .05 });
+      premDraw(ctx, IM[k[0].slice(4)], { z: L.z, ax: o.ax, ay: o.ay, dx: (o.pan || 0) * E.io(clamp(dt / len)) });
+    } else if (k[0].startsWith("clip:")) {
+      const L = cutLook(dt, len, { z0: o.z0 || 1.26, zoomIn: true });
+      const odoOn = (t >= t50 - .05 && t < S("b7")) || (t >= t400 - .05 && t < S("b8"));
+      premDraw(ctx, frameAt(fr[k[0]], dt), { z: L.z, ax: .5, ay: 0, blur: odoOn ? 22 : L.blur });
+      if (odoOn) { ctx.fillStyle = "rgba(0,0,0,.45)"; ctx.fillRect(0, 0, 1080, 1920); }
+    } else if (k[0] === "tri") {
+      premTri(ctx, TRI.map(f => frameAt(f, dt)), [tKu - .02, tKu + .1, tKu + .22], t);
+      const act = t < tWa - .02 ? 0 : t < tSk - .02 ? 1 : 2, H = (1920 - 28) / 3;  // aktywny pas jasny, reszta przyciemniona
+      ctx.fillStyle = "rgba(0,0,0,.55)"; [0, 1, 2].forEach(i => { if (i !== act) ctx.fillRect(0, i * (H + 14), 1080, H); });
+    }
+    // ramki „śledzenia dłoni” tylko na POV z silnikiem
+    if (k[0] === "clip:f1Engine") {
+      const bx = 330 + 30 * Math.sin(t * 2.2), by = 700 + 40 * Math.cos(t * 1.7), bw = 420, bh = 420, u = clamp((t - k[1] - .15) / .25);
+      brk.forEach((b, i) => { b.style.opacity = u; const x = bx + (i % 2 ? bw - 70 : 0), y = by + (i > 1 ? bh - 70 : 0); b.style.left = x + "px"; b.style.top = y + "px";
+        b.style.transform = `scale(${mix(1.6, 1, E.out(u))})`; });
+    } else brk.forEach(b => b.style.opacity = 0);
+    hook(t);
+    premCapsUpdate(t);
+    premOdoRun(o50, t, t50, t50 + .7, S("b7"), 0, 50);
+    premOdoRun(o400, t, t400, t400 + .9, S("b8"), 0, 400);
+    if (k[0] === "end") { endc.style.opacity = 1; const u = E.out4(clamp(dt / .3)); endc.style.transform = `translateY(${(1 - u) * 1920}px)`;
+      endc.querySelector("img").style.transform = `translateX(-50%) scale(${mix(.6, 1, outBack(clamp((dt - .15) / .35), 2))})`; } else endc.style.opacity = 0;
+    fl.style.opacity = 0;
+  };
+}, { push: 0, cut: true });
+boot("shf1.m4a");
+</script>
+</body>
+</html>

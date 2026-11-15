@@ -1,0 +1,103 @@
+/* long.js — 16:9 long-form (1920x1080): scenes, boards, kinetic type, screen recordings, mock apps, captions, player */
+html, body { width: 1920px; height: 1080px; }
+#stage { width: 1920px; height: 1080px; background: #07080c; }
+.l-scene { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; display: none; background: #0c0f16; }
+.l-scene.scan::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(255,255,255,.04) 0 2px, transparent 2px 6px); pointer-events: none; z-index: 20; }
+
+/* board under a moving camera */
+.l-board { position: absolute; left: 0; top: 0; transform-origin: 0 0; background-color: #0c0f16;
+  background-image: linear-gradient(rgba(255,255,255,.05) 3px, transparent 3px), linear-gradient(90deg, rgba(255,255,255,.05) 3px, transparent 3px); background-size: 120px 120px; }
+.l-board.light { background-color: #eef1f6; background-image: linear-gradient(rgba(16,19,26,.06) 3px, transparent 3px), linear-gradient(90deg, rgba(16,19,26,.06) 3px, transparent 3px); }
+.l-zone { position: absolute; border-radius: 50%; opacity: .6; pointer-events: none; }
+.bp { position: absolute; }
+.bt { position: absolute; font: 900 120px/1 "Segoe UI Black", sans-serif; color: #fff; white-space: nowrap; letter-spacing: -.02em; text-align: center; text-shadow: 0 12px 0 rgba(0,0,0,.45); }
+.l-flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 19; }
+
+/* kinetic type */
+.l-kine { background: #030305; }
+.l-kbox { position: absolute; left: 110px; right: 110px; top: 0; bottom: 0; display: flex; flex-wrap: wrap; align-items: center; align-content: center; justify-content: center; gap: 0 56px; }
+.l-kw { font: 900 150px/1.02 "Segoe UI Black", sans-serif; white-space: nowrap; letter-spacing: -.02em; }
+.l-bands { position: absolute; inset: 0; pointer-events: none; z-index: 21; }
+.l-bands i { position: absolute; left: 0; right: 0; display: none; backdrop-filter: hue-rotate(150deg) saturate(3) brightness(1.3); }
+.l-kick { position: absolute; left: 0; right: 0; top: 150px; text-align: center; font: 900 40px "Segoe UI Black", sans-serif; letter-spacing: .3em; color: rgba(255,255,255,.45); }
+
+/* captions */
+.l-cap { position: absolute; left: 0; right: 0; top: 968px; height: 0; z-index: 40; pointer-events: none; }
+.l-cap .w { position: absolute; left: 60px; right: 60px; top: -50px; height: 100px; display: flex; align-items: center; justify-content: center; opacity: 0;
+  font: 900 64px/1 "Segoe UI Black", sans-serif; text-transform: uppercase; color: #fff; white-space: nowrap; -webkit-text-stroke: 13px #000; paint-order: stroke fill; text-shadow: 0 7px 0 rgba(0,0,0,.6); }
+.l-cap .w span { margin-right: .26em; } .l-cap .w span:last-child { margin-right: 0; }
+
+/* casino odometer */
+.d-odo { display: inline-flex; align-items: flex-start; font: 900 200px/1 "Segoe UI Black", sans-serif; letter-spacing: -.02em; white-space: nowrap; }
+.d-dg { display: inline-block; height: 1em; overflow: hidden; width: .6em; text-align: center; position: relative; }
+.d-st { display: block; line-height: 1em; }
+.d-cm { width: .26em; text-align: center; }
+.d-fx { margin-right: .04em; } .d-sfx { margin-left: .12em; font-size: .45em; align-self: flex-end; margin-bottom: .12em; opacity: .8; }
+
+/* screen recording */
+.l-world { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+.l-win { position: absolute; border-radius: 22px; background: #f7f8fb; color: #10131a; overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,.5); font-family: "Segoe UI", sans-serif; }
+.l-win > .bar { height: 50px; background: #e6e9f0; display: flex; align-items: center; gap: 10px; padding: 0 18px; }
+.l-win > .bar i { width: 14px; height: 14px; border-radius: 50%; background: #ff5f57; flex: none; } .l-win > .bar i:nth-child(2) { background: #febc2e; } .l-win > .bar i:nth-child(3) { background: #28c840; }
+.l-win > .bar .url { margin-left: 18px; flex: 1; height: 32px; border-radius: 10px; background: #fff; display: flex; align-items: center; gap: 10px; padding: 0 16px; font: 600 17px "Segoe UI"; color: #5b6272; }
+.l-win > .bar .ttl { margin-left: 14px; font: 600 16px "Segoe UI"; color: #5b6272; }
+.l-win > .body { position: absolute; left: 0; right: 0; top: 50px; bottom: 0; overflow: hidden; }
+.l-win.dark { background: #0f1420; color: #fff; } .l-win.dark > .bar { background: #1b2130; } .l-win.dark > .bar .url { background: #262d3f; color: #9aa3b8; } .l-win.dark > .bar .ttl { color: #9aa3b8; }
+.l-cur { position: absolute; left: 0; top: 0; z-index: 30; filter: drop-shadow(0 4px 6px rgba(0,0,0,.4)); }
+.l-rip { position: absolute; width: 90px; height: 90px; margin: -45px 0 0 -45px; border-radius: 50%; border: 5px solid rgba(94,140,255,.95); opacity: 0; z-index: 29; }
+.l-rtitle { position: absolute; left: 0; right: 0; top: 34px; text-align: center; font: 900 52px/1.1 "Segoe UI Black", sans-serif; color: #fff; text-shadow: 0 6px 24px rgba(0,0,0,.4); z-index: 25; }
+
+/* terminal / Claude Code */
+.l-term { position: absolute; inset: 0; background: #0c0e14; color: #d7deec; font: 500 25px/1.5 Consolas, monospace; padding: 22px 28px; white-space: pre-wrap; overflow: hidden; }
+.l-term .ps { color: #7aa2ff; } .l-term .gn { color: #7ef0a8; } .l-term .er { color: #ff6b7a; } .l-term .dim { color: #6b7488; } .l-term .or { color: #e8845c; } .l-term .yl { color: #ffd84a; } .l-term .cy { color: #5ee7ff; }
+.l-term .box { display: block; border: 2px solid #e8845c; border-radius: 10px; padding: 10px 18px; margin: 6px 0 10px; white-space: pre-wrap; }
+.l-term .box.gray { border-color: #4a5268; }
+.l-term .inp { display: block; border: 2px solid #4a5268; border-radius: 10px; padding: 8px 16px; margin-top: 8px; }
+.l-term .sel { color: #e8845c; }
+.l-term .dot { display: inline-block; width: .5em; height: .5em; border-radius: 50%; background: currentColor; margin: 0 .5em .08em 0; vertical-align: middle; font-style: normal; }
+.l-term u { text-decoration: none; color: #5ee7ff; border-bottom: 2px solid #5ee7ff; }
+
+/* VS Code */
+.l-vsc { position: absolute; inset: 0; background: #1e1e1e; color: #cccccc; font: 400 19px "Segoe UI"; }
+.l-vsc .menu { height: 34px; background: #2c2c2c; display: flex; align-items: center; gap: 24px; padding: 0 16px; font-size: 17px; color: #ccc; }
+.l-vsc .menu b { font-weight: 400; padding: 3px 8px; border-radius: 5px; } .l-vsc .menu b.on { background: #3c3c3c; }
+.l-vsc .side { position: absolute; left: 0; top: 34px; bottom: 0; width: 330px; background: #252526; padding: 12px 0; }
+.l-vsc .side h5 { font: 600 14px "Segoe UI"; letter-spacing: .08em; color: #bbb; padding: 0 20px 10px; }
+.l-vsc .side .f { padding: 3px 20px 3px 34px; font: 400 18px "Segoe UI"; color: #ccc; white-space: nowrap; }
+.l-vsc .side .f.d { padding-left: 20px; font-weight: 600; }
+.l-vsc .side .f.hot { background: #04395e; }
+.l-vsc .main { position: absolute; left: 330px; right: 0; top: 34px; bottom: 0; }
+.l-vsc .ed { position: absolute; left: 0; right: 0; top: 0; height: 40%; background: #1e1e1e; padding: 18px 26px; font: 400 20px/1.55 Consolas, monospace; color: #9cdcfe; white-space: pre; overflow: hidden; }
+.l-vsc .ed .k { color: #c586c0; } .l-vsc .ed .s { color: #ce9178; } .l-vsc .ed .c { color: #6a9955; } .l-vsc .ed .t { color: #4ec9b0; }
+.l-vsc .panel { position: absolute; left: 0; right: 0; bottom: 0; top: 40%; border-top: 1px solid #3c3c3c; background: #181818; }
+.l-vsc .tabs { height: 36px; display: flex; gap: 22px; align-items: center; padding: 0 18px; font: 600 14px "Segoe UI"; letter-spacing: .06em; color: #999; }
+.l-vsc .tabs b { color: #fff; border-bottom: 2px solid #0078d4; padding: 8px 0; font-weight: 600; }
+.l-vsc .panel .l-term { top: 36px; background: #181818; font-size: 23px; }
+.l-vsc .dd { position: absolute; top: 34px; width: 300px; background: #252526; border: 1px solid #454545; border-radius: 8px; padding: 6px 0; box-shadow: 0 16px 40px rgba(0,0,0,.5); z-index: 5; }
+.l-vsc .dd div { padding: 6px 22px; font: 400 18px "Segoe UI"; color: #ddd; } .l-vsc .dd div.on { background: #04395e; }
+.l-vsc .welcome { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; color: #888; font: 300 44px "Segoe UI"; }
+
+/* web page mocks */
+.l-page { position: absolute; inset: 0; overflow: hidden; }
+.l-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 34px; border-radius: 14px; font: 700 22px "Segoe UI"; white-space: nowrap; }
+
+/* red vs green split (left / right) */
+.l-half { position: absolute; top: 0; bottom: 0; width: 950px; overflow: hidden; }
+.l-half.red { left: 0; background: linear-gradient(160deg, #4a0d18, #1a0509); } .l-half.green { right: 0; background: linear-gradient(200deg, #07361f, #03140c); }
+.l-half .chip { position: absolute; left: 50px; top: 46px; padding: 10px 28px; border-radius: 34px; font: 900 40px "Segoe UI Black", sans-serif; color: #05060a; }
+.l-half.red .chip { background: #ff4d5e; } .l-half.green .chip { background: #2fd07a; }
+.l-seam { position: absolute; left: 950px; top: 0; bottom: 0; width: 20px; background: #05060a; }
+.l-vs { position: absolute; left: 895px; top: 70px; width: 130px; height: 130px; border-radius: 50%; background: #fff; color: #05060a; font: 900 56px/130px "Segoe UI Black", sans-serif; text-align: center; box-shadow: 0 0 0 10px #05060a; z-index: 3; }
+
+/* real screenshots on a board / in a scene */
+.l-pic { border-radius: 18px; overflow: hidden; box-shadow: 0 30px 0 rgba(0,0,0,.35), 0 50px 110px rgba(0,0,0,.5); background: #fff; }
+
+/* confetti, sunburst, check badge */
+.l-conf { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none; overflow: hidden; z-index: 35; }
+.l-conf i { position: absolute; left: 0; top: 0; border-radius: 3px; opacity: 0; }
+.l-sun { position: absolute; border-radius: 50%; pointer-events: none; }
+.l-badge { position: absolute; display: flex; align-items: center; gap: 18px; padding: 16px 32px 16px 18px; border-radius: 60px; background: #2fd07a; color: #03140a; font: 900 40px "Segoe UI Black", sans-serif; white-space: nowrap; box-shadow: 0 14px 0 rgba(0,0,0,.35), 0 0 60px rgba(47,208,122,.55); z-index: 26; }
+.l-badge i { width: 58px; height: 58px; border-radius: 50%; background: #03140a; display: flex; align-items: center; justify-content: center; font-style: normal; color: #2fd07a; font-size: 38px; }
+.l-chip { position: absolute; padding: 14px 30px; border-radius: 60px; font: 900 40px/1 "Segoe UI Black", sans-serif; white-space: nowrap; box-shadow: 0 12px 0 rgba(0,0,0,.35); }
+.l-card { position: absolute; border-radius: 36px; background: #161b27; border: 5px solid rgba(255,255,255,.12); box-shadow: 0 26px 0 rgba(0,0,0,.35), 0 40px 90px rgba(0,0,0,.45); overflow: hidden; }
+.l-key { display: inline-flex; align-items: center; justify-content: center; min-width: 150px; height: 130px; padding: 0 40px; border-radius: 26px; background: linear-gradient(#f4f6fb, #cfd5e2); color: #1a1f2b; font: 900 50px "Segoe UI Black", sans-serif; box-shadow: 0 14px 0 #8b93a7, 0 30px 50px rgba(0,0,0,.4); }

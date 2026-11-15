@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>zs3 · Żółty Szalik: co się dzieje po telefonie</title>
+<link rel="stylesheet" href="../lib/prem.css">
+<link rel="stylesheet" href="../zsz/zs.css">
+<style>
+/* pasek kroków 1-5 u góry */
+.st5 { position: absolute; left: 70px; right: 70px; top: 150px; z-index: 41; height: 190px; opacity: 0; }
+.st5 .ln { position: absolute; left: 48px; right: 48px; top: 44px; height: 10px; border-radius: 6px; background: rgba(255,255,255,.35); }
+.st5 .ln i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 6px; background: #ffd23f; }
+.st5 .d { position: absolute; top: 0; width: 98px; height: 98px; margin-left: -49px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  background: rgba(25,25,28,.82); border: 5px solid rgba(255,255,255,.6); color: #fff; font: 900 50px/1 "Segoe UI Black", sans-serif; box-shadow: 0 10px 28px rgba(0,0,0,.4); }
+.st5 .d.on { background: #ffd23f; border-color: #fff; color: #1d1d1f; }
+.st5 .d.done { background: #ffd23f; border-color: #ffd23f; color: #1d1d1f; }
+.st5 .lb { position: absolute; top: 122px; transform: translateX(-50%); padding: 12px 26px; border-radius: 30px; background: rgba(255,255,255,.95); color: #1d1d1f;
+  font: 900 40px/1 "Segoe UI Black", sans-serif; white-space: nowrap; box-shadow: 0 10px 28px rgba(0,0,0,.35); }
+/* karta połączenia */
+.call { position: absolute; left: 110px; right: 110px; top: 520px; z-index: 41; padding: 56px 40px 50px; border-radius: 56px; text-align: center; color: #fff;
+  background: rgba(22,24,28,.78); border: 2px solid rgba(255,255,255,.16); box-shadow: 0 30px 80px rgba(0,0,0,.5); opacity: 0; }
+.call .lg { width: 190px; height: 190px; margin: 0 auto; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.call .lg img { width: 172px; }
+.call .nm { margin-top: 30px; font: 900 64px/1.1 "Segoe UI Black", sans-serif; }
+.call .st { margin-top: 14px; font: 600 44px/1.1 "Segoe UI", sans-serif; color: #b8bcc4; }
+.call .bt { margin: 40px auto 0; width: 130px; height: 130px; border-radius: 50%; background: #e5372f; display: flex; align-items: center; justify-content: center; color: #fff; transform: rotate(135deg); }
+/* kalendarz */
+.cal { position: absolute; left: 130px; right: 130px; top: 470px; z-index: 41; border-radius: 44px; overflow: hidden; background: #fff; box-shadow: 0 30px 80px rgba(0,0,0,.45); opacity: 0; }
+.cal .hd { padding: 30px; background: #ffd23f; text-align: center; font: 900 46px/1 "Segoe UI Black", sans-serif; color: #1d1d1f; letter-spacing: .03em; }
+.cal .g { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; padding: 30px 30px 36px; }
+.cal .g b { height: 86px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font: 700 40px/1 "Segoe UI", sans-serif; color: #3a3a40; }
+.cal .g b.wd { font: 800 30px/1 "Segoe UI", sans-serif; color: #a0a0a8; height: 50px; }
+.cal .g b.x { background: #1d1d1f; color: #ffd23f; font-weight: 900; }
+.badge { position: absolute; left: 50%; top: 820px; z-index: 42; transform: translateX(-50%); text-align: center; padding: 34px 54px 30px; border-radius: 40px; background: #fff;
+  box-shadow: 0 24px 70px rgba(0,0,0,.45); opacity: 0; white-space: nowrap; }
+.badge b { display: block; font: 900 72px/1 "Segoe UI Black", sans-serif; color: #1d1d1f; }
+.badge b span { color: #1f9d55; }
+.badge small { display: block; margin-top: 14px; font: 700 34px/1.1 "Segoe UI", sans-serif; color: #6b6b72; }
+.dn { position: absolute; top: 640px; z-index: 42; padding: 34px 48px; border-radius: 40px; text-align: center; background: #ffd23f; color: #1d1d1f; box-shadow: 0 24px 60px rgba(0,0,0,.45); opacity: 0; }
+.dn b { display: block; font: 900 150px/1 "Segoe UI Black", sans-serif; } .dn small { display: block; font: 900 38px/1 "Segoe UI Black", sans-serif; margin-top: 8px; letter-spacing: .03em; white-space: nowrap; }
+.dn.w { background: #fff; }
+.orr { position: absolute; left: 0; right: 0; top: 760px; z-index: 42; text-align: center; font: 900 60px/1 "Segoe UI Black", sans-serif; color: #fff; -webkit-text-stroke: 12px #000; paint-order: stroke fill; opacity: 0; }
+</style>
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/prem.js"></script>
+<script src="../zsz/zs.js"></script>
+<script>
+const DUR = T.DUR, S = k => LS(k);
+const F = { kom: "08_322047ba-2d68-4e40-bba7-120ef2d3ddcb.jpg", ogr: "03_0bd6ba2d-0ad1-4c5d-9480-5f01df964e45.jpg", syp: "11_7bc6f1e3-9d19-4bc4-b5fe-fdbc1e25d8fd.jpg",
+  jad: "14_IMG_6721-scaled.jpeg", krg: "16_a0f6ee25-e806-466b-bf29-6837e5d48a09.jpg", rod: "19_h600.jpg", mag: "07_2d72efb4-ab0a-4664-8ccd-b6d197c6c39e.jpg",
+  sal: "12_88b8ab46-0255-4c2a-bcaf-12ff0e30e87d.jpg", fot: "13_9852a656-d9ff-4932-98f4-fb947a897631.jpg", laz: "06_29ca18a3-65dd-4f8e-9ac1-9662cb60a7fe.jpg" };
+zsImgs(Object.values(F));
+const tZob = W("b1", "zobacz"), tGdy = W("b4", "gdy"), tCen = W("b4", "cenie"), tTel = W("b7", "telefon"), tEnd = tTel - .05;
+const t28 = W("b5", "dwadziescia"), t42 = W("b5", "czterdziesci");
+const SHOTS = [
+  { k: "clip", s: "zs3_hook", a: 0, b: S("b2") - .04, z0: 1.12, ay: .45, f: "saturate(.7) brightness(1.35) contrast(1.05)" },
+  { k: "img", s: F.kom, a: S("b2") - .04, b: S("b3") - .04, z0: 1.1, push: .07, f: "blur(5px) brightness(.8)", fade: .45 },
+  { k: "img", s: F.ogr, a: S("b3") - .04, b: S("b4") - .04, z0: 1.08, push: .07, f: "blur(4px) brightness(.85)", fade: .4 },
+  { k: "img", s: F.syp, a: S("b4") - .04, b: tGdy - .04, z0: 1.06, push: .08, fade: .4 },
+  { k: "img", s: F.jad, a: tGdy - .04, b: W("b4", "detoks", 1) - .04, z0: 1.08, push: .07, f: "brightness(.92)", fade: .4 },
+  { k: "img", s: F.laz, a: W("b4", "detoks", 1) - .04, b: S("b5") - .04, z0: 1.1, push: .07, f: "brightness(.95)" },
+  { k: "img", s: F.krg, a: S("b5") - .04, b: t28 - .04, z0: 1.06, push: .08, f: "brightness(.9)", fade: .4 },
+  { k: "img", s: F.sal, a: t28 - .04, b: t42 - .04, z0: 1.1, push: .07, f: "brightness(.9)" },
+  { k: "img", s: F.fot, a: t42 - .04, b: S("b6") - .04, z0: 1.08, push: .07, f: "brightness(.92)" },
+  { k: "img", s: F.rod, a: S("b6") - .04, b: S("b7") - .04, z0: 1.15, push: .08, fade: .4 },
+  { k: "img", s: F.mag, a: S("b7") - .04, b: DUR + 1, z0: 1.1, push: .08, fade: .4 },
+];
+const HI = /^(boisz|pomoc|telefon|całą|dobę|anonimowa|termin|detoks|lekarza|cenie|klinice|28|42|alkoholu|rodziną|pierwszy)/i;
+PR.off.push([tEnd, DUR + 1]);
+scene(0, DUR + 1, (c) => {
+  const draw = zsShots(c, SHOTS);
+  el(c, "p-shade");
+  const warm = el(c, "zs-warm");
+  premCaps(c, zsWords({}, [["dwadzieścia", "osiem", "28"], ["czterdzieści", "dwa", "42"]]), { hi: w => HI.test(w) ? Y : null });
+  const tag = el(c, "zs-tag", "PIERWSZY TELEFON");
+  // kroki
+  const ST = [[S("b2"), "TELEFON 24 H"], [S("b3"), "TERMIN"], [S("b4"), "DETOKS"], [S("b5"), "TERAPIA"], [S("b6"), "RODZINA"]];
+  const st5 = el(c, "st5", `<div class="ln"><i></i></div>`), lnI = st5.querySelector(".ln i");
+  const dots = ST.map((s, i) => { const d = el(st5, "d", String(i + 1)); d.style.left = `calc(48px + ${i} * (100% - 96px) / 4)`; return d; });
+  const lb = el(st5, "lb", "");
+  // połączenie
+  const call = el(c, "call", `<div class="lg"><img src="../zoltyszalik/img/logo.png"></div><div class="nm">Żółty Szalik</div><div class="st">łączenie…</div><div class="bt"><svg viewBox="0 0 24 24" width="64" height="64"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></div>`);
+  const cst = call.querySelector(".st");
+  const c24 = el(c, "zs-chip y", `<i style="font-size:30px">24h</i>CAŁĄ DOBĘ`), can = el(c, "zs-chip", `<i>✓</i>ANONIMOWO`);
+  at(c24, 90, 392); at(can, 545, 392);
+  // kalendarz
+  const days = ["P", "W", "Ś", "C", "P", "S", "N"].map(d => `<b class="wd">${d}</b>`).join("") + Array.from({ length: 28 }, (_, i) => `<b${i === 10 ? ' class="x"' : ""}>${i + 1}</b>`).join("");
+  const cal = el(c, "cal", `<div class="hd">TERMIN PRZYJĘCIA</div><div class="g">${days}</div>`), dx = cal.querySelector(".x");
+  // detoks
+  const doc = el(c, "zs-chip y", `<i>✚</i>POD OPIEKĄ LEKARZA`); at(doc, null, 560); doc.style.left = "50%";
+  const bdg = el(c, "badge", `<b>DETOKS W CENIE <span>✓</span></b><small>gdy pacjent zostaje na terapii</small>`);
+  // terapia 28 / 42
+  const d28 = el(c, "dn", `<b>28</b><small>DNI · ALKOHOL</small>`), d42 = el(c, "dn w", `<b>42</b><small>DNI · INNE</small>`);
+  at(d28, 90, null); at(d42, 570, null);
+  const kl = el(c, "zs-chip dk", `<i>⌂</i>W KLINICE`); at(kl, null, 1000); kl.style.left = "50%";
+  const fam = el(c, "zs-chip y", `<i>♥</i>Z RODZINĄ`); at(fam, null, 900); fam.style.left = "50%";
+  const end = zsEnd(c, { k: "Pierwszy krok to jeden telefon" });
+  sfx("POP", .05, -16); sfx("C:\\Users\\komputer\\Desktop\\Youtube\\motion\\kuba\\assets\\sfx\\phone_ring.mp3", tZob - .05, -22, 1.6);
+  ST.forEach(s => sfx("POP", s[0] + .02, -16));
+  sfx("DING", W("b2", "cala"), -18); sfx("POP", W("b2", "anonimowa"), -16); sfx("POP", W("b3", "termin"), -15);
+  sfx("POP", W("b4", "pod"), -16); sfx("DING", tCen, -16); sfx("POP", t28, -15); sfx("POP", t42, -15); sfx("POP", W("b6", "rodzina"), -16);
+  sfx("IMP_SOFT", Wf("b7", "piecset", tTel + .5), -15); sfx("POP", tTel + .1, -15);
+  return (lt, t) => {
+    draw(t);
+    warm.style.opacity = t >= S("b2") ? .8 : 0;
+    premCapsUpdate(t);
+    tag.style.opacity = t < S("b2") - .05 ? 1 : 0;
+    // kroki
+    const sOn = t >= S("b2") - .05 && t < tEnd; st5.style.opacity = sOn ? 1 : 0;
+    if (sOn) {
+      const cur = Math.max(1, ST.filter(s => t >= s[0] - .04).length);
+      dots.forEach((d, i) => { d.className = "d" + (i + 1 === cur ? " on" : i + 1 < cur ? " done" : "");
+        d.style.transform = `scale(${i + 1 === cur ? mix(.7, 1.12, spring(t - ST[i][0], 2.4, .5)).toFixed(3) : 1})`; });
+      const p0 = (cur - 2) / 4, p1 = (cur - 1) / 4, u = E.out4(clamp((t - ST[cur - 1][0]) / .4));
+      lnI.style.width = (Math.max(0, mix(p0, p1, u)) * 100).toFixed(1) + "%";
+      lb.textContent = ST[cur - 1][1]; lb.style.left = `calc(48px + ${cur - 1} * (100% - 96px) / 4)`;
+      lb.style.transform = `translateX(-50%) scale(${mix(.6, 1, spring(t - ST[cur - 1][0], 2.4, .55)).toFixed(3)})`;
+      const L = lb.getBoundingClientRect(), R = st5.getBoundingClientRect();  // etykieta nie wychodzi za kadr
+      if (L.left < 20) lb.style.left = `calc(48px + ${cur - 1} * (100% - 96px) / 4 + ${(20 - L.left).toFixed(0)}px)`;
+      if (L.right > 1060) lb.style.left = `calc(48px + ${cur - 1} * (100% - 96px) / 4 - ${(L.right - 1060).toFixed(0)}px)`;
+    }
+    // połączenie: łączenie -> licznik rozmowy
+    if (zsPop(call, t, tZob - .1, S("b3") - .05, "", .8)) {
+      if (t < S("b2")) cst.textContent = Math.floor(t * 2.2) % 2 ? "łączenie…" : "łączenie";
+      else { const s = Math.floor((t - S("b2")) + 1); cst.textContent = `00:${String(s).padStart(2, "0")}`; }
+    }
+    zsPop(c24, t, W("b2", "cala") - .05, S("b3") - .05, "", .6);
+    zsPop(can, t, W("b2", "anonimowa") - .05, S("b3") - .05, "", .6);
+    if (zsPop(cal, t, S("b3") - .05, S("b4") - .05, "", .85)) dx.style.transform = `scale(${mix(.4, 1, spring(t - W("b3", "termin"), 2.6, .5)).toFixed(3)})`;
+    zsPop(doc, t, W("b4", "pod") - .05, tGdy - .05, "translateX(-50%)", .6);
+    zsPop(bdg, t, tCen - .05, S("b5") - .05, "translateX(-50%)", .5);
+    zsPop(d28, t, t28 - .05, S("b6") - .05, "rotate(-4deg)", .4);
+    zsPop(d42, t, t42 - .05, S("b6") - .05, "rotate(4deg)", .4);
+    zsPop(kl, t, W("b5", "klinice") - .1, S("b6") - .05, "translateX(-50%)", .6);
+    zsPop(fam, t, W("b6", "rodzina") - .1, S("b7") - .05, "translateX(-50%)", .6);
+    end(t, tEnd, tEnd + .25, Wf("b7", "piecset", tTel + .5), Wf("b7", "piecset", tTel + .5) + .7);
+  };
+}, { push: 0, cut: true });
+boot("zs3.m4a");
+</script>
+</body>
+</html>

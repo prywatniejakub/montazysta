@@ -1,0 +1,39 @@
+/* fast split-screen reels: top = board under a moving camera, bottom = gameplay, captions on the seam */
+#stage { background: #07080c; }
+canvas.px { image-rendering: pixelated; display: block; }
+.v-top { position: absolute; left: 0; top: 0; width: 1080px; height: 960px; overflow: hidden; background: #0c0f16; }
+.v-board { position: absolute; left: 0; top: 0; width: 3800px; height: 2800px; transform-origin: 0 0;
+  background-color: #0c0f16;
+  background-image: linear-gradient(rgba(255,255,255,.055) 3px, transparent 3px), linear-gradient(90deg, rgba(255,255,255,.055) 3px, transparent 3px);
+  background-size: 120px 120px; }
+.v-zone { position: absolute; border-radius: 50%; opacity: .6; }
+.v-full { height: 1920px; }
+.v-bot { position: absolute; left: 0; top: 960px; width: 1080px; height: 960px; overflow: hidden; background: #000; }
+.v-bot canvas { position: absolute; left: 0; top: 0; width: 1080px; height: 960px; transform-origin: 50% 40%; }
+.v-seam { position: absolute; left: 0; right: 0; top: 930px; height: 60px; background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.55) 50%, rgba(0,0,0,0)); }
+.v-flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+.v-cap { position: absolute; left: 0; right: 0; top: 960px; height: 0; }
+.v-cap .w { position: absolute; left: 40px; right: 40px; top: -80px; height: 160px; display: flex; align-items: center; justify-content: center;
+  font: 900 118px/1 "Segoe UI Black", "Arial Black", sans-serif; letter-spacing: -.01em; text-transform: uppercase; color: #fff; white-space: nowrap;
+  -webkit-text-stroke: 18px #000; paint-order: stroke fill; text-shadow: 0 10px 0 rgba(0,0,0,.6); }
+/* board pieces */
+.bx { position: absolute; }
+.bt { position: absolute; font: 900 120px/1 "Segoe UI Black", "Arial Black", sans-serif; color: #fff; white-space: nowrap; letter-spacing: -.02em; text-align: center;
+  text-shadow: 0 12px 0 rgba(0,0,0,.45); }
+.card3 { position: absolute; border-radius: 44px; background: #161b27; border: 6px solid rgba(255,255,255,.14); box-shadow: 0 30px 0 rgba(0,0,0,.35), 0 50px 90px rgba(0,0,0,.45);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; }
+.card3 b { font: 900 110px/1 "Segoe UI Black", "Arial Black", sans-serif; color: #fff; letter-spacing: -.02em; }
+.card3 span { font: 900 46px/1 "Segoe UI Black", sans-serif; color: rgba(255,255,255,.6); letter-spacing: .06em; }
+.arrow { position: absolute; font: 900 170px/1 "Segoe UI Black", sans-serif; color: rgba(255,255,255,.8); }
+.stampv { position: absolute; padding: 18px 44px; border: 14px solid currentColor; border-radius: 30px; font: 900 110px/1 "Segoe UI Black", sans-serif; letter-spacing: .02em; background: rgba(0,0,0,.35); white-space: nowrap; }
+.phone3 { position: absolute; width: 460px; height: 900px; border-radius: 70px; background: #0b0d12; border: 8px solid #2a3040; box-shadow: 0 40px 0 rgba(0,0,0,.35), 0 60px 120px rgba(0,0,0,.5); overflow: hidden; }
+.phone3 .scr3 { position: absolute; inset: 22px; border-radius: 52px; background: linear-gradient(170deg, #12301f, #0b1a13); display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 26px; padding-top: 70px; }
+.phone3 .ttl { font: 900 52px "Segoe UI Black", sans-serif; color: #fff; }
+.phone3 .cnt { font: 900 150px/1 "Segoe UI Black", sans-serif; color: #7ef0a8; letter-spacing: -.03em; }
+.phone3 .lb2 { font: 900 34px "Segoe UI Black", sans-serif; color: rgba(255,255,255,.55); letter-spacing: .08em; }
+.phone3 .bar2 { width: 320px; height: 26px; border-radius: 14px; background: rgba(255,255,255,.1); overflow: hidden; }
+.phone3 .bar2 i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #2fd07a, #5ee7ff); }
+.chipv { position: absolute; padding: 20px 40px; border-radius: 80px; font: 900 64px/1 "Segoe UI Black", sans-serif; white-space: nowrap; box-shadow: 0 16px 0 rgba(0,0,0,.35); }
+.plus1 { position: absolute; font: 900 80px/1 "Segoe UI Black", sans-serif; color: #7ef0a8; -webkit-text-stroke: 10px #0b1a13; paint-order: stroke fill; }
+.cta { position: absolute; left: 0; right: 0; display: flex; justify-content: center; }
+.cta .btnv { padding: 34px 90px; border-radius: 100px; background: linear-gradient(135deg, #2fd07a, #20a8c8); color: #03140a; font: 900 96px/1 "Segoe UI Black", sans-serif; box-shadow: 0 20px 0 rgba(0,0,0,.35), 0 0 80px rgba(47,208,122,.5); }

@@ -1,0 +1,38 @@
+/* Dalsza część reklamy po hooku AI (wzór: sek2 = AI1 „Sekunda” v2, zaakceptowany 2026-10-25), po c4y.css */
+/* B-rol w ramce (klipy maszynki 1280x720, kadr „cover” do wysokości ramki) */
+.frm { position: absolute; left: 70px; width: 940px; border: 6px solid var(--ink); border-radius: 36px; box-shadow: 14px 14px 0 var(--ink); overflow: hidden; background: #222; }
+.frm canvas { width: 100%; height: 100%; display: block; }
+.step { position: absolute; left: 50%; padding: 14px 28px; border-radius: 18px; background: var(--ink); color: #fff; font: 900 40px/1 var(--d); letter-spacing: .06em; white-space: nowrap; }
+/* branże */
+.crow { position: absolute; left: 30px; right: 30px; display: flex; justify-content: center; gap: 24px; }
+.chip { padding: 22px 30px; border-radius: 22px; background: #fff; border: 4px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); font: 800 48px/1 var(--d); letter-spacing: -.02em; white-space: nowrap; opacity: 0; }
+.chip.more { background: var(--yel); }
+.sticker { position: absolute; display: inline-flex; align-items: center; gap: 12px; padding: 18px 28px; border-radius: 20px; background: var(--yel); border: 5px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); font: 900 50px/1 var(--d); letter-spacing: -.03em; white-space: nowrap; }
+.sticker svg { width: 46px; height: 46px; }
+.sticker.red { background: var(--redsoft); border-color: var(--red); box-shadow: 8px 8px 0 var(--red); color: var(--red); }
+.pill.c { left: 50%; }
+/* licznik 30 spotkań */
+.grid30 { position: absolute; left: 150px; right: 150px; display: grid; grid-template-columns: repeat(10, 1fr); gap: 14px; }
+.grid30 i { aspect-ratio: 1; border-radius: 12px; border: 4px solid var(--ink); background: #fff; }
+.grid30 i.on { background: var(--yel); }
+/* pieczęć gwarancji (jak ad15) */
+.seal { position: absolute; left: 190px; top: 530px; width: 700px; height: 700px; border-radius: 50%; background: var(--yel); border: 10px solid var(--ink); box-shadow: 16px 16px 0 var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.seal .ring { position: absolute; inset: 26px; border-radius: 50%; border: 5px dashed var(--ink); }
+.seal small { font: 900 40px/1 var(--d); letter-spacing: .12em; }
+.seal span { margin-top: 22px; font: 900 92px/1.02 var(--d); letter-spacing: -.04em; }
+.seal em { margin-top: 26px; font: 800 46px/1 var(--b); font-style: normal; }
+/* formularz */
+.form { position: absolute; left: 110px; width: 860px; padding: 30px 38px 16px; background: #fff; border: 5px solid var(--ink); border-radius: 34px; box-shadow: 14px 14px 0 var(--ink); }
+.form h4 { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; font: 900 48px/1 var(--d); letter-spacing: -.03em; }
+.form h4 em { font: 800 34px/1 var(--b); font-style: normal; color: var(--mut); }
+.row { display: flex; align-items: center; gap: 24px; padding: 20px 0; border-top: 3px solid var(--line); font: 800 44px/1 var(--b); letter-spacing: -.01em; }
+.row b { flex: 0 0 60px; height: 60px; border-radius: 16px; border: 4px solid var(--ink); background: #fff; display: flex; align-items: center; justify-content: center; }
+.row b svg { width: 38px; height: 38px; opacity: 0; }
+.row.on b { background: var(--yel); }
+.row.on b svg { opacity: 1; }
+/* wybór: karta „Twoja firma” zamiast „Firma obok” */
+.pick { position: absolute; left: 110px; width: 860px; height: 190px; padding: 0 40px; display: flex; align-items: center; gap: 30px; background: #fff; border: 5px solid var(--ink); border-radius: 32px; box-shadow: 12px 12px 0 var(--ink); font: 900 62px/1 var(--d); letter-spacing: -.03em; }
+.pick i { flex: 0 0 110px; height: 110px; border-radius: 28px; border: 4px solid var(--ink); background: #fff; display: flex; align-items: center; justify-content: center; font-style: normal; font-size: 58px; }
+.pick b { margin-left: auto; width: 96px; height: 96px; border-radius: 50%; background: #fff; border: 5px solid var(--ink); display: flex; align-items: center; justify-content: center; opacity: 0; }
+.pick b svg { width: 58px; height: 58px; }
+.pick.on { background: var(--yel); }

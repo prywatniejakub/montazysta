@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>go4d8 · Szafka na buty (Go4Driver, nowy styl)</title>
+<link rel="stylesheet" href="../lib/c4y.css">
+<link rel="stylesheet" href="../lib/g4d.css">
+<style>
+/* warstwy ujęć: każda na cały ekran, pokazywana przez silnik ujęć niżej */
+.layer { position: absolute; inset: 0; overflow: hidden; visibility: hidden; will-change: transform; }
+.face canvas { position: absolute; inset: 0; }
+/* portal ogłoszeniowy (wymyślony, bez marki) */
+.feed { background: #f2f4f5; }
+.feed .bar { position: absolute; left: 0; right: 0; top: 0; height: 250px; background: #fff; box-shadow: 0 2px 0 #e3e6e8; z-index: 2; }
+.feed .bar .ttl { position: absolute; left: 50px; top: 52px; font: 900 50px/1 var(--d); letter-spacing: -.02em; color: #1d2a30; }
+.feed .bar .q { position: absolute; left: 40px; right: 40px; top: 128px; height: 92px; border-radius: 46px; background: #f2f4f5; border: 3px solid #d5dadd; font: 600 40px/92px var(--b); color: #1d2a30; padding-left: 96px; }
+.feed .bar .q::before { content: ""; position: absolute; left: 34px; top: 25px; width: 28px; height: 28px; border: 6px solid #6b777d; border-radius: 50%; }
+.feed .list { position: absolute; left: 0; right: 0; top: 0; transform-origin: 540px 0; }
+.ad { position: absolute; left: 40px; right: 40px; height: 760px; background: #fff; border-radius: 30px; overflow: hidden; box-shadow: 0 6px 24px rgba(0,0,0,.08); }
+.ad img { width: 100%; height: 540px; object-fit: cover; display: block; }
+.ad .tx { padding: 26px 34px; }
+.ad .t { font: 700 46px/1.15 var(--b); color: #1d2a30; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ad .p { font: 900 54px/1.2 var(--d); color: #1d2a30; margin-top: 12px; }
+.ad .m { font: 500 32px/1 var(--b); color: #6b777d; margin-top: 14px; }
+.ad .hil { position: absolute; inset: 0; border-radius: 30px; border: 10px solid #ffd60a; opacity: 0; }
+.ad.job .hil { border-color: #ff3b30; }
+.ad .x { position: absolute; left: 50%; top: 270px; width: 380px; height: 380px; margin: -190px 0 0 -190px; opacity: 0; }
+.pin { position: absolute; right: 30px; top: 30px; padding: 14px 24px; border-radius: 16px; background: #ff3b30; color: #fff; font: 900 38px/1 var(--d); opacity: 0; }
+/* telefon dzwoni */
+.call { background: radial-gradient(120% 80% at 50% 20%, #2c3e50 0%, #0d1117 70%); }
+.call .who { position: absolute; left: 0; right: 0; top: 330px; text-align: center; color: #fff; }
+.call .av { width: 260px; height: 260px; margin: 0 auto 50px; border-radius: 50%; background: #5d6d7e; display: grid; place-items: center; font: 900 150px/1 var(--d); color: #dfe6ec; }
+.call .nm { font: 600 76px/1.1 var(--b); }
+.call .nr { font: 500 44px/1.4 var(--b); color: #aab4bd; margin-top: 14px; }
+.call .ring { position: absolute; left: 50%; top: 460px; width: 260px; height: 260px; margin-left: -130px; border-radius: 50%; border: 6px solid rgba(255,255,255,.5); }
+.call .bt { position: absolute; bottom: 260px; width: 190px; height: 190px; border-radius: 50%; display: grid; place-items: center; }
+.call .bt svg { width: 90px; height: 90px; }
+.call .no { left: 170px; background: #ff3b30; } .call .yes { right: 170px; background: #34c759; }
+/* prawdziwa strona go4driver.com (zrzut z telefonu) */
+.site { background: #0c0d10; }
+.site .pg { position: absolute; left: 0; top: 0; width: 1080px; transform-origin: 0 0; }
+.site .pg img { display: block; width: 1080px; }
+.glow { position: absolute; border-radius: 26px; border: 8px solid var(--lime); box-shadow: 0 0 40px rgba(200,242,58,.6); opacity: 0; }
+.tap { position: absolute; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%; background: rgba(255,255,255,.55); border: 5px solid #fff; opacity: 0; }
+.rip { position: absolute; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%; border: 6px solid #fff; opacity: 0; }
+.stamp { position: absolute; left: 0; width: 1080px; text-align: center; top: 1080px; opacity: 0; }
+.stamp b { display: inline-block; padding: 26px 56px; border-radius: 34px; background: var(--lime); color: #0c0d10; font: 900 150px/1 var(--d); letter-spacing: -.04em; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+.sticker { position: absolute; width: 380px; border-radius: 26px; overflow: hidden; border: 10px solid #fff; box-shadow: 0 30px 70px rgba(0,0,0,.45); opacity: 0; }
+.sticker img { display: block; width: 100%; }
+.cap { top: 1380px; z-index: 10; }
+.hook, .sticker, .flash { z-index: 10; }
+.cap.r .k { color: #ff5a4f; }
+.flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script>
+const DUR = T.DUR, VEND = T.VEND;
+const FX = "C:/Users/komputer/Desktop/Youtube/motion/kuba/assets/sfx/";
+const S = 2.88;                       // 1 px strony w telefonie (375 px) = 2.88 px rolki
+const lineEnd = k => LE(k);
+const tA = W("b1", "OLX") - .3, tOgl = W("b2", "Ogłoszenie"), tSzaf = W("b2", "szafką"), tWoz = W("b2", "wózkiem");
+const tZadz = W("b3", "Zadzwonił"), tPyt = W("b3", "Pytał"), tCzy = W("b3", "czy"), tAkt = W("b3", "aktualna");
+const tKier = W("b4", "Kierowców"), tNie = W("b4", "nie"), tWsr = W("b4", "wśród"), tMebli = W("b4", "mebli");
+const tGo = W("b5", "Go"), tPortal = W("b5", "portal"), tTylko = W("b5", "tylko"), tKierB5 = W("b5", "kierowców"), tFirm = W("b5", "firm");
+const tDodaj = W("b6", "Dodaj"), tDarmo = W("b6", "darmo"), tPoki = W("b6", "póki"), tEnd = lineEnd("b6") + .15;
+
+// ujęcia: [start, warstwa, opcje]; from = skąd wjeżdża (szybki przejazd + szum)
+const SHOTS = [
+  [0, "face", { z: "close" }],
+  [tA, "feed", { from: 1 }],
+  [tZadz - .1, "call", { from: -1 }],
+  [tPyt - .05, "face", { z: "wide" }],
+  [tCzy, "face", { z: "close" }],
+  [tKier - .08, "face", { z: "wide", from: -1 }],
+  [tNie - .05, "feed", { from: 1, out: true }],
+  [tGo - .15, "site", { from: 1 }],
+  [tEnd, "end", { from: -1 }],
+];
+const shotAt = t => { let i = 0; SHOTS.forEach((s, j) => { if (t >= s[0]) i = j; }); return i; };
+
+// napisy: [linia, od słowa, do słowa (wyłącznie) albo null = koniec linii, tekst, czerwone?]
+const CAPS = [
+  ["b1", "Szukałem", "kierowcy", "Szukałem"], ["b1", "kierowcy", "na", "kierowcy"], ["b1", "na", null, "na <span class='k'>OLX</span>"],
+  ["b2", "Ogłoszenie", "między", "ogłoszenie wisiało"], ["b2", "między", "na", "między <span class='k'>szafką</span>"], ["b2", "na", "a", "na buty"],
+  ["b2", "a", null, "a <span class='k'>wózkiem</span>"],
+  ["b3", "Zadzwonił", "jeden", "zadzwonił"], ["b3", "jeden", "Pytał", "jeden"], ["b3", "Pytał", "czy", "pytał,"], ["b3", "czy", "jeszcze", "czy <span class='k'>szafka</span>"],
+  ["b3", "jeszcze", null, "jeszcze <span class='k'>aktualna</span>"],
+  ["b4", "Kierowców", "nie", "kierowców"], ["b4", "nie", "wśród", "nie szuka się"], ["b4", "wśród", null, "wśród <span class='k'>mebli</span>", true],
+  ["b5", "portal", "tylko", "to portal"], ["b5", "tylko", "kierowców", "tylko dla"], ["b5", "kierowców", "i", "<span class='k'>kierowców</span>"],
+  ["b5", "i", "transportowych", "i firm"], ["b5", "transportowych", null, "transportowych"],
+  ["b6", "Dodaj", "za", "dodaj ofertę"], ["b6", "za", "póki", "<span class='k'>za darmo</span>"], ["b6", "póki", "jest", "póki portal"], ["b6", "jest", null, "jest <span class='k'>darmowy</span>"],
+].map(([k, a, z, html, red]) => ({ a: W(k, a), z: z ? W(k, z) : lineEnd(k) + .25, html, red }));
+CAPS.forEach((g, i) => { if (CAPS[i + 1]) g.z = Math.min(g.z, CAPS[i + 1].a); });  // nigdy dwa napisy naraz
+
+scene(0, DUR + 1, c => {
+  const L = {};
+  // --- twarz (usta z go4d4): szeroko albo zbliżenie, nigdy zamrożona (ujęcia z twarzą tylko do VEND)
+  L.face = el(c, "layer face", `<canvas width="1080" height="1920"></canvas>`); el(L.face, "shade");
+  const fctx = L.face.querySelector("canvas").getContext("2d"), fr = useClip("go4d4av");
+  // --- portal ogłoszeniowy
+  L.feed = el(c, "layer feed");
+  const list = el(L.feed, "list");
+  const ad = (y, img, t, p, m, cls = "") => { const e = at(el(list, "ad " + cls, `<img src="img/${img}.jpg"><div class="tx"><div class="t">${t}</div><div class="p">${p}</div><div class="m">${m}</div></div><div class="hil"></div><svg class="x" viewBox="0 0 100 100"><path d="M18 18L82 82M82 18L18 82" stroke="#ff3b30" stroke-width="13" stroke-linecap="round"/></svg>`), null, y); return e; };
+  const A1 = ad(290, "szafka", "Szafka na buty, biała, stan dobry", "80 zł", "Warszawa, Wola · dzisiaj");
+  const A2 = ad(1080, "tir", "Kierowca C+E PILNIE! Praca od zaraz", "9 000 zł", "Warszawa · dzisiaj", "job");
+  const A3 = ad(1870, "wozek", "Wózek dziecięcy 2w1, mało używany", "350 zł", "Warszawa, Bemowo · dzisiaj");
+  const pin = el(A2, "pin", "📌 Twoje ogłoszenie");
+  el(L.feed, "bar", `<div class="ttl">Ogłoszenia lokalne</div><div class="q">kierowca</div>`);
+  // --- telefon
+  L.call = el(c, "layer call", `<div class="ring"></div><div class="who"><div class="av">?</div><div class="nm">Nieznany numer</div><div class="nr">dzwoni…</div></div>
+    <div class="bt no"><svg viewBox="0 0 24 24"><path fill="#fff" d="M12 9c-1.6 0-3.1.3-4.6.8v3.1c0 .4-.2.7-.6.9-.9.4-1.8 1-2.5 1.7-.2.2-.4.3-.7.3s-.5-.1-.7-.3L.3 13.1c-.2-.2-.3-.4-.3-.7s.1-.5.3-.7C3.3 8.9 7.4 7 12 7s8.7 1.9 11.7 4.7c.2.2.3.4.3.7s-.1.5-.3.7l-2.5 2.5c-.2.2-.4.3-.7.3s-.5-.1-.7-.3c-.8-.7-1.6-1.3-2.5-1.7-.3-.2-.6-.5-.6-.9V9.8C15.1 9.3 13.6 9 12 9z"/></svg></div>
+    <div class="bt yes"><svg viewBox="0 0 24 24"><path fill="#fff" d="M20 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.1-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.3-1.1-.5-2.3-.5-3.5 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1z"/></svg></div>`);
+  const ring = L.call.querySelector(".ring"), who = L.call.querySelector(".who");
+  // --- prawdziwa strona
+  L.site = el(c, "layer site");
+  const pg = el(L.site, "pg", `<img src="site/home_top.jpg">`);
+  const glows = [[16, 1191, 343, 30], [16, 1233, 343, 30]].map(r => { const g = el(pg, "glow"); Object.assign(g.style, { left: r[0] * S - 8 + "px", top: r[1] * S - 8 + "px", width: r[2] * S + 16 + "px", height: r[3] * S + 16 + "px" }); return g; });
+  const gBtn = el(pg, "glow"); Object.assign(gBtn.style, { left: 36 * S - 10 + "px", top: 469 * S - 10 + "px", width: 303 * S + 20 + "px", height: 40 * S + 20 + "px" });
+  const tap = el(pg, "tap"), rip = el(pg, "rip");
+  [tap, rip].forEach(e => { e.style.left = 187 * S + "px"; e.style.top = 489 * S + "px"; });
+  const stamp = el(L.site, "stamp", "<b>0 zł</b>");
+  // --- koniec
+  L.end = el(c, "layer", ""); L.end.style.background = "#0c0d10";
+  const lg = at(el(L.end, "logo", "Go<b>4</b>Driver"), null, 640);
+  const sub = at(el(L.end, "sub", "Portal pracy tylko dla kierowców<br>i firm transportowych."), null, 860);
+  const btn = at(el(L.end, "btnl", "Dodaj ofertę za darmo"), null, 1150);
+  const url = at(el(L.end, "url", "go4driver.com"), null, 1360);
+  // --- nad wszystkim: naklejka szafki, napisy, hook, błysk
+  const stk = at(el(c, "sticker", `<img src="img/szafka.jpg">`), 600, 980);
+  const caps = CAPS.map(g => { const e = el(c, "cap" + (g.red ? " r" : ""), g.html); e.g = g; return e; });
+  const hook = at(el(c, "hook", "Szukasz kierowcy? 🚛"), null, 170);
+  const flash = el(c, "flash");
+
+  // dźwięk: przejścia, telefon, puenty, kliknięcie, pieczątka
+  SHOTS.forEach(([t0, , o], i) => { if (o.from) sfx(i % 2 ? "WH_SWING" : "WH_SOFT", t0 - .06, -12); });
+  sfx("POP", tOgl + .05, -12); sfx("POP", tSzaf, -11); sfx("POP", tWoz, -11);
+  sfx(FX + "phone_ring.mp3", tZadz - .1, -9, 1.15);
+  sfx(FX + "vine_boom.mp3", LE("b3") + .05, -11);
+  sfx("CLICK", tWsr - .1, -9); sfx("CLICK", tMebli - .05, -9);
+  sfx("WH_DATA", tGo - .2, -12); sfx("WH_SWING", tFirm + .9, -13);
+  sfx("CLICK", tDodaj + .05, -6); sfx("IMP_BASS", tDarmo, -9); sfx("IMP_SOFT", tEnd, -8);
+
+  // kamera portalu ogłoszeń: [czas, y przesunięcia listy, skala]
+  const FEEDCAM = [[tA, 700, .92], [tOgl, 760, 1.08], [tSzaf - .15, 40, 1.06], [tWoz - .15, 1560, 1.06], [tWoz + 1, 1560, 1.1],
+    [tNie - .05, 76, .70], [tGo, 76, .70]];
+  // przewijanie strony (px strony w telefonie, 375 szer.) i zoom
+  const SITECAM = [[tGo - .15, 0, 1], [tPortal, 0, 1.02], [tTylko, 470, 1], [tKierB5 + .1, 930, 1], [tFirm, 1590, 1], [tFirm + .9, 1640, 1.02],
+    [tFirm + 1.05, 230, 1.28], [tPoki, 240, 1.34], [tEnd, 250, 1.4]];
+  const keyAt = (K, t) => { if (t <= K[0][0]) return K[0].slice(1); for (let i = 1; i < K.length; i++) if (t < K[i][0]) { const [a, ...va] = K[i - 1], [b, ...vb] = K[i], u = E.io(clamp((t - a) / Math.min(.55, b - a))); return va.map((v, j) => mix(v, vb[j], u)); } return K[K.length - 1].slice(1); };
+
+  function drawFace(t, mode, t0) {
+    const vt = Math.min(t, VEND - .04), im = fr[Math.min(fr.length - 1, Math.max(0, Math.round(vt * 30)))];
+    if (!im || !im.complete || !im.naturalWidth) return;
+    const u = clamp((t - t0) / 2), fx = 547, fy = 662;
+    let z = mode === "close" ? 1.55 + .05 * u : 1.03 + .03 * u, ty = mode === "close" ? 700 : 662;
+    if (t >= tAkt && t < tAkt + .9 && mode === "close") z += .22 * clamp((t - tAkt) / .08);   // uderzenie na „aktualna”
+    fctx.drawImage(im, 540 - fx * z, ty - fy * z, 1080 * z, 1920 * z);
+  }
+  return (lt, t) => {
+    const i = shotAt(t), [t0, cur, o] = SHOTS[i], prev = i > 0 ? SHOTS[i - 1][1] : null;
+    const tr = o.from ? clamp((t - t0) / .22) : 1, slide = (1 - E.out4(tr)) * 1080 * o.from;
+    Object.entries(L).forEach(([k, e]) => { e.style.visibility = (k === cur || (k === prev && tr < 1 && prev !== cur)) ? "visible" : "hidden"; });
+    const ph = t - (tZadz - .1), shake = cur === "call" && ph > 0 && ph < 1.1 ? Math.sin(ph * 90) * 9 : 0;
+    L[cur].style.transform = `translateX(${(slide + shake).toFixed(1)}px)`;
+    L[cur].style.filter = tr < 1 ? `blur(${((1 - tr) * 16).toFixed(1)}px)` : "none";
+    L[cur].style.zIndex = 2;
+    if (prev && prev !== cur) { L[prev].style.zIndex = 1; L[prev].style.transform = tr < 1 ? `translateX(${(-o.from * E.out4(tr) * 420).toFixed(0)}px)` : "none"; L[prev].style.filter = "none"; }
+    // twarz
+    if (cur === "face" || prev === "face") { const fs = SHOTS[cur === "face" ? i : i - 1]; drawFace(t, fs[2].z, fs[0]); }
+    // ogłoszenia
+    const [fy, fs] = keyAt(FEEDCAM, t);
+    list.style.transform = `translateY(${(-fy * fs + 120).toFixed(1)}px) scale(${fs.toFixed(4)})`;
+    A2.querySelector(".hil").style.opacity = t >= tOgl && t < tSzaf - .15 ? .5 + .5 * Math.sin((t - tOgl) * 14) : 0;
+    pop(pin, t >= tOgl ? t : -1, tOgl, .6, 2.5, .5);
+    A1.querySelector(".hil").style.opacity = t >= tSzaf && t < tWoz - .15 ? 1 : 0;
+    A3.querySelector(".hil").style.opacity = t >= tWoz && t < tZadz ? 1 : 0;
+    // „wśród mebli”: szafka i wózek skreślone i wylatują, ogłoszenie z kierowcą zostaje
+    const out = (e, t1, dir) => { const x = e.querySelector(".x"); if (t < t1) { x.style.opacity = 0; e.style.transform = "none"; e.style.opacity = 1; return; }
+      pop(x, t, t1, 1.6, 3, .6); const u = P(t, t1 + .25, t1 + .6, E.in); e.style.transform = `translateX(${dir * u * 1200}px) rotate(${dir * u * 12}deg)`; e.style.opacity = 1; };
+    if (cur === "feed" && o.out) { out(A1, tWsr - .1, -1); out(A3, tMebli - .05, 1); } else { [A1, A3].forEach(e => { e.style.transform = "none"; e.querySelector(".x").style.opacity = 0; }); }
+    // telefon: dzwonek, drgania, pulsujący krąg
+    ring.style.transform = `scale(${1 + (ph * 1.4) % 1 * .6})`; ring.style.opacity = 1 - (ph * 1.4) % 1;
+    who.style.transform = `scale(${1 + .02 * Math.sin(ph * 12)})`;
+    // naklejka szafki przy „czy szafka jeszcze aktualna”
+    if (t >= tCzy + .15 && t < LE("b3") + .4) pop(stk, t, tCzy + .15, .4, 2.6, .5, "rotate(-8deg)"); else stk.style.opacity = 0;
+    // strona: przewijanie, podświetlenia filtrów, palec klika „Dodaj ogłoszenie”, pieczątka 0 zł
+    const [sy, ss] = keyAt(SITECAM, t);
+    const F = (489 - sy) * S;  // przy zbliżeniu trzymamy przycisk „Dodaj ogłoszenie” w miejscu
+    pg.style.transform = `translate(540px, ${F.toFixed(1)}px) scale(${ss.toFixed(4)}) translate(-540px, ${(-F).toFixed(1)}px) translateY(${(-sy * S).toFixed(1)}px)`;
+    glows.forEach((g, j) => { g.style.opacity = t >= tKierB5 + .25 + j * .2 && t < tFirm ? 1 : 0; });
+    gBtn.style.opacity = t >= tDodaj - .1 && t < tEnd ? .6 + .4 * Math.sin((t - tDodaj) * 9) : 0;
+    const tt = tDodaj + .05;
+    if (t >= tt - .35 && t < tt + .5) { tap.style.opacity = clamp((t - tt + .35) / .1) * (1 - P(t, tt + .25, tt + .5)); tap.style.transform = `scale(${t < tt ? 1 : .8})`; } else tap.style.opacity = 0;
+    if (t >= tt && t < tt + .6) { const u = (t - tt) / .6; rip.style.opacity = 1 - u; rip.style.transform = `scale(${1 + u * 2.4})`; } else rip.style.opacity = 0;
+    if (t >= tDarmo && t < tEnd) pop(stamp, t, tDarmo, 2.2, 3.2, .5, "rotate(-6deg)"); else stamp.style.opacity = 0;
+    // koniec
+    if (t >= tEnd) { pop(lg, t, tEnd, .7, 2.4, .55); rise(sub, t, tEnd + .15, 40, .35); pop(btn, t, tEnd + .3, .7, 2.6, .5); rise(url, t, tEnd + .45, 30, .35); }
+    else [lg, sub, btn, url].forEach(hide);
+    // napisy, hook, błysk przy wejściu na stronę
+    caps.forEach(e => { if (t >= e.g.a && t < e.g.z && t < tEnd) pop(e, t, e.g.a, .78, 3.2, .6); else e.style.opacity = 0; });
+    if (t < tOgl) { hook.style.opacity = 1; hook.style.transform = "translateX(-50%)"; } else { hook.style.opacity = clamp(1 - (t - tOgl) / .2); }
+    flash.style.opacity = t >= tGo - .15 && t < tGo + .1 ? .5 * (1 - (t - tGo + .15) / .25) : 0;
+  };
+}, { push: 0, cut: true });
+boot("go4d8.m4a");
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Clips4you VSL v5 - film uniwersalny przed rozmową (16:9)</title>
+<link rel="stylesheet" href="../../lib/base.css">
+<link rel="stylesheet" href="../../kuba/lib/saas.css">
+<link rel="stylesheet" href="vsl2.css">
+<link rel="stylesheet" href="u.css">
+</head>
+<body>
+<script src="timing.js"></script>
+<script src="../clips/manifest.js"></script>
+<script>window.ASSETS = "../../assets/"; window.CLIPBASE = "../clips";</script>
+<script src="../../lib/engine.js"></script>
+<script src="../../kuba/lib/saas.js"></script>
+<script src="../lib/c4yfilm.js"></script>
+<script src="vkit2.js"></script>
+<script src="u1.js"></script>
+<script src="u2.js"></script>
+<script src="u3.js"></script>
+<script>
+// the film ends on the CTA card (no fade): the player keeps the last frame
+(() => { const FD = document.getElementById("fade"); window.AFTER = t => { bgDrift(t); FD.style.opacity = 0; }; })();
+saasBoot("vsl5.m4a");
+</script>
+</body>
+</html>

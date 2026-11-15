@@ -1,0 +1,69 @@
+/* Rolki Go4Driver (lib/g4d.js): kolory klienta, ciemne tło + limonka, pełny kadr z postacią, napisy 1-3 słowa */
+:root { --lime: #c8f23a; --bg: #0c0d10; --cardb: #17181d; --line2: #2a2c33; --mut2: #9a9ca6; }
+#bug { display: none; }
+#stage { background: #0c0d10; }
+#stage::before { display: none; }
+.full { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+.shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 55%, rgba(0,0,0,.5) 100%); }
+.dim { position: absolute; inset: 0; background: rgba(12,13,16,.55); opacity: 0; }
+.hook { position: absolute; left: 50%; display: inline-flex; align-items: center; gap: 16px; padding: 22px 38px; border-radius: 26px; background: #fff; color: #111;
+  font: 900 54px/1 var(--d); letter-spacing: -.02em; white-space: nowrap; box-shadow: 0 14px 40px rgba(0,0,0,.35); }
+.cap { position: absolute; left: 40px; right: 40px; text-align: center; font: 900 98px/1.04 var(--d); letter-spacing: -.03em; color: #fff; text-transform: uppercase;
+  -webkit-text-stroke: 14px #000; paint-order: stroke fill; text-shadow: 0 8px 30px rgba(0,0,0,.45); }
+.cap .k { color: var(--lime); }
+.emo { position: absolute; left: 0; width: 1080px; text-align: center; font-size: 230px; line-height: 1; filter: drop-shadow(0 12px 30px rgba(0,0,0,.4)); }
+
+/* karta Go4Driver (wspólna) */
+.card { position: absolute; left: 60px; right: 60px; padding: 44px 46px 48px; border-radius: 44px; background: rgba(12,13,16,.95); border: 3px solid var(--line2); box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+.card .lg { font: italic 900 84px/1 var(--d); letter-spacing: -.05em; color: #fff; margin-bottom: 30px; display: flex; align-items: baseline; gap: 18px; }
+.card .lg b { color: var(--lime); }
+.card .lg small { font: 800 30px/1 var(--b); font-style: normal; letter-spacing: 0; color: var(--mut2); }
+.chk { flex: 0 0 56px; height: 56px; border-radius: 16px; border: 4px solid #4a4d57; display: flex; align-items: center; justify-content: center; }
+.chk svg { width: 38px; height: 38px; opacity: 0; }
+.on .chk { background: var(--lime); border-color: var(--lime); }
+.on .chk svg { opacity: 1; }
+.btn { margin-top: 28px; height: 128px; border-radius: 30px; background: #23252c; color: #6d707a; display: flex; align-items: center; justify-content: center; font: 900 54px/1 var(--d); letter-spacing: -.02em; }
+.btn.on { background: var(--lime); color: #0c0d10; box-shadow: 0 0 0 12px rgba(200,242,58,.18); }
+
+/* formularz „Dodaj ofertę” */
+.fld { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 108px; padding: 0 32px; margin-bottom: 16px; border-radius: 26px; background: var(--cardb); border: 3px solid var(--line2); }
+.fld span { font: 700 34px/1 var(--b); color: var(--mut2); }
+.fld b { font: 800 44px/1 var(--b); color: #fff; opacity: 0; }
+.fld.on { border-color: #3d4049; }
+.fld.on b { opacity: 1; }
+.fld.hi { border-color: var(--lime); background: rgba(200,242,58,.1); }
+.fld.hi b { color: var(--lime); }
+
+/* filtr typu auta */
+.lbl { font: 800 30px/1 var(--b); color: var(--mut2); letter-spacing: .08em; text-transform: uppercase; margin: 4px 0 16px; }
+.chips { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 26px; }
+.chip { display: inline-flex; align-items: center; gap: 16px; height: 96px; padding: 0 28px 0 20px; border-radius: 24px; background: var(--cardb); border: 3px solid var(--line2); font: 800 42px/1 var(--b); color: #c9cad1; }
+.chip .chk { flex-basis: 48px; height: 48px; border-radius: 14px; }
+.chip .chk svg { width: 32px; height: 32px; }
+.chip.on { background: rgba(200,242,58,.12); border-color: var(--lime); color: #fff; }
+
+/* oferta z kwotą */
+.ex { display: inline-block; padding: 8px 16px; border-radius: 12px; background: #23252c; font: 800 26px/1 var(--b); color: var(--mut2); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 22px; }
+.job { font: 900 60px/1.1 var(--d); letter-spacing: -.02em; color: #fff; margin-bottom: 10px; }
+.where { font: 700 36px/1.2 var(--b); color: var(--mut2); margin-bottom: 24px; }
+.pay { display: flex; align-items: center; justify-content: center; height: 150px; border-radius: 30px; border: 4px dashed #4a4d57; font: 900 72px/1 var(--d); letter-spacing: -.02em; color: #4a4d57; margin-bottom: 24px; }
+.pay.on { border: 4px solid var(--lime); background: rgba(200,242,58,.12); color: var(--lime); }
+.tags { display: flex; gap: 14px; flex-wrap: wrap; }
+.tags i { font-style: normal; padding: 16px 24px; border-radius: 20px; background: var(--cardb); border: 3px solid var(--line2); font: 800 36px/1 var(--b); color: #fff; }
+
+/* CV */
+.doc { border-radius: 28px; background: #f4f4f1; padding: 36px 38px; color: #111; }
+.doc .nm { font: 900 54px/1.1 var(--d); letter-spacing: -.02em; }
+.doc .rl { font: 800 34px/1.2 var(--b); color: #4f7d00; margin: 6px 0 22px; }
+.doc .ln { display: flex; align-items: center; gap: 18px; font: 700 36px/1.2 var(--b); padding: 12px 0; border-top: 2px solid #e2e2dc; opacity: 0; }
+.doc .ln em { font-style: normal; font-size: 40px; }
+.bar { height: 22px; border-radius: 11px; background: #23252c; margin-top: 26px; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: var(--lime); border-radius: 11px; }
+
+/* plansza końcowa */
+.endbg { position: absolute; inset: 0; background: rgba(12,13,16,.88); }
+.logo { position: absolute; left: 0; right: 0; text-align: center; font: italic 900 150px/1 var(--d); letter-spacing: -.05em; color: #fff; }
+.logo b { color: var(--lime); }
+.sub { position: absolute; left: 40px; right: 40px; text-align: center; font: 800 46px/1.3 var(--b); color: #d8d9df; }
+.btnl { position: absolute; left: 90px; right: 90px; height: 150px; border-radius: 34px; background: var(--lime); color: #0c0d10; display: flex; align-items: center; justify-content: center; font: 900 62px/1 var(--d); letter-spacing: -.02em; box-shadow: 0 0 0 14px rgba(200,242,58,.16); }
+.url { position: absolute; left: 0; right: 0; text-align: center; font: 800 46px/1 var(--d); color: var(--lime); letter-spacing: .01em; }

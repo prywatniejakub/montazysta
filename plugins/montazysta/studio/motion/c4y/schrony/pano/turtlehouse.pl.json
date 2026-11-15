@@ -1,0 +1,652 @@
+[
+ {
+  "id": "panorama_3245717C_2407_CB84_41A8_6FED3C7B6A9B",
+  "label": "turtle_house_.016",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_5F9898AE_4A6A_DDE7_41AD_BDD3B15A40FC",
+  "label": "salon_wyspa_otwarta",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_358E607A_241E_498C_41B6_B9015FA3755D",
+  "label": "Camera.0140040",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_2E5DE401_24D4_55BA_41BD_5B00E230AA64",
+  "label": "turtle_house_.005",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_358E5AC1_241E_5EFF_41BB_77E704DDEB3A",
+  "label": "turtle_house_.012",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_32384FDA_2402_768C_41BB_11C7360E8E15",
+  "label": "turtle_house_.001",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_31EFFA3F_2403_D984_41BE_EE25CF5369EC",
+  "label": "turtle_house_.007",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_358C8E91_241E_D69C_41B8_F81EDA89FD18",
+  "label": "turtle_house_.010",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_2A8E5DDF_246B_30E8_4197_34C54EC3FFD4",
+  "label": "Camera.0050030",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_32155FC6_243F_B685_41B2_09B228702E54",
+  "label": "Camera.0030003.009",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_35725316_241D_CF85_4181_D5624200B24C",
+  "label": "turtle_house_.017",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_35864862_241E_59BD_41B2_B7EA92396B2A",
+  "label": "turtle_house_.011",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_32544398_2406_4E81_41B9_60158B44F551",
+  "label": "salon_wyspa_zamknieta",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_35738118_241E_CB8C_41A8_AEA3C6031F20",
+  "label": "turtle_house_.003",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_3571BB24_241F_DF84_41B0_F01972597A8F",
+  "label": "turtle_house_.008",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_31B15739_2402_778C_41B3_BA3AE105A861",
+  "label": "salon_centrum_zamknieta",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_35435568_241D_CB8C_41B9_C53DEE13C5EB",
+  "label": "Camera0010",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_31F34CC3_2402_FAFC_41BF_23131A2E9071",
+  "label": "turtle_house_.006",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_358D7770_241E_D79C_4182_4B8F124B2BB4",
+  "label": "Camera.0150040",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_359EA85F_2402_5984_418F_B14AB0E561C7",
+  "label": "turtle_house_.013",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_31ED22E3_2402_4EBC_41C1_3258E2B38FB4",
+  "label": "turtle_house_.004",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_3541AB8B_241D_DE8C_41A9_E8936BE6C6BE",
+  "label": "Camera.0130010",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_5CF21524_4A6B_D49B_41B4_A165B9E5C1D4",
+  "label": "salon_centrum_otwarta",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_31B38D59_2402_DB8C_41C1_F94EB9DDB484",
+  "label": "turtle_house_.002",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_358EC599_241E_4A8C_41B0_79E6662BC386",
+  "label": "Camera.0050040",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ }
+]

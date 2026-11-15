@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>o03 · minimum 30 spotkań z rolek albo pracujemy za darmo</title>
+<link rel="stylesheet" href="../lib/c4y.css">
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/c4yad.js"></script>
+<script src="../lib/c4yodb.js"></script>
+<script>
+// ---------- S1: HOOK (postać, scena C, jak 03)
+HookScene("o03_hook", "WŁAŚCICIELE FIRM", [["Właścicielu <b>firmy</b>,", ""], ["minimum<br><b>30 spotkań</b>", "minimum"], ["z rolek<br><b>takich jak ta</b>", "rolek"], ["albo pracujemy<br><b>za darmo.</b>", "albo"]], { sfx: "albo" });
+
+// ---------- S2: gwarancja + „oto jak to działa” (jak 03)
+scene(LS("b2"), LS("b3"), (c) => {
+  const h = H(c, "Tak, dobrze<br>[słyszysz].", 200, 110);
+  const g = at(el(c, "card guar", `<small>GWARANCJA</small><b>Minimum 30 spotkań<br>albo pracujemy<br>za darmo</b>`), null, 560);
+  const how = at(el(c, "pill", `Oto jak to działa ↓`), 290, 1330);
+  const tO = W("b2", "Oto");
+  sfx("IMP_SOFT", LS("b2") + .1, -10); sfx("POP", tO, -10);
+  return (lt, t) => { markIn(h, t, W("b2", "slyszysz") - .05); pop(g, t, LS("b2") + .05, .7, 2.2, .55, "rotate(-1.5deg)"); pop(how, t, tO, .4, 2.6, .5); };
+});
+
+// ---------- S3: krok 1, rolki o Twojej firmie, takie jak ta
+scene(LS("b3"), LS("b4"), (c) => {
+  const { h } = stepHead(c, "1", "[Rolki] o Twojej<br>firmie.", 90);
+  const names = ["sa02", "ico2", "banana", "yomi1", "sa01", "pointab"];
+  const tR = W("b3", "rolki");
+  const ph = names.map((n, i) => Phone(c, n, 125 + (i % 3) * 290, 480 + Math.floor(i / 3) * 450, 230, `<span class="ok">${ICO.chk}</span>`));
+  ph.forEach((p, i) => sfx("POP", tR + .06 * i, -17));
+  const tak = at(el(c, "pill2", `${ICO.chk}takie jak ta`), 330, 1440), tT = W("b3", "takie");
+  sfx("POP", tT, -12);
+  return (lt, t) => { markIn(h, t, tR - .05); ph.forEach((p, i) => { pop(p, t, tR + .06 * i, .5); play(p, t, tR); }); pop(tak, t, tT, .4, 2.6, .5, "rotate(-2deg)"); };
+});
+
+// ---------- S4: krok 2, pokazujemy je tym, którzy szukają tego, co robisz
+scene(LS("b4"), LS("b5"), (c) => {
+  const { h } = stepHead(c, "2", "Pokazujemy je<br>[tym, którzy szukają].", 76);
+  const ph = AdPhone(c, "ico1", 310, 470, 460);
+  const p1 = at(el(c, "pill2", `${ICO.chk}Twoja rolka jako reklama`), null, 1340);
+  p1.style.left = "50%";
+  const tS = W("b4", "szukaja");
+  sfx("WH_SPAWN", LS("b4"), -18); sfx("POP", tS, -12);
+  return (lt, t) => { markIn(h, t, tS - .05); pop(ph, t, LS("b4") + .1, .7); play(ph, t, LS("b4")); pop(p1, t, tS, .4, 2.6, .5, "translateX(-50%) rotate(-1.5deg)"); };
+});
+
+// ---------- S5: krok 3, zgłoszenie od razu w Twoim telefonie
+scene(LS("b5"), LS("b6"), (c) => {
+  const { h } = stepHead(c, "3", "Zgłoszenie<br>[od razu] u Ciebie.", 84);
+  const n1 = Notif(c, 560, "Marek", "Nowak Nieruchomości · chce&nbsp;porozmawiać");
+  const n2 = Notif(c, 860, "Anna", "Gabinet Lumi · chce&nbsp;porozmawiać", "2 min temu");
+  const tK = W("b5", "Kto"), tT = W("b5", "telefonu");
+  sfx("DING", tK + .1, -10); sfx("POP", tT, -14);
+  return (lt, t) => {
+    markIn(h, t, W("b5", "od") - .05);
+    [[n1, tK + .1], [n2, tT]].forEach(([n, t0], i) => { const k = t < t0 ? 0 : Math.min(1, spring(t - t0, 2.4, .7)); n.style.opacity = t < t0 ? 0 : 1; n.style.transform = `translateY(${((1 - k) * -120).toFixed(1)}px) rotate(${[-1, 1][i]}deg)`; });
+  };
+});
+
+// ---------- S6: Ty tylko dzwonisz i rozmawiasz (rozmowa w dymkach, jak 03)
+scene(LS("b6"), LS("b7"), (c) => {
+  const h = H(c, "Ty tylko<br>[dzwonisz].", 190, 110);
+  const a = at(el(c, "bub me", "Dzień dobry, dzwonię w sprawie Pana zgłoszenia."), 200, 600);
+  const q = at(el(c, "bub", "Tak, widziałem Pana rolkę. Kiedy możemy się spotkać?"), 90, 900);
+  const done = at(el(c, "pill", `${ICO.chk}To wszystko.`), 330, 1330);
+  const tD = W("b6", "dzwonisz"), tR = W("b6", "rozmawiasz"), tW = W("b6", "wszystko");
+  sfx("POP", tD + .1, -12); sfx("POP", tR + .15, -12); sfx("DING", tW, -12);
+  return (lt, t) => { markIn(h, t, tD - .05); pop(a, t, tD + .1, .5, 2.6, .55); pop(q, t, tR + .15, .5, 2.6, .55); pop(done, t, tW - .1, .4, 2.6, .5, "rotate(-2deg)"); };
+});
+
+// ---------- S7: CTA
+CtaScene("b7");
+boot("o03.m4a");
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>izt test</title>
+<link rel="stylesheet" href="../../lib/prem.css"><link rel="stylesheet" href="../iz.css"></head><body>
+<script>window.CLIPN = {}; window.addEventListener("unhandledrejection", e => { window.__ERR = "REJ " + (e.reason && e.reason.stack || e.reason); }); window.onerror = (m, s, l) => { window.__ERR = m + " @" + (s||"").split("/").pop() + ":" + l; };</script>
+<script src="timing.js"></script><script src="../../lib/c4y.js"></script><script src="../../lib/prem.js"></script>
+<script src="../iz.js"></script><script src="../izsec.js"></script>
+<script>
+izImgs(["IMG_6593.jpg"]);
+scene(0, 13, (c) => {
+  const draw = izShots(c, [{ k: "img", s: "IMG_6593.jpg", a: 0, b: 20, z0: 1.05, f: "blur(6px) brightness(.55)" }]);
+  const sec = izSecCard(c, 360, 820);
+  const rc = izReceipt(c, "PŁYTY STYROPIANU", [["Płyty", "✓"], ["Transport", "+"], ["Docinanie wokół rur", "+"], ["Pianka do szczelin", "+"], ["Wyrównanie podłoża", "+"], ["Twój czas", "+"]], ["RAZEM", "?"]);
+  const st = izStat(c, "34,8%", "odbiorów z pękniętą lub krzywą wylewką", "InspekcjaDomu.pl, 1690 odbiorów, 2026");
+  const end = izEnd(c, {});
+  return (lt, t) => {
+    draw(t);
+    if (t < 2) sec(1, { t, build: 5, mode: "eps", gaps: 1, heat: 1 });
+    else if (t < 4) sec(1, { t, build: 5, mode: "eps", crack: 1, gaps: .6 });
+    else if (t < 6) sec(1, { t, build: 5, mode: "masa", fill: (t - 4) / 2 });
+    else if (t < 7) sec(1, { t, build: 5, mode: "split", heat: 1, gaps: 1 });
+    else sec(0, {});
+    rc(t, 7, [7.3, 7.5, 7.7, 7.9, 8.1, 8.3], 8.6, 9.5);
+    st(t, 9.5, 10.5);
+    end(t, 10.5, 10.8, 11, 11.2);
+  };
+}, { push: 0, cut: true });
+boot("");
+</script></body></html>

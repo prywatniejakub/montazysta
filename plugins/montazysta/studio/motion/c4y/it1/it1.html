@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>it1 · Izzi Therm: dlaczego po latach pęka płytka</title>
+<link rel="stylesheet" href="../lib/prem.css">
+<link rel="stylesheet" href="../izt/iz.css">
+<style>
+.xo { position: absolute; left: 50%; top: 560px; z-index: 42; transform: translateX(-50%); display: flex; align-items: center; gap: 26px; padding: 26px 50px; border-radius: 80px;
+  background: rgba(255,255,255,.96); color: #1d1d1f; font: 900 90px/1 "Segoe UI Black", sans-serif; box-shadow: 0 24px 70px rgba(0,0,0,.5); opacity: 0; white-space: nowrap; }
+.xo i { font-style: normal; width: 110px; height: 110px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #e5372f; color: #fff; font-size: 80px; }
+.xo.ok i { background: #9be15d; color: #1f3d14; }
+</style>
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/prem.js"></script>
+<script src="../izt/iz.js"></script>
+<script src="../izt/izsec.js"></script>
+<script>
+const DUR = T.DUR, S = k => LS(k);
+izImgs(["IMG_6479.jpg", "IMG_6598.jpg", "IMG_6612.jpg"]);
+const tZob = W("b1", "zobacz"), tOkno = W("b2", "okno"), tPodl = W("b2", "podloga"), tPly = W("b2", "plytka"), tKle = W("b2", "klepka"),
+  tPek = W("b3", "pekla"), tPus = W("b3", "puste"), tPon = W("b4", "ponad"), tSre = W("b5", "srednio"), tWyp = W("b6", "wypelnia"), tBez = W("b6", "bez"),
+  tSpr = W("b7", "sprawdz"), tEnd = S("b8") - .05;
+const SHOTS = [
+  { k: "clip", s: "iz_pipes", a: 0, b: tOkno - .04, z0: 1.12, push: .1 },
+  { k: "img", s: "IMG_6479.jpg", a: tOkno - .04, b: tPodl - .04, z0: 1.08, whip: 1 },
+  { k: "img", s: "IMG_6598.jpg", a: tPodl - .04, b: tPly - .04, z0: 1.1, push: .08 },
+  { k: "img", s: "IMG_6598.jpg", a: tPly - .04, b: S("b4") - .04, z0: 1.15, f: "blur(10px) brightness(.5)" },
+  { k: "clip", s: "iz_attic", a: S("b4") - .04, b: S("b6") - .04, z0: 1.1, f: "blur(8px) brightness(.55)", fade: .3 },
+  { k: "clip", s: "iz_hose2", a: S("b6") - .04, b: tBez - .04, z0: 1.08, whip: -1 },
+  { k: "clip", s: "iz_cover", a: tBez - .04, b: S("b7") - .04, z0: 1.12, f: "blur(9px) brightness(.5)" },
+  { k: "clip", s: "iz_lata", a: S("b7") - .04, b: DUR + 1, z0: 1.05, whip: 1 },
+];
+const HI = /^(latach|podłoga|płytka|pęka|pękła|wylewka|puste|przestrzenie|trzecim|sześciu|wypełnia|całą|bez|pustek|sprawdź|darmową)/i;
+PR.off.push([0, tZob - .05], [S("b4") - .05, S("b6") - .05], [tEnd, DUR + 1]);
+scene(0, DUR + 1, (c) => {
+  const draw = izShots(c, SHOTS);
+  el(c, "p-shade");
+  premCaps(c, izWords(), { hi: w => HI.test(w) ? Y : null });
+  const hook = premHook(c, `Budujesz<br><span style="color:#9be15d">dom?</span>`, 0, tOkno - .05);
+  const xo = el(c, "xo", `<i>✕</i>OKNO`), xp = el(c, "xo ok", `<i>!</i>PODŁOGA`);
+  const sec = izSecCard(c, 380, 760);
+  const st1 = izStat(c, "34,8%", "odbiorów z pękniętą lub krzywą wylewką", "InspekcjaDomu.pl, 1690 odbiorów, Wielkopolska 2026 (za broszurą producenta)", "red");
+  const st2 = izStat(c, "5,9 roku", "średnio do ujawnienia szkody podłogi", "AQC 2019, Francja: szkody podłóg z płytkami (za broszurą producenta)", "red");
+  const lbl = el(c, "iz-lbl", "BEZ PUSTEK");
+  const end = izEnd(c, {});
+  sfx("IMP_BASS", .02, -12); sfx("POP", tOkno, -15); sfx("POP", tPodl, -15); sfx("IMP_SOFT", tKle + .2, -12); sfx("IMP_SOFT", tPus, -14);
+  sfx("POP", S("b4"), -15); sfx("DING", tPon, -17); sfx("POP", S("b5"), -15); sfx("POP", tBez, -15); sfx("IMP_BASS", tEnd + .05, -12); sfx("POP", tEnd + .4, -14);
+  return (lt, t) => {
+    draw(t);
+    premCapsUpdate(t);
+    hook(t);
+    izPop(xo, t, tOkno - .05, tPodl - .05, "translateX(-50%)", .5);
+    izPop(xp, t, tPodl - .05, tPly - .05, "translateX(-50%)", .5);
+    // przekrój: od „płytka” do końca b3 (płyty, pęknięcie, pustki); od „bez pustek” masa
+    if (t >= tPly - .05 && t < S("b4") - .05) {
+      const u = clamp((t - tPly + .05) / .5);
+      sec(u, { t, build: 5 * clamp((t - tPly + .05) / 1.1) + .001, mode: "eps", crack: clamp((t - tKle) / .7), gaps: t >= tPus - .05 ? 1 : 0, crackX: .29 });
+    } else if (t >= tBez - .05 && t < S("b7") - .05) {
+      sec(clamp((t - tBez + .05) / .3), { t, build: 5, mode: "masa", fill: clamp((t - tBez) / 1.2), crackX: .29 });
+    } else sec(0, {});
+    st1(t, S("b4") - .05, S("b5") - .05, 600);
+    st2(t, S("b5") - .05, S("b6") - .05, 600);
+    izPop(lbl, t, tBez - .05, S("b7") - .05, "translateX(-50%)", .5); lbl.style.top = "270px";
+    end(t, tEnd, tEnd + .3, tEnd + .6, Wf("b8", "porozmawiasz", tEnd + 1.2));
+  };
+}, { push: 0, cut: true });
+boot("it1.m4a");
+</script>
+</body>
+</html>

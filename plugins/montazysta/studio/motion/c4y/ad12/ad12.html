@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>ad12 · Tylko dla właścicieli firm: co dostajesz</title>
+<link rel="stylesheet" href="../lib/c4y.css">
+<style>
+/* paczka z ofertą */
+.box { position: absolute; left: 0; right: 0; top: 1240px; text-align: center; font-size: 340px; line-height: 1; }
+.pk { position: absolute; left: 80px; width: 920px; padding: 26px 32px; background: #fff; border: 5px solid var(--ink); border-radius: 32px; box-shadow: 12px 12px 0 var(--ink); display: flex; gap: 26px; align-items: center; }
+.pk > i { flex: 0 0 110px; height: 110px; border-radius: 28px; background: var(--yel); border: 4px solid var(--ink); display: flex; align-items: center; justify-content: center; font-style: normal; font-size: 62px; }
+.pk b { display: block; font: 900 58px/1.05 var(--d); letter-spacing: -.03em; }
+.pk span { display: block; margin-top: 10px; font: 700 34px/1.25 var(--b); color: var(--mut); }
+.pk .chips { display: flex; gap: 10px; margin-top: 14px; }
+.pk .chips em { font-style: normal; padding: 10px 14px; border-radius: 14px; background: #fff; border: 4px solid var(--ink); font: 800 28px/1 var(--b); opacity: 0; }
+/* pieczęć gwarancji */
+.seal { position: absolute; left: 140px; top: 560px; width: 800px; height: 800px; border-radius: 50%; background: var(--yel); border: 10px solid var(--ink); box-shadow: 16px 16px 0 var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.seal .ring { position: absolute; inset: 28px; border-radius: 50%; border: 5px dashed var(--ink); }
+.seal b { font: 900 150px/1 var(--d); letter-spacing: -.05em; }
+.seal span { margin-top: 18px; font: 900 56px/1.1 var(--d); letter-spacing: -.03em; }
+.seal small { margin-top: 22px; font: 800 36px/1 var(--b); }
+.pill.c { left: 50%; }
+</style>
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/c4yad.js"></script>
+<script>
+// ---------- S1: HOOK (postać, scena C, trzeci fragment)
+HookScene("ad12_hook", "⚠️ WŁAŚCICIELE FIRM", [["<b>Uwaga,</b>", ""], ["tylko dla<br><b>właścicieli firm.</b>", "tylko"], ["Oto co dostajesz<br><b>co miesiąc.</b>", "Oto"]], { sfx: "Oto" });
+
+// ---------- S2: paczka: z pudełka wyskakują kolejno 1 h rozmowy, 30 rolek, publikacja codziennie
+scene(LS("b2"), LS("b5"), (c) => {
+  const h = H(c, "Co miesiąc<br>[dostajesz]:", 150, 110);
+  const box = el(c, "box", "📦");
+  const tG = W("b2", "Godzine"), t30 = W("b3", "Trzydzie"), tP = W("b4", "Publikacje");
+  const P1 = at(el(c, "pk", `<i>🎙️</i><div><b>1 h rozmowy</b><span>pytamy o to, o co pytają Cię klienci</span></div>`), null, 430);
+  const P2 = at(el(c, "pk", `<i>🎬</i><div><b><span class="n" style="display:inline;margin:0;font:inherit;color:inherit">0</span> rolek</b><span>z napisami i montażem</span></div>`), null, 690);
+  const P3 = at(el(c, "pk", `<i>📲</i><div><b>Publikacja codziennie</b><div class="chips"><em>Instagram</em><em>TikTok</em><em>Facebook</em><em>YouTube</em></div></div>`), null, 950);
+  const n = P2.querySelector(".n");
+  const ch = [...P3.querySelectorAll("em")], cw = ["Instagramie", "TikToku", "Facebooku", "YouTube"].map(w => W("b4", w));
+  [[P1, tG], [P2, t30], [P3, tP]].forEach(([p, t0]) => { p.t0 = t0 - .1; sfx("WH_SPAWN", t0 - .25, -18); sfx("POP", t0, -12); });
+  cw.forEach(t0 => sfx("POP", t0, -17));
+  sfx("IMP_SOFT", LS("b2"), -12);
+  return (lt, t) => {
+    markIn(h, t, LS("b2") + .2);
+    const open = P(t, LS("b2"), LS("b2") + .35, E.out);
+    box.style.transform = `scale(${mix(.7, 1, spring(t - LS("b2"), 2.2, .5)).toFixed(3)}) rotate(${(Math.sin(t * 20) * 3 * Math.max(0, 1 - (t - tG) * 3) * (t > tG - .3 ? 1 : 0)).toFixed(1)}deg)`;
+    [P1, P2, P3].forEach(p => {
+      if (t < p.t0) { p.style.opacity = 0; return; }
+      const k = Math.min(1, spring(t - p.t0, 2.2, .75)), y0 = 1300 - parseFloat(p.style.top);
+      p.style.opacity = clamp((t - p.t0) / .1); p.style.transform = `translateY(${((1 - k) * y0).toFixed(1)}px) scale(${mix(.3, 1, Math.min(1, k)).toFixed(3)})`;
+    });
+    n.textContent = Math.round(30 * P(t, t30, t30 + .8, E.out));
+    ch.forEach((e, i) => { e.style.opacity = t >= cw[i] ? 1 : 0; e.style.transform = t >= cw[i] ? `scale(${mix(1.3, 1, spring(t - cw[i], 3, .6)).toFixed(3)})` : ""; });
+  };
+});
+
+// ---------- S3: pieczęć gwarancji wykonania: 30 rolek albo następny miesiąc za darmo
+scene(LS("b5"), LS("b6"), (c) => {
+  const top = at(el(c, "pill w0 c", "Gwarancja wykonania"), null, 250);
+  const seal = el(c, "seal", `<div class="ring"></div><b>30 rolek</b><span>albo następny<br>miesiąc za darmo</span><small>★ ★ ★ ★ ★</small>`);
+  const tD = W("b5", "dowieziemy"), tN = W("b5", "nastepny"), tDa = W("b5", "darmo");
+  const sp = seal.querySelector("span");
+  sfx("IMP_BASS", tD + .05, -12); sfx("IMP_SOFT", tDa, -10);
+  return (lt, t) => {
+    pop(top, t, LS("b5") + .05, .6, 2.4, .55, "translateX(-50%)");
+    pop(seal, t, tD - .05, 1.8, 2.6, .45, `rotate(${(-8 + 4 * Math.sin(t * 2)).toFixed(2)}deg)`);
+    sp.style.opacity = t >= tN - .1 ? 1 : 0;
+    seal.querySelector(".ring").style.transform = `rotate(${(t * 20).toFixed(1)}deg)`;
+  };
+});
+
+// ---------- S4: CTA
+CtaScene("b6");
+boot("ad12.m4a");
+</script>
+</body>
+</html>

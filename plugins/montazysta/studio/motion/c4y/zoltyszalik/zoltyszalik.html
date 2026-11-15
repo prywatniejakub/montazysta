@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>zoltyszalik · Żółty Szalik: znowu obiecał</title>
+<link rel="stylesheet" href="../lib/prem.css">
+<style>
+.tag { position: absolute; left: 50%; top: 250px; z-index: 41; transform: translateX(-50%); padding: 18px 34px; border-radius: 16px; background: #ffd23f; color: #1d1d1f;
+  font: 900 46px/1 "Segoe UI Black", sans-serif; letter-spacing: .04em; white-space: nowrap; box-shadow: 0 12px 40px rgba(0,0,0,.35); opacity: 0; }
+.ntf { position: absolute; left: 70px; right: 70px; top: 560px; z-index: 41; padding: 30px 34px; border-radius: 40px; background: rgba(250,250,252,.94);
+  box-shadow: 0 24px 70px rgba(0,0,0,.45); display: flex; gap: 26px; align-items: center; opacity: 0; }
+.ntf .av { flex: 0 0 104px; height: 104px; border-radius: 50%; background: #ffd23f; color: #1d1d1f; display: flex; align-items: center; justify-content: center; font: 900 54px/1 "Segoe UI Black", sans-serif; }
+.ntf .tx { flex: 1; min-width: 0; }
+.ntf .nm { display: flex; justify-content: space-between; font: 800 40px/1.1 "Segoe UI", sans-serif; color: #1d1d1f; }
+.ntf .nm i { font: 600 32px/1.1 "Segoe UI", sans-serif; font-style: normal; color: #8a8a90; }
+.ntf .ms { margin-top: 10px; font: 600 44px/1.2 "Segoe UI", sans-serif; color: #2c2c30; }
+.warm { position: absolute; inset: 0; z-index: 5; pointer-events: none; background: radial-gradient(80% 55% at 50% 40%, rgba(255,210,63,0) 40%, rgba(255,190,40,.22) 100%); opacity: 0; }
+.endc { position: absolute; inset: 0; z-index: 50; opacity: 0; background: radial-gradient(90% 60% at 50% 38%, #ffffff 0%, #fffaf0 60%, #fff1c9 100%); }
+.endc img { position: absolute; left: 50%; top: 380px; width: 720px; transform: translateX(-50%); }
+.endc .k { position: absolute; left: 0; right: 0; top: 960px; text-align: center; font: 700 46px/1.2 "Segoe UI", sans-serif; color: #55555c; }
+.endc .tel { position: absolute; left: 0; right: 0; top: 1040px; text-align: center; font: 900 130px/1 "Segoe UI Black", sans-serif; color: #1d1d1f; letter-spacing: .01em; }
+.endc .tel.tt { font-size: 70px; line-height: 1.1; padding: 0 80px; top: 1060px; }
+.endc .b { position: absolute; left: 50%; top: 1240px; transform: translateX(-50%); padding: 36px 70px; border-radius: 80px; background: linear-gradient(180deg, #ffde5c, #f5b800); color: #1d1d1f;
+  font: 900 60px/1 "Segoe UI Black", sans-serif; white-space: nowrap; box-shadow: 0 18px 50px rgba(245,184,0,.45); opacity: 0; }
+.endc .u { position: absolute; left: 0; right: 0; top: 1440px; text-align: center; font: 700 42px/1 "Segoe UI", sans-serif; color: #55555c; }
+</style>
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/prem.js"></script>
+<script>
+const DUR = T.DUR, Y = "#ffd23f";
+const S = k => LS(k);
+const IM = {}, PRE = document.createElement("div"); PRE.style.display = "none"; document.body.appendChild(PRE);
+["p03", "p13", "p19", "p11", "p14", "p09", "p17", "p18", "p04", "p02", "p08"].forEach(n => { const i = new Image(); i.src = `img/${n}.jpg`; IM[n] = i; PRE.appendChild(i); });
+const tCh = W("z2", "choruje"), tDet = W("z3", "pod"), tPel = W("z6", "pelna"), tTel = window.TT ? LE("z7") - .15 : W("z7", "piecset");
+// 2026-10-13: wycięte zdanie z4 „Potem terapia. W domu, nie w szpitalu.” (leczą w klinice; Emil wyłapał to na Meecie 2026-10-09)
+// [obraz, od, do, zoom na start, kotwica x, kotwica y, najazd]
+const CUTS = [
+  ["p03", 0, S("z2"), 1.12, .5, .5, .06], ["p13", S("z2"), tCh - .02, 1.06, .5, .5, .06], ["p19", tCh - .02, S("z3"), 1.04, .5, .55, .08],
+  ["p11", S("z3"), tDet - .02, 1.05, .45, .5, .07], ["p14", tDet - .02, S("z5"), 1.05, .5, .5, .07],
+  ["p18", S("z5"), S("z6"), 1.05, .5, .5, .08], ["odo", S("z6"), tPel - .02], ["p02", tPel - .02, S("z7"), 1.04, .5, .5, .08],
+  ["p08", S("z7"), tTel - .05, 1.06, .5, .5, .08], ["end", tTel - .05, DUR + 1],
+];
+const HI = /^(ostatni|choroba|rodzina|detoksu|lekarza|domu|bliskimi|15|anonimowość|anonimowo)/i;
+PR.off.push([S("z6") - .05, tPel - .04], [tTel - .05, DUR + 1]);
+scene(0, DUR + 1, (c) => {
+  const cv = el(c, "p-full", `<canvas width="1080" height="1920"></canvas>`).firstChild, ctx = cv.getContext("2d");
+  el(c, "p-shade");
+  const warm = el(c, "warm");
+  premCaps(c, voiceWords().map(w => ({ ...w, w: /^piętnaście$/i.test(w.w) ? "15" : w.w })), { hi: w => HI.test(w) ? Y : null });
+  const tag = el(c, "tag", "PYTANIE OD RODZINY");
+  const ntf = el(c, "ntf", `<div class="av">T</div><div class="tx"><div class="nm">Tata<i>23:47</i></div><div class="ms">To był ostatni raz. Obiecuję.</div></div>`);
+  const odo = premOdo(c, 2, { suffix: "LAT", label: "doświadczenia", top: 640, color: Y });
+  const endc = el(c, "endc", `<img src="img/logo.png"><div class="k">Porozmawiaj anonimowo</div>${window.TT ? `<div class="tel tt">Numer w opisie profilu</div>` : `<div class="tel">501 011 101</div>`}<div class="b">Zadzwoń</div><div class="u">zoltyszalik.com.pl · Kraków</div>`), btn = endc.querySelector(".b");
+  CUTS.slice(1).forEach(k => sfx("WH_SOFT", k[1] - .06, -24));
+  sfx("POP", .05, -16); sfx("IMP_SOFT", tCh, -16); sfx("DING", W("z6", "lat") + .1, -18); sfx("IMP_SOFT", tTel, -14); sfx("POP", tTel + .4, -14);
+  return (lt, t) => {
+    const k = CUTS.find(x => t >= x[1] && t < x[2]) || CUTS[CUTS.length - 1], dt = t - k[1], len = k[2] - k[1];
+    ctx.fillStyle = "#000"; ctx.fillRect(0, 0, 1080, 1920);
+    if (k[0] === "odo" || k[0] === "end") {
+      premDraw(ctx, IM.p04, { z: 1.08 + .04 * clamp(dt / 3), ax: .5, ay: .5, blur: 10 });
+      ctx.fillStyle = "rgba(0,0,0,.42)"; ctx.fillRect(0, 0, 1080, 1920);
+    } else {
+      const L = cutLook(dt, len, { z0: k[3], push: k[6], punch: k[1] > 0 ? .03 : 0, zoomIn: dt < .12 && k[1] > 0 });
+      const hook = t < S("z2");  // hak: ciemniej i chłodniej, potem ciepłe, jasne zdjęcia domu
+      if (hook) { ctx.save(); ctx.filter = "saturate(.45) brightness(.62)"; }
+      premDraw(ctx, IM[k[0]], { z: L.z, ax: k[4], ay: k[5], blur: L.blur });
+      if (hook) ctx.restore();
+    }
+    warm.style.opacity = t >= S("z5") && t < S("z6") ? .9 : 0;
+    premCapsUpdate(t);
+    const hk = t < S("z2") - .05;
+    tag.style.opacity = hk ? 1 : 0;
+    ntf.style.opacity = hk ? 1 : 0; if (hk) ntf.style.transform = `translateY(${(Math.sin(t * 2.2) * 6).toFixed(1)}px) scale(${(1 + .012 * Math.sin(t * 3)).toFixed(4)})`;
+    premOdoRun(odo, t, S("z6"), W("z6", "lat") + .1, tPel - .04, 0, 15);
+    if (k[0] === "end") { endc.style.opacity = 1; const u = E.out4(clamp(dt / .3)); endc.style.transform = `translateY(${((1 - u) * 1920).toFixed(1)}px)`;
+      endc.querySelector("img").style.transform = `translateX(-50%) scale(${mix(.6, 1, outBack(clamp((dt - .15) / .35), 2)).toFixed(3)})`;
+      const a = dt - .45; btn.style.opacity = a > 0 ? 1 : 0; btn.style.transform = `translateX(-50%) scale(${a > 0 ? (mix(.5, 1, outBack(clamp(a / .3), 2.4)) * (1 + .03 * Math.sin(a * 6))).toFixed(4) : .5})`; }
+    else endc.style.opacity = 0;
+  };
+}, { push: 0, cut: true });
+boot("zoltyszalik.m4a");
+</script>
+</body>
+</html>

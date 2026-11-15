@@ -1,0 +1,175 @@
+{
+  "_opis": "Progi kontroli montażu (tools/kontrola/montaz.py). Źródła i powody: wiedza/agenci/montazysta/kontrole.md. Zmieniaj tu, nie w kodzie.",
+  "wymiary": [
+    1080,
+    1920
+  ],
+  "strefy": {
+    "wszystkie": {
+      "gora": 0.14,
+      "dol": 0.35,
+      "bok": 0.06,
+      "prawa_kolumna": {
+        "x": 0.87,
+        "od": 0.4,
+        "do": 0.85
+      },
+      "_zrodlo": "Meta Ads Guide (Instagram Reels i Stories: 14/35/6, OK 2026-11-09) + TikTok ostrożnie: prawa kolumna 140 px (blogi)"
+    },
+    "reklama": {
+      "gora": 0.14,
+      "dol": 0.35,
+      "bok": 0.06,
+      "prawa_kolumna": null,
+      "_zrodlo": "Meta Ads Guide, Instagram Reels i Stories, sprawdzone 2026-11-09"
+    },
+    "organik": {
+      "gora": 0.1,
+      "dol": 0.25,
+      "bok": 0.05,
+      "prawa_kolumna": {
+        "x": 0.87,
+        "od": 0.4,
+        "do": 0.85
+      },
+      "_zrodlo": "blogi: dół 250-480 px, góra 108-220 px, prawa 84-140 px; brak oficjalnej liczby"
+    }
+  },
+  "napisy": {
+    "max_slow": 3,
+    "max_linii": 1,
+    "min_wys_linii_napisu_px": 56,
+    "min_wys_tekstu_px": 30,
+    "max_odchylenie_srodka": 0.04,
+    "min_grubosc_napisu": 600,
+    "margines_twardy": 0.03
+  },
+  "trwalosc_bledu_s": 0.3,
+  "kadr": {
+    "min_szer_twarzy": 0.07,
+    "margines_krawedzi_px": 4,
+    "duza_twarz": 0.22,
+    "linia_oczu": [
+      0.22,
+      0.45
+    ],
+    "pokrycie_twarzy_napisem": 0.12,
+    "_zrodlo": "oczy w górnej 1/3 (33-40% od góry) wg operatorów; progi do kalibracji na 20-30 dobrych rolkach"
+  },
+  "tempo": {
+    "prog_ciecia": 0.1,
+    "max_ujecie_s": 4.0,
+    "martwy_obraz_s": 2.5,
+    "prog_ruchu": 1.2,
+    "pierwsza_zmiana_s": 3.0
+  },
+  "dzwiek": {
+    "lufs": [
+      -16.0,
+      -12.0
+    ],
+    "true_peak_max": -1.0,
+    "start_max_s": 0.05,
+    "_zrodlo": "konwencja branżowa -14 LUFS; platformy nie podają liczby (sprawdzone 2026-11-09)"
+  },
+  "kolor": {
+    "luma_min": 40,
+    "luma_max": 220,
+    "przepal_proc": 0.15,
+    "skok_lumy": 60
+  },
+  "zakazane_dzwieki": [
+    {
+      "wzor": "\\bpop\\.wav\\b",
+      "opis": "syntetyczny pop z app/effects.py (pół internetu)"
+    },
+    {
+      "wzor": "\\bding\\.wav\\b",
+      "opis": "syntetyczny dzwonek z app/effects.py"
+    },
+    {
+      "wzor": "\\bboom\\.wav\\b",
+      "opis": "syntetyczny boom z głównego folderu Dźwięki"
+    },
+    {
+      "wzor": "\\briser\\.wav\\b",
+      "opis": "syntetyczny riser z głównego folderu Dźwięki"
+    },
+    {
+      "wzor": "biblioteka[/\\\\]D[źz]wi[ęe]ki[/\\\\]whoosh\\.wav",
+      "opis": "syntetyczny whoosh z głównego folderu Dźwięki"
+    },
+    {
+      "wzor": "sfx\\(\\s*[\"']?(POP|DING)\\b",
+      "opis": "wywołanie sfx POP/DING"
+    }
+  ],
+  "zakazane_glosy": {
+    "_zrodlo": "ElevenLabs Voice Library, liczba użytkowników (cloned_by_count) i znaki/rok, odczyt 2026-11-09 (tools/agenci/glosy_popularnosc.py, dane/agenci/glosy_popularnosc.json); próg: 10 tys. użytkowników albo 30 mln znaków/rok = nadużywany; lista nadużywanych domyślnych wg ElevenLabs",
+    "N0GCuK2B0qwWozQNTS8F": {
+      "opis": "Magdalena PL: 103 318 użytkowników, 357 mln znaków/rok",
+      "poziom": "KRYTYCZNY"
+    },
+    "ynIo8Bwfrnj9CiMSjKZM": {
+      "opis": "Michał PL (narrator Go4Driver): 25 115 użytkowników, 107 mln znaków/rok",
+      "poziom": "KRYTYCZNY"
+    },
+    "04BD7Fenyf9Ysq983wrd": {
+      "opis": "Oscar PL: 18 708 użytkowników, 58 mln znaków/rok",
+      "poziom": "KRYTYCZNY"
+    },
+    "H0Es1EyjnIrTdY0BEF0V": {
+      "opis": "Maciek PL: 15 720 użytkowników, 38 mln znaków/rok",
+      "poziom": "KRYTYCZNY"
+    },
+    "JWUOwsYG4XgR9Od3eeon": {
+      "opis": "Tomasz/Tom PL: 15 998 użytkowników, 82 mln znaków/rok (wybór klienta Izzi Therm: zmiana tylko za zgodą użytkownika)",
+      "poziom": "UWAGA"
+    },
+    "JKbdwi8BFwQlr1n3fwoT": {
+      "opis": "Reel EN: 54 941 użytkowników, 111 mln znaków/rok",
+      "poziom": "KRYTYCZNY"
+    },
+    "pNInz6obpgDQGcFmaJgB": {
+      "opis": "Adam (domyślny ElevenLabs, nadużywany)",
+      "poziom": "KRYTYCZNY"
+    },
+    "21m00Tcm4TlvDq8ikWAM": {
+      "opis": "Rachel (domyślny ElevenLabs, nadużywany)",
+      "poziom": "KRYTYCZNY"
+    },
+    "nPczCjzI2devNBz1zQrb": {
+      "opis": "Brian (domyślny ElevenLabs, nadużywany)",
+      "poziom": "KRYTYCZNY"
+    },
+    "TX3LPaxmHKxFdv7VOQHJ": {
+      "opis": "Liam (domyślny ElevenLabs, nadużywany)",
+      "poziom": "KRYTYCZNY"
+    },
+    "cgSgspJ2msm6clMCkdW9": {
+      "opis": "Jessica (domyślny ElevenLabs, nadużywany)",
+      "poziom": "KRYTYCZNY"
+    },
+    "XrExE9yKIg1WjnnlVkGX": {
+      "opis": "Matilda (domyślny ElevenLabs, nadużywany)",
+      "poziom": "KRYTYCZNY"
+    },
+    "EXAVITQu4vr4xnSDxMaL": {
+      "opis": "Sarah (domyślny ElevenLabs, nadużywany)",
+      "poziom": "KRYTYCZNY"
+    },
+    "B9cNwbQXN3s6l3nU6fqz": {
+      "opis": "Adam PL (Neutral and Youthful Narrator, domyślny voicekit): 91 853 użytkowników, 64,7 mln znaków/rok; użytkownik 2026-11-11: „tragedia”, zakaz w projekcie",
+      "poziom": "KRYTYCZNY"
+    },
+    "2KHmTvaSfnESbNOrjPlk": {
+      "opis": "Sebastian PL (middle-aged male): użytkownik 2026-11-12 „najgorszy głos”, odrzucony też przy H08 2026-11-11",
+      "poziom": "KRYTYCZNY"
+    }
+  },
+  "rzadkie_glosy_pl": {
+    "k57R6Grdv9LrYgiz4ga2": "Anita: 671",
+    "ZrIglAg8qumzXuvlNzWL": "Weronika: 1 192",
+    "ldzFbnOs5w23MLcNBXQx": "Alicja: 1 616"
+  }
+}

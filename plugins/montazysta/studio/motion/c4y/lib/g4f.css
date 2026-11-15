@@ -1,0 +1,68 @@
+/* PAKIET 3 Go4Driver (lib/g4f.js): grafiki kodem, tekst z pliku językowego, kolory klienta (ciemne + limonka) */
+.capbox { position: absolute; inset: 0; z-index: 10; pointer-events: none; }
+.clipl canvas { position: absolute; inset: 0; }
+.gcard, .gfil, .gsteps, .gkin, .gcmp { background: radial-gradient(110% 70% at 50% 35%, #1b2210 0%, #0c0d10 70%); }
+
+/* karta oferty */
+.gcard .card, .gcmp .card { left: 60px; right: 60px; }
+.card .job { opacity: 0; }
+.card .where { opacity: 0; }
+.ftags { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 26px; }
+.ftags i { font-style: normal; padding: 18px 26px; border-radius: 22px; background: var(--cardb); border: 3px solid var(--line2); font: 800 40px/1 var(--b); color: #fff; opacity: 0; }
+.ftags i.hi, .card .pay.hi { border-color: var(--lime); background: rgba(200,242,58,.14); box-shadow: 0 0 0 10px rgba(200,242,58,.12); }
+.card .pay { opacity: 0; }
+.inner { position: absolute; inset: 0; }
+
+/* filtry */
+.gfil .fl { position: absolute; left: 70px; top: 300px; font: 800 36px/1 var(--b); color: var(--mut2); letter-spacing: .08em; text-transform: uppercase; }
+.gfil .chips { position: absolute; left: 60px; right: 60px; top: 370px; display: flex; flex-wrap: wrap; gap: 18px; }
+.gfil .chips i { font-style: normal; height: 104px; padding: 0 34px; border-radius: 26px; background: var(--cardb); border: 3px solid var(--line2); display: flex; align-items: center; font: 800 46px/1 var(--b); color: #c9cad1; }
+.gfil .chips i.on { background: rgba(200,242,58,.14); border-color: var(--lime); color: #fff; }
+.gfil .chips i.on::before { content: "✓"; color: var(--lime); margin-right: 16px; font-weight: 900; }
+.gfil .list { position: absolute; left: 60px; right: 60px; top: 660px; display: flex; flex-direction: column; gap: 24px; }
+.gfil .gh { height: 150px; border-radius: 30px; background: var(--cardb); border: 3px solid var(--line2); padding: 34px 40px; display: flex; flex-direction: column; justify-content: center; gap: 18px; }
+.gfil .gh u { display: block; height: 26px; border-radius: 13px; background: #2a2c33; text-decoration: none; }
+.gfil .gh u + u { width: 55%; background: #22242a; }
+.gfil .me { height: 190px; position: relative; }
+.gfil .me b, .gfil .me span { position: absolute; left: 40px; opacity: 0; }
+.gfil .me b { top: 46px; } .gfil .me span { top: 120px; }
+.gfil .me.on u { opacity: 0; } .gfil .me.on b, .gfil .me.on span { opacity: 1; }
+.gfil .me b { font: 900 56px/1 var(--d); color: #fff; letter-spacing: -.02em; }
+.gfil .me span { font: 700 38px/1 var(--b); color: var(--mut2); }
+.gfil .me.on { border-color: var(--lime); background: rgba(200,242,58,.12); box-shadow: 0 0 0 14px rgba(200,242,58,.14), 0 30px 80px rgba(0,0,0,.5); }
+.gfil .me.on b { color: var(--lime); }
+.gfil .tap, .gfil .rip { z-index: 5; }
+
+/* 3 kroki */
+.gsteps .lg2 { position: absolute; left: 0; right: 0; top: 330px; text-align: center; font: italic 900 110px/1 var(--d); letter-spacing: -.05em; color: #fff; }
+.gsteps .lg2 b { color: var(--lime); }
+.gsteps .stl { position: absolute; left: 60px; right: 60px; top: 480px; text-align: center; font: 800 46px/1.25 var(--b); color: #d8d9df; }
+.gsteps .st { position: relative; margin: 0 60px 26px; display: flex; align-items: center; gap: 30px; height: 170px; padding: 0 40px; border-radius: 34px; background: var(--cardb); border: 3px solid var(--line2); opacity: 0; }
+.gsteps .sts { position: absolute; left: 0; right: 0; top: 640px; }
+.gsteps .st em { font-style: normal; flex: 0 0 90px; height: 90px; border-radius: 50%; background: #23252c; display: grid; place-items: center; font: 900 50px/1 var(--d); color: #fff; }
+.gsteps .st span { flex: 1; font: 800 52px/1.15 var(--b); color: #fff; }
+.gsteps .st i { font-style: normal; flex: 0 0 80px; height: 80px; border-radius: 50%; border: 4px solid #4a4d57; display: grid; place-items: center; font: 900 46px/1 var(--b); color: transparent; }
+.gsteps .st.on { border-color: var(--lime); background: rgba(200,242,58,.1); }
+.gsteps .st.on em { background: var(--lime); color: #0c0d10; }
+.gsteps .st.on i { border-color: var(--lime); background: var(--lime); color: #0c0d10; }
+
+/* tekst kinetyczny */
+.gkin .kr { position: relative; margin: 0 60px; text-align: center; font: 900 120px/1.05 var(--d); letter-spacing: -.04em; color: #fff; opacity: 0; }
+.gkin .kr:first-of-type { margin-top: var(--top, 640px); }
+.gkin .kr b { color: var(--lime); }
+.gkin .kr small { display: block; font: 800 50px/1.3 var(--b); letter-spacing: 0; color: #d8d9df; margin-top: 10px; }
+
+/* porównanie */
+.gcmp .vg { position: absolute; left: 60px; right: 60px; top: 230px; padding: 44px 46px; border-radius: 36px; background: #f2f4f5; opacity: 0; }
+.gcmp .vt { font: 900 66px/1.1 var(--d); color: #1d2a30; letter-spacing: -.02em; margin-bottom: 18px; }
+.gcmp .vr { font: 600 46px/1.35 var(--b); color: #6b777d; }
+.gcmp .vx { position: absolute; left: 30px; right: 30px; top: 50%; height: 14px; margin-top: -7px; border-radius: 7px; background: #e5383b; transform-origin: 0 50%; opacity: 0; }
+.gcard .card .pay, .gcmp .card .pay { font-size: 60px; white-space: nowrap; height: 130px; }
+.gbar { z-index: 12; }
+.gcmp .vg:has(.vt:only-of-type) { padding-bottom: 40px; }
+.gbg { position: absolute; inset: -60px; width: 1200px !important; height: 2040px !important; filter: blur(12px) brightness(.46) saturate(1.25); z-index: 0; }
+.gcard > *:not(.gbg), .gfil > *:not(.gbg), .gsteps > *:not(.gbg), .gkin > *:not(.gbg), .gcmp > *:not(.gbg) { z-index: 1; }
+.gcard .card { top: 600px !important; }
+/* 3. „PRZYKŁADOWA OFERTA” jako wyraźna odznaka (recenzent 2026-10-25) */
+.card .lg small { padding: 10px 16px; border-radius: 12px; background: #2a2c33; color: #e8e9ee; font: 800 28px/1 var(--b); letter-spacing: .04em; }
+/* plansza końcowa: powolny najazd, żeby nie stała martwo */

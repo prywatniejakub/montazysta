@@ -24,6 +24,7 @@ Aktualizacja: napisz w Claude Code „zaktualizuj montażystę”.
 - `plugins/montazysta/skills`: `zmontuj` (cały proces), `start` (instalacja i aktualizacja).
 - `plugins/montazysta/wiedza`: zasady montażu, struktury, hooki, dane o trzymaniu widza.
 - `plugins/montazysta/silnik`: render klatka po klatce (HTML, Chrome, FFmpeg), transkrypcja, darmowy lektor, miks dźwięku, kontrole, darmowe B-rolle z Pexels i Pixabay (`rolka stock`).
+- `plugins/montazysta/studio`: style montażu agencji 01-24 (prawdziwe silniki: szablony, animacje, napisy, dźwięki, muzyka), instalacja kopiuje je do `~/Montaz/studio`; polecenie `studio` (lista stylów, karta, nowa rolka ze wzoru, kroki silnika). Bez materiałów klientów.
 - Z konektorem Clips4you (MCP) agent czyta wiedzę agencji (style 01-26, podręcznik montażysty, karty klientów) i generuje ujęcia AI w fal; silnik zostaje na komputerze.
 
 Czcionka Montserrat: SIL Open Font License. Efekty dźwiękowe wygenerowane kodem (`scripts/generuj_sfx.py`). Muzyka wygenerowana w ElevenLabs.

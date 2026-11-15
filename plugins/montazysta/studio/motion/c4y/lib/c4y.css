@@ -1,0 +1,65 @@
+/* Clips4you reels: the light sales style of clips4you.pl (white paper, #111113 Montserrat 900, yellow highlighter, black-bordered cards) */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Montserrat:wght@700;800;900&display=block&subset=latin-ext");
+:root { --ink: #111113; --ink2: #2b2b30; --mut: #5b5b64; --line: #e7e5de; --paper: #fbfaf6; --yel: #ffd60a; --yelsoft: #fff3b8; --red: #e5383b; --redsoft: #fde6e6; --grn: #1f9d55;
+  --d: "Montserrat", "Inter", sans-serif; --b: "Inter", sans-serif; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #fff; }
+body { font-family: var(--b); color: var(--ink); -webkit-font-smoothing: antialiased; }
+#stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; background: var(--paper); }
+#stage::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(#e6e3d9 1.6px, transparent 1.7px); background-size: 44px 44px; opacity: .55; }
+.scene { position: absolute; inset: 0; will-change: transform, opacity; }
+.cam { position: absolute; inset: 0; transform-origin: 50% 45%; }
+.abs { position: absolute; }
+/* logo mark (top-left, whole reel) */
+#bug { position: absolute; left: 56px; top: 64px; z-index: 50; display: flex; align-items: center; gap: 14px; font: 900 38px/1 var(--d); letter-spacing: -.03em; color: var(--ink); }
+#bug i { width: 56px; height: 56px; border-radius: 14px; background: var(--ink); display: flex; align-items: center; justify-content: center; }
+#bug svg { width: 28px; height: 28px; }
+/* headline with highlighter */
+.h { position: absolute; left: 60px; right: 60px; text-align: center; font: 900 88px/1.08 var(--d); letter-spacing: -.035em; color: var(--ink); }
+.h.l { text-align: left; }
+.h .m { background: linear-gradient(var(--yel), var(--yel)) no-repeat 0 88% / calc(var(--p, 1) * 100%) 42%; padding: 0 .06em; -webkit-box-decoration-break: clone; }
+.h .r { color: var(--red); }
+.w { display: inline-block; }
+.sub { position: absolute; left: 80px; right: 80px; text-align: center; font: 700 44px/1.3 var(--b); color: var(--ink2); letter-spacing: -.01em; }
+/* cards */
+.card { position: absolute; background: #fff; border: 5px solid var(--ink); border-radius: 36px; box-shadow: 14px 14px 0 var(--ink); }
+.card.soft { border: 3px solid var(--line); box-shadow: 0 20px 50px rgba(17,17,19,.12); }
+.pill { position: absolute; display: inline-flex; align-items: center; gap: 14px; height: 84px; padding: 0 30px; border-radius: 20px; background: var(--yel); border: 4px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); font: 800 40px/1 var(--d); letter-spacing: -.02em; white-space: nowrap; }
+.pill.w0 { background: #fff; }
+.pill.red { background: var(--redsoft); border-color: var(--red); box-shadow: 6px 6px 0 var(--red); color: var(--red); }
+.pill svg { width: 40px; height: 40px; }
+.dot { width: 22px; height: 22px; border-radius: 50%; background: var(--red); }
+/* phone with a real reel */
+.phone { position: absolute; background: #000; border: 9px solid var(--ink); border-radius: 50px; overflow: hidden; box-shadow: 14px 14px 0 var(--ink); }
+.phone canvas { width: 100%; height: 100%; display: block; }
+.phone .tag { position: absolute; left: 18px; bottom: 18px; padding: 8px 14px; border-radius: 12px; background: #fff; font: 800 26px/1 var(--b); }
+.phone .ok { position: absolute; right: 16px; top: 16px; width: 54px; height: 54px; border-radius: 50%; background: var(--yel); border: 4px solid var(--ink); display: flex; align-items: center; justify-content: center; }
+.phone .ok svg { width: 30px; height: 30px; }
+/* timeline (the site's "machine") */
+.tlw { position: absolute; padding: 26px 28px; }
+.tlw .fn { display: flex; justify-content: space-between; align-items: center; font: 700 30px/1 Consolas, monospace; color: var(--ink); margin-bottom: 26px; }
+.tlw .fn span { display: inline-flex; align-items: center; gap: 14px; }
+.tlw .fn em { font-style: normal; color: var(--mut); }
+.bars { position: relative; height: 150px; display: flex; align-items: center; gap: 5px; padding: 0 6px; border-radius: 18px; background: #f3f1ea; }
+.bars i { flex: 1; border-radius: 4px; background: #c8c4b8; }
+.hl { position: absolute; top: 12px; bottom: 12px; border-radius: 12px; background: rgba(255,214,10,.6); outline: 4px solid var(--ink); mix-blend-mode: multiply; }
+.hl b { position: absolute; left: 50%; top: -26px; transform: translateX(-50%); padding: 6px 14px; border-radius: 10px; background: var(--ink); color: #fff; font: 800 24px/1.2 var(--b); letter-spacing: .06em; white-space: nowrap; mix-blend-mode: normal; }
+.ph { position: absolute; top: 0; bottom: 0; width: 5px; border-radius: 3px; background: var(--red); }
+/* counter */
+.big { position: absolute; left: 0; right: 0; text-align: center; font: 900 330px/1 var(--d); letter-spacing: -.06em; color: var(--ink); }
+.big small { display: block; margin-top: 10px; font: 800 52px/1.2 var(--d); letter-spacing: -.02em; }
+/* chat bubbles */
+.bub { position: absolute; max-width: 760px; padding: 26px 34px; border-radius: 36px 36px 36px 10px; background: #fff; border: 4px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); font: 700 46px/1.25 var(--b); letter-spacing: -.01em; }
+.bub.me { border-radius: 36px 36px 10px 36px; background: var(--yel); }
+/* notifications */
+.note { position: absolute; left: 70px; right: 70px; display: flex; align-items: center; gap: 26px; padding: 26px 30px; border-radius: 34px; background: #fff; border: 4px solid var(--ink); box-shadow: 10px 10px 0 var(--ink); }
+.note i { flex: 0 0 96px; height: 96px; border-radius: 24px; background: var(--yel); border: 4px solid var(--ink); display: flex; align-items: center; justify-content: center; font: 900 48px/1 var(--d); font-style: normal; }
+.note b { display: block; font: 800 40px/1.2 var(--b); }
+.note span { font: 600 34px/1.3 var(--b); color: var(--mut); }
+.note small { position: absolute; right: 30px; top: 26px; font: 700 26px var(--b); color: var(--mut); }
+/* CTA end card */
+.cta { position: absolute; left: 90px; right: 90px; height: 190px; border-radius: 34px; background: var(--yel); border: 6px solid var(--ink); box-shadow: 16px 16px 0 var(--ink); display: flex; align-items: center; justify-content: center; gap: 24px; font: 900 62px/1 var(--d); letter-spacing: -.03em; }
+.cursor { position: absolute; width: 110px; height: 110px; z-index: 40; }
+.ripple { position: absolute; width: 60px; height: 60px; margin: -30px 0 0 -30px; border-radius: 50%; border: 6px solid var(--ink); }
+.x { display: inline-flex; width: 1em; height: 1em; }
+.chk { display: inline-flex; width: 1em; height: 1em; }

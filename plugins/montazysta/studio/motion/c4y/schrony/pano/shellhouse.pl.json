@@ -1,0 +1,2290 @@
+[
+ {
+  "id": "panorama_B3E9FBE5_905A_807F_41DA_A52F732D72A2",
+  "label": "wyjscie-ewakuacyjne-noc",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_BDF6774D_905A_804F_41D0_5BC8E3082C02",
+  "label": "lazienka-stolik",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4E8D4026_5F3D_F4B2_41CA_37B9366156AA",
+  "label": "kuchnia-lozka",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_2A548210_69CA_9A34_41D0_F90B40538F1A",
+  "label": "ewak__drzwi_zamkniete_spizarka_otwarta",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_9FD47D6F_90A9_804B_41D5_3BD9E276278B",
+  "label": "klatka-gora-zamkniete",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4EB027AD_5F22_3BB7_41A0_C5A1C59C95EE",
+  "label": "salon-2-lozka",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_2ADC3390_69C5_9A34_4187_D0CBF7FD8E12",
+  "label": "wlaz_otwarty_spizarka_otwarta_drzwi_zamkniete",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_45D57FC8_69FB_8A15_417F_13203FAEF5DC",
+  "label": "kuchnia-2",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_6B1B3D6B_644E_52A7_41D8_3AC16F76DCD8",
+  "label": "salon-spizarka",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_44AE9896_5F66_1592_41A3_5B41F8611D0F",
+  "label": "wlaz_zamkniety_szafka_otwarta",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_7C85B2A0_6CC3_8D79_41D1_FBAE3E227472",
+  "label": "Przedsionek",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_497AFAFF_6214_5AC5_41D7_1FE10F191E8D",
+  "label": "wyjscie-ewakuacyjne-drabinka-sejf-otwarty-drzwi-zamkniete",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_7053D9B3_6452_35A7_41B9_C71F3CAE8153",
+  "label": "salon_1",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_476B2F92_64F7_CE61_41D8_C48968768E36",
+  "label": "sejf_otwarty__1_kuchnia_drziw_otwarte",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_8549636D_90D9_804F_41C4_8DDAA1F99D5A",
+  "label": "5",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_9B4048E1_8B19_2970_41D7_099644F85287",
+  "label": "wiata-otwarte",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4E8A40BF_5F22_1592_41C1_E81EDC3B83B2",
+  "label": "salon-1-lozka",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_7977A6AE_5F5E_1DB2_41D3_3AC32302C752",
+  "label": "wlaz_zamkniety_drzwi_otwarte_szafka_otwarta",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_B18C095B_90BA_804B_41A6_D8FD121F93E8",
+  "label": "prysznic-noc",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_455DD61E_5F5E_FC92_41CC_9969A6D8F147",
+  "label": "wyjscie_ewakuacyjne-drzwi-otwarte-szafka-otwarta",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_7C3A092F_6CC5_9F46_41D1_66C762C0AC64",
+  "label": "filtrowentylacja-drzwi-otwarte",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_B32A150A_905A_81B5_41D3_15FBA28F00BE",
+  "label": "wyjscie-ewakuacyjne-drabinka-noc",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_51D3682B_621C_454D_41D5_D4EF7EF6285F",
+  "label": "lazienka-szafka",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4D3AE89A_5F25_F592_4189_01141561739A",
+  "label": "salon-spizarka-2",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4D272A0D_5D6B_BBC3_41C2_1BF92ED26616",
+  "label": "wlaz_otwarty",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_2890AB90_69C5_8A35_41B5_76E354C92288",
+  "label": "wlaz_otwarty_spizarka_otwarta_drzwi_otwarte",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_7D6F9428_6CC4_B54A_41BE_DB989A1D4BC7",
+  "label": "przedsionek-zamkniete-spizarka",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_2B630009_69DA_7614_41C2_5D6B2CDB0E81",
+  "label": "wlaz_zamkniety_spizarka_otwarta_drzwi_zamkniete",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_BDF57AD8_905A_8055_41C9_FF0E37DE9E1F",
+  "label": "lazienka-spizarka",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_84A707E2_8B19_2770_41DB_738021EA71BB",
+  "label": "9",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_452A4BBF_64B6_359F_41C6_3A060C896110",
+  "label": "salon_szafka_otwarta__1",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_5611FA3A_69CB_8A75_41D9_F180DA42AA23",
+  "label": "ewak_drzwi_otwarte_spizarka_otwarta",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_B6CC9E56_906A_805D_41D1_79EC889191E8",
+  "label": "prysznic-spizarka",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_24A08E1C_620C_5D4B_41D5_83BDB5FBA451",
+  "label": "kuchnia-spizarka-otwarta",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_516BB1D4_621C_46DB_41C7_DF639AB8AF7D",
+  "label": "prysznic-szafka",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_8B28F8ED_90EE_804F_41D9_B689DCD930A2",
+  "label": "wyjscie-ewakuacyjne-drabinka-spizarka-otwarta",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_107EE40D_6946_FE2C_41D5_942B5F890309",
+  "label": "kuchnia-stolik",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_43950D95_5F6E_0F96_41D5_99EB3457D015",
+  "label": "salon_2",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4CC97331_5F26_34AE_41AB_4FBDDADF4188",
+  "label": "sejf_otwarty__1",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_77C2389D_5F5E_1596_41B7_DCC4DA7EC5D1",
+  "label": "wlaz_otwarty_drzwi_otwarte_szafka_otwarta",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4C257229_620F_C54A_41C1_49E15D1D29E6",
+  "label": "kuchnia-noc",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_6AE416C3_65BA_30D7_41D3_AA8BC06CBED0",
+  "label": "prysznic",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_50195BCC_6213_DACB_41CE_C130D2256F61",
+  "label": "prysznic-sejf",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_45062C27_5F22_0CB2_41B5_22A4CBDAE529",
+  "label": "kuchnia_drzwi_otwarte_szafka_otwarta",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_BDFF1FAA_905A_80F5_41CA_5815642A582E",
+  "label": "lazienka-noc",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4AF5D520_5DA6_A9C1_41CE_18B95420E623",
+  "label": "13_drzwi_otwarte",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_56E9C528_69DA_7E15_41C6_02071CD18692",
+  "label": "wlaz_zamkniety_spizarka_otwarta_drzwi_otwarte",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4DAB9B9B_5F26_0B92_41CD_05D335A2E407",
+  "label": "sejf_otwarty__2",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_799E9462_6233_CDFE_41D5_539794864BFA",
+  "label": "kuchnia_drzwi_otwarte_sejf_otwarty",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_28627701_69C5_9A14_41BF_533E5525493E",
+  "label": "wyjscie-ewakuacyjne-drabinka-spizarka-otwarta-drzwi-zamkniete",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4B4A24F5_5DA9_A843_41C9_9F0D56422BCD",
+  "label": "kuchnia_drzwi_otwarte",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_51455744_621F_CB3B_41D0_B9C6EC67B64E",
+  "label": "lazienka-sejf",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_841D3218_90A9_83D5_41DE_8494E554D7F1",
+  "label": "wejscie-otwarte",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_482C0C04_5DA7_7FC1_41BE_7630F7E290BC",
+  "label": "8",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4855D158_620F_C7CA_41B6_C92AA52C2FDD",
+  "label": "wlaz_zamkniety_sejf_otwarty_drzwi_otwarte",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_BDCFBB6B_905A_804B_41E0_EC1A48584497",
+  "label": "lazienka",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_82195F4F_90AB_804B_41DB_34045443E652",
+  "label": "wej_u015bcie-drzwi-schronowe-zamkniete",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_749A8E10_677B_8A35_41D0_7F69A46146E8",
+  "label": "salon-1-noc",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_46B47B5E_5F5E_1492_41D0_72EB505B4911",
+  "label": "wyjscie-ewakuacyjne-drabinka-szafka_otwarta",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_41783841_6234_453D_41B3_87BD01E9A626",
+  "label": "wyjscie-ewakuacyjne-drabinka-sejf-otwarty",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4B8F65DB_5DA9_E846_4130_62CE38C6EF18",
+  "label": "wyjscie-ewakuacyjne-drabinka",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4930BCA8_620C_7D4A_41D6_B746E55BD99E",
+  "label": "wlaz_otwarty_sejf_otwarty_drzwi_otwarte",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_7EDB6F2B_623C_5B4D_41BD_070ADB4E3807",
+  "label": "13_ewakuacja_drzwi_otwarte_sejf_otwarty",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4FA109FE_620C_C6C7_4193_8515801911A9",
+  "label": "wlaz_otwarty_sejf_otwarty_drzwi_zamkniete",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_462DAAD0_620C_7ADB_41D7_B9CB0D037A91",
+  "label": "sejf_otwarty__2_kuchnia_drzwi_otwarte",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_5269B36B_5D6B_A847_41C6_8A1D7B3CB66C",
+  "label": "wlaz_zamkniety",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4DA8FD2E_5F26_0CB2_41C2_335CE9D4CAE4",
+  "label": "salon_szafka_otwarta__2",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_72A87C7B_5F62_0C92_41B3_DB5DE01884E4",
+  "label": "14_ewakuacja_drzwi_otwarte_szafka_otwarta",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4AB48398_5DAA_E8C1_4175_759A547368FB",
+  "label": "wyjscie_ewakuacyjne_drzwi_zamkniete",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_789CA964_6234_47FB_41C8_3E0F88170E42",
+  "label": "kuchnia-drzwi-zamkniete-sejf-otwarty",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_7D5887C2_6CBC_9339_41C8_26F36AD9AD5B",
+  "label": "filtrowentylacja",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_48F8455A_5F22_1C92_41AB_6C863A54BB0A",
+  "label": "kuchnia-szafka-otwarta",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_6A333D71_65B6_71B3_41C8_B6707980B12A",
+  "label": "12",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4AF295A8_6214_4F4A_41C6_1A9A8FBA3170",
+  "label": "wyjscie-ewakuacyjne-drabinka-sejf-otwarty-drzwi-otwarte",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_45F1EE3E_5F62_0C92_41D7_2610DE5750D9",
+  "label": "wlaz_otwarty_szafka_otwarta",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4264126E_5F62_74B2_41AF_6D9746B7240C",
+  "label": "wyjscie_ewakuacyjne_drzwi_zamkniete",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_53581CEE_620D_FEC7_41D7_62B992356B94",
+  "label": "salon-2-noc",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_29E3FAA8_69C7_8A14_41C0_F0209E7FC487",
+  "label": "wyjscie_ewakuacja_drzwi_otwarte_spizarka_otwarta",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_757B42B6_65BE_10B0_41D3_F4E7816536DE",
+  "label": "prysznic-stolik",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_46DCCB76_5DFA_B841_41C5_3A619231E409",
+  "label": "kuchnia_drzwi_zamkniete",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_4AE9FCA7_620C_DD45_41B9_54F719E5A024",
+  "label": "wlaz_zamkniety_sejf_otwarty_drzwi_zamkniete",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_86A94EAB_90E6_80CB_419B_D7D064842FE5",
+  "label": "salon_2-stolik",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_7A10D366_6452_76AE_41D1_EE21D69CB1AB",
+  "label": "salon_1-stolik",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0BDCBA6E_69CB_8AEC_41B7_83B959BC9E33",
+  "label": "kuchnia_spizarka_otwarta__drzwi_otwarte",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_2F8ACB93_621D_DB5E_41C5_115F577F6FC1",
+  "label": "14_ewakuacja_drzwi_otwarte",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_75C2B1E7_65BA_10DF_41C4_5D98C90D5018",
+  "label": "prysznic-lozka",
+  "levels": {
+   "0": {
+    "h": 3072,
+    "cols": 6,
+    "rows": 6
+   },
+   "1": {
+    "h": 1536,
+    "cols": 3,
+    "rows": 3
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_7D2B1F99_6234_5B4D_4196_94C2BD1A684C",
+  "label": "wyjscie_ewakuacyjne_drzwi_zamkniete_sejf_otwarty",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_BDCDF0DC_905A_804D_41D4_5EFC96E4ACB1",
+  "label": "lazienka-lozka",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ }
+]

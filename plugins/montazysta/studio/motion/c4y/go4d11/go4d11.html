@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>go4d11 · Szef pyta: masz CV? (Go4Driver, styl spokojny)</title>
+<link rel="stylesheet" href="../lib/c4y.css">
+<link rel="stylesheet" href="../lib/g4d.css">
+<link rel="stylesheet" href="../lib/g4s.css">
+<style>
+/* stary edytor tekstu (bez marki) */
+.word { background: #3a6ea5; }
+.win { position: absolute; left: 50px; right: 50px; top: 230px; bottom: 360px; background: #ece9d8; border: 4px solid #0a246a; box-shadow: 0 30px 80px rgba(0,0,0,.4); }
+.win .tb { height: 74px; background: linear-gradient(#0a246a, #3a6ea5); color: #fff; font: 700 38px/74px Tahoma, Verdana, sans-serif; padding-left: 26px; }
+.win .tb i { float: right; width: 52px; height: 52px; margin: 11px 12px 0 0; background: #c94a3c; border: 3px solid #fff; border-radius: 6px; }
+.win .mn { height: 60px; font: 400 34px/60px Tahoma, Verdana, sans-serif; color: #111; padding-left: 26px; border-bottom: 2px solid #aca899; word-spacing: 26px; }
+.win .tl { height: 70px; border-bottom: 2px solid #aca899; display: flex; gap: 12px; padding: 12px 26px; }
+.win .tl b { width: 46px; height: 46px; background: #d6d2c2; border: 2px solid #aca899; }
+.win .pg { position: absolute; left: 70px; right: 70px; top: 250px; bottom: 50px; background: #fff; border: 2px solid #aca899; padding: 70px 60px; font: 400 60px/1.3 "Times New Roman", serif; color: #111; }
+.win .pg .cur { display: inline-block; width: 4px; height: 66px; background: #111; vertical-align: -8px; }
+.dlg { position: absolute; left: 140px; right: 140px; top: 760px; background: #ece9d8; border: 4px solid #0a246a; box-shadow: 0 20px 60px rgba(0,0,0,.45); opacity: 0; }
+.dlg .tb { height: 64px; background: linear-gradient(#0a246a, #3a6ea5); color: #fff; font: 700 34px/64px Tahoma, Verdana, sans-serif; padding-left: 22px; }
+.dlg .tx { padding: 40px 36px; font: 400 40px/1.35 Tahoma, Verdana, sans-serif; color: #111; }
+.dlg .ok { margin: 0 auto 34px; width: 220px; height: 70px; border: 3px solid #111; background: #ece9d8; font: 400 36px/64px Tahoma, Verdana, sans-serif; text-align: center; }
+/* profil Go4Driver -> CV */
+.prof { background: #0c0d10; }
+.prof .lgx { position: absolute; left: 70px; top: 170px; font: italic 900 84px/1 var(--d); letter-spacing: -.05em; color: #fff; }
+.prof .lgx b { color: var(--lime); }
+.prof .st { position: absolute; left: 70px; top: 290px; font: 800 40px/1 var(--b); color: #9a9ca6; text-transform: uppercase; letter-spacing: .08em; }
+.prof .fl { position: absolute; left: 60px; right: 60px; height: 128px; padding: 0 36px; border-radius: 28px; background: #17181d; border: 3px solid #2a2c33; display: flex; align-items: center; justify-content: space-between; }
+.prof .fl span { font: 700 38px/1 var(--b); color: #9a9ca6; }
+.prof .fl b { font: 800 48px/1 var(--b); color: #fff; opacity: 0; }
+.prof .fl.on { border-color: rgba(200,242,58,.6); }
+.prof .fl.on b { opacity: 1; }
+.cvdoc { position: absolute; left: 90px; right: 90px; top: 520px; height: 1240px; border-radius: 30px; background: #f6f6f3; box-shadow: 0 -20px 80px rgba(0,0,0,.55); padding: 60px 60px; transform: translateY(1500px); }
+.cvdoc .nm { font: 900 76px/1.05 var(--d); color: #111; letter-spacing: -.02em; }
+.cvdoc .rl { font: 800 40px/1.2 var(--b); color: #4f7d00; margin: 10px 0 34px; }
+.cvdoc .ln { font: 600 42px/1.3 var(--b); color: #222; padding: 24px 0; border-top: 3px solid #e2e2dc; opacity: 0; }
+.cvdoc .pdf { position: absolute; right: 50px; top: 56px; padding: 22px 34px; border-radius: 22px; background: var(--lime); font: 900 50px/1 var(--d); color: #0c0d10; opacity: 0; }
+</style>
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/g4s.js"></script>
+<script>
+// STYL SPOKOJNY (2026-10-06): ujęcia ~3 s, przenikania, łagodne kadry, czyste napisy, mało efektów.
+const DUR = T.DUR;
+const tJak = W("b2", "Jakie"), tC = W("b2", "C"), tPiec = W("b2", "pięć"), tWorda = W("b3", "Worda"), tOtw = W("b3", "otwierałam");
+const tNa = W("b4", "Na"), tUzu = W("b4", "uzupełniasz"), tCV = W("b4", "CV"), tSamo = W("b4", "samo"), tZal = W("b5", "Załóż"), tKonto = W("b5", "konto"), tEnd = LE("b5") + .15;
+const SHOTS = [
+  [0, "face", { z: 1.1 }],
+  [tJak - .12, "face", { z: 1.26, fade: 1 }],
+  [tWorda - .2, "word", { fade: 1 }],
+  [tNa - .2, "prof", { fade: 1 }],
+  [tZal - .2, "reg", { fade: 1 }],
+  [tEnd, "end", { fade: 1 }],
+];
+
+scene(0, DUR + 1, c => {
+  const L = {};
+  L.face = G4.face(c, { clip: "go4d7av", fx: 537, fy: 749 });
+  L.word = el(c, "layer word", `<div class="win"><div class="tb">Dokument1 - Edytor tekstu<i></i></div><div class="mn">Plik Edycja Widok Wstaw Format Narzędzia</div>
+    <div class="tl">${"<b></b>".repeat(14)}</div><div class="pg">MOJE CV<span class="cur"></span></div></div>
+    <div class="dlg"><div class="tb">Edytor tekstu</div><div class="tx">Program nie odpowiada.<br>Czy chcesz poczekać?</div><div class="ok">Czekaj</div></div>`);
+  const cur = L.word.querySelector(".cur"), dlg = L.word.querySelector(".dlg");
+  const FIELDS = [["Prawo jazdy", "C+E ✓"], ["Doświadczenie", "5 lat ✓"], ["Naczepa", "Chłodnia ✓"], ["Języki", "polski, angielski ✓"]];
+  L.prof = el(c, "layer prof", `<div class="lgx">Go<b>4</b>Driver</div><div class="st">Twój profil</div>` +
+    FIELDS.map(([a, b], i) => `<div class="fl" style="top:${380 + i * 150}px"><span>${a}</span><b>${b}</b></div>`).join("") +
+    `<div class="cvdoc"><div class="nm">Twoje CV</div><div class="rl">Kierowca C+E</div>` +
+    ["🪪 Prawo jazdy C+E, karta kierowcy", "🚛 5 lat w trasie, chłodnia", "🌍 Trasy krajowe i UE", "🗣️ Polski, angielski"].map(x => `<div class="ln">${x}</div>`).join("") +
+    `<div class="pdf">✓ PDF gotowy</div></div>`);
+  const fls = [...L.prof.querySelectorAll(".fl")], cvdoc = L.prof.querySelector(".cvdoc"), lns = [...cvdoc.querySelectorAll(".ln")], pdf = cvdoc.querySelector(".pdf");
+  L.reg = G4.site(c, "../g4site/register.jpg");
+  const gK = L.reg.glow([41, 334, 141, 88], 8), gZ = L.reg.glow([41, 618, 293, 40], 10);
+  const tapK = L.reg.finger(111, 378)(tZal + .35), tapZ = L.reg.finger(187, 638)(tKonto + .2);
+  L.end = G4.end(c, "Darmowe CV z Twojego profilu.<br>Bez Worda i bez PDF-ów.", "Załóż darmowe konto");
+  const caps = G4.caps(c, [
+    ["b1", "Szef", "masz", "Szef pyta:"], ["b1", "masz", null, "<span class='k'>masz CV?</span>"],
+    ["b2", "Jakie", "Mam", "Jakie CV?"], ["b2", "Mam", "i", "Mam C+E"], ["b2", "i", null, "i pięć lat w trasie."],
+    ["b3", "Worda", "otwierałam", "Worda ostatnio"], ["b3", "otwierałam", null, "otwierałam w szkole."],
+    ["b4", "Na", "uzupełniasz", "Na Go4Driver"], ["b4", "uzupełniasz", "a", "uzupełniasz profil,"], ["b4", "a", null, "a <span class='k'>CV robi się samo.</span>"],
+    ["b5", "Załóż", "CV", "Załóż <span class='k'>darmowe konto.</span>"], ["b5", "CV", null, "CV masz od ręki."],
+  ], true);
+  // wiadomość od szefa (widoczna od klatki 0) i odznaki
+  const note = el(c, "note", `<div class="ic">💬</div><div class="tx"><b>Szef <em>teraz</em></b><span>Masz CV? Wyślij do jutra.</span></div>`);
+  const pills = el(c, "pills", `<div class="pill2">Prawo jazdy <b>C+E</b></div><div class="pill2"><b>5 lat</b> w trasie</div>`);
+  const [p1, p2] = [...pills.children];
+  const shots = G4.shots(L, SHOTS);
+  G4.whooshes(SHOTS);
+  sfx("CLICK", tC, -16); sfx("CLICK", tPiec, -16); sfx("CLICK", tOtw, -16);
+  FIELDS.forEach((f, i) => sfx("CLICK", tUzu + i * .3, -18)); sfx("POP", tSamo, -16);
+  sfx("CLICK", tZal + .35, -12); sfx("CLICK", tKonto + .2, -12); sfx("IMP_SOFT", tEnd, -14);
+  const soft = (e, t0, t1) => { const u = E.out(clamp((t - t0) / .35)), v = clamp((t1 - t) / .3); e.style.opacity = Math.min(u, v); e.style.transform = `translateY(${((1 - u) * 18).toFixed(1)}px)`; };
+  let t = 0;
+  return (lt, tt) => {
+    t = tt;
+    const s = shots(t);
+    const fs = s.cur === "face" ? s.shot : (s.prev === "face" ? s.prevShot : null);
+    if (fs) L.face.draw(t, fs[2].z, fs[0]);
+    // wiadomość od szefa: od klatki 0, znika przy „Jakie CV?”
+    const nv = clamp((tJak - t) / .35); note.style.opacity = t < tJak ? 1 : nv; note.style.transform = `translateY(${((1 - (t < tJak ? 1 : nv)) * -30).toFixed(1)}px)`;
+    if (t >= tC - .05) soft(p1, tC - .05, tWorda - .2); else p1.style.opacity = 0;
+    if (t >= tPiec - .05) soft(p2, tPiec - .05, tWorda - .2); else p2.style.opacity = 0;
+    // stary edytor: migający kursor, okno „nie odpowiada”
+    cur.style.opacity = Math.floor(t * 2) % 2 ? 0 : 1;
+    if (t >= tOtw) soft(dlg, tOtw, 99); else dlg.style.opacity = 0;
+    // profil wypełnia się sam, potem CV wjeżdża od dołu
+    fls.forEach((f, i) => f.classList.toggle("on", t >= tUzu + i * .3));
+    cvdoc.style.transform = `translateY(${((1 - E.out(clamp((t - tCV + .1) / .6))) * 1500).toFixed(0)}px)`;
+    lns.forEach((x, i) => { x.style.opacity = clamp((t - tCV - .3 - i * .18) / .25); });
+    pdf.style.opacity = clamp((t - tSamo) / .3);
+    // rejestracja
+    L.reg.cam(0, G4.keyAt([[tZal - .2, 1], [tEnd, 1.05]], t, 2.5)[0], 378);
+    gK.style.opacity = clamp((t - tZal - .4) / .25); gZ.style.opacity = clamp((t - tKonto - .25) / .25); tapK(t); tapZ(t);
+    L.end.upd(t, tEnd + .2);
+    caps(t, tEnd);
+  };
+}, { push: 0, cut: true });
+boot("go4d11.m4a");
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>ad15 4:5 · 15 rolek z osobą (AI UGC), aktualności</title>
+<script>window.F45 = true;</script>
+<link rel="stylesheet" href="../lib/c4y.css">
+<style>
+/* paczka / lista (jak ad12) */
+.pk { position: absolute; left: 80px; width: 920px; padding: 26px 32px; background: #fff; border: 5px solid var(--ink); border-radius: 32px; box-shadow: 12px 12px 0 var(--ink); display: flex; gap: 26px; align-items: center; }
+.pk > i { flex: 0 0 110px; height: 110px; border-radius: 28px; background: var(--yel); border: 4px solid var(--ink); display: flex; align-items: center; justify-content: center; font-style: normal; font-size: 62px; }
+.pk b { display: block; font: 900 58px/1.05 var(--d); letter-spacing: -.03em; }
+.pk span { display: block; margin-top: 10px; font: 700 34px/1.25 var(--b); color: var(--mut); }
+.pk .chips { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+.pk .chips em { font-style: normal; padding: 10px 14px; border-radius: 14px; background: #fff; border: 4px solid var(--ink); font: 800 28px/1 var(--b); opacity: 0; }
+.pk .ok { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; padding: 10px 18px; border-radius: 14px; background: var(--yel); border: 4px solid var(--ink); font: 800 30px/1 var(--b); opacity: 0; }
+.pk .ok svg { width: 30px; height: 30px; }
+/* pieczęć gwarancji (jak ad12) */
+.seal { position: absolute; left: 140px; top: 560px; width: 800px; height: 800px; border-radius: 50%; background: var(--yel); border: 10px solid var(--ink); box-shadow: 16px 16px 0 var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.seal .ring { position: absolute; inset: 28px; border-radius: 50%; border: 5px dashed var(--ink); }
+.seal b { font: 900 150px/1 var(--d); letter-spacing: -.05em; }
+.seal span { margin-top: 18px; font: 900 56px/1.1 var(--d); letter-spacing: -.03em; }
+.seal small { margin-top: 22px; font: 800 36px/1 var(--b); }
+.pill.c { left: 50%; }
+/* jedna osoba w różnych miejscach: kafelki ze sceną */
+.tile { position: absolute; width: 300px; height: 440px; border-radius: 26px; overflow: hidden; border: 5px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); background: #222; }
+.tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tile em { position: absolute; left: 10px; bottom: 10px; padding: 6px 12px; border-radius: 10px; background: #fff; border: 3px solid var(--ink); font: 800 24px/1 var(--b); font-style: normal; }
+.count { position: absolute; left: 0; right: 0; top: 1530px; text-align: center; font: 900 120px/1 var(--d); letter-spacing: -.04em; }
+.count small { font: 900 56px/1 var(--d); }
+/* przekreślona kamera */
+.bigcam { position: absolute; left: 0; right: 0; height: 520px; display: flex; align-items: center; justify-content: center; }
+.bigcam span { font-size: 360px; line-height: 1; }
+.bigcam i { position: absolute; width: 520px; height: 520px; left: 50%; top: 0; margin-left: -260px; opacity: 0; }
+.bigcam i svg { width: 100%; height: 100%; }
+/* cena twórcy */
+.price { position: absolute; left: 0; right: 0; text-align: center; font: 900 64px/1 var(--d); letter-spacing: -.03em; }
+.price s { text-decoration-color: var(--red); text-decoration-thickness: 8px; }
+</style>
+<link rel="stylesheet" href="../lib/c4y45.css">
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/c4yad.js"></script>
+<script>
+// ---------- S1: HOOK (ten sam bohater co w zwycięskich reklamach 03 i 12, scena C studio)
+HookScene("ad15_hook", "WŁAŚCICIELE FIRM", [["Właścicielu <b>firmy</b>,", ""], ["<b>15 rolek</b><br>z osobą", "pietna"], ["w <b>miesiącu</b>.", "miesiacu"]], { sfx: "pietna", oy: 220 });
+
+// ---------- S2: nikt nie staje przed kamerą
+scene(LS("b2"), LS("b3"), (c) => {
+  const h = H(c, "Nikt z Twojej firmy<br>nie staje [przed kamerą].", 130, 82);
+  const big = at(el(c, "bigcam", `<span>🎥</span><i>${ICO.x}</i>`), null, 350);
+  const cam = at(el(c, "strike", `<span class="x">${ICO.x}</span><span>Nagrywanie się</span>`), null, 900);
+  const tN = W("b2", "nikt"), tK = W("b2", "kamera");
+  sfx("IMP_SOFT", LS("b2") + .05, -12); sfx("POP", tN, -12); sfx("POP", tK, -12);
+  return (lt, t) => { markIn(h, t, tK - .05); pop(big, t, LS("b2") + .1, .6, 2.4, .55); big.querySelector("i").style.opacity = t >= tK ? 1 : 0; pop(cam, t, tK, .6, 2.6, .55, "rotate(-1.5deg)"); };
+});
+
+// ---------- S3: rolka z człowiekiem działa, ale pracownicy nie chcą, a twórca kosztuje
+scene(LS("b3"), LS("b4"), (c) => {
+  const h = H(c, "Rolka z człowiekiem<br>[działa lepiej].", 130, 96);
+  const S = [["Pracownicy nie chcą się nagrywać", "pracownicy", 500], ["Twórca: kilkaset zł za 1 rolkę", "tworca", 710]]
+    .map(([w, k, y]) => { const e = at(el(c, "strike", `<span class="x">${ICO.x}</span><span>${w}</span>`), null, y); e.t0 = W("b3", k); sfx("POP", e.t0, -12); return e; });
+  S.forEach(e => { e.style.fontSize = "46px"; });
+  const pr = at(el(c, "price", `1 rolka z twórcą: <s>kilkaset zł</s>`), null, 960);
+  const tL = W("b3", "lepiej"), tK = W("b3", "kilkaset");
+  sfx("IMP_SOFT", tK, -12);
+  return (lt, t) => { markIn(h, t, tL - .05); S.forEach((e, i) => pop(e, t, e.t0 - .05, .6, 2.6, .55, `rotate(${[-1.5, 1][i]}deg)`)); rise(pr, t, tK, 60, .35); };
+});
+
+// ---------- S4: tworzymy osobę dla Twojej marki: ta sama osoba w różnych miejscach, licznik do 15
+scene(LS("b4"), LS("b5"), (c) => {
+  const h = H(c, "Osoba dla<br>[Twojej marki].", 70, 96);
+  el(c, "aitag dk", "AI");
+  const SC = [["A", "Ulica"], ["B", "Biuro"], ["C", "Studio"], ["D", "Metro"], ["E", "Korytarz"], ["F", "Auto"]];
+  const tiles = SC.map(([s, n], i) => { const e = at(el(c, "tile", `<img src="../postac/${s}/still.png"><em>${n}</em>`), 120 + (i % 3) * 295, 300 + Math.floor(i / 3) * 396, 250, 366); e.r = [-3, 2, -1, 2, -2, 3][i]; return e; });
+  const cnt = el(c, "count", `<span class="n">0</span> <small>rolek w miesiącu</small>`); cnt.style.top = "1110px"; const n = cnt.querySelector(".n");
+  const tO = W("b4", "osobe"), tP = W("b4", "pietna"), tR = W("b4", "roznych");
+  sfx("WH_SPAWN", tO - .2, -18); sfx("IMP_SOFT", tP, -12);
+  tiles.forEach((e, i) => { e.t0 = (i === 0 ? tO : tR) + (i === 0 ? 0 : (i - 1) * .09); sfx("POP", e.t0, -16); });
+  return (lt, t) => {
+    markIn(h, t, W("b4", "marki") - .05);
+    tiles.forEach(e => pop(e, t, e.t0, .5, 2.4, .55, `rotate(${e.r}deg)`));
+    n.textContent = Math.round(15 * P(t, tP, tP + .7, E.out)); cnt.style.opacity = t < tP - .05 ? 0 : 1;
+  };
+});
+
+// ---------- S5: plan tematów do akceptacji + paczka co tydzień z godzinami
+scene(LS("b5"), LS("b6"), (c) => {
+  const h = H(c, "Co [dostajesz]:", 130, 110);
+  const P1 = at(el(c, "pk", `<i>📋</i><div><b>Plan tematów</b><span>z Twojej branży, przed startem</span><div class="ok">${ICO.chk}Akceptuję</div></div>`), null, 330);
+  const P2 = at(el(c, "pk", `<i>📦</i><div><b>Paczka co tydzień</b><span>gotowe rolki z godzinami publikacji</span><div class="chips"><em>Pon 12:00</em><em>Śr 18:30</em><em>Pt 19:00</em></div></div>`), null, 680);
+  const ok = P1.querySelector(".ok"), ch = [...P2.querySelectorAll("em")];
+  const tPl = W("b5", "plan"), tA = W("b5", "akceptacji"), tT = W("b5", "tydzien"), tG = W("b5", "godzinami");
+  [[P1, tPl], [P2, tT]].forEach(([p, t0]) => { p.t0 = t0 - .1; sfx("POP", t0, -12); });
+  sfx("DING", tA + .1, -12); ch.forEach((e, i) => sfx("POP", tG + i * .12, -17));
+  return (lt, t) => {
+    markIn(h, t, LS("b5") + .2);
+    [P1, P2].forEach((p, i) => pop(p, t, p.t0, .6, 2.4, .55, `rotate(${[-1, 1][i]}deg)`));
+    ok.style.opacity = t >= tA + .1 ? 1 : 0; ok.style.transform = t >= tA + .1 ? `scale(${mix(1.3, 1, spring(t - tA - .1, 3, .6)).toFixed(3)})` : "";
+    ch.forEach((e, i) => { const t0 = tG + i * .12; e.style.opacity = t >= t0 ? 1 : 0; e.style.transform = t >= t0 ? `scale(${mix(1.3, 1, spring(t - t0, 3, .6)).toFixed(3)})` : ""; });
+  };
+});
+
+// ---------- S6: gwarancja wykonania: 15 rolek albo następny miesiąc za darmo
+scene(LS("b6"), LS("b7"), (c) => {
+  const top = at(el(c, "pill w0 c", "Gwarancja wykonania"), null, 110);
+  const seal = el(c, "seal", `<div class="ring"></div><b>15 rolek</b><span>albo następny<br>miesiąc za darmo</span><small>★ ★ ★ ★ ★</small>`); seal.style.top = "250px";
+  const tD = W("b6", "dowieziemy"), tN = W("b6", "nastepny"), tDa = W("b6", "darmo");
+  const sp = seal.querySelector("span");
+  sfx("IMP_BASS", tD + .05, -12); sfx("IMP_SOFT", tDa, -10);
+  return (lt, t) => {
+    pop(top, t, LS("b6") + .05, .6, 2.4, .55, "translateX(-50%)");
+    pop(seal, t, tD - .05, 1.8, 2.6, .45, `rotate(${(-8 + 4 * Math.sin(t * 2)).toFixed(2)}deg)`);
+    sp.style.opacity = t >= tN - .1 ? 1 : 0;
+    seal.querySelector(".ring").style.transform = `rotate(${(t * 20).toFixed(1)}deg)`;
+  };
+});
+
+// ---------- S7: CTA
+CtaScene("b7");
+boot("ad15.m4a");
+</script>
+</body>
+</html>

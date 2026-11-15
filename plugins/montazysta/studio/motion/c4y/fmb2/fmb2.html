@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>fmb2 · Falownik stoi w południe</title>
+<link rel="stylesheet" href="../lib/prem.css">
+<link rel="stylesheet" href="../zsz/zs.css">
+<link rel="stylesheet" href="../oze/oze.css">
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/prem.js"></script>
+<script src="../zsz/zs.js"></script>
+<script src="../oze/oze.js"></script>
+<script>
+const DUR = T.DUR, S = k => LS(k);
+const BLUR = "blur(14px) brightness(.5) saturate(.8)";
+const tWyl = W("b1", "wylaczal"), tStoi = W("b2", "stoi"), tFal = W("b4", "falownik"), tCzy2 = W("b6", "czy", 1), tObs = W("b6", "obsluzy");
+const tZero = W("b7", "zero"), tOdz = W("b8", "oddzwonimy");
+const SHOTS = [
+  { k: "clip", s: "oz_panel2", a: 0, b: S("b2") - .04, z0: 1.1, f: "blur(6px) brightness(.85)" },
+  { k: "clip", s: "oz_sky", a: S("b2") - .04, b: S("b3") - .04, z0: 1.08, whip: 1 },
+  { k: "clip", s: "oz_panel3", a: S("b3") - .04, b: S("b4") - .04, z0: 1.12 },
+  { k: "clip", s: "oz_tower", a: S("b4") - .04, b: tFal - .06, z0: 1.08, whip: -1 },
+  { k: "clip", s: "oz_tower", a: tFal - .06, b: S("b5") - .04, z0: 1.12, f: BLUR, fade: .25, off: 1.5 },
+  { k: "clip", s: "oz_tykocin", a: S("b5") - .04, b: S("b6") - .04, z0: 1.12, push: .08, whip: 1 },
+  { k: "clip", s: "oz_panel4", a: S("b6") - .04, b: S("b7") - .04, z0: 1.1, f: BLUR, fade: .3 },
+  { k: "clip", s: "oz_zakop", a: S("b7") - .04, b: S("b8") - .04, z0: 1.1, whip: 1 },
+  { k: "clip", s: "oz_zakop", a: S("b8") - .04, b: DUR + 1, z0: 1.1, f: BLUR, fade: .35, off: 1 },
+];
+const HI = /^(falownik|południe|słońca|stoi|awaria|napięcie|sieci|zabezpiecza|instalator|przyczynę|magazyn|sens|obsłuży|0|zł|formularz|wiosną|oddzwonimy)/i;
+scene(0, DUR + 1, (c) => {
+  const draw = zsShots(c, SHOTS);
+  el(c, "p-shade");
+  const inv = ozInverter(c), inv2 = ozInverter(c), inv3 = ozInverter(c), bat = ozBattery(c);
+  const zero = ozBadge(c, "AUDYT 0 ZŁ", 300);
+  const ph = ozPhone(c);
+  premCaps(c, ozWords(zsWords({}, [["zero", "złotych", "0 zł"]])), { chars: 14, hi: w => HI.test(w) ? OY : null });
+  sfx("IMP_SOFT", tWyl, -15); sfx("POP", tFal, -15); sfx("IMP_SOFT", tFal + .5, -16); sfx("POP", S("b6"), -16); sfx("POP", tCzy2, -15);
+  sfx("DING", S("b5") + .2, -15); sfx("IMP_SOFT", tStoi, -16); sfx("POP", tOdz - .15, -14); sfx("DING", tOdz + .45, -16);
+  return (lt, t) => {
+    draw(t);
+    inv(t, -.6, S("b2") - .04, tWyl);                       // hak: falownik od klatki 0, gaśnie na „wyłączał”
+    inv2(t, tFal - .06, S("b5") - .04, tFal + .45);        // „falownik się wtedy zabezpiecza”
+    bat(t, S("b6") + .2, tCzy2 - .05, tCzy2 - .2);
+    if (t >= tCzy2 - .05 && t < S("b7") - .04) inv2(t, tCzy2 - .05, S("b7") - .04, 1e9, tObs - .1);
+    zero(t, S("b5") + .2, S("b6") - .04);
+    inv3(t, tStoi - .35, S("b3") - .04, tStoi);
+    ph(t, S("b8") - .3, DUR + 1, tOdz - .15, tOdz + .45);
+    premCapsUpdate(t);
+  };
+}, { push: 0, cut: true });
+boot("fmb2.m4a");
+</script>
+</body>
+</html>

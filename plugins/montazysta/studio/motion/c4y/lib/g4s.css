@@ -1,0 +1,88 @@
+/* NOWY STYL rolek klientów Clips4you (wzór go4d8, zaakceptowany 2026-10-05): warstwy ujęć na cały ekran, napisy nad nimi */
+.layer { position: absolute; inset: 0; overflow: hidden; visibility: hidden; will-change: transform; }
+.face canvas { position: absolute; inset: 0; }
+.cap { top: 1380px; z-index: 10; }
+.cap.r .k { color: #ff5a4f; }
+.hook, .sticker, .flash, .badge, .bubble, .counter { z-index: 10; }
+.flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
+.dark { background: #0c0d10; }
+
+/* telefon: połączenie przychodzące / wychodzące */
+.call { background: radial-gradient(120% 80% at 50% 20%, #2c3e50 0%, #0d1117 70%); }
+.call .who { position: absolute; left: 0; right: 0; top: 330px; text-align: center; color: #fff; }
+.call .av { width: 260px; height: 260px; margin: 0 auto 50px; border-radius: 50%; background: #5d6d7e; display: grid; place-items: center; font: 900 150px/1 var(--d); color: #dfe6ec; }
+.call .nm { font: 600 72px/1.15 var(--b); padding: 0 60px; }
+.call .nr { font: 500 44px/1.4 var(--b); color: #aab4bd; margin-top: 14px; font-variant-numeric: tabular-nums; }
+.call .ring { position: absolute; left: 50%; top: 460px; width: 260px; height: 260px; margin-left: -130px; border-radius: 50%; border: 6px solid rgba(255,255,255,.5); }
+.call .bt { position: absolute; bottom: 260px; width: 190px; height: 190px; border-radius: 50%; display: grid; place-items: center; }
+.call .bt svg { width: 90px; height: 90px; }
+.call .no { left: 170px; background: #ff3b30; } .call .yes { right: 170px; background: #34c759; }
+.call .end1 { left: 445px; background: #ff3b30; }
+
+/* prawdziwa strona klienta (zrzut z telefonu, 375 px = 1080 px) */
+.site { background: #0c0d10; }
+.site .pg { position: absolute; left: 0; top: 0; width: 1080px; transform-origin: 0 0; }
+.site .pg img { display: block; width: 1080px; }
+.glow { position: absolute; border-radius: 26px; border: 8px solid var(--lime); box-shadow: 0 0 40px rgba(200,242,58,.6); opacity: 0; }
+.tap { position: absolute; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%; background: rgba(255,255,255,.55); border: 5px solid #fff; opacity: 0; }
+.rip { position: absolute; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%; border: 6px solid #fff; opacity: 0; }
+.stamp { position: absolute; left: 0; width: 1080px; text-align: center; top: 1080px; opacity: 0; z-index: 9; }
+.stamp b { display: inline-block; padding: 26px 56px; border-radius: 34px; background: var(--lime); color: #0c0d10; font: 900 140px/1 var(--d); letter-spacing: -.04em; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+
+/* arkusz wyboru jak w telefonie (select strony) */
+.sheet { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 50px 90px; border-radius: 50px 50px 0 0; background: #17181d; border-top: 3px solid #2a2c33; box-shadow: 0 -30px 80px rgba(0,0,0,.6); transform: translateY(110%); z-index: 8; }
+.sheet .st { font: 800 40px/1 var(--b); color: #9a9ca6; text-transform: uppercase; letter-spacing: .08em; margin: 6px 0 26px; }
+.sheet .op { display: flex; align-items: center; gap: 28px; height: 116px; padding: 0 30px; border-radius: 26px; font: 700 50px/1 var(--b); color: #e8e9ee; }
+.sheet .op i { flex: 0 0 56px; height: 56px; border-radius: 50%; border: 5px solid #4a4d57; }
+.sheet .op.on { background: rgba(200,242,58,.12); color: #fff; }
+.sheet .op.on i { border-color: var(--lime); background: radial-gradient(circle, var(--lime) 0 45%, transparent 50%); }
+.dimbg { position: absolute; inset: 0; background: rgba(0,0,0,.55); opacity: 0; z-index: 7; }
+
+/* odznaki / dymki / licznik */
+.badge { position: absolute; left: 50%; padding: 26px 46px; border-radius: 30px; background: var(--lime); color: #0c0d10; font: 900 78px/1 var(--d); letter-spacing: -.03em; white-space: nowrap; box-shadow: 0 24px 60px rgba(0,0,0,.45); opacity: 0; }
+.badge.w { background: #fff; }
+.bubble { position: absolute; left: 70px; right: 70px; top: 300px; padding: 30px 36px; border-radius: 40px; background: rgba(255,255,255,.97); box-shadow: 0 30px 70px rgba(0,0,0,.35); opacity: 0; }
+.bubble .fr { font: 800 34px/1 var(--b); color: #6b777d; margin-bottom: 14px; }
+.bubble .ms { font: 700 54px/1.2 var(--b); color: #111; }
+.counter { position: absolute; left: 0; right: 0; top: 330px; text-align: center; font: 900 260px/1 var(--d); letter-spacing: -.04em; color: #fff; -webkit-text-stroke: 16px #000; paint-order: stroke fill; opacity: 0; font-variant-numeric: tabular-nums; }
+.grain { position: absolute; inset: 0; opacity: 0; z-index: 6; mix-blend-mode: multiply;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,.07) 0 2px, transparent 2px 5px), radial-gradient(120% 90% at 50% 50%, transparent 55%, rgba(40,20,0,.55)); }
+
+/* ogłoszenie na zwykłym portalu (białe, bez marki) */
+.wad { background: #f2f4f5; }
+.wad .bar { position: absolute; left: 0; right: 0; top: 0; height: 200px; background: #fff; box-shadow: 0 2px 0 #e3e6e8; z-index: 2; }
+.wad .bar b { position: absolute; left: 50px; top: 70px; font: 900 54px/1 var(--d); color: #1d2a30; letter-spacing: -.02em; }
+.wad .doc { position: absolute; left: 0; right: 0; top: 0; transform-origin: 540px 0; }
+.wad .box { position: absolute; left: 40px; right: 40px; background: #fff; border-radius: 30px; padding: 40px 46px; box-shadow: 0 6px 24px rgba(0,0,0,.08); }
+.wad .h { font: 900 74px/1.1 var(--d); color: #1d2a30; letter-spacing: -.02em; }
+.wad .shout { font: 900 96px/1.05 var(--d); color: #e5383b; letter-spacing: -.03em; margin-top: 24px; }
+.wad .row { display: flex; justify-content: space-between; gap: 20px; padding: 30px 0; border-top: 3px solid #eef0f1; font: 600 46px/1.2 var(--b); color: #4a565c; }
+.wad .row b { color: #1d2a30; text-align: right; }
+.wad .row.hi { background: #fff4f3; border-radius: 20px; padding: 30px 22px; margin: 0 -22px; }
+.wad .row.hi b { color: #e5383b; }
+.wad .job { font: 600 50px/1.2 var(--b); color: #1d2a30; padding: 34px 0; border-top: 3px solid #eef0f1; display: flex; justify-content: space-between; }
+.wad .job span { color: #8a959b; font-size: 40px; }
+.wad .job.lost { color: #1d2a30; font-weight: 800; }
+
+/* STYL SPOKOJNY (profesjonalny, wyważony; go4d10, go4d11): napisy w dolnej części, zwykła wielkość liter, bez obrysu */
+.ccap { position: absolute; left: 70px; right: 70px; top: 1490px; text-align: center; z-index: 10; opacity: 0; }
+.ccap span { display: inline-block; padding: 18px 34px; border-radius: 24px; background: rgba(12,13,16,.62); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  font: 700 58px/1.25 var(--b); letter-spacing: -.01em; color: #fff; box-shadow: 0 14px 40px rgba(0,0,0,.25); }
+.ccap .k { color: var(--lime); }
+.label { position: absolute; left: 70px; top: 150px; padding: 14px 26px; border-radius: 18px; background: rgba(255,255,255,.94); color: #111; font: 800 40px/1 var(--b); z-index: 10; box-shadow: 0 10px 30px rgba(0,0,0,.2); }
+.label i { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: var(--lime); margin-right: 14px; vertical-align: middle; box-shadow: 0 0 0 4px #111; }
+.note { position: absolute; left: 50px; right: 50px; top: 120px; padding: 30px 34px; border-radius: 38px; background: rgba(245,245,247,.96); box-shadow: 0 24px 60px rgba(0,0,0,.3); z-index: 10; opacity: 0; display: flex; gap: 26px; align-items: center; }
+.note .ic { flex: 0 0 96px; height: 96px; border-radius: 24px; background: #34c759; display: grid; place-items: center; font-size: 56px; }
+.note .tx b { display: block; font: 800 38px/1.2 var(--b); color: #111; }
+.note .tx span { display: block; font: 500 44px/1.25 var(--b); color: #222; margin-top: 6px; }
+.note .tx em { font-style: normal; font: 500 30px/1 var(--b); color: #8a8a93; float: right; }
+.pills { position: absolute; left: 70px; right: 70px; top: 1180px; display: flex; flex-direction: column; align-items: center; gap: 22px; z-index: 9; }
+.pill2 { padding: 22px 38px; border-radius: 26px; background: rgba(12,13,16,.72); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border: 3px solid rgba(200,242,58,.7);
+  color: #fff; font: 800 54px/1 var(--b); opacity: 0; }
+.pill2 b { color: var(--lime); }
+.yr { position: absolute; left: 70px; right: 70px; top: 1150px; text-align: center; z-index: 9; opacity: 0; }
+.yr span { display: inline-block; padding: 26px 44px; border-radius: 30px; background: rgba(245,240,228,.95); color: #3b2f1e; font: 800 56px/1.2 var(--b); box-shadow: 0 20px 50px rgba(0,0,0,.3); }
+.yr b { font: 900 96px/1 var(--d); font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+
+/* znaczek AI na ujęciach z postacią AI (jak w reklamach c4yad.js): małe, ledwo widoczne kółko w prawym górnym rogu */
+.aitag { position: absolute; right: 64px; top: 84px; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.26); color: rgba(255,255,255,.5); font: 800 15px/37px var(--b); text-align: center; letter-spacing: .02em; z-index: 60; }

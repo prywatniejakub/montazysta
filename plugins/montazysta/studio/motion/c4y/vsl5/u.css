@@ -1,0 +1,8 @@
+/* VSL v5: dodatki do vsl2.css */
+.vc .cn { position: absolute; left: 40px; top: 34px; display: flex; align-items: center; gap: 14px; font: 800 32px/1 var(--font); letter-spacing: -.03em; color: var(--ink); white-space: nowrap; }
+.vc .cn.y span { width: 46px; height: 46px; border-radius: 13px; background: var(--y); display: flex; align-items: center; justify-content: center; }
+.vc .cn.y span svg { width: 26px; height: 26px; }
+.prf.ring2 { box-shadow: 0 0 0 7px var(--y), 0 34px 80px rgba(17,17,19,.14); }
+.hlb { position: absolute; border-radius: 12px; border: 5px solid var(--y2); box-shadow: 0 0 0 9999px rgba(17,17,19,.18), 0 0 30px rgba(255,191,0,.6); pointer-events: none; opacity: 0; }
+.phx .aic { position: absolute; right: 8%; top: 7%; width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.55); color: rgba(255,255,255,.7);
+  font: 700 11px/27px var(--font); text-align: center; z-index: 4; }

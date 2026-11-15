@@ -1,0 +1,29 @@
+/* prem.css: próbki Clips4you w stylu zatwierdzonym (napisy max 3 słowa jak w long.js/SaaS, pełny kadr, licznik kasynowy). Od 2026-10-05. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+#stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+.scene { position: absolute; inset: 0; will-change: transform, opacity; }
+.cam { position: absolute; inset: 0; transform-origin: 50% 45%; }
+.p-full { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+.p-shade { position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 52%, rgba(0,0,0,.42) 78%, rgba(0,0,0,.55) 100%); }
+/* napisy: max 3 słowa, wielkie litery, biały z grubym czarnym obrysem, wyskok */
+.p-cap { position: absolute; left: 0; right: 0; top: 1190px; height: 0; z-index: 40; pointer-events: none; }
+.p-cap .w { position: absolute; left: 50px; right: 50px; top: -70px; height: 140px; display: flex; align-items: center; justify-content: center; opacity: 0;
+  font: 900 92px/1 "Segoe UI Black", "Montserrat", sans-serif; text-transform: uppercase; color: #fff; white-space: nowrap; letter-spacing: -.01em;
+  -webkit-text-stroke: 18px #000; paint-order: stroke fill; text-shadow: 0 9px 0 rgba(0,0,0,.55); }
+.p-cap .w span { margin-right: .24em; } .p-cap .w span:last-child { margin-right: 0; }
+/* hak: 1-2 linijki u góry, widoczny od klatki 0 */
+.p-hook { position: absolute; left: 50px; right: 50px; top: 230px; text-align: center; z-index: 41; opacity: 0;
+  font: 900 104px/1.02 "Segoe UI Black", "Montserrat", sans-serif; text-transform: uppercase; color: #fff; letter-spacing: -.015em;
+  -webkit-text-stroke: 20px #000; paint-order: stroke fill; text-shadow: 0 10px 0 rgba(0,0,0,.5); }
+/* duża liczba (licznik kasynowy) */
+.p-big { position: absolute; left: 0; right: 0; text-align: center; z-index: 39; opacity: 0; pointer-events: none; }
+.p-big .lab { display: block; margin-top: 10px; font: 900 60px/1 "Segoe UI Black", sans-serif; text-transform: uppercase; color: #fff; -webkit-text-stroke: 12px #000; paint-order: stroke fill; }
+.d-odo { display: inline-flex; align-items: flex-start; font: 900 260px/1 "Segoe UI Black", sans-serif; letter-spacing: -.02em; white-space: nowrap;
+  -webkit-text-stroke: 22px #000; paint-order: stroke fill; filter: drop-shadow(0 12px 0 rgba(0,0,0,.5)); }
+.d-dg { display: inline-block; height: 1em; overflow: hidden; width: .6em; text-align: center; position: relative; }
+.d-st { display: block; line-height: 1em; }
+.d-cm { width: .2em; text-align: center; }
+.d-fx { margin-right: .04em; } .d-sfx { margin-left: .14em; font-size: .42em; align-self: flex-end; margin-bottom: .14em; }
+.p-flash { position: absolute; inset: 0; background: #fff; opacity: 0; z-index: 60; pointer-events: none; }

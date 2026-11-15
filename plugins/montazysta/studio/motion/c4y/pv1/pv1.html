@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>pv1 · Obiecali 0 zł za prąd?</title>
+<link rel="stylesheet" href="../lib/fonts/fonts.css">
+<link rel="stylesheet" href="../lib/prem.css">
+<link rel="stylesheet" href="../pv/pv.css">
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/prem.js"></script>
+<script>window.ACC = "#2f8cff";</script>
+<script src="../pv/pv.js"></script>
+<script>
+const DUR = T.DUR, S = k => LS(k);
+const END = "blur(6px) brightness(.58) saturate(1.05)";
+const tAle = W("a3", "Ale"), tFal = W("a4", "falownik"), tBrud = W("a4", "zabrudzone"), tPrz = W("a4", "uszkodzony"), tTar = W("a4", "zła"), tKaz = W("a4", "Każda");
+const tPrzy = W("a5", "Przyjeżdżamy"), tMow = W("a5", "mówimy"), tKlik = W("a6", "Kliknij");
+const LED = { x: 785, y: 1514, r: 70, c: "#ff2a1f" };
+const SHOTS = [
+  { k: "img", s: "dom_zachod", a: 0, b: S("a2") - .04, z0: 1.0, z1: 1.1, ay0: .7, ay1: .64 },
+  { k: "clip", s: "pv_bill", a: S("a2") - .04, b: S("a3") - .04, z0: 1.06, z1: 1.12, tr: "whip" },
+  { k: "img", s: "panele_makro", a: S("a3") - .04, b: tAle - .04, z0: 1.02, z1: 1.14, ax0: .62, ax1: .5, tr: "fade", fd: .35 },
+  { k: "img", s: "falownik", a: tAle - .04, b: S("a4") - .04, z0: 1.04, z1: 1.14, ax0: .4, glow: [{ ...LED, pulse: .5, o: .8 }] },
+  { k: "img", s: "falownik", a: S("a4") - .04, b: tBrud - .04, z0: 1.25, z1: 1.32, ax0: .45, ay0: .55, glow: [{ ...LED, r: 90, blink: 2.2 }] },
+  { k: "img", s: "panele_brud", a: tBrud - .04, b: tPrz - .04, z0: 1.08, z1: 1.18, ax0: .4, ax1: .55 },
+  { k: "img", s: "przewody", a: tPrz - .04, b: tTar - .04, z0: 1.1, z1: 1.2, ax0: .6, glow: [{ x: 900, y: 1700, r: 160, c: "#ff5a1a", pulse: .8, o: .55 }] },
+  { k: "clip", s: "pv_bill", a: tTar - .04, b: tKaz - .04, z0: 1.22, z1: 1.3, ax0: .35, off: 2.5 },
+  { k: "img", s: "dom_wieczor", a: tKaz - .04, b: S("a5") - .04, z0: 1.16, z1: 1.26, ax0: .38, ay0: .62, f: "brightness(.82) saturate(.9)", tr: "fade", fd: .3 },
+  { k: "clip", s: "pv_meter", a: S("a5") - .04, b: tPrzy - .04, z0: 1.04, z1: 1.12, tr: "whip" },
+  { k: "clip", s: "pv_hands", a: tPrzy - .04, b: tMow - .04, z0: 1.04, z1: 1.12 },
+  { k: "clip", s: "pv_meter", a: tMow - .04, b: S("a6") - .04, z0: 1.24, z1: 1.32, ax0: .62, ay0: .45, off: 2.4 },
+  { k: "img", s: "dom_wieczor", a: S("a6") - .04, b: DUR + 1, z0: 1.08, z1: 1.16, ay0: .62, f: END, tr: "fade", fd: .45 },
+];
+scene(0, DUR + 1, (c) => {
+  const draw = pvShots(c, SHOTS);
+  el(c, "pv-shade"); el(c, "pv-vig");
+  const bill = pvBill(c, 486.2);
+  const tag = pvTag(c, "BŁĄD");
+  const cards = pvCards(c, [
+    { a: 0, z: S("a2") - .04, now: 1, t: "OBIECALI *0 *ZŁ / ZA PRĄD?", size: 108, y: 280 },
+    { a: S("a2") - .04, z: S("a3") - .04, t: "A RACHUNKI DALEJ / *PRZYCHODZĄ?", size: 88, y: 290 },
+    { a: S("a3"), z: S("a4") - .04, t: "Instalacja może / produkować *mniej, / niż powinna", cls: "s", y: 260 },
+    { a: tFal - .1, z: S("a5") - .04, t: "FALOWNIK • BRUD • / PRZEWODY • TARYFA", cls: "s", size: 84, y: 290, times: [tFal, tBrud - .08, tBrud, tPrz - .08, tPrz, tTar - .08, tTar] },
+    { a: S("a5") - .04, z: S("a6") - .04, t: "*BEZPŁATNA / ANALIZA / INSTALACJI", size: 100, y: 260 },
+  ]);
+  const end = pvEnd(c, "Umów analizę instalacji");
+  sfx("IMP_SOFT", S("a5") - .04, -22); sfx("CLICK", tKlik, -18);
+  return (lt, t) => {
+    draw(t); cards(t);
+    bill(t, S("a2") + .25, S("a3") - .04);
+    tag(t, S("a4") + .15, tBrud - .04, SHOTS[4], LED.x, LED.y);
+    end(t, S("a6") - .04, tKlik);
+  };
+}, { push: 0, cut: true });
+boot("pv1.m4a");
+</script>
+</body>
+</html>

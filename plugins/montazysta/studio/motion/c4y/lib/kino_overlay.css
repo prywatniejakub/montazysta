@@ -1,0 +1,9 @@
+/* Clips4you KINO: nakładki na filmowy wstęp, te same co w reklamach (lib/c4yad.js): żółte wołanie, napisy, znaczek AI */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Montserrat:wght@700;800;900&display=block&subset=latin-ext");
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: transparent; -webkit-font-smoothing: antialiased; }
+.callout { position: absolute; left: 50%; top: 104px; transform: translateX(-50%); padding: 20px 36px; background: #ffd60a; border: 6px solid #111113; border-radius: 24px; box-shadow: 10px 10px 0 #111113; font: 900 66px/1 "Montserrat", sans-serif; letter-spacing: -.03em; white-space: nowrap; color: #111113; }
+.callout svg { width: 56px; height: 56px; vertical-align: -8px; margin-left: 10px; }
+.cap { position: absolute; left: 50px; right: 50px; top: 1330px; text-align: center; font: 900 92px/1.04 "Montserrat", sans-serif; letter-spacing: -.035em; color: #fff; text-shadow: 0 7px 0 #111113, 0 0 30px rgba(0,0,0,.5); }
+.cap b { color: #ffd60a; }
+.aitag { position: absolute; right: 64px; top: 84px; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.26); color: rgba(255,255,255,.5); font: 800 15px/37px "Inter", sans-serif; text-align: center; letter-spacing: .02em; }

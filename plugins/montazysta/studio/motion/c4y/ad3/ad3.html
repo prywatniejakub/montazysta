@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>ad3 · 30 rolek albo miesiąc gratis</title>
+<link rel="stylesheet" href="../lib/c4y.css">
+<style>
+.guar { position: absolute; left: 90px; right: 90px; padding: 44px 40px; text-align: center; background: var(--yel); }
+.guar small { display: inline-block; padding: 8px 18px; border-radius: 12px; background: var(--ink); color: var(--yel); font: 900 32px/1 var(--d); letter-spacing: .12em; }
+.guar b { display: block; margin-top: 26px; font: 900 76px/1.05 var(--d); letter-spacing: -.035em; }
+.step { position: absolute; left: 70px; top: 180px; display: flex; align-items: center; gap: 26px; }
+.step i { width: 110px; height: 110px; border-radius: 30px; background: var(--ink); color: var(--yel); display: flex; align-items: center; justify-content: center; font: 900 70px/1 var(--d); font-style: normal; }
+.step .h { position: static; text-align: left; }
+.days { position: absolute; display: flex; gap: 12px; }
+.days i { width: 124px; height: 150px; border-radius: 22px; background: #fff; border: 4px solid var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; font: 800 30px var(--b); font-style: normal; }
+.days i span { width: 56px; height: 56px; border-radius: 50%; background: var(--yel); border: 4px solid var(--ink); display: flex; align-items: center; justify-content: center; }
+.days i span svg { width: 30px; height: 30px; }
+.pill2 { position: absolute; display: inline-flex; align-items: center; gap: 12px; height: 80px; padding: 0 28px; border-radius: 20px; background: #fff; border: 4px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); font: 800 38px/1 var(--d); white-space: nowrap; }
+.pill2 svg { width: 36px; height: 36px; }
+</style>
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/c4yad.js"></script>
+<script>
+const stepHead = (c, n, src, size = 84) => { const s = el(c, "step", `<i>${n}</i>`); const h = H(s, src, 0, size); h.style.position = "static"; return { s, h }; };
+
+// ---------- S1: HOOK (postać, scena C)
+HookScene("ad3_hook", "WŁAŚCICIELE FIRM", [["Właścicielu <b>firmy</b>,", ""], ["<b>30 rolek</b><br>w miesiącu", "trzydzie"], ["albo następny miesiąc<br><b>za darmo.</b>", "albo"]], { sfx: "albo" });
+
+// ---------- S2: gwarancja + „oto jak to działa”
+scene(LS("b2"), LS("b3"), (c) => {
+  const h = H(c, "Tak, dobrze<br>[słyszysz].", 200, 110);
+  const g = at(el(c, "card guar", `<small>GWARANCJA</small><b>30 rolek w miesiącu<br>albo następny<br>miesiąc gratis</b>`), null, 560);
+  const how = at(el(c, "pill", `Oto jak to działa ↓`), 290, 1330);
+  const tO = W("b2", "Oto");
+  sfx("IMP_SOFT", LS("b2") + .1, -10); sfx("POP", tO, -10);
+  return (lt, t) => { markIn(h, t, W("b2", "slyszysz") - .05); pop(g, t, LS("b2") + .05, .7, 2.2, .55, "rotate(-1.5deg)"); pop(how, t, tO, .4, 2.6, .5); };
+});
+
+// ---------- S3: krok 1, godzina rozmowy, pytania klientów
+scene(LS("b3"), LS("b4"), (c) => {
+  const { h } = stepHead(c, "1", "Godzina<br>[rozmowy].", 96);
+  const tl = Timeline(c, 70, 470, 940, "rozmowa_z_Toba.mp4", "60:00");
+  const qs = [["Ile to kosztuje?", 90, 860, "Pytamy"], ["Jak długo to trwa?", 260, 1090, "pytaja"], ["Od czego zacząć?", 130, 1320, "klienci"]]
+    .map(([q, x, y, w]) => { const b = at(el(c, "bub", q), x, y); b.t0 = W("b3", w); sfx("POP", b.t0, -12); return b; });
+  return (lt, t) => { markIn(h, t, W("b3", "godzine") - .05); rise(tl, t, LS("b3") + .1, 80, .4); tlUpdate(tl, t, LS("b3"), []); qs.forEach(b => pop(b, t, b.t0, .5, 2.6, .55)); };
+});
+
+// ---------- S4: krok 2, 30 rolek z napisami i montażem
+scene(LS("b4"), LS("b5"), (c) => {
+  const { h } = stepHead(c, "2", "[30 rolek]<br>z tej rozmowy.", 90);
+  const names = ["sa02", "ico2", "banana", "yomi1", "sa01", "pointab"];
+  const t30 = W("b4", "trzydzie");
+  const ph = names.map((n, i) => Phone(c, n, 125 + (i % 3) * 290, 480 + Math.floor(i / 3) * 450, 230, `<span class="ok">${ICO.chk}</span>`));
+  ph.forEach((p, i) => sfx("POP", t30 + .06 * i, -17));
+  const p1 = at(el(c, "pill2", `${ICO.chk}napisy`), 150, 1440), p2 = at(el(c, "pill2", `${ICO.chk}montaż`), 590, 1440);
+  const tN = W("b4", "napisami"), tM = W("b4", "montazem");
+  return (lt, t) => { markIn(h, t, t30 - .05); ph.forEach((p, i) => { pop(p, t, t30 + .06 * i, .5); play(p, t, t30); }); pop(p1, t, tN, .4, 2.6, .5, "rotate(-2deg)"); pop(p2, t, tM, .4, 2.6, .5, "rotate(2deg)"); };
+});
+
+// ---------- S5: krok 3, publikujemy codziennie
+scene(LS("b5"), LS("b6"), (c) => {
+  const { h } = stepHead(c, "3", "Publikujemy<br>[codziennie].", 90);
+  const pl = at(el(c, "plat", ["Instagram", "TikTok", "Facebook", "YouTube"].map(x => `<span>${x}</span>`).join("")), 0, 560);
+  const ph = Phone(c, "ico1", 330, 700, 420);
+  const dn = ["Pon", "Wt", "Śr", "Czw", "Pt", "Sob", "Nd"];
+  const days = at(el(c, "days", dn.map(d => `<i>${d}<span>${ICO.chk}</span></i>`).join("")), 40, 1500);
+  const tC = W("b5", "Codziennie");
+  return (lt, t) => {
+    markIn(h, t, tC - .05); rise(pl, t, W("b5", "publikujemy"), 50, .3); pop(ph, t, LS("b5") + .15, .7); play(ph, t, LS("b5"));
+    [...days.children].forEach((d, i) => { const s = d.querySelector("span"), ti = tC + i * .1; s.style.opacity = t < ti ? 0 : 1; s.style.transform = `scale(${t < ti ? 0 : mix(.4, 1, spring(t - ti, 3, .5))})`; });
+  };
+});
+
+// ---------- S6: Ty tylko odpowiadasz (rozmowa w dymkach)
+scene(LS("b6"), LS("b7"), (c) => {
+  const h = H(c, "Ty tylko<br>[odpowiadasz].", 190, 110);
+  const q = at(el(c, "bub", "O co klienci pytają Cię najczęściej?"), 90, 600);
+  const a = at(el(c, "bub me", "Najczęściej o to, ile to kosztuje i jak długo trwa…"), 200, 860);
+  const done = at(el(c, "pill", `${ICO.chk}To wszystko.`), 330, 1300);
+  const tW = W("b6", "wszystko"), tA = W("b6", "odpowiadasz");
+  sfx("POP", LS("b6") + .1, -12); sfx("POP", tA + .2, -12); sfx("DING", tW, -10);
+  return (lt, t) => { markIn(h, t, tA - .05); pop(q, t, LS("b6") + .1, .5, 2.6, .55); pop(a, t, tA + .2, .5, 2.6, .55); pop(done, t, tW - .1, .4, 2.6, .5, "rotate(-2deg)"); };
+});
+
+// ---------- S7: CTA
+CtaScene("b7");
+boot("ad3.m4a");
+</script>
+</body>
+</html>

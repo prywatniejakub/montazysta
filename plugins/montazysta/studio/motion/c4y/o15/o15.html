@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>o15 · pozyskujemy klientów rolkami</title>
+<link rel="stylesheet" href="../lib/c4y.css">
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/c4yad.js"></script>
+<script src="../lib/c4yodb.js"></script>
+<script>
+// ---------- S1: HOOK (ten sam bohater co w 03, 12 i 15, scena C studio)
+HookScene("o15_hook", "WŁAŚCICIELE FIRM", [["Właścicielu <b>firmy</b>,", ""], ["pozyskujemy<br><b>klientów rolkami.</b>", "pozysk"], ["<b>Takimi jak ta.</b>", "Takimi"]], { sfx: "Takimi" });
+
+// ---------- S2: podział ról: Ty prowadzisz firmę, my rolki i reklamy
+scene(LS("b2"), LS("b3"), (c) => {
+  const h = H(c, "Ty prowadzisz<br>[firmę].", 220, 110);
+  const r = el(c, "roles"); r.style.top = "640px";
+  const r1 = el(r, "role", `<i>🧑‍💼</i>Ty: firma i klienci`), r2 = el(r, "role", `<i>🎬</i>My: rolki i reklamy`);
+  const tF = W("b2", "firme"), tR = W("b2", "rolki");
+  sfx("POP", tF, -12); sfx("POP", tR, -12);
+  return (lt, t) => { markIn(h, t, tF - .05); pop(r1, t, tF, .5, 2.6, .55, "rotate(-1.5deg)"); pop(r2, t, tR, .5, 2.6, .55, "rotate(1.5deg)"); };
+});
+
+// ---------- S3: ludzie wybierają firmy, które znają; rolka = szybki sposób, żeby poznali Twoją
+scene(LS("b3"), LS("b4"), (c) => {
+  const h = H(c, "Ludzie wybierają<br>[znane firmy].", 200, 100);
+  const ph = [["ico2", 140, 560, -6], ["sa02", 415, 520, 0], ["ico1", 690, 560, 6]].map(([n, x, y, r]) => { const p = Phone(c, n, x, y, 250); p.r = r; return p; });
+  const pz = at(el(c, "pill2", `${ICO.chk}poznają Twoją firmę`), null, 1110); pz.style.left = "50%";
+  const tL = W("b3", "Ludzie"), tZ = W("b3", "znaja"), tP = W("b3", "poznali");
+  ph.forEach((p, i) => sfx("POP", tL + .08 * i, -17)); sfx("POP", tP, -12);
+  return (lt, t) => { markIn(h, t, tZ - .05); ph.forEach((p, i) => { pop(p, t, tL + .08 * i, .6, 2.2, .55, `rotate(${p.r}deg)`); play(p, t, tL); }); pop(pz, t, tP, .4, 2.6, .5, "translateX(-50%) rotate(-1.5deg)"); };
+});
+
+// ---------- S4: pokazujemy Twoje rolki tym, którzy szukają tego, co robisz
+scene(LS("b4"), LS("b5"), (c) => {
+  const h = H(c, "Pokazujemy je<br>[tym, którzy szukają].", 200, 92);
+  const ph = AdPhone(c, "ico1", 310, 520, 460);
+  const p1 = at(el(c, "pill2", `${ICO.chk}Twoja rolka jako reklama`), null, 1390); p1.style.left = "50%";
+  const tS = W("b4", "szukaja");
+  sfx("WH_SPAWN", LS("b4"), -18); sfx("POP", tS, -12);
+  return (lt, t) => { markIn(h, t, tS - .05); pop(ph, t, LS("b4") + .1, .7); play(ph, t, LS("b4")); pop(p1, t, tS, .4, 2.6, .5, "translateX(-50%) rotate(-1.5deg)"); };
+});
+
+// ---------- S5: zgłoszenie od razu w telefonie, Ty dzwonisz
+scene(LS("b5"), LS("b6"), (c) => {
+  const h = H(c, "Zgłoszenie<br>[od razu] u Ciebie.", 190, 100);
+  const n1 = Notif(c, 520, "Marek", "Nowak Nieruchomości · chce&nbsp;porozmawiać");
+  const a = at(el(c, "bub me", "Dzień dobry, dzwonię w sprawie Pana zgłoszenia."), 200, 880);
+  const q = at(el(c, "bub", "Tak, widziałem Pana rolkę. Kiedy możemy się spotkać?"), 90, 1180);
+  const tK = W("b5", "Kto"), tD = W("b5", "dzwonisz"), tR = W("b5", "rozmawiasz");
+  sfx("DING", tK + .1, -10); sfx("POP", tD, -12); sfx("POP", tR + .1, -12);
+  return (lt, t) => {
+    markIn(h, t, W("b5", "od") - .05);
+    const k = t < tK + .1 ? 0 : Math.min(1, spring(t - tK - .1, 2.4, .7)); n1.style.opacity = t < tK + .1 ? 0 : 1; n1.style.transform = `translateY(${((1 - k) * -120).toFixed(1)}px) rotate(-1deg)`;
+    pop(a, t, tD, .5, 2.6, .55); pop(q, t, tR + .1, .5, 2.6, .55);
+  };
+});
+
+// ---------- S6: pieczęć gwarancji: minimum 30 spotkań albo pracujemy bez opłat
+SealScene("b6", "trzydzie", "albo", "albo pracujemy<br>bez opłat");
+
+// ---------- S7: CTA
+CtaScene("b7");
+boot("o15.m4a");
+</script>
+</body>
+</html>

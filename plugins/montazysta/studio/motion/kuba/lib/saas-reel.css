@@ -1,0 +1,19 @@
+/* vertical reels (1080x1920) on saas.js: load after saas.css, set window.FRAME = {w: 1080, h: 1920} */
+html, body, #stage { width: 1080px; height: 1920px; }
+.sc { width: 1080px; height: 1920px; }
+.cam { left: 540px; top: 960px; }
+.hl { width: 1080px; }
+.sub { width: 1080px; }
+.clouds { width: 1080px; height: 1920px; }
+.clouds canvas { left: -700px; top: -300px; width: 2480px; height: 2520px; }
+.hud { right: 40px; top: 60px; }
+.card5 { position: absolute; width: 900px; height: 600px; left: -450px; top: -300px; border-radius: 34px; overflow: hidden; background: linear-gradient(180deg,#151a2e,#0d1020); border: 1px solid rgba(255,255,255,.14); box-shadow: 0 60px 140px rgba(0,0,0,.6); }
+.card5 .hd { height: 84px; display: flex; align-items: center; gap: 16px; padding: 0 30px; border-bottom: 1px solid rgba(255,255,255,.08); font: 700 30px var(--font); color: #fff; }
+.card5 .hd .ic { width: 50px; height: 50px; border-radius: 14px; display: flex; align-items: center; justify-content: center; }
+.card5 .hd .ic svg { width: 28px; height: 28px; }
+.aic { position: absolute; left: 0; top: 0; width: 64px; height: 64px; z-index: 40; filter: drop-shadow(0 0 18px rgba(170,140,255,.9)); }
+.rphone { position: absolute; border-radius: 70px; background: #05060a; box-shadow: 0 60px 140px rgba(0,0,0,.6), 0 0 0 3px rgba(255,255,255,.16), inset 0 0 0 3px #1d2233; overflow: hidden; }
+.rphone .scr { position: absolute; left: 16px; top: 16px; right: 16px; bottom: 16px; border-radius: 56px; overflow: hidden; }
+.tile6 { position: absolute; width: 190px; height: 190px; border-radius: 44px; display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 20px 50px rgba(0,0,0,.45), inset 0 2px 0 rgba(255,255,255,.3); }
+.tile6 svg { width: 84px; height: 84px; }
+.tile6 .ck { position: absolute; right: -10px; top: -10px; width: 60px; height: 60px; border-radius: 50%; background: #3ddc97; color: #04150b; padding: 12px; box-shadow: 0 0 24px rgba(61,220,151,.8); }

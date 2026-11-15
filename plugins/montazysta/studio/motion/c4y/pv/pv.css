@@ -1,0 +1,132 @@
+/* pv.css: rolki PV dla klienta OZE (2026-11-14). Wymaga prem.css + lib/fonts/fonts.css. Akcent rolki w --acc (pv.js). */
+:root { --acc: #2f8cff; --ink: #0d1420; }
+.pv-cv { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+/* cień pod napisy (u góry) + winieta filmowa */
+.pv-shade { position: absolute; inset: 0; z-index: 8; pointer-events: none;
+  background: linear-gradient(180deg, rgba(4,8,16,.72) 0%, rgba(4,8,16,.5) 24%, rgba(4,8,16,0) 46%, rgba(4,8,16,0) 70%, rgba(4,8,16,.35) 100%); }
+.pv-vig { position: absolute; inset: 0; z-index: 9; pointer-events: none; background: radial-gradient(ellipse 85% 70% at 50% 48%, rgba(0,0,0,0) 55%, rgba(0,0,0,.42) 100%); }
+.pv-dim { position: absolute; inset: 0; z-index: 10; pointer-events: none; background: rgba(4,8,16,.5); opacity: 0; }
+
+/* plansze: grube białe litery, akcent w kolorze rolki, max 5-6 słów */
+.pv-cards { position: absolute; inset: 0; z-index: 40; pointer-events: none; }
+.pv-card { position: absolute; left: 64px; right: 64px; text-align: center; opacity: 0; transform-origin: 50% 50%;
+  font: 800 96px/1.04 "Archivo", "Segoe UI Black", sans-serif; letter-spacing: -.012em; color: #fff; text-transform: uppercase;
+  -webkit-text-stroke: 9px rgba(6,10,20,.62); paint-order: stroke fill;
+  text-shadow: 0 4px 0 rgba(0,0,0,.3), 0 10px 44px rgba(0,0,0,.7); }
+.pv-card.s { text-transform: none; font-size: 84px; line-height: 1.08; letter-spacing: -.01em; }
+.pv-card.mid { font-size: 128px; line-height: 1.0; }
+.pv-card .w { display: inline-block; white-space: pre; will-change: transform, opacity; }
+.pv-card .ac { display: inline-block; color: var(--acc); }
+.pv-card .ac .w { color: var(--acc); }
+body.acbox .pv-card .ac { color: #fff; background: var(--acc); padding: .02em .16em .06em; border-radius: .14em; margin: 0 .04em;
+  box-shadow: 0 14px 40px rgba(0,0,0,.35); text-shadow: none; -webkit-text-stroke: 0; }
+body.acbox .pv-card .ac .w { color: #fff; }
+.pv-card .dot { color: var(--acc); padding: 0 .12em; }
+
+/* plakietka przy elemencie kadru (np. BŁĄD przy diodzie falownika) */
+.pv-tag { position: absolute; z-index: 30; padding: 16px 28px; border-radius: 18px; white-space: nowrap; opacity: 0; transform-origin: 0 50%;
+  font: 800 46px/1 "Archivo", sans-serif; letter-spacing: .02em; color: #fff; background: #e5372f; box-shadow: 0 14px 40px rgba(0,0,0,.45); }
+.pv-tag::before { content: ""; position: absolute; left: -16px; top: 50%; margin-top: -14px; border: 14px solid transparent; border-right: 18px solid #e5372f; border-left: 0; }
+.pv-tag.g { background: #18b866; } .pv-tag.g::before { border-right-color: #18b866; }
+.pv-tag.l { transform-origin: 100% 50%; } .pv-tag.l::before { left: auto; right: -16px; border-right: 0; border-left: 18px solid #e5372f; }
+
+/* karta rachunku */
+.pv-bill { position: absolute; left: 50%; top: 1010px; width: 700px; margin-left: -350px; z-index: 31; padding: 40px 48px 44px; border-radius: 34px; opacity: 0;
+  background: #fff; color: var(--ink); box-shadow: 0 34px 90px rgba(0,0,0,.55); font-family: "Inter", sans-serif; }
+.pv-bill .hd { display: flex; justify-content: space-between; align-items: center; font: 700 34px/1 "Inter", sans-serif; color: #5d6675; }
+.pv-bill .hd i { font-style: normal; font: 800 26px/1 "Inter", sans-serif; color: #fff; background: #e5372f; padding: 10px 16px; border-radius: 10px; letter-spacing: .04em; }
+.pv-bill .ln { height: 14px; margin-top: 22px; border-radius: 7px; background: #e9edf2; }
+.pv-bill .ln.b { width: 70%; }
+.pv-bill .lb { margin-top: 34px; font: 700 32px/1 "Inter", sans-serif; color: #5d6675; }
+.pv-bill .v { margin-top: 12px; font: 800 104px/1 "Archivo", sans-serif; color: #e5372f; letter-spacing: -.02em; white-space: nowrap; }
+
+/* telefon z aplikacją falownika i połączeniem */
+.pv-ph { position: absolute; left: 50%; top: 560px; width: 620px; height: 1180px; margin-left: -310px; z-index: 32; border-radius: 86px; padding: 22px; opacity: 0;
+  background: linear-gradient(160deg, #2a3140, #0b0f16 40%); box-shadow: 0 60px 140px rgba(0,0,0,.65), 0 0 0 3px #3a4352, inset 0 0 0 2px rgba(255,255,255,.06); }
+.pv-ph .sc { position: relative; width: 100%; height: 100%; border-radius: 66px; overflow: hidden; background: #f4f6f9; font-family: "Inter", sans-serif; color: var(--ink); }
+.pv-ph .isl { position: absolute; left: 50%; top: 22px; width: 170px; height: 48px; margin-left: -85px; border-radius: 30px; background: #000; z-index: 5; }
+.pv-ph .sb { display: flex; justify-content: space-between; padding: 30px 52px 0; font: 700 28px/1 "Inter", sans-serif; }
+.pv-ph .app { position: absolute; inset: 96px 0 0; padding: 0 40px; }
+.pv-ph .ti { font: 800 50px/1.1 "Archivo", sans-serif; letter-spacing: -.01em; }
+.pv-ph .su { margin-top: 10px; font: 600 28px/1.2 "Inter", sans-serif; color: #6a7383; display: flex; align-items: center; gap: 12px; }
+.pv-ph .su i { width: 16px; height: 16px; border-radius: 50%; background: #18b866; display: inline-block; }
+.pv-ph .tabs { display: flex; gap: 10px; margin-top: 28px; padding: 8px; border-radius: 22px; background: #e6eaf0; }
+.pv-ph .tabs span { flex: 1; text-align: center; padding: 18px 0; border-radius: 16px; font: 700 28px/1 "Inter", sans-serif; color: #6a7383; }
+.pv-ph .tabs span.on { background: #fff; color: var(--ink); box-shadow: 0 4px 14px rgba(0,0,0,.08); }
+.pv-ph .big { position: relative; margin-top: 28px; padding: 32px 36px 28px; border-radius: 34px; background: #fff; box-shadow: 0 10px 30px rgba(10,20,40,.08); }
+.pv-ph .big small { display: block; font: 700 30px/1 "Inter", sans-serif; color: #6a7383; }
+.pv-ph .big .vv { display: flex; align-items: baseline; gap: 14px; margin-top: 16px; }
+.pv-ph .big b { font: 800 104px/1 "Archivo", sans-serif; letter-spacing: -.03em; color: var(--ink); white-space: nowrap; }
+.pv-ph .big b.bad { color: #e5372f; }
+.pv-ph .big em { font: 700 40px/1 "Inter", sans-serif; font-style: normal; color: #6a7383; }
+.pv-ph .big .pc { position: absolute; right: 28px; top: 26px; padding: 10px 16px; border-radius: 14px; background: #fde6e4; color: #e5372f; font: 800 34px/1 "Archivo", sans-serif; opacity: 0; }
+.pv-ph .ch { position: relative; display: flex; align-items: flex-end; gap: 12px; height: 200px; margin-top: 26px; padding: 0 6px; border-bottom: 3px solid #dfe4ea; }
+.pv-ph .ch .c { position: relative; flex: 1; height: 100%; }
+.pv-ph .ch .c .gh { position: absolute; left: 0; right: 0; bottom: 0; border-radius: 10px 10px 0 0; border: 3px dashed #b9c3d0; border-bottom: 0; }
+.pv-ph .ch .c .re { position: absolute; left: 4px; right: 4px; bottom: 0; border-radius: 8px 8px 0 0; background: #f3a32b; }
+.pv-ph .ch .c .re.bad { background: #e5372f; }
+.pv-ph .lg { display: flex; gap: 30px; margin-top: 18px; font: 600 24px/1 "Inter", sans-serif; color: #6a7383; }
+.pv-ph .lg i { display: inline-block; width: 22px; height: 22px; border-radius: 6px; margin-right: 10px; vertical-align: -4px; }
+.pv-ph .lg .a i { background: #f3a32b; } .pv-ph .lg .b i { border: 3px dashed #b9c3d0; }
+.pv-ph .norm { margin-top: 22px; padding: 22px 26px; border-radius: 24px; background: #e3f6ec; color: #0d6b3b; white-space: nowrap; font: 700 30px/1.2 "Inter", sans-serif; opacity: 0; }
+.pv-ph .norm b { font-weight: 800; }
+.pv-ph .warn { margin-top: 18px; padding: 22px 26px; border-radius: 24px; background: #fde6e4; color: #c62a22; font: 800 34px/1.1 "Inter", sans-serif; opacity: 0; }
+/* ekran połączenia */
+.pv-ph .call { position: absolute; inset: 0; background: linear-gradient(180deg, #27324a 0%, #0f1625 100%); color: #fff; text-align: center; opacity: 0; }
+.pv-ph .call .av { width: 210px; height: 210px; margin: 210px auto 0; border-radius: 50%; background: #3b4a66; display: flex; align-items: center; justify-content: center; }
+.pv-ph .call .av svg { width: 110px; height: 110px; }
+.pv-ph .call .nm { margin-top: 46px; font: 800 60px/1.1 "Archivo", sans-serif; }
+.pv-ph .call .st { margin-top: 18px; font: 600 36px/1 "Inter", sans-serif; color: #a9b6cc; }
+.pv-ph .call .st.bad { color: #ff6b5f; font-weight: 800; }
+.pv-ph .call .end { position: absolute; left: 50%; bottom: 120px; width: 150px; height: 150px; margin-left: -75px; border-radius: 50%; background: #e5372f;
+  display: flex; align-items: center; justify-content: center; }
+.pv-ph .call .end svg { width: 76px; height: 76px; transform: rotate(135deg); }
+.pv-ph .log { position: absolute; inset: 0; background: #f4f6f9; padding: 120px 36px 0; opacity: 0; }
+.pv-ph .log h5 { font: 800 50px/1 "Archivo", sans-serif; color: var(--ink); margin-bottom: 30px; }
+.pv-ph .log .r { display: flex; align-items: center; gap: 18px; padding: 26px 22px; margin-bottom: 18px; border-radius: 26px; background: #fff; box-shadow: 0 8px 24px rgba(10,20,40,.07); opacity: 0; }
+.pv-ph .log .r i { flex: none; width: 76px; height: 76px; border-radius: 50%; background: #fde6e4; display: flex; align-items: center; justify-content: center; }
+.pv-ph .log .r i svg { width: 40px; height: 40px; }
+.pv-ph .log .r > div { flex: 1; min-width: 0; }
+.pv-ph .log .r b { display: block; white-space: nowrap; font: 800 32px/1.1 "Inter", sans-serif; color: #c62a22; }
+.pv-ph .log .r small { display: block; margin-top: 8px; white-space: nowrap; font: 600 23px/1.1 "Inter", sans-serif; color: #6a7383; }
+.pv-ph .log .r em { flex: none; white-space: nowrap; font: 700 24px/1 "Inter", sans-serif; font-style: normal; color: #6a7383; }
+
+/* dzień / wieczór: dwie karty na ekranie dzielonym */
+.pv-dn { position: absolute; left: 60px; right: 60px; z-index: 33; display: flex; align-items: center; gap: 28px; padding: 30px 36px; border-radius: 36px; opacity: 0;
+  background: rgba(255,255,255,.96); color: var(--ink); box-shadow: 0 28px 70px rgba(0,0,0,.45); }
+.pv-dn .ic { flex: none; width: 124px; height: 124px; border-radius: 30px; display: flex; align-items: center; justify-content: center; }
+.pv-dn .ic svg { width: 84px; height: 84px; }
+.pv-dn.sun .ic { background: #fff1c7; } .pv-dn.moon .ic { background: #1d2a44; }
+.pv-dn .tx b { display: block; font: 800 40px/1 "Archivo", sans-serif; letter-spacing: .04em; color: #6a7383; }
+.pv-dn .tx strong { display: block; margin-top: 10px; font: 800 66px/1 "Archivo", sans-serif; letter-spacing: -.01em; white-space: nowrap; }
+.pv-dn .tx strong u { text-decoration: none; color: var(--acc); }
+.pv-dn .ar { margin-left: auto; flex: none; width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff;
+  font: 800 64px/1 "Archivo", sans-serif; }
+.pv-dn.sun .ar { background: #18b866; } .pv-dn.moon .ar { background: #e5372f; }
+.pv-dn .ar small { font-size: 34px; }
+
+/* chip magazynu przy diodzie */
+.pv-bat { position: absolute; z-index: 30; display: flex; align-items: center; gap: 18px; padding: 18px 26px; border-radius: 26px; opacity: 0;
+  background: rgba(10,16,26,.82); border: 2px solid rgba(255,255,255,.16); color: #fff; font: 800 40px/1 "Archivo", sans-serif; box-shadow: 0 18px 50px rgba(0,0,0,.5); }
+.pv-bat .cell { position: relative; width: 92px; height: 46px; border: 5px solid #fff; border-radius: 10px; }
+.pv-bat .cell::after { content: ""; position: absolute; right: -14px; top: 10px; width: 8px; height: 16px; border-radius: 0 4px 4px 0; background: #fff; }
+.pv-bat .cell i { position: absolute; left: 4px; top: 4px; bottom: 4px; border-radius: 4px; background: #2fe08a; }
+
+/* plansza końcowa: przycisk + pasek Google */
+.pv-end { position: absolute; inset: 0; z-index: 45; opacity: 0; }
+.pv-end .btn { position: absolute; left: 50%; top: 760px; transform: translateX(-50%); display: flex; align-items: center; gap: 26px; padding: 44px 58px; border-radius: 999px; white-space: nowrap;
+  background: var(--acc); color: #fff; font: 800 60px/1 "Archivo", sans-serif; letter-spacing: -.01em; box-shadow: 0 30px 80px rgba(0,0,0,.5), 0 0 0 8px rgba(255,255,255,.14); }
+body.acdark .pv-end .btn { color: #1a1406; }
+.pv-end .btn i { font-style: normal; display: flex; align-items: center; justify-content: center; width: 84px; height: 84px; border-radius: 50%; background: rgba(255,255,255,.22); font-size: 54px; }
+.pv-end .bar { position: absolute; left: 50%; top: 990px; width: 820px; margin-left: -410px; border-radius: 34px; background: rgba(255,255,255,.97); color: var(--ink);
+  box-shadow: 0 26px 70px rgba(0,0,0,.45); overflow: hidden; }
+.pv-end .bar .r1 { display: flex; align-items: center; justify-content: center; gap: 18px; padding: 30px 30px 24px; font: 800 52px/1 "Archivo", sans-serif; }
+.pv-end .bar .r1 svg { width: 58px; height: 58px; }
+.pv-end .bar .r1 .gn { font: 700 46px/1 "Inter", sans-serif; color: #3c4350; }
+.pv-end .bar .r1 .st { color: #fbbc04; letter-spacing: .04em; font-size: 50px; }
+.pv-end .bar .r2 { padding: 22px 30px 28px; border-top: 2px solid #e6eaf0; text-align: center; font: 700 42px/1 "Inter", sans-serif; color: #3c4350; }
+.pv-end .bar .r2 b { font: 800 46px/1 "Archivo", sans-serif; color: var(--ink); }
+.pv-end .arr { position: absolute; left: 50%; top: 1300px; width: 110px; height: 110px; margin-left: -55px; border-radius: 50%; border: 5px solid rgba(255,255,255,.85);
+  display: flex; align-items: center; justify-content: center; color: #fff; font: 800 64px/1 "Archivo", sans-serif; }
+.pv-end .tap { position: absolute; left: 50%; top: 830px; width: 130px; height: 130px; margin-left: 150px; border-radius: 50%; background: rgba(255,255,255,.5); border: 6px solid #fff; opacity: 0; }
+.pv-ph.day .norm { display: none; }

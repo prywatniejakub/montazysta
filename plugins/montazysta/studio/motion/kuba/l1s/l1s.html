@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lesson 1 — What's possible (SaaS style, 16:9)</title>
+<link rel="stylesheet" href="../../lib/base.css">
+<link rel="stylesheet" href="../lib/saas.css">
+</head>
+<body>
+<script src="timing.js"></script>
+<script>window.ASSETS = "../../assets/"; window.CLIPBASE = "../kits/studio/clips";</script>
+<script src="../../lib/engine.js"></script>
+<script src="../lib/saas.js"></script>
+<script>
+aurora([[0, .3, .2, .05, .05, .4], [13.4, .35, .3, .1, .1, .45], [18.2, .3, .25, .05, .05, .35], [23.5, .85, .75, .28, .2, .55], [28, .5, .5, .1, .1, .5], [46, .55, .45, .15, .05, .5],
+  [65.3, .6, .55, .2, .15, .5], [85.4, .85, .75, .3, .3, .55], [90.9, .5, .65, .1, .22, .45], [101.7, .45, .45, .1, .1, .45], [112.4, .55, .7, .15, .25, .5], [129, .6, .5, .2, .1, .5],
+  [152, .5, .5, .3, .1, .5], [168, .45, .7, .1, .35, .5], [192.8, .35, .35, .1, .05, .4], [213, .55, .6, .15, .2, .5], [219.5, .6, .6, .2, .2, .5], [241, .15, .12, .03, .03, .25],
+  [247.8, .85, .75, .3, .3, .55]]);
+</script>
+<script>["green", "farm", "zomb", "obsi", "tunnel"].forEach(n => clipImgs(n));  // preload: the renderer waits only for frames it knows</script>
+<script src="sc1.js"></script>
+<script src="sc2.js"></script>
+<script src="sc3.js"></script>
+<script>
+// the "6 businesses" HUD over the scenes: from "one by one" to "combined"
+(() => {
+  const L = el(ROOT, "div", "ab"); Object.assign(L.style, { inset: 0, pointerEvents: "none" });
+  const up = hud(L, "REVEALED", 6), a = W("t1", "One") - .1, z = W("w2", "combined") + 1;
+  window.AFTER = t => { const n = window.REVEALS.filter(r => t >= r).length, s = P(t, a, a + .4) * (1 - P(t, z, z + .4));
+    L.style.display = s > 0 ? "" : "none"; if (s > 0) up(t, n, s); };
+})();
+saasBoot("l1s.m4a");
+</script>
+</body>
+</html>

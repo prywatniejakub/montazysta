@@ -1,0 +1,70 @@
+/* oze.css: rolki OZE (Fundusz Modernizacji Budynków), 2026-11-01. Wymaga prem.css + zs.css. Kolory: słońce #ffc928, zieleń #2fd27a, czerwień #ff4d3d, granat #0f1b2d. */
+.oz-dim { position: absolute; inset: 0; z-index: 8; pointer-events: none; background: rgba(8,14,24,.45); opacity: 0; }
+/* dwie karty cen: lato / zima */
+.oz-price { position: absolute; left: 70px; right: 70px; z-index: 41; display: flex; align-items: center; gap: 34px; padding: 34px 44px; border-radius: 44px;
+  background: rgba(255,255,255,.96); box-shadow: 0 26px 70px rgba(0,0,0,.45); opacity: 0; }
+.oz-price .ic { flex: none; width: 150px; height: 150px; border-radius: 34px; display: flex; align-items: center; justify-content: center;
+  font: 400 104px/1 "Segoe UI Emoji", "Segoe UI Symbol", sans-serif; }
+.oz-price.sun .ic { background: #fff3c4; } .oz-price.snow .ic { background: #e3eeff; }
+.oz-price .tx b { display: block; font: 900 46px/1 "Segoe UI Black", sans-serif; letter-spacing: .04em; color: #6b6f78; }
+.oz-price .tx strong { display: block; margin-top: 12px; font: 900 82px/1 "Segoe UI Black", sans-serif; color: #0f1b2d; white-space: nowrap; }
+.oz-price .ar { margin-left: auto; flex: none; width: 120px; height: 120px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font: 900 86px/1 "Segoe UI Black", sans-serif; color: #fff; }
+.oz-price.sun .ar { background: #ff4d3d; } .oz-price.snow .ar { background: #ff4d3d; }
+/* falownik (grafika, bez marki) */
+.oz-inv { position: absolute; left: 50%; top: 300px; width: 520px; height: 700px; margin-left: -260px; z-index: 41; border-radius: 46px; opacity: 0;
+  background: linear-gradient(160deg, #f4f6f8 0%, #d9dee4 100%); box-shadow: 0 40px 90px rgba(0,0,0,.55), inset 0 -14px 0 rgba(0,0,0,.08); }
+.oz-inv .scr { position: absolute; left: 80px; right: 80px; top: 110px; height: 190px; border-radius: 22px; background: #0f1b2d; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 12px; font: 900 64px/1 "Segoe UI Black", sans-serif; color: #2fd27a; letter-spacing: .03em; }
+.oz-inv .scr small { font: 800 34px/1 "Segoe UI", sans-serif; color: #8fa3bd; letter-spacing: .02em; }
+.oz-inv .scr.bad { color: #ff4d3d; }
+.oz-inv .led { position: absolute; top: 360px; width: 54px; height: 54px; border-radius: 50%; background: #b9c0c8; }
+.oz-inv .led.l1 { left: 150px; } .oz-inv .led.l2 { left: 233px; } .oz-inv .led.l3 { left: 316px; }
+.oz-inv .led.g { background: #2fd27a; box-shadow: 0 0 34px #2fd27a; } .oz-inv .led.r { background: #ff4d3d; box-shadow: 0 0 40px #ff4d3d; }
+.oz-inv .fins { position: absolute; left: 80px; right: 80px; top: 470px; height: 120px; background: repeating-linear-gradient(180deg, #c6ccd3 0 14px, #e4e8ec 14px 28px); border-radius: 14px; }
+.oz-inv .cab { position: absolute; bottom: -90px; width: 26px; height: 120px; border-radius: 10px; background: #1d2633; }
+.oz-inv .cab.c1 { left: 150px; } .oz-inv .cab.c2 { left: 220px; } .oz-inv .cab.c3 { left: 290px; background: #d43a2f; } .oz-inv .cab.c4 { left: 360px; }
+.oz-inv .port { position: absolute; right: -150px; top: 240px; width: 300px; padding: 22px 26px; border-radius: 26px; background: #ff4d3d; color: #fff; text-align: center;
+  font: 900 44px/1.1 "Segoe UI Black", sans-serif; box-shadow: 0 18px 50px rgba(255,77,61,.5); opacity: 0; }
+/* magazyn energii */
+.oz-bat { position: absolute; left: 50%; top: 330px; width: 420px; height: 640px; margin-left: -210px; z-index: 41; opacity: 0; }
+.oz-bat .body { position: absolute; inset: 40px 0 0 0; border-radius: 50px; border: 18px solid #fff; background: rgba(15,27,45,.7); box-shadow: 0 30px 80px rgba(0,0,0,.55); overflow: hidden; }
+.oz-bat .cap { position: absolute; left: 140px; right: 140px; top: 0; height: 52px; border-radius: 18px 18px 0 0; background: #fff; }
+.oz-bat .bar { position: absolute; left: 34px; right: 34px; height: 92px; border-radius: 18px; background: #2fd27a; box-shadow: 0 0 30px rgba(47,210,122,.6); opacity: 0; }
+.oz-bat .bolt { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -40%); font: 400 220px/1 "Segoe UI Emoji", "Segoe UI Symbol", sans-serif; opacity: 0; }
+/* kroki 1-2-3 z podpisem */
+.oz-steps { position: absolute; left: 0; right: 0; top: 330px; z-index: 41; display: flex; flex-direction: column; align-items: center; gap: 30px; opacity: 0; }
+.oz-steps .r { display: flex; align-items: center; gap: 28px; width: 880px; padding: 26px 34px; border-radius: 40px; background: rgba(15,27,45,.72);
+  border: 3px solid rgba(255,255,255,.18); color: rgba(255,255,255,.55); font: 900 54px/1.05 "Segoe UI Black", sans-serif; box-shadow: 0 14px 40px rgba(0,0,0,.4); }
+.oz-steps .r i { flex: none; width: 104px; height: 104px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-style: normal;
+  background: rgba(255,255,255,.15); color: rgba(255,255,255,.7); font: 900 60px/1 "Segoe UI Black", sans-serif; }
+.oz-steps .r.on { background: rgba(255,255,255,.97); color: #0f1b2d; border-color: #fff; }
+.oz-steps .r.on i { background: #ffc928; color: #0f1b2d; }
+.oz-steps .r.done { color: #fff; } .oz-steps .r.done i { background: #2fd27a; color: #0f1b2d; }
+/* plakietka 0 zł / 16 000 zł */
+.oz-badge { position: absolute; left: 50%; z-index: 42; transform: translateX(-50%); padding: 30px 60px; border-radius: 90px; background: #ffc928; color: #0f1b2d;
+  font: 900 120px/1 "Segoe UI Black", sans-serif; white-space: nowrap; letter-spacing: -.01em; box-shadow: 0 24px 70px rgba(255,201,40,.45), 0 0 0 10px rgba(255,255,255,.9); opacity: 0; }
+.oz-badge small { display: block; margin-top: 10px; text-align: center; font: 900 44px/1 "Segoe UI Black", sans-serif; letter-spacing: .03em; }
+.oz-badge.g { background: #2fd27a; box-shadow: 0 24px 70px rgba(47,210,122,.45), 0 0 0 10px rgba(255,255,255,.9); }
+/* telefon z formularzem i połączenie przychodzące (grafika, bez marki) */
+.oz-ph { position: absolute; left: 50%; top: 130px; width: 560px; height: 960px; margin-left: -280px; z-index: 39; border-radius: 80px; background: #0b0f16; padding: 26px;
+  box-shadow: 0 50px 120px rgba(0,0,0,.6), 0 0 0 4px #2a3240; opacity: 0; }
+.oz-ph .sc { position: relative; width: 100%; height: 100%; border-radius: 58px; overflow: hidden; background: #f3f5f8; }
+.oz-ph .f { position: absolute; inset: 0; padding: 90px 40px 0; }
+.oz-ph .f h4 { font: 900 50px/1.1 "Segoe UI Black", sans-serif; color: #0f1b2d; }
+.oz-ph .f p { margin-top: 12px; font: 700 30px/1.25 "Segoe UI", sans-serif; color: #6b6f78; }
+.oz-ph .f .in { margin-top: 30px; height: 100px; border-radius: 22px; background: #fff; border: 3px solid #d8dde4; padding: 0 28px; display: flex; flex-direction: column; justify-content: center; }
+.oz-ph .f .in em { font: 700 24px/1 "Segoe UI", sans-serif; font-style: normal; color: #8a909a; }
+.oz-ph .f .in span { margin-top: 8px; font: 800 36px/1 "Segoe UI", sans-serif; color: #0f1b2d; min-height: 36px; }
+.oz-ph .f .in.on { border-color: #ffc928; }
+.oz-ph .f .btn { margin-top: 40px; height: 120px; border-radius: 30px; background: #ffc928; display: flex; align-items: center; justify-content: center; font: 900 46px/1 "Segoe UI Black", sans-serif; color: #0f1b2d; }
+.oz-ph .f .ok { position: absolute; left: 40px; right: 40px; top: 300px; padding: 50px 30px; border-radius: 36px; background: #2fd27a; color: #0f1b2d; text-align: center; font: 900 50px/1.15 "Segoe UI Black", sans-serif; opacity: 0; }
+.oz-ph .call { position: absolute; inset: 0; background: linear-gradient(180deg, #1b2a40 0%, #0f1b2d 100%); color: #fff; text-align: center; opacity: 0; }
+.oz-ph .call .who { margin-top: 200px; font: 900 62px/1.1 "Segoe UI Black", sans-serif; }
+.oz-ph .call .st { margin-top: 18px; font: 700 34px/1 "Segoe UI", sans-serif; color: #9fb2cc; }
+.oz-tap { position: absolute; z-index: 45; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%; background: rgba(255,255,255,.55); border: 6px solid #fff; opacity: 0; }
+.oz-ph .call .av { width: 220px; height: 220px; margin: 60px auto 0; border-radius: 50%; background: #ffc928; display: flex; align-items: center; justify-content: center; font: 400 130px/1 "Segoe UI Emoji", sans-serif; }
+.oz-ph .call .ring { position: absolute; left: 50%; bottom: 80px; width: 150px; height: 150px; margin-left: 30px; border-radius: 50%; border: 8px solid #2fd27a; }
+.oz-ph .call .dec, .oz-ph .call .acc { position: absolute; bottom: 80px; width: 150px; height: 150px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font: 900 78px/1 "Segoe UI Symbol", "Segoe UI Black", sans-serif; }
+.oz-ph .call .dec { left: 50%; margin-left: -180px; background: #ff4d3d; }
+.oz-ph .call .acc { left: 50%; margin-left: 30px; background: #2fd27a; }

@@ -1,0 +1,3850 @@
+[
+ {
+  "id": "panorama_ED58C19C_FC81_9D45_41D0_6FA794D2F07D",
+  "label": "1_Camera.0750000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0F8E1AAA_1305_C5D3_419F_B67BC3C6C60D",
+  "label": "038_pomieszczenie_chorych",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_04B764BD_130C_4D30_4163_7B00E090C9ED",
+  "label": "018_prysznic_czysty",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED581AD6_FC80_8CC5_41E8_387A2E633CE3",
+  "label": "1_Camera.0820000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_01F0AD6F_1376_88FA_4190_4D494BEB3327",
+  "label": "10_Korytarz_g_u0142_u00f3wny",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_01449F71_1371_88E6_41A1_5DEFAB93AB0D",
+  "label": "korytarz_boczny_dolny_.065",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_110AA88B_0993_26FC_41A2_AA495D842570",
+  "label": "10_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_04663760_130C_4B4F_4186_1257B2C5692E",
+  "label": "101_prysznic_odkazajacy",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_81553D21_8E22_83B6_41DC_74790E826380",
+  "label": "11_Przedsionek",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0155E3DB_1376_7FDA_41A6_454614216D1A",
+  "label": "korytarz_boczny_dolny_.063",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_B802FEBA_A8D2_92BB_41C9_23F1B51665C8",
+  "label": "magazyn_zywnosci.057_v2",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_8145ECCE_8E23_828A_41DE_36D03F87322B",
+  "label": "przelotnia_wejscia_glownego_drzwi_glowne_v1",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0C75A440_1304_CD50_417E_9092E906B3F0",
+  "label": "pomieszczenie_miejsc_do_spania_v2_.092",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_03C639F3_131F_C730_4197_30EF31972D8D",
+  "label": "6_Korytarz_g_u0142_u00f3wny",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_EC13F11E_FC81_9D45_41C7_B2868D53461E",
+  "label": "1_Camera.0370000",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_EC24BE1C_FC81_8745_41EC_001884DFDCF6",
+  "label": "1_Camera.0410000",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_303DBAD9_1305_C570_4184_D9AC08A1E6BF",
+  "label": "przelotnia_ewakuacyjna_v2_.055",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_014AB635_1376_986E_414F_E38DFBB95173",
+  "label": "korytarz_boczny_dolny_.064",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_09D799BA_1304_C733_4195_AF6556C2B12A",
+  "label": "29_korytarz_boczny_gorny",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_046DE926_130D_C4D0_41B2_4903A0F5D8CB",
+  "label": "017_prysznic_odkazajacy",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0CD8DE4F_130C_7D50_41AA_32A64B6FB21F",
+  "label": "pomieszczenie_miejsc_siedzacych_v2_.037",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_062D88A2_1392_886A_4165_D889114CC61C",
+  "label": "020_korytarz_obok_magazynu_lekow_v1",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_98D98CB7_8E21_8299_41D7_184594E73431",
+  "label": "filtrowentylacja_v1.102",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED580687_FC81_8743_41EE_1021A5961F24",
+  "label": "1_Camera.0670000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_07808859_138E_8826_4190_70F827DCD324",
+  "label": "pomieszczenie_rodzin_z_malymi_dziecmi.078",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0C759443_1304_CD50_41A2_B96BB34264CC",
+  "label": "pomieszczenie_miejsc_do_spania_v2_.094",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED58BDE4_FC9F_84C5_41D0_9CE8752ACCD9",
+  "label": "1_Camera.0920000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_024912C7_131C_4551_41AB_6DDE781C7D5F",
+  "label": "5_Korytarz_g_u0142_u00f3wny",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_035E93BB_1304_4B30_41AC_1B205E4493D7",
+  "label": "001_sanitariaty_i_umywalnie_damskie",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_072344CA_1307_CD50_419C_DD1C90A3C83C",
+  "label": "przelotnia_wejscia_glownego_v1_.096",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_1CE8788F_1304_45D1_41AB_F539D95D1B02",
+  "label": "3_Umywalnia_m_u0119ska",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED596D0C_FC80_8545_41DA_21AC08FBBF92",
+  "label": "1_Camera.0340000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0870791D_1304_44F1_41A2_6CB3BE3B7659",
+  "label": "pomieszczenie_miejsc_siedzacych_v2_.032",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_1C27C3E8_1307_CB50_41A6_BB22246F68B6",
+  "label": "0_WC_m_u0119skie",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_36D98307_1303_C4D0_41AD_0B6141AF3E14",
+  "label": "049_pomieszczenie_odpadkow_v2",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED587C04_FC9F_8B45_4160_EE4218BF8C05",
+  "label": "1_Camera.0930000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED58F67B_FC80_87C3_41EE_02EFAB428375",
+  "label": "1_Camera.0420000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0219749B_131C_CDF0_41A5_9403F8A6FA30",
+  "label": "004_mag_sr_higienicznych_v1",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0A3C55DC_1304_CF77_41AF_22905C0886FB",
+  "label": "prysznic_czysty_v2_.102",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0308A61A_1303_CCF0_4181_6F0E32CF3687",
+  "label": "002_sanitariaty_i_umywalnie_damskie",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED58C282_FC9F_9F3D_41C4_C30940C80688",
+  "label": "1_Camera.0890000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_007980E3_1373_99EA_41B2_6E87DE999576",
+  "label": "korytarz_boczny_dolny_.069",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED584B8F_FC81_8D43_41ED_78914EE83D9F",
+  "label": "1_Camera.0640000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_BFE78941_AFED_333B_41E0_99108F162D11",
+  "label": "Pom._dla_rodzin_z_ma_u0142ymi_dziecmi_1",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_03F043B5_131C_4B30_41AB_D2861F246F67",
+  "label": "7_Korytarz_g_u0142_u00f3wny",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_A1AA6F46_AFED_2FC6_41DD_F7D9BC95EB71",
+  "label": "Pom._miejsc_siedz_u0105cych_1B",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_045F2921_130C_44D0_4167_69644AD65D18",
+  "label": "016_prysznic_odkazajacy",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_C7B67952_A93A_1471_41C9_B019ECE391E2",
+  "label": "szatnia_brudna_v2_.014",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_A777F48E_A8D2_955B_41DA_3343E01EEB33",
+  "label": "przelotnia_ewakuacyjna_v2_.052",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0049D1FC_1372_9BDE_4196_13B2E1B378B6",
+  "label": "korytarz_boczny_dolny_.066",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0C723CD7_1304_DD71_419F_88D7AD4DF422",
+  "label": "pomieszczenie_miejsc_do_spania_v2_.089",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0D42488A_1304_45D3_41B2_267AE5C53C0C",
+  "label": "pomieszczenie_miejsc_siedzacych_v2_.030",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_07735EDA_1371_89DA_41A4_52062995F147",
+  "label": "pomieszczenie_rodzin_z_malymi_dziecmi.077",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED58379B_FC9F_8543_41EF_7130D61A2F69",
+  "label": "1_Camera.0860000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0C1B3E49_1303_DD50_41AC_0585B3EC5E32",
+  "label": "pomieszczenie_miejsc_siedzacych_v2_.080",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0060D657_138E_982A_41AE_9BF3A5B10E84",
+  "label": "pomieszczenie_rodzin_z_malymi_dziecmi.076",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_38A416CC_00A8_6682_4157_3DC28BC60312",
+  "label": "1_Camera.0630000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0870A0E2_1304_4550_41B2_0656DA42E25D",
+  "label": "pomieszczenie_miejsc_siedzacych_v2_.031",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_B815EE8D_A8D2_B558_41A1_B84FF1854DE6",
+  "label": "przelotnia_ewakuacyjna_v2_.054",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_9609F42F_8E21_818A_41D0_9E0D0282A53E",
+  "label": "filtrowentylacja_.046_v2",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0762BF86_1393_882A_41A1_0DBD46CCE20F",
+  "label": "24_Punkt_medyczny",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_07C84DA6_1304_5FD3_4190_5D57A02B38DC",
+  "label": "przelotnia_wejscia_glownego_v1_.097",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED581801_FC81_8B3F_41EA_CC5AFB9EF034",
+  "label": "1_Camera.0660000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0C726C7B_1304_DD30_41AB_4C93D53C31D6",
+  "label": "pomieszczenie_miejsc_do_spania_v2_.093",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0870A15F_1304_4770_419B_EB20B8DC0F53",
+  "label": "pomieszczenie_miejsc_siedzacych_v2_.033",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_09E415A3_1391_986A_41B1_4437DAB00270",
+  "label": "jadalnia_v6_.045",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_A752E0C8_A8FA_1451_41D5_9965B612ECAB",
+  "label": "szatnia_brudna_v1_.015",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_9E8ED40D_8E26_818E_41C6_B86329B228A6",
+  "label": "13_Przedsionek",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED5864B3_FC81_9B43_41C8_EBDF4CA410AA",
+  "label": "1_Camera.0680000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_80E76F38_9019_E3E2_41C0_4B3F1FDE4F56",
+  "label": "44_Magazyn_podreczny",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_01AE9212_1371_982A_41A0_25BF99A28EC3",
+  "label": "korytarz_boczny_dolny_.062",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED583B8C_FC80_8D45_41EA_60F5FFE7CFEA",
+  "label": "1_Camera.0350000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_3338A555_1304_4F70_417C_1EFC51342C04",
+  "label": "pomieszczenie_miejsc_do_spania.087",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED583630_FC9F_875D_41EC_E640ABD90F12",
+  "label": "1_Camera.0870000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_A834D702_E580_212A_41DD_694ADC93F17D",
+  "label": "korytarz_boczny_gorny_4",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_BCC3CBF6_A8FF_F430_41C9_711E276CF45D",
+  "label": "59_pom._przygotowania_posilkow",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED597007_FC80_9B43_41D8_E9AB402DD3D6",
+  "label": "1_Camera.0770000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0873F970_1304_C730_41A6_F9966576C415",
+  "label": "pomieszczenie_miejsc_siedzacych_v2_.040",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED58133D_FC81_BD47_41DB_C5A45578020B",
+  "label": "1_Camera.0690000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0C72FC76_1304_FD30_4172_F3689B6E1B05",
+  "label": "pomieszczenie_miejsc_do_spania_v2_.091",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_339F3650_1303_CD70_41A4_6361BFE4B537",
+  "label": "pomieszczenie_miejsc_siedzacych_v2_.079",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_062A5DE4_1391_8BEE_41A9_B23FA426CD0C",
+  "label": "023_korytarz_obok_magazynu_lekow_v1",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_324524DD_1304_CD70_41A8_135144584D9A",
+  "label": "pomieszczenie_miejsc_do_spania_v2_.088",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_006E2046_138F_982A_4191_A09D353306B6",
+  "label": "pomieszczenie_rodzin_z_malymi_dziecmi.075",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_B820CA0D_A8D3_9D59_41B3_41F2B3E25888",
+  "label": "magazyn_zywnosci.058",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_03CE0A86_131C_C5D0_41B1_62DEEC811C5B",
+  "label": "8_Korytarz_g_u0142_u00f3wny",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_303DA39E_1305_CBF0_41B0_F2EEDD650A28",
+  "label": "przelotnia_ewakuacyjna_v2_.056",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0758BE37_1392_886B_41A3_CCC5C92AE55A",
+  "label": "27_WC_dla_os_u00f3b_niepe_u0142nosprawnych",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED584F2C_FC9F_8545_41CC_5691F3FB3DD5",
+  "label": "1_Camera.0910000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_051A651B_1396_985A_418B_18D06BF5945A",
+  "label": "korytarz_obok_magazynu_lekow_v3_105",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_EC1BC2C2_FC80_9F3D_41EA_8B4136873AF7",
+  "label": "1_Camera.0280000",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_06524D97_09BF_B3E0_4193_0B7968E16FA1",
+  "label": "7_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_09DD0440_1304_4D50_4181_B1ADFEEC5C2C",
+  "label": "34_korytarz_boczny_gorny",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED587CE6_FC80_84C5_41D3_88A093C9A856",
+  "label": "1_Camera.0800000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_096CAD34_1305_DF30_4197_B396DC2260B9",
+  "label": "28_korytarz_boczny_gorny",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_09A61711_1303_CCF1_419D_24CCD696503D",
+  "label": "41_korytarz_boczny_gorny",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED59AEE3_FC80_84C2_41E9_2A6FCCA23093",
+  "label": "1_Camera.0780000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0C0814EF_130C_4D50_41B1_62BEBD6B641D",
+  "label": "pomieszczenie_rodzin_z_malymi_dziecmi.084",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_EC4FBF3F_FC80_8543_41E6_8D246F93D12D",
+  "label": "1_Camera.0620000",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_A7750CB4_A8D1_954F_41DF_464842F65820",
+  "label": "przelotnia_ewakuacyjna_v3_050",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0C1B0652_1303_CD70_41AF_1B4E3414745D",
+  "label": "pomieszczenie_miejsc_siedzacych_v2_.081",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_EF5EFE7E_FC80_87C5_41EB_E78959338544",
+  "label": "1_Camera.0290000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0C8657FE_130D_CB30_4190_377BC7441568",
+  "label": "pomieszczenie_miejsc_siedzacych_v2_.036",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0FF938D8_1305_C570_41B2_31CB2AA7BED5",
+  "label": "042_pomieszczenie_rekreacji",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0C1A0EF4_1303_FD30_4152_40185D17D374",
+  "label": "pomieszczenie_miejsc_siedzacych_v2_.082",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0C1AE75E_1303_CB70_41B2_6A155F6474C5",
+  "label": "pomieszczenie_miejsc_siedzacych_v2_.083",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_BC1B8ACE_A8FE_3450_41E3_A763BDC3C018",
+  "label": "85_pomieszczenie_nadzoru_schronu_v1",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_B8065E60_A8FA_0C51_41D7_34AFAC9B83A7",
+  "label": "szatnia_brudna_v3_.015",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0C1AAFD6_1303_DB70_41A6_3272233256DB",
+  "label": "pomieszczenie_miejsc_siedzacych_v2_.086",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0068C208_1372_9826_41A1_6DFA3A3EDFA4",
+  "label": "korytarz_boczny_dolny_.067",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_066235A6_1392_B86D_41AB_AE5B0CF0995C",
+  "label": "021_korytarz_obok_magazynu_lekow_v1",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_EC25DC38_FC80_8B4D_41E6_A4D9DCBECDD8",
+  "label": "1_Camera.0840000",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED59A106_FC80_7D45_41C3_577949350517",
+  "label": "1_Camera.0760000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED58377C_FC80_85C5_41E0_E778B423954F",
+  "label": "1_Camera.0380000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_03EAA1C1_131C_4750_4197_8E844F8C13C1",
+  "label": "9_Korytarz_g_u0142_u00f3wny",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0BA2B68D_34FE_7667_41C1_342AF6D92C46",
+  "label": "25_Agregatorownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_BA123277_A8FE_1430_41DA_DD5E44A2ABD2",
+  "label": "powierzchnia_.098",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED583F2F_FC80_8543_41EE_A278C89B7BA0",
+  "label": "1_Camera.0430000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED5879E4_FC80_8CC5_41BE_CBE9315F9BED",
+  "label": "1_Camera.0830000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0CEFFA12_130C_44F0_419C_C8A6324D15F1",
+  "label": "pomieszczenie_miejsc_siedzacych_v2_.035",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_310CDC60_1305_DD4F_4161_E00CE8D7FC80",
+  "label": "72_Jadalnia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0758E3ED_1392_7FFE_41AC_7C51ED883987",
+  "label": "26_magazyn_lekow_v1",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_9F75F90B_9018_2FA5_41D1_542B8F34A428",
+  "label": "powierzchnia_.100",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED5899DD_FC9F_8CC7_41EA_5C1D24A3E070",
+  "label": "1_Camera.0940000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED5890FC_FC9F_FCC5_41E0_F85ABAD2FE4F",
+  "label": "1_Camera.0900000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_BC37C82B_A8FE_73D0_41E1_3F2A9705A707",
+  "label": "60_pom._przygotowania_posilkow",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_9D2F3A03_8E21_817A_41DE_4B299205B5AD",
+  "label": "61_magazyn_wody",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_9EB6B6A7_8E21_8EBA_41C1_387FBA8B5B04",
+  "label": "12_Przedsionek",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED5849BB_FC81_8D43_41E4_65DA8A5A3940",
+  "label": "1_Camera.0650000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED595DF3_FC80_84C3_41C6_9575FBB47B35",
+  "label": "1_Camera.0790000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED5818E4_FC80_8CC5_41DB_E587A682D80C",
+  "label": "1_Camera.0850000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_EC89467E_F3CF_E62D_41C1_627399BE5A57",
+  "label": "22_szatnia_czysta_v1",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED58DA8F_FC80_8F43_41B5_2EAE366CA87A",
+  "label": "1_Camera.0360000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0F5E74D7_133C_4D70_41A0_84C8B1E0A796",
+  "label": "korytarz_glowny_43",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0B8D8601_1304_CCD1_4196_28446808BDDF",
+  "label": "019_prysznic_czysty",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_310ED7B2_1304_4B30_41A6_0F6BE8F3FB40",
+  "label": "73_jadalnia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_007CAC43_1373_882A_41B3_07FEE60D528F",
+  "label": "korytarz_boczny_dolny_.068",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_38C9A52D_00A8_FB82_414D_C4486A1E0D95",
+  "label": "1_Camera.0880000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0EF9962B_1303_CCD0_41A4_8A5E78543ADB",
+  "label": "magazyn_podreczny_v1_.101",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_328FDD58_1304_7F70_4192_319741C0E9DC",
+  "label": "51_Jadalnia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_328EBF5C_1304_5B77_4182_F877C30F85DD",
+  "label": "71_jadalnia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_9C48C02A_8E26_818B_41DF_3202E032DAA6",
+  "label": "przelotnia_wejscia_glownego_v1_.099",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_9F824EFA_903B_DE8B_41E1_9842ED3C4D2E",
+  "label": "100b_przelotnia_ewakuacyjna_wewnatrz",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0873816E_1304_C750_41A7_CDA4D358A8ED",
+  "label": "pomieszczenie_miejsc_siedzacych_v2_.039",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_ED584BCB_FC80_8CC3_41EB_6BA479A0D85B",
+  "label": "1_Camera.0810000_silownia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_A1AEA569_AFEC_D3CB_41E1_99EDC87A99BC",
+  "label": "Pom._miejsc_siedz_u0105cych_1A",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_328F8794_1304_4BF0_419E_53C15A0F2C03",
+  "label": "70_Jadalnia",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ },
+ {
+  "id": "panorama_0C7204B0_1304_CD30_419D_28DDD546FA41",
+  "label": "pomieszczenie_miejsc_do_spania_v2_.090",
+  "levels": {
+   "0": {
+    "h": 3584,
+    "cols": 7,
+    "rows": 7
+   },
+   "1": {
+    "h": 2048,
+    "cols": 4,
+    "rows": 4
+   },
+   "2": {
+    "h": 1024,
+    "cols": 2,
+    "rows": 2
+   },
+   "3": {
+    "h": 512,
+    "cols": 1,
+    "rows": 1
+   }
+  }
+ }
+]

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>shf2 · Shift: Wasz film 1:45 w 30 s</title>
+<link rel="stylesheet" href="../lib/prem.css">
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="pieces.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/prem.js"></script>
+<script>
+const DUR = T.DUR, OR = "#ff7a2f";
+const PC = window.PIECES;
+const tLez = LS("s2"), t37 = W("s8", "trzydziestu"), t50 = W("s8", "piecdziesieciu"), t400 = W("s10", "cztery");
+const HI = /^(leżą|pieniądze|opaskę|dłonie|złotych|stówki|joinshift|działaj)/i;
+PR.off.push([t37 - .05, LS("s9")], [t400 - .05, LS("s11")]);
+scene(0, DUR + 1, (c) => {
+  const cv = el(c, "p-full", `<canvas width="1080" height="1920"></canvas>`).firstChild, ctx = cv.getContext("2d");
+  const fr = {}; PC.forEach(p => { if (p.file !== "TRI") fr[p.name] = useClip(p.name); });
+  const TRI = ["sfTom", "sfSand", "sfCandy"].map(useClip);
+  const Z0 = n => /_s(4|5)_|_s8_0/.test(n) ? 1.46 : /_s11_/.test(n) ? 1.36 : /_s12_/.test(n) ? 1.44 : 1.26;  // kanapa / mieszkanie / reszta: ich napisy wypadają za kadr
+  el(c, "p-shade");
+  premCaps(c, voiceWords(), { hi: w => HI.test(w) ? OR : null });
+  const o50 = premOdo(c, 2, { suffix: "ZŁ", label: "za godzinę nagrania", top: 600, color: "#fff" });
+  const o400 = premOdo(c, 3, { suffix: "ZŁ", label: "za jedną dniówkę", top: 600, color: OR });
+  const fl = el(c, "p-flash");
+  PC.slice(1).forEach(p => { if (!p.sync) sfx("WH_SOFT", p.a - .06, -20); });
+  sfx("IMP_BASS", tLez, -9); sfx("IMP_SOFT", t37, -12); sfx("DING", t50 + .35, -16); sfx("IMP_SOFT", t400, -10); sfx("DING", t400 + .7, -16);
+  return (lt, t) => {
+    const p = PC.find(x => t >= x.a && t < x.b) || PC[PC.length - 1], dt = t - p.a;
+    const lez = p.name === "s2_s2_0";
+    const look = cutLook(dt, p.b - p.a, { z0: lez ? 1.42 : Z0(p.name), push: lez ? .05 : .05, punch: p.sync && !lez ? .04 : .08, zoomIn: !p.sync });
+    ctx.fillStyle = "#000"; ctx.fillRect(0, 0, 1080, 1920);
+    if (p.file === "TRI") { const st = [p.a, p.a + .12, p.a + .24]; premTri(ctx, TRI.map(f => frameAt(f, dt)), st, t); }
+    else premDraw(ctx, frameAt(fr[p.name], dt), { z: look.z, ax: .5, ay: 0, blur: look.blur, dx: shake(t, tLez, 22), dy: lez ? -60 : 0 });
+    premCapsUpdate(t);
+    premOdoRun(o50, t, t37, t37 + .35, LS("s9"), 0, 37);
+    if (t >= t50) premOdoRun(o50, t, t50, t50 + .45, LS("s9"), 37, 50);
+    premOdoRun(o400, t, t400, t400 + .9, LS("s11"), 0, 400);
+    fl.style.opacity = t >= tLez && t < tLez + .09 ? .55 * (1 - (t - tLez) / .09) : 0;
+  };
+}, { push: 0, cut: true });
+boot("shf2.m4a");
+</script>
+</body>
+</html>

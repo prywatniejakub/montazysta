@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Clips4you film 1 - Wszystkie rolki na miesiąc w 1 godzinę (16:9)</title>
+<link rel="stylesheet" href="../../../lib/base.css">
+<link rel="stylesheet" href="../../../kuba/lib/saas.css">
+<link rel="stylesheet" href="../../lib/c4yfilm.css">
+</head>
+<body>
+<script src="timing.js"></script>
+<script src="../../clips/manifest.js"></script>
+<script>window.ASSETS = "../../../assets/"; window.CLIPBASE = "../../clips";</script>
+<script src="../../../lib/engine.js"></script>
+<script src="../../../kuba/lib/saas.js"></script>
+<script src="../../lib/c4yfilm.js"></script>
+<script>aurora([[0, 0, 0, 0, 0, 0]]); ["c06", "c01", "c07", "c08", "c10", "c09", "c11", "c12", "c02", "c03", "c04", "c05", "c13", "c14", "c15", "c16", "c17"].forEach(n => clipImgs(n, window.CLIPBASE, CN(n)));</script>
+<script src="sc1.js"></script>
+<script src="sc2.js"></script>
+<script src="sc3.js"></script>
+<script src="../../lib/c4yend.js"></script>
+<script>
+// HUD: KROK n/4 + the locked question, from the map to the ending
+(() => {
+  const L = el(ROOT, "div", "ab"); Object.assign(L.style, { inset: 0, pointerEvents: "none" });
+  const up = hud4(L), a = W("h3", "cztery") + .3, z = W("e1", "kim") - .3, ST = ["a1", "b1", "c1", "d1"].map(k => LS(k)), G = LS("q1") + .6;
+  const FD = document.getElementById("fade");
+  window.AFTER = t => { FD.style.opacity = P(t, DUR - .3, DUR, E.lin); const s = P(t, a, a + .4) * (1 - P(t, z, z + .4)); L.style.display = s > 0 ? "" : "none"; if (s > 0) up(ST.filter(x => t >= x).length, t >= G, s); };
+})();
+saasBoot("f1.m4a");
+</script>
+</body>
+</html>

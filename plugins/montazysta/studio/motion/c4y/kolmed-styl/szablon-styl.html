@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>KOLMED · styl __STYLE__</title>
+<link rel="stylesheet" href="../lib/prem.css">
+<link rel="stylesheet" href="../lib/fonts/fonts.css">
+<style>
+/* 4 style montażu dla klinik (projekt wiedza/projekty/styl-rolek-klinika-2026-11-01.md). Wspólne: brak „wyskoku” napisów, brak huku, ciemna paleta, warstwy głębi. */
+:root { --ink: #fff; --acc: #9fb7cf; --deep: #0d1b2a; }
+.lay { position: absolute; inset: 0; pointer-events: none; }
+.vig { z-index: 8; }
+.grain { z-index: 9; opacity: 0; mix-blend-mode: overlay; background-size: 540px 960px; }
+.leak { z-index: 10; opacity: 0; mix-blend-mode: screen; }
+.topg, .botg { position: absolute; left: 0; right: 0; z-index: 7; pointer-events: none; }
+.topg { top: 0; height: 640px; } .botg { bottom: 0; height: 820px; }
+/* napisy */
+.cap { position: absolute; left: 60px; right: 60px; z-index: 40; display: flex; justify-content: center; pointer-events: none; }
+.cap .g { position: absolute; left: 0; right: 0; display: flex; justify-content: center; opacity: 0; white-space: nowrap; }
+.cap .w { display: inline-block; margin: 0 .14em; }
+/* hak */
+.hook { position: absolute; left: 70px; right: 70px; z-index: 41; opacity: 0; pointer-events: none; }
+.hook .lab { display: block; }
+.hook .ln { display: block; overflow: hidden; }
+.hook .ln > span { display: inline-block; }
+/* podpis */
+.lt3 { position: absolute; z-index: 42; opacity: 0; pointer-events: none; }
+/* liczba */
+.num { position: absolute; z-index: 43; opacity: 0; pointer-events: none; }
+/* plansza */
+.end { position: absolute; inset: 0; z-index: 60; opacity: 0; pointer-events: none; }
+.end .row { position: absolute; left: 0; right: 0; text-align: center; opacity: 0; }
+.end img.lg { position: absolute; left: 50%; width: 420px; transform: translateX(-50%); }
+
+/* ===== A: Klinika czysto (Cleveland Clinic / Mayo: małe napisy zdaniowe, granat, spokój) ===== */
+.A .cap { top: 1452px; } .A .cap .g { font: 600 58px/1.1 Manrope; color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,.55); }
+.A .cap .w.on { background: rgba(13,27,42,.78); border-radius: 12px; padding: 2px 14px; margin: 0 .02em; box-shadow: 0 6px 24px rgba(0,0,0,.25); }
+.A .hook { top: 210px; } .A .hook .lab { font: 600 30px/1 Manrope; letter-spacing: .22em; text-transform: uppercase; color: #c9d6e3; margin-bottom: 22px; }
+.A .hook .ln { font: 800 84px/1.06 Manrope; color: #fff; letter-spacing: -.02em; text-shadow: 0 6px 40px rgba(0,0,0,.45); }
+.A .lt3 { left: 66px; top: 1250px; } .A .lt3 .bar { width: 0; height: 4px; border-radius: 2px; background: #9fb7cf; margin-bottom: 18px; }
+.A .lt3 b { display: block; font: 700 50px/1.05 Manrope; color: #fff; text-shadow: 0 4px 24px rgba(0,0,0,.55); }
+.A .lt3 i { display: block; margin-top: 8px; font: 500 32px/1 Manrope; font-style: normal; color: #d5e0ea; text-shadow: 0 3px 18px rgba(0,0,0,.6); }
+.A .num { left: 66px; top: 1080px; color: #fff; } .A .num .v { font: 300 250px/0.9 Manrope; letter-spacing: -.04em; text-shadow: 0 10px 50px rgba(0,0,0,.4); }
+.A .num .v small { font: 600 64px/1 Manrope; letter-spacing: 0; margin-left: 12px; } .A .num .l { font: 500 36px/1 Manrope; color: #d5e0ea; margin-top: 10px; }
+.A .end { background: radial-gradient(120% 80% at 50% 30%, #16304a 0%, #0d1b2a 60%, #08121c 100%); }
+.A .end img.lg { top: 560px; opacity: .95; }
+.A .end .h { top: 880px; font: 700 66px/1.1 Manrope; color: #fff; letter-spacing: -.01em; }
+.A .end .b { top: 1010px; } .A .end .b span { display: inline-block; font: 600 46px/1 Manrope; color: #fff; border: 2px solid rgba(255,255,255,.7); border-radius: 60px; padding: 30px 64px; }
+.A .end .u { top: 1190px; font: 600 48px/1 Manrope; color: #fff; } .A .end .a { top: 1268px; font: 500 32px/1 Manrope; color: #9fb7cf; }
+
+/* ===== B: Edytorski (luksusowe kliniki estetyczne: szeryf kursywą, ciepło, ziarno, przejścia przez ciemność) ===== */
+.B .cap { top: 1470px; } .B .cap .g { font: 500 54px/1.15 "DM Sans"; color: rgba(255,255,255,.96); text-shadow: 0 2px 20px rgba(0,0,0,.6); }
+.B .cap .w.k { font: 400 74px/1 "Instrument Serif"; font-style: italic; color: #f1e3cf; letter-spacing: .005em; }
+.B .hook { top: 200px; text-align: center; } .B .hook .lab { font: 500 26px/1 "DM Sans"; letter-spacing: .34em; text-transform: uppercase; color: #e9dccb; margin-bottom: 26px; }
+.B .hook .ln { font: 400 118px/1.0 "Instrument Serif"; font-style: italic; color: #f6efe5; text-shadow: 0 8px 50px rgba(0,0,0,.5); }
+.B .lt3 { left: 70px; top: 1240px; } .B .lt3 b { display: block; font: 400 66px/1 "Instrument Serif"; font-style: italic; color: #f6efe5; text-shadow: 0 4px 26px rgba(0,0,0,.6); }
+.B .lt3 .bar { width: 0; height: 2px; background: #e9dccb; margin: 16px 0 14px; opacity: .8; }
+.B .lt3 i { display: block; font: 500 26px/1 "DM Sans"; font-style: normal; letter-spacing: .26em; text-transform: uppercase; color: #e9dccb; text-shadow: 0 3px 18px rgba(0,0,0,.6); }
+.B .num { left: 0; right: 0; top: 1040px; text-align: center; color: #f6efe5; } .B .num .v { font: 400 230px/0.9 "Instrument Serif"; font-style: italic; text-shadow: 0 10px 50px rgba(0,0,0,.45); }
+.B .num .v small { font: 400 90px/1 "Instrument Serif"; font-style: italic; margin-left: 10px; } .B .num .l { font: 500 28px/1 "DM Sans"; letter-spacing: .3em; text-transform: uppercase; color: #e9dccb; margin-top: 18px; }
+.B .end { background: #13100d; } .B .end .ph { position: absolute; inset: 0; opacity: .28; filter: blur(6px) sepia(.4) saturate(.6); background-size: cover; background-position: center; }
+.B .end img.lg { top: 560px; opacity: .9; filter: sepia(.35); }
+.B .end .h { top: 860px; font: 400 104px/1.02 "Instrument Serif"; font-style: italic; color: #f6efe5; }
+.B .end .b { top: 1030px; } .B .end .b span { display: inline-block; font: 500 34px/1 "DM Sans"; letter-spacing: .28em; text-transform: uppercase; color: #f1e3cf; padding-bottom: 14px; border-bottom: 2px solid #c9b79f; }
+.B .end .u { top: 1190px; font: 500 46px/1 "DM Sans"; color: #f6efe5; } .B .end .a { top: 1262px; font: 400 30px/1 "DM Sans"; color: #bfae98; letter-spacing: .04em; }
+
+/* ===== C: Dokument (styl filmów dokumentalnych: napisy jak napisy filmowe, chłodny grading, ziarno, szybkie przesunięcia) ===== */
+.C .cap { top: 1560px; } .C .cap .g { font: 500 50px/1.15 Inter; color: #fff; text-shadow: 0 0 2px rgba(0,0,0,.9), 0 3px 14px rgba(0,0,0,.8); }
+.C .hook { top: 240px; } .C .hook .lab { font: 600 26px/1 Inter; letter-spacing: .4em; text-transform: uppercase; color: #cdd5d6; margin-bottom: 26px; padding-left: 22px; border-left: 3px solid #cdd5d6; }
+.C .hook .ln { font: 800 92px/1.02 Archivo; text-transform: uppercase; letter-spacing: .01em; color: #fff; text-shadow: 0 6px 40px rgba(0,0,0,.6); }
+.C .lt3 { left: 70px; top: 1300px; padding-left: 22px; } .C .lt3 .bar { position: absolute; left: 0; top: 0; width: 3px; height: 0; background: #fff; }
+.C .lt3 i { display: block; font: 600 24px/1 Inter; font-style: normal; letter-spacing: .36em; text-transform: uppercase; color: #cdd5d6; margin-bottom: 14px; }
+.C .lt3 b { display: block; font: 700 54px/1 Archivo; text-transform: uppercase; letter-spacing: .03em; color: #fff; text-shadow: 0 4px 22px rgba(0,0,0,.7); }
+.C .num { left: 70px; top: 1100px; color: #fff; } .C .num .v { font: 700 190px/0.9 Archivo; letter-spacing: .01em; font-variant-numeric: tabular-nums; text-shadow: 0 10px 40px rgba(0,0,0,.6); }
+.C .num .l { font: 600 26px/1 Inter; letter-spacing: .36em; text-transform: uppercase; color: #cdd5d6; margin-top: 16px; }
+.C .end { background: #050607; } .C .end .ph { position: absolute; left: 0; right: 0; top: 0; height: 1020px; background-size: cover; background-position: center; filter: saturate(.5) contrast(1.15) brightness(.7);
+  -webkit-mask-image: linear-gradient(#000 55%, transparent); }
+.C .end img.lg { top: 1010px; width: 360px; }
+.C .end .h { top: 1250px; font: 800 72px/1.05 Archivo; text-transform: uppercase; color: #fff; letter-spacing: .02em; }
+.C .end .b { top: 1370px; font: 600 30px/1 Inter; letter-spacing: .36em; text-transform: uppercase; color: #cdd5d6; }
+.C .end .u { top: 1470px; font: 600 48px/1 Inter; color: #fff; } .C .end .a { top: 1546px; font: 500 28px/1 Inter; color: #8f9a9c; letter-spacing: .06em; }
+
+/* ===== D: Karty ze szkła (nowoczesne marki medyczne: matowe szkło, głębia, pływające karty, ciemny morski) ===== */
+.glass { background: rgba(14,38,42,.42); -webkit-backdrop-filter: blur(22px) saturate(1.2); backdrop-filter: blur(22px) saturate(1.2);
+  border: 1.5px solid rgba(255,255,255,.18); box-shadow: 0 24px 60px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.12); }
+.D .cap { top: 1462px; } .D .cap .g > div { padding: 18px 34px; border-radius: 30px; display: inline-flex; }
+.D .cap .g { font: 700 54px/1.18 "Plus Jakarta Sans"; color: #fff; letter-spacing: .005em; } .D .cap .w.on, .D .cap .w.k { color: #9fe0cf; }
+.D .cap .w { will-change: transform, opacity; }
+/* hak niżej niż pasek aplikacji, ale zwarty (kończy się ok. 370 px), żeby nie zasłaniał czoła mówcy (uwaga klienta KOLMED 2026-11-04) */
+.D .hook { top: 150px; left: 60px; right: 60px; padding: 26px 38px 24px; border-radius: 34px; } .D .hook .lab { font: 600 23px/1 "Plus Jakarta Sans"; color: #9fe0cf; margin-bottom: 11px; display: flex; align-items: center; gap: 12px; }
+.D .hook .lab:before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: #9fe0cf; box-shadow: 0 0 0 5px rgba(159,224,207,.18); }
+.D .hook .ln { font: 800 58px/1.14 "Plus Jakarta Sans"; color: #fff; letter-spacing: -.005em; overflow: visible; padding-bottom: 4px; }
+.D .lt3 { left: 60px; top: 1250px; padding: 22px 34px 22px 22px; border-radius: 34px; display: flex; align-items: center; gap: 22px; }
+.D .lt3 .av { width: 92px; height: 92px; border-radius: 50%; background: linear-gradient(140deg, #2e6f6a, #123b3e); border: 2px solid rgba(255,255,255,.35); display: flex; align-items: center; justify-content: center; font: 700 34px/1 "Plus Jakarta Sans"; color: #fff; }
+.D .lt3 b { display: block; font: 700 42px/1.05 "Plus Jakarta Sans"; color: #fff; } .D .lt3 i { display: block; margin-top: 8px; font: 500 28px/1 "Plus Jakarta Sans"; font-style: normal; color: #bfe6dc; }
+.D .num { left: 60px; top: 1040px; padding: 34px 44px; border-radius: 40px; display: flex; align-items: center; gap: 34px; }
+.D .num svg { width: 190px; height: 190px; } .D .num .v { font: 800 120px/0.9 "Plus Jakarta Sans"; color: #fff; letter-spacing: -.01em; } .D .num .v small { font: 600 46px/1 "Plus Jakarta Sans"; letter-spacing: .03em; margin-left: 14px; }
+.D .num .l { font: 500 30px/1.2 "Plus Jakarta Sans"; color: #bfe6dc; margin-top: 12px; }
+.D .end .ph { position: absolute; inset: 0; background-size: cover; background-position: center; filter: blur(10px) brightness(.62) saturate(.8); transform: scale(1.08); }
+.D .end .card { position: absolute; left: 70px; right: 70px; top: 520px; height: 900px; border-radius: 56px; }
+.D .end img.lg { top: 600px; width: 360px; }
+.D .end .h { top: 830px; padding: 0 130px; font: 800 64px/1.12 "Plus Jakarta Sans"; color: #fff; letter-spacing: 0; }
+.D .end .b { top: 1040px; } .D .end .b span { display: inline-block; font: 700 46px/1 "Plus Jakarta Sans"; color: #0d2b2d; background: #9fe0cf; border-radius: 60px; padding: 32px 70px; box-shadow: 0 18px 40px rgba(0,0,0,.3); }
+.D .end .u { top: 1210px; font: 700 46px/1 "Plus Jakarta Sans"; color: #fff; } .D .end .a { top: 1284px; font: 500 30px/1 "Plus Jakarta Sans"; color: #bfe6dc; }
+</style>
+</head>
+<body class="__STYLE__">
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="pieces.js"></script>
+<script src="../lib/c4y.js"></script>
+<script src="../lib/prem.js"></script>
+<script>
+const S = "__STYLE__", CFG = __CFG__;
+document.body.classList.add(S);
+const DUR = T.DUR, PC = window.PIECES, L0 = T.lines[0].key, L1 = T.lines[1].key, LZ = T.lines[T.lines.length - 1].key;
+// plansza dopiero po wybrzmieniu głosu: koniec ostatniej wypowiedzi w miksie = slot + długość + ogon 0,16 s (longkit.audio)
+const LZL = T.lines[T.lines.length - 1], vEnd = LZL.slot + (LZL.src[1] - LZL.src[0]) + .16;
+const tEnd = Math.max(LE(LZ) + .42, vEnd + .05), HI = new RegExp(CFG.hi, "i");
+const tGo = CFG.odo ? W(CFG.odo, "około") - .05 : -9, tStop = CFG.odo ? LE(CFG.odo) + .45 : -9;
+const hookZ = Math.min(LS(L1) - .05, CFG.hookMax || 3.2);  // hak najwyżej ok. 3 s: dłużej zasłaniał głowę mówcy
+// podpis u góry (w pasie haka) dopiero po zniknięciu haka
+const ltA0 = CFG.lt ? (CFG.ltT ?? LS(CFG.lt) + (CFG.lt === L0 ? 1.4 : .2)) : -99, ltA = CFG.lt && CFG.ltY < 600 ? Math.max(ltA0, hookZ + .5) : ltA0, ltZ = ltA + 2.6;  // ltT = stały moment, gdy mówca jest w kadrze
+// koniec głosu każdej wypowiedzi: ujęcie mówcy zatrzymuje się na tej klatce (bez ruchu ust przy wyciszonym dźwięku, uwaga użytkownika 2026-11-04)
+const LEND = {}; T.lines.forEach(l => LEND[l.key] = l.slot + (l.src[1] - l.src[0]) + .08); Object.assign(LEND, CFG.lend || {});  // lend: wcześniejsza stopklatka, gdy film klienta tnie zaraz po słowie
+const pieceAt = t => PC.find(x => t >= x.a && t < x.b) || (t >= PC[PC.length - 1].a ? PC[PC.length - 1] : PC[0]);
+// napisy na wysokości klatki piersiowej mówcy, osobno dla każdego ujęcia (CFG.capYs, odczyt z arkusza klatek); przebitki: CFG.capB
+const capYat = t => { const p = pieceAt(t); return (CFG.capYs || {})[p.name] ?? (p.sync ? CFG.capY : (CFG.capB ?? CFG.capY)); };
+const back = u => { u = clamp(u); const c1 = 1.5, c3 = c1 + 1; return 1 + c3 * Math.pow(u - 1, 3) + c1 * Math.pow(u - 1, 2); };
+const ease = u => 1 - Math.pow(1 - clamp(u), 3), eio = u => (u = clamp(u)) < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2;
+// przejście między ujęciami: długość i rodzaj zależnie od stylu
+const TRN = { A: .24, B: .34, C: .2, D: .28 }[S];
+const GRADE = { A: "contrast(1.05) saturate(.92) brightness(.98)", B: "contrast(1.03) saturate(.8) sepia(.14) brightness(1.01)",
+  C: "contrast(1.14) saturate(.72) brightness(.93)", D: "contrast(1.06) saturate(.86) brightness(.97) hue-rotate(-4deg)" }[S];
+const SND = { soft: "01 Whoosh\\03 - Soft Whoosh.wav", riser: "03 Riser\\13 - Subtle Cinematic Riser.wav", org: "03 Riser\\12 - Organic Noise Riser.wav",
+  imp: "02 Impact\\06 - Soft Cinematic Impact.wav", click: "06 Komedia i UI\\28 - UI Click.wav", swing: "01 Whoosh\\02 - Swing Woosh.wav" };
+
+// słowa -> grupy max 3 słowa / 16 znaków, łamane na interpunkcji (twarda zasada: 1-3 słowa, jedna linia)
+function groups() {
+  const G = []; let cur = null;
+  // krótki spójnik / przyimek nie kończy napisu („kontroli i”), tylko otwiera następny („i leczenia”), recenzent 2026-11-04
+  const FN = /^(i|a|w|we|z|ze|o|u|na|do|po|od|za|że|lub|czy|bądź|oraz|przez|pod|nad|przy)$/i;
+  const VW = voiceWords().map(w => ({ ...w, c: cleanW(w.w).trim() })).filter(w => w.c);
+  VW.forEach((w, n) => { const c = w.c;
+    const prev = cur && cur.words[cur.words.length - 1], nx = VW[n + 1];
+    const fnEnd = cur && cur.words.length && FN.test(c) && !/[.,:;!?…]$/.test(c) && nx && (cur.words.length + 1 >= 3 || cur.len + c.length + 1 + nx.c.length > 16);
+    if (!cur || cur.words.length >= 3 || cur.len + c.length > 16 || /[.,:;!?…]$/.test(prev.w) || fnEnd) { cur = { words: [], len: 0 }; G.push(cur); }
+    cur.words.push({ ...w, c }); cur.len += c.length + 1; });
+  G.forEach((g, k) => { const nx = G[k + 1], end = g.words[g.words.length - 1].e; g.a = g.words[0].t - .06; g.z = nx ? Math.min(nx.words[0].t - .06, end + .45) : end + .8;
+    g.y = capYat(g.a + .1); });
+  return G;
+}
+scene(0, DUR + 1, (c) => {
+  const cv = el(c, "p-full", `<canvas width="1080" height="1920"></canvas>`).firstChild, ctx = cv.getContext("2d");
+  const fr = {}; PC.forEach(p => fr[p.name] = useClip(p.name));
+  const bld = useClip("km_bld");
+  // warstwy głębi
+  const topg = el(c, "topg"), botg = el(c, "botg"), vig = el(c, "lay vig"), grain = el(c, "lay grain"), leak = el(c, "lay leak");
+  topg.style.background = `linear-gradient(${S === "B" ? "rgba(19,16,13,.62)" : "rgba(5,12,20,.6)"}, transparent)`;
+  botg.style.background = `linear-gradient(transparent, ${S === "B" ? "rgba(19,16,13,.66)" : S === "C" ? "rgba(0,0,0,.6)" : "rgba(5,14,22,.62)"})`;
+  vig.style.background = `radial-gradient(120% 90% at 50% 45%, transparent 55%, rgba(0,0,0,${S === "C" ? .55 : S === "B" ? .42 : .3}) 100%)`;
+  if (S === "B" || S === "C") {  // ziarno filmowe
+    const n = document.createElement("canvas"); n.width = 540; n.height = 960; const nx = n.getContext("2d"), id = nx.createImageData(540, 960);
+    for (let i = 0; i < id.data.length; i += 4) { const v = 128 + (Math.random() - .5) * 120; id.data[i] = id.data[i + 1] = id.data[i + 2] = v; id.data[i + 3] = 255; }
+    nx.putImageData(id, 0, 0); grain.style.backgroundImage = `url(${n.toDataURL()})`; grain.style.opacity = S === "C" ? .16 : .1;
+  }
+  if (S === "B") leak.style.background = "radial-gradient(60% 40% at 80% 20%, rgba(255,190,120,.55), transparent 70%)";
+  if (S === "C") { const t = el(c, "lay"); t.style.cssText += "z-index:6;mix-blend-mode:soft-light;background:linear-gradient(160deg,rgba(0,90,110,.35),rgba(255,140,60,.12))"; }
+  // hak
+  const hk = el(c, "hook" + (S === "D" ? " glass" : ""), `<span class="lab">${CFG.label}</span>` + CFG.hook.map(l => `<span class="ln"><span>${l}</span></span>`).join(""));
+  const hkLines = [...hk.querySelectorAll(".ln > span")], hkLab = hk.querySelector(".lab");
+  // napisy
+  const capBox = el(c, "cap"), G = groups(); if (CFG.capY) capBox.style.top = CFG.capY + "px";
+  G.forEach(g => { g.el = el(capBox, "g"); if (S === "D") g.el.style.top = (g.y - (CFG.capY || 1462)) + "px"; const inner = S === "D" ? el(g.el, "glass") : g.el;
+    g.ws = g.words.map(w => { const s = document.createElement("span"); s.className = "w" + (S === "B" && HI.test(w.c) ? " k" : ""); s.textContent = w.c.replace(/[.,:;!…]+$/, ""); inner.appendChild(s); return { s, w }; }); });
+  // podpis
+  const initials = CFG.ltn.replace(/^(lek\.|dr n\. med\.|dr)\s*/i, "").split(" ").map(x => x[0]).join("").slice(0, 2);
+  const lt = el(c, "lt3" + (S === "D" ? " glass" : ""), S === "D" ? `<div class="av">${initials}</div><div><b>${CFG.ltn}</b><i>${CFG.ltr}</i></div>`
+    : S === "C" ? `<div class="bar"></div><i>${CFG.ltr}</i><b>${CFG.ltn}</b>` : S === "B" ? `<b>${CFG.ltn}</b><div class="bar"></div><i>${CFG.ltr}</i>` : `<div class="bar"></div><b>${CFG.ltn}</b><i>${CFG.ltr}</i>`);
+  if (CFG.ltY) lt.style.top = CFG.ltY + "px";
+  const ltBar = lt.querySelector(".bar"), ltB = lt.querySelector("b"), ltI = lt.querySelector("i");
+  // liczba
+  const num = CFG.odo ? el(c, "num" + (S === "D" ? " glass" : ""), S === "D"
+    ? `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="8"/><circle class="ring" cx="50" cy="50" r="42" fill="none" stroke="#9fe0cf" stroke-width="8" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264" transform="rotate(-90 50 50)"/></svg><div><div class="v"><span>0</span><small>min</small></div><div class="l">zwykle tyle<br>trwa zabieg</div></div>`
+    : S === "C" ? `<div class="v"><span>00:00</span></div><div class="l">zwykły czas zabiegu</div>`
+    : S === "B" ? `<div class="v">ok. <span>0</span><small>minut</small></div><div class="l">zwykle trwa zabieg</div>`
+    : `<div class="v"><span>0</span><small>min</small></div><div class="l">zwykle trwa zabieg</div>`) : null;
+  const numV = num && num.querySelector(".v span"), ring = num && num.querySelector(".ring");
+  // plansza
+  const end = el(c, "end", (S !== "A" ? `<div class="ph"></div>` : "") + (S === "D" ? `<div class="card glass"></div>` : "") +
+    `<img class="lg" src="logo_w.png"><div class="row h">${CFG.end}</div><div class="row b"><span>Umów konsultację</span></div><div class="row u">22 815 68 00 · kolmed.pl</div><div class="row a">Warszawa Międzylesie, ul. Bursztynowa 2c</div>`);
+  const endPh = end.querySelector(".ph"), endRows = [...end.querySelectorAll(".row")], endLg = end.querySelector(".lg"), endCard = end.querySelector(".card");
+  // dźwięki: zero huku, cicho pod głosem
+  if (S === "A") { PC.slice(1).forEach(p => sfx(SND.soft, p.a - .1, -31)); sfx(SND.click, ltA + .05, -30); if (CFG.odo) sfx(SND.click, tGo + .1, -30); sfx(SND.riser, tEnd - 1.6, -30); }
+  if (S === "B") { sfx(SND.org, 0, -32); PC.slice(1).forEach(p => sfx(SND.soft, p.a - .15, -30)); sfx(SND.imp, tEnd + .05, -27); }
+  if (S === "C") { sfx(SND.riser, 0, -29); sfx(SND.imp, .45, -27); PC.slice(1).forEach(p => sfx(SND.swing, p.a - .08, -30)); sfx(SND.click, ltA + .1, -33); sfx(SND.imp, tEnd + .05, -26); }
+  if (S === "D") { PC.slice(1).forEach(p => sfx(SND.soft, p.a - .1, -31)); sfx(SND.click, .25, -29); sfx(SND.click, ltA + .1, -29); if (CFG.odo) sfx(SND.click, tGo + .1, -29); sfx(SND.click, tEnd + .4, -28); }
+
+  const draw = (p, dt, o = {}) => {  // ujęcie z powolnym najazdem, gradingiem i opcjonalnym rozmyciem / przesunięciem
+    const kz = dt;  // najazd liczony dalej od czasu sceny (płynny także przy stopklatce)
+    if (p.sync) { const e = LEND[p.name.split("_")[1]]; if (e != null) dt = Math.min(dt, Math.max(0, e - p.a)); }
+    const im = frameAt(fr[p.name], dt); if (!im || !im.complete || !im.naturalWidth) return;
+    dt = kz;
+    const z = (o.z || 1) * (1.0 + .045 * eio((dt) / Math.max(1, p.b - p.a + TRN)));
+    const iw = im.naturalWidth, ih = im.naturalHeight, base = Math.max(1080 / iw, 1920 / ih) * z, w = iw * base, h = ih * base;
+    ctx.save(); ctx.globalAlpha = o.alpha ?? 1; ctx.filter = GRADE + (o.blur ? ` blur(${o.blur.toFixed(1)}px)` : "") + (o.dark ? ` brightness(${(1 - o.dark).toFixed(3)})` : "");
+    ctx.drawImage(im, (1080 - w) / 2 + (o.dx || 0), (1920 - h) / 2, w, h); ctx.restore();
+  };
+  return (lt0, t) => {
+    ctx.fillStyle = "#000"; ctx.fillRect(0, 0, 1080, 1920);
+    const iP = Math.max(0, PC.findIndex(x => t >= x.a && t < x.b)), p = t >= PC[PC.length - 1].a ? PC[PC.length - 1] : PC[iP], dt = t - p.a;
+    const prev = PC[PC.indexOf(p) - 1], u = prev ? clamp(dt / TRN) : 1, pdt = prev ? t - prev.a : 0;
+    if (u < 1 && prev) {  // przejście
+      if (S === "A") { draw(prev, pdt); draw(p, dt, { alpha: eio(u) }); }
+      else if (S === "B") { const k = eio(u); draw(prev, pdt, { dark: Math.min(1, k * 1.6) * .8, blur: k * 10 }); draw(p, dt, { alpha: k, blur: (1 - k) * 10, dark: (1 - k) * .5 }); }
+      else if (S === "C") { const k = eio(u); draw(prev, pdt, { dx: -k * 1080, blur: Math.sin(k * Math.PI) * 18 }); draw(p, dt, { dx: (1 - k) * 1080, blur: Math.sin(k * Math.PI) * 18 }); }
+      else { const k = eio(u); draw(prev, pdt, { z: 1 + k * .06, alpha: 1 }); draw(p, dt, { z: 1.08 - .08 * k, alpha: k, blur: (1 - k) * 12 }); }
+    } else draw(p, dt);
+    leak.style.opacity = S === "B" && prev ? (Math.sin(clamp(dt / (TRN * 2)) * Math.PI) * .7).toFixed(3) : 0;
+    grain.style.backgroundPosition = `${Math.floor(hash(t, 1) * 540)}px ${Math.floor(hash(t, 2) * 960)}px`;
+    // hak: wejście linia po linii
+    const hOn = t < hookZ + .35; hk.style.opacity = hOn ? clamp((hookZ + .35 - t) / .35) : 0;
+    if (hOn) { hkLab.style.opacity = 1; hkLab.style.transform = "none";
+      hkLines.forEach((s, i) => { const v = ease((t + .38 - i * .12) / .5);
+        s.style.transform = S === "C" ? "none" : S === "D" ? `translateY(${((1 - v) * 26).toFixed(1)}px)` : `translateY(${((1 - v) * 105).toFixed(1)}%)`; s.style.opacity = S === "B" || S === "D" ? v : 1;
+        if (S === "C") s.parentNode.style.clipPath = `inset(0 ${((1 - v) * 100).toFixed(1)}% 0 0)`; });
+      if (S === "D") { const v = ease((t + .3) / .45); hk.style.transform = `translateY(${((1 - v) * -40).toFixed(1)}px)`; } }
+    // napisy: spokojne wejście, bez wyskoku
+    const off = (CFG.odo && t >= tGo && t < tStop) || t >= tEnd - .05;
+    G.forEach(g => { const on = !off && t >= g.a && t < g.z; g.el.style.opacity = on ? Math.min(clamp((t - g.a) / .12), clamp((g.z - t) / .12)) : 0;
+      if (!on) return; const v = ease((t - g.a) / .22);
+      if (S === "D") {  // dynamiczne (2026-11-04): pigułka wskakuje z lekkim sprężynowaniem i delikatnie pływa, słowa rozjaśniają się w rytm głosu
+        const b = back((t - g.a) / .34), out = clamp((t - (g.z - .12)) / .12);
+        g.el.style.transform = `translateY(${((1 - ease((t - g.a) / .3)) * 26 - out * 10 + Math.sin(t * 2.1) * 3).toFixed(1)}px) scale(${(.86 + .14 * b).toFixed(4)})`;
+        g.ws.forEach(({ s, w }, i) => { const a0 = i ? w.t - .05 : g.a, wv = ease((t - a0) / .16), act = t >= w.t - .03 && t < w.e + .02;
+          const pop = act ? Math.sin(clamp((t - w.t + .03) / .22) * Math.PI) * .07 : 0;
+          s.style.opacity = (.38 + .62 * wv).toFixed(3); s.style.transform = `scale(${(1 + pop).toFixed(4)})`;
+          s.classList.toggle("on", act); s.classList.toggle("k", t >= w.t && HI.test(w.c)); });
+        return; }
+      g.el.style.transform = S === "C" ? "none" : `translateY(${((1 - v) * 16).toFixed(1)}px)`;
+      g.el.style.filter = S === "B" ? `blur(${((1 - v) * 8).toFixed(1)}px)` : "none";
+      g.ws.forEach(({ s, w }) => s.classList.toggle("on", (S === "A" || S === "D") && t >= w.t - .03 && t < w.e + .02 && HI.test(w.c))); });
+    // podpis lekarza
+    const lOn = t >= ltA && t < ltZ + .4; lt.style.opacity = lOn ? clamp((ltZ + .4 - t) / .4) : 0;
+    if (lOn) { const d = t - ltA;
+      if (S === "A") { ltBar.style.width = `${ease(d / .45) * 120}px`; [ltB, ltI].forEach((e, i) => { const v = ease((d - .2 - i * .1) / .45); e.style.opacity = v; e.style.transform = `translateY(${(1 - v) * 22}px)`; }); }
+      if (S === "B") { const v = ease(d / .7); ltB.style.opacity = v; ltB.style.filter = `blur(${((1 - v) * 10).toFixed(1)}px)`; ltBar.style.width = `${ease((d - .25) / .7) * 260}px`; ltI.style.opacity = ease((d - .45) / .5); }
+      if (S === "C") { ltBar.style.height = `${ease(d / .35) * 110}px`; const n = CFG.ltn.length, k = Math.floor(clamp((d - .25) / .6) * n); ltB.textContent = CFG.ltn.slice(0, k); ltI.style.opacity = ease((d - .1) / .3); }
+      if (S === "D") { const v = ease(d / .5); lt.style.transform = `translateX(${((1 - v) * -60).toFixed(1)}px) translateY(${(Math.sin(t * 2.2) * 4).toFixed(1)}px)`; lt.style.filter = `blur(${((1 - v) * 8).toFixed(1)}px)`; } }
+    // liczba
+    if (num) { const nOn = t >= tGo && t < tStop; num.style.opacity = nOn ? Math.min(ease((t - tGo) / .35), clamp((tStop - t) / .3)) : 0;
+      if (nOn) { const k = ease((t - tGo) / 1.1), v = Math.round(15 * k);
+        numV.textContent = S === "C" ? `${String(v).padStart(2, "0")}:00` : v;
+        if (ring) ring.setAttribute("stroke-dashoffset", (264 * (1 - k)).toFixed(1));
+        num.style.transform = S === "D" ? `translateY(${(Math.sin(t * 2) * 4).toFixed(1)}px)` : `translateY(${((1 - ease((t - tGo) / .4)) * 20).toFixed(1)}px)`; } }
+    // plansza końcowa: elementy wchodzą po kolei
+    const eOn = t >= tEnd - .02; end.style.opacity = eOn ? ease((t - tEnd) / .45) : 0;
+    if (eOn) { const d = t - tEnd, im = frameFit(bld, d, DUR - tEnd);
+      if (endPh && im && im.src) endPh.style.backgroundImage = `url(${im.src})`;
+      if (endCard) { const v = ease((d - .1) / .5); endCard.style.opacity = v; endCard.style.transform = `translateY(${((1 - v) * 60).toFixed(1)}px)`; }
+      const lv = ease((d - .2) / .5); endLg.style.opacity = lv; endLg.style.transform = `translateX(-50%) translateY(${((1 - lv) * 20).toFixed(1)}px)`;
+      endRows.forEach((r, i) => { const v = ease((d - .35 - i * .12) / .5); r.style.opacity = v; r.style.transform = `translateY(${((1 - v) * 24).toFixed(1)}px)`; }); }
+  };
+}, { push: 0, cut: true });
+boot("__RID__.m4a");
+</script>
+</body>
+</html>

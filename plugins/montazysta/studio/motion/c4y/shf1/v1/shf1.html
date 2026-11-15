@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>shf1 · Shift</title>
+<link rel="stylesheet" href="../lib/c4y.css">
+<style>
+:root { --or: #ea5b25; --or2: #ff7a3d; }
+#bug { display: none; }
+#stage { background: #0d0d0f; }
+#stage::before { display: none; }
+.full { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+.shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 55%, rgba(0,0,0,.72) 100%); }
+.kar { position: absolute; left: 56px; right: 56px; text-align: center; font: 900 78px/1.1 var(--d); letter-spacing: -.03em; color: #fff;
+  text-shadow: 0 4px 0 rgba(0,0,0,.5), 0 0 34px rgba(0,0,0,.65); }
+.kar span { opacity: 0; display: inline-block; margin: 0 .11em; }
+.kar span.on { opacity: 1; }
+.kar span.now { color: var(--or2); }
+.rec { position: absolute; display: flex; align-items: center; gap: 14px; height: 64px; padding: 0 22px; border-radius: 16px; background: rgba(0,0,0,.6);
+  color: #fff; font: 800 34px/1 Consolas, monospace; letter-spacing: .04em; }
+.rec i { width: 22px; height: 22px; border-radius: 50%; background: #ff2d2d; }
+.lab { position: absolute; left: 50%; display: inline-flex; align-items: center; gap: 16px; height: 100px; padding: 0 44px; border-radius: 50px; background: var(--or);
+  color: #fff; font: 900 52px/1 var(--d); letter-spacing: .04em; white-space: nowrap; box-shadow: 0 18px 40px rgba(234,91,37,.45); }
+.chips { position: absolute; left: 70px; right: 70px; top: 1420px; display: flex; flex-direction: column; gap: 20px; align-items: center; }
+.chip { display: inline-flex; align-items: center; gap: 18px; height: 108px; padding: 0 40px; border-radius: 28px; background: #fff; color: #111;
+  font: 900 54px/1 var(--d); letter-spacing: -.02em; box-shadow: 0 20px 50px rgba(0,0,0,.45); white-space: nowrap; }
+.chip b { font-size: 56px; }
+.track { position: absolute; border: 6px solid var(--or2); border-radius: 18px; box-shadow: 0 0 30px rgba(255,122,61,.6); }
+.track em { position: absolute; left: -6px; top: -50px; padding: 6px 12px; border-radius: 10px; background: var(--or2); color: #fff; font: 800 28px/1 var(--b); font-style: normal; white-space: nowrap; }
+.money { position: absolute; left: 0; right: 0; top: 230px; text-align: center; color: #fff; }
+.money .n { font: 900 260px/.9 var(--d); letter-spacing: -.05em; color: var(--or2); text-shadow: 0 10px 50px rgba(234,91,37,.5); }
+.money .s { margin-top: 14px; font: 800 58px/1 var(--d); letter-spacing: -.01em; }
+.phone2 { position: absolute; left: 50%; top: 600px; width: 360px; height: 740px; margin-left: -180px; border-radius: 60px; border: 12px solid #1b1b1e;
+  background: #fff; overflow: hidden; box-shadow: 0 40px 90px rgba(0,0,0,.6); }
+.phone2 img { width: 100%; display: block; }
+.end { position: absolute; inset: 0; background: radial-gradient(90% 60% at 50% 40%, #ff7a3d 0%, #ea5b25 55%, #c9431a 100%); color: #fff; text-align: center; }
+.end img { width: 640px; margin-top: 420px; }
+.end .t { margin-top: 70px; font: 900 92px/1.05 var(--d); letter-spacing: -.035em; }
+.end .st { display: flex; gap: 24px; justify-content: center; margin-top: 70px; }
+.end .st div { height: 120px; padding: 0 44px; border-radius: 30px; background: #111; font: 800 46px/120px var(--d); }
+.end .k { margin-top: 64px; font: 700 42px/1.35 var(--b); opacity: .95; }
+.end .u { position: absolute; left: 0; right: 0; bottom: 140px; font: 800 46px/1 var(--d); letter-spacing: .04em; opacity: .9; }
+.earn { position: absolute; left: 50%; top: 1290px; display: inline-flex; align-items: baseline; gap: 22px; height: 150px; padding: 0 54px; border-radius: 40px; background: rgba(255,255,255,.96); color: #111; box-shadow: 0 24px 60px rgba(0,0,0,.5); white-space: nowrap; transform: translateX(-50%); }
+.earn b { font: 900 104px/150px var(--d); letter-spacing: -.04em; color: var(--or); }
+.earn small { font: 800 40px/1 var(--d); color: #444; }
+.flash { position: absolute; inset: 0; background: #fff; opacity: 0; }
+</style>
+</head>
+<body>
+<script src="../clips/manifest.js"></script>
+<script src="timing.js"></script>
+<script src="../lib/c4y.js"></script>
+<script>
+const DUR = T.DUR;
+const b = k => LS(k);
+const tWp = W("b3", "wpinasz"), tKu = W("b4", "kuchni"), tWa = W("b4", "warsztacie"), tPa = W("b4", "pakowaniu"), tSk = W("b4", "sklepie"),
+  tDl = W("b5", "dlonie"), tTw = W("b5", "twarzy"), tDz = W("b5", "dzwieku"), tPi = W("b6", "piecdziesiat"), tWy = W("b6", "Wyplata"), tPr = W("b7", "Pracuj");
+// [klip, od, do, tryb] tryb: wide = karta POV, full = pion (zoom od góry, wypalone napisy wypadają za kadr), img = zdjęcie
+const CUTS = [
+  ["sfTom", 0, b("b2"), "wide"],
+  ["sfUgcCuc", b("b2"), b("b3"), "full"],
+  ["opaska", b("b3"), tWp, "img"],
+  ["sfUgcBand", tWp, b("b4"), "full"],
+  ["sfDough", b("b4"), tWa, "wide"], ["sfSand", tWa, tPa, "wide"], ["sfBerry", tPa, tSk, "wide"], ["sfCandy", tSk, b("b5"), "wide"],
+  ["sfLeath", b("b5"), b("b6"), "wide"],
+  ["sfWallet", b("b6"), DUR + 1, "blur"],
+];
+const LABS = { sfDough: "🍞 KUCHNIA", sfSand: "🔧 WARSZTAT", sfBerry: "📦 PAKOWANIE", sfCandy: "🛒 SKLEP" };
+scene(0, DUR + 1, (c) => {
+  const cv = el(c, "full", `<canvas width="1080" height="1920"></canvas>`).firstChild, ctx = cv.getContext("2d");
+  const fr = {}; CUTS.forEach(k => { if (k[3] !== "img") fr[k[0]] = useClip(k[0]); });
+  const img = new Image(); LOADS.push(new Promise(r => { img.onload = img.onerror = r; })); img.src = "opaska-w-uzyciu.jpg";
+  el(c, "shade");
+  const rec = el(c, "rec", `<i></i><span>REC 00:00:00</span>`), recS = rec.querySelector("span");
+  const earn = el(c, "earn", `<b>0,00 zł</b><small>za nagranie</small>`), earnB = earn.querySelector("b");
+  const lab = el(c, "lab", ""), track = [el(c, "track", "<em>dłoń</em>"), el(c, "track", "<em>dłoń</em>")];
+  const chips = el(c, "chips",  `<div class="chip"><b>✋</b>Tylko dłonie</div><div class="chip"><b>🙈</b>Bez twarzy</div><div class="chip"><b>🔇</b>Bez dźwięku</div>`);
+  const ch = [...chips.querySelectorAll(".chip")];
+  const money = el(c, "money", `<div class="n"><span>0</span> zł</div><div class="s">za godzinę nagrania</div>`), moneyN = money.querySelector("span");
+  const ph = el(c, "phone2", `<img src="result.png">`);
+  const chips2 = el(c, "chips", `<div class="chip"><b>📅</b>Wypłata co tydzień</div><div class="chip"><b>⏱️</b>8 h pracy = nawet 400 zł</div>`);
+  const ch2 = [...chips2.querySelectorAll(".chip")]; chips2.style.top = "1150px";
+  const TOP = { b1: 200, b4: 200, b5: 200 };
+  const kars = T.lines.map(L => { const e = el(c, "kar", L.words.map(w => `<span>${w.w}</span>`).join(" ")); e.L = L; e.sp = [...e.querySelectorAll("span")];
+    e.style.top = (TOP[L.key] || (L.key === "b6" ? 1440 : 1430)) + "px"; if (L.key === "b6") e.style.fontSize = "64px"; return e; });
+  const end = el(c, "end", `<img src="shift-logo-white.png"><div class="t">Pracuj raz,<br>zarabiaj podwójnie.</div><div class="st"><div> App Store</div><div>▶ Google Play</div></div>
+    <div class="k">25 tys.+ osób już nagrywa<br>20 mln zł wypłacone</div><div class="u">joinshift.pl</div>`);
+  const fl = el(c, "flash");
+  CUTS.slice(1).forEach(k => sfx("WH_SOFT", k[1] - .06, -19));
+  sfx("POP", 0.05, -12); [tKu, tWa, tPa, tSk].forEach(x => sfx("CLICK", x, -9)); [tDl, tTw, tDz].forEach(x => sfx("POP", x, -9));
+  sfx("IMP_SOFT", b("b6"), -8); sfx("DING", tPi + .5, -10); [tWy, tPi + .9].forEach(x => sfx("POP", x, -9)); sfx("IMP_BASS", b("b7"), -9);
+  const CARD = { x: 40, y: 640, w: 1000, h: 562 };
+  return (lt, t) => {
+    const k = CUTS.find(x => t >= x[1] && t < x[2]) || CUTS[CUTS.length - 1], dt = t - k[1];
+    const punch = .05 * Math.max(0, 1 - dt / .14);
+    ctx.fillStyle = "#0d0d0f"; ctx.fillRect(0, 0, 1080, 1920);
+    if (k[3] === "img") {
+      if (img.naturalWidth) { const z = 1.0 + .06 * clamp(dt / 3) + punch, h = 1920 * z, w = h, x = (1080 - w) / 2 - 120 * clamp(dt / 3); ctx.drawImage(img, x, (1920 - h) / 2, w, h); }
+    } else {
+      const f = fr[k[0]]; const im = f && f.length ? f[Math.min(f.length - 1, Math.floor(dt * 30))] : null;
+      if (im && im.complete && im.naturalWidth) {
+        if (k[3] === "full") { const z = 1.28 + .04 * clamp(dt / 3) + punch; ctx.drawImage(im, (1080 - 1080 * z) / 2, 0, 1080 * z, 1920 * z); }
+        else {
+          ctx.save(); ctx.filter = `blur(40px) brightness(${k[3] === "blur" ? .35 : .5})`; const s = 3.9; ctx.drawImage(im, (1080 - 960 * s) / 2, (1920 - 540 * s) / 2, 960 * s, 540 * s); ctx.restore();
+          if (k[3] === "wide") {
+            const z = 1 + punch + .03 * E.io(clamp(dt / Math.max(.5, k[2] - k[1]))), w = CARD.w * z, h = CARD.h * z, x = (1080 - w) / 2, y = CARD.y + CARD.h / 2 - h / 2;
+            ctx.save(); ctx.beginPath(); ctx.roundRect(x, y, w, h, 34); ctx.clip(); ctx.drawImage(im, x, y, w, h); ctx.restore();
+            ctx.save(); ctx.lineWidth = 6; ctx.strokeStyle = "rgba(255,255,255,.9)"; ctx.beginPath(); ctx.roundRect(x, y, w, h, 34); ctx.stroke(); ctx.restore();
+          }
+        }
+      }
+    }
+    // REC na karcie
+    const wide = k[3] === "wide";
+    if (wide) { rec.style.opacity = 1; rec.style.left = (CARD.x + 26) + "px"; rec.style.top = (CARD.y + 24) + "px"; const s = Math.floor(3600 * clamp(t / b("b6")));
+      recS.textContent = `REC 00:${String(Math.floor(s / 60) % 60).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`; rec.querySelector("i").style.opacity = Math.floor(t * 2) % 2 ? .25 : 1; }
+    else rec.style.opacity = 0;
+    if (wide) { earn.style.opacity = 1; earnB.textContent = Math.floor(50 * clamp(t / b("b6"))) + " zł"; earn.style.top = (k[0] === "sfLeath" ? 1230 : 1290) + "px"; } else earn.style.opacity = 0;
+    if (LABS[k[0]]) { lab.textContent = LABS[k[0]]; lab.style.top = (CARD.y - 56) + "px"; pop(lab, t, k[1] + .02, .6, 3, .6, "translateX(-50%)"); } else lab.style.opacity = 0;
+    // śledzenie dłoni (b5)
+    if (k[0] === "sfLeath" && t >= tDl - .1) {
+      const boxes = [[330, 250, 230, 210], [600, 300, 210, 200]];
+      track.forEach((e, i) => { const [x, y, w, h] = boxes[i], j = Math.sin(t * 5 + i) * 10; at(e, CARD.x + x + j, CARD.y + y + Math.cos(t * 4 + i) * 8, w, h); pop(e, t, tDl - .1 + i * .12, .5, 3, .6); });
+    } else track.forEach(hide);
+    if (k[0] === "sfLeath") { chips.style.opacity = 1; [tDl, tTw, tDz].forEach((x, i) => pop(ch[i], t, x, .5, 2.8, .55)); } else chips.style.opacity = 0;
+    // pieniądze (b6)
+    if (t >= b("b6") && t < b("b7")) {
+      pop(money, t, b("b6"), .7, 2.4, .6); moneyN.textContent = t < tPi ? "?" : Math.round(50 * E.out(clamp((t - tPi) / .6)));
+      ph.style.opacity = 1; ph.style.transform = `translateY(${(1 - P(t, b("b6"), b("b6") + .5, E.out4)) * 900}px) rotate(${-4 + 2 * Math.sin(t)}deg)`;
+      chips2.style.opacity = 1; [tWy, tPi + .9].forEach((x, i) => pop(ch2[i], t, x, .5, 2.8, .55));
+    } else { money.style.opacity = 0; ph.style.opacity = 0; chips2.style.opacity = 0; }
+    // napisy
+    kars.forEach((e, i) => {
+      const L = e.L, a = L.slot, z = i + 1 < kars.length ? kars[i + 1].L.slot : DUR + 1;
+      const on = t >= a - .02 && t < z && L.key !== "b7";
+      e.style.opacity = on ? 1 : 0;
+      if (on) e.sp.forEach((x, j) => { const w = L.words[j]; x.className = (t >= w.t - .05 || L.key === "b1") ? (t >= w.t - .05 && t < w.e + .05 ? "on now" : "on") : ""; });
+    });
+    if (t >= b("b7")) { end.style.opacity = 1; end.style.transform = `translateY(${(1 - P(t, b("b7"), b("b7") + .35, E.out4)) * 1920}px)`;
+      const im2 = end.querySelector("img"); pop(im2, t, b("b7") + .2, .6, 2.4, .6); pop(end.querySelector(".t"), t, tPr - .05, .7, 2.6, .6);
+      pop(end.querySelector(".st"), t, tPr + .6, .6, 2.6, .6); pop(end.querySelector(".k"), t, tPr + 1.0, .6, 2.6, .6); }
+    else end.style.opacity = 0;
+    fl.style.opacity = t >= b("b7") + .3 && t < b("b7") + .4 ? .5 : 0;
+  };
+}, { push: 0, cut: true });
+boot("shf1.m4a");
+</script>
+</body>
+</html>

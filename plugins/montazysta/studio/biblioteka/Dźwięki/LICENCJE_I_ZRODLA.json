@@ -1,0 +1,287 @@
+{
+  "collection": "WEFMI - wybrane efekty montażowe",
+  "license_note": "Każda pozycja została pobrana ze strony oznaczonej CC0 1.0. Źródła są zapisane osobno dla każdego pliku.",
+  "sounds": [
+    {
+      "number": 1,
+      "name": "Bamboo Whoosh",
+      "category": "01 Whoosh",
+      "file": "01 Whoosh\\01 - Bamboo Whoosh.wav",
+      "source_page": "https://freesound.org/people/qubodup/sounds/60013/",
+      "preview_used": "https://cdn.freesound.org/previews/60/60013_71257-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 2,
+      "name": "Swing Woosh",
+      "category": "01 Whoosh",
+      "file": "01 Whoosh\\02 - Swing Woosh.wav",
+      "source_page": "https://freesound.org/people/Jofae/sounds/389590/",
+      "preview_used": "https://cdn.freesound.org/previews/389/389590_6512973-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 3,
+      "name": "Soft Whoosh",
+      "category": "01 Whoosh",
+      "file": "01 Whoosh\\03 - Soft Whoosh.wav",
+      "source_page": "https://freesound.org/people/SimoSC/sounds/682473/",
+      "preview_used": "https://cdn.freesound.org/previews/682/682473_5819584-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 4,
+      "name": "Digital Data Whoosh",
+      "category": "01 Whoosh",
+      "file": "01 Whoosh\\04 - Digital Data Whoosh.wav",
+      "source_page": "https://freesound.org/people/qubodup/sounds/222493/",
+      "preview_used": "https://cdn.freesound.org/previews/222/222493_71257-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 5,
+      "name": "Spawn Whoosh",
+      "category": "01 Whoosh",
+      "file": "01 Whoosh\\05 - Spawn Whoosh.wav",
+      "source_page": "https://freesound.org/people/Grubzyy/sounds/422730/",
+      "preview_used": "https://cdn.freesound.org/previews/422/422730_4253642-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 6,
+      "name": "Soft Cinematic Impact",
+      "category": "02 Impact",
+      "file": "02 Impact\\06 - Soft Cinematic Impact.wav",
+      "source_page": "https://freesound.org/people/Rizzard/sounds/560156/",
+      "preview_used": "https://cdn.freesound.org/previews/560/560156_10825267-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 7,
+      "name": "Bass Cinematic Impact",
+      "category": "02 Impact",
+      "file": "02 Impact\\07 - Bass Cinematic Impact.wav",
+      "source_page": "https://freesound.org/people/ItsJowy/sounds/786705/",
+      "preview_used": "https://cdn.freesound.org/previews/786/786705_16509878-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 8,
+      "name": "Whoosh Hit Faller",
+      "category": "02 Impact",
+      "file": "02 Impact\\08 - Whoosh Hit Faller.wav",
+      "source_page": "https://freesound.org/people/vykroft/sounds/428574/",
+      "preview_used": "https://cdn.freesound.org/previews/428/428574_6802113-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 9,
+      "name": "Cinematic Impact Climax",
+      "category": "02 Impact",
+      "file": "02 Impact\\09 - Cinematic Impact Climax.wav",
+      "source_page": "https://freesound.org/people/BurghRecords/sounds/415278/",
+      "preview_used": "https://cdn.freesound.org/previews/415/415278_7241289-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 10,
+      "name": "Simple Suspense Riser",
+      "category": "03 Riser",
+      "file": "03 Riser\\10 - Simple Suspense Riser.wav",
+      "source_page": "https://freesound.org/people/SoundEffectsForAll/sounds/840719/",
+      "preview_used": "https://cdn.freesound.org/previews/840/840719_17848526-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 11,
+      "name": "Short Aesthetic Riser",
+      "category": "03 Riser",
+      "file": "03 Riser\\11 - Short Aesthetic Riser.wav",
+      "source_page": "https://freesound.org/people/Rizzard/sounds/561207/",
+      "preview_used": "https://cdn.freesound.org/previews/561/561207_10825267-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 12,
+      "name": "Organic Noise Riser",
+      "category": "03 Riser",
+      "file": "03 Riser\\12 - Organic Noise Riser.wav",
+      "source_page": "https://freesound.org/people/syntheffects/sounds/685255/",
+      "preview_used": "https://cdn.freesound.org/previews/685/685255_12265588-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 13,
+      "name": "Subtle Cinematic Riser",
+      "category": "03 Riser",
+      "file": "03 Riser\\13 - Subtle Cinematic Riser.wav",
+      "source_page": "https://freesound.org/people/BeaconStudio/sounds/855907/",
+      "preview_used": "https://cdn.freesound.org/previews/855/855907_18689440-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 14,
+      "name": "Sci-fi Riser Whoosh",
+      "category": "03 Riser",
+      "file": "03 Riser\\14 - Sci-fi Riser Whoosh.wav",
+      "source_page": "https://freesound.org/people/feastingfrog/sounds/760190/",
+      "preview_used": "https://cdn.freesound.org/previews/760/760190_16330994-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 15,
+      "name": "Sting Jumpscare",
+      "category": "04 Horror",
+      "file": "04 Horror\\15 - Sting Jumpscare.wav",
+      "source_page": "https://freesound.org/people/hotpin7/sounds/846789/",
+      "preview_used": "https://cdn.freesound.org/previews/846/846789_17707799-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 16,
+      "name": "Horror Sting Reveal",
+      "category": "04 Horror",
+      "file": "04 Horror\\16 - Horror Sting Reveal.wav",
+      "source_page": "https://freesound.org/people/shelbyshark/sounds/512517/",
+      "preview_used": "https://cdn.freesound.org/previews/512/512517_8644110-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 17,
+      "name": "Horror Noise Sting",
+      "category": "04 Horror",
+      "file": "04 Horror\\17 - Horror Noise Sting.wav",
+      "source_page": "https://freesound.org/people/SamsterBirdies/sounds/522567/",
+      "preview_used": "https://cdn.freesound.org/previews/522/522567_5487341-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 18,
+      "name": "Deep Sleep Stinger",
+      "category": "04 Horror",
+      "file": "04 Horror\\18 - Deep Sleep Stinger.wav",
+      "source_page": "https://freesound.org/people/89o_dev/sounds/655218/",
+      "preview_used": "https://cdn.freesound.org/previews/655/655218_10008418-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 19,
+      "name": "Soft Spooky Sting",
+      "category": "04 Horror",
+      "file": "04 Horror\\19 - Soft Spooky Sting.wav",
+      "source_page": "https://freesound.org/people/nomiqbomi/sounds/578370/",
+      "preview_used": "https://cdn.freesound.org/previews/578/578370_10522382-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 20,
+      "name": "Heartbeat 60 BPM",
+      "category": "04 Horror",
+      "file": "04 Horror\\20 - Heartbeat 60 BPM.wav",
+      "source_page": "https://freesound.org/people/Seth_Makes_Sounds/sounds/850306/",
+      "preview_used": "https://cdn.freesound.org/previews/850/850306_13228046-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 21,
+      "name": "Databending Glitch",
+      "category": "05 Glitch",
+      "file": "05 Glitch\\21 - Databending Glitch.wav",
+      "source_page": "https://freesound.org/people/AmicaSys/sounds/332711/",
+      "preview_used": "https://cdn.freesound.org/previews/332/332711_5695297-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 22,
+      "name": "Glitch Sound Effect",
+      "category": "05 Glitch",
+      "file": "05 Glitch\\22 - Glitch Sound Effect.wav",
+      "source_page": "https://freesound.org/people/iwanPlays/sounds/528740/",
+      "preview_used": "https://cdn.freesound.org/previews/528/528740_7108319-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 23,
+      "name": "Quick Static Glitches",
+      "category": "05 Glitch",
+      "file": "05 Glitch\\23 - Quick Static Glitches.wav",
+      "source_page": "https://freesound.org/people/Rvgerxini/sounds/507528/",
+      "preview_used": "https://cdn.freesound.org/previews/507/507528_9453283-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 24,
+      "name": "Fail Party Horn",
+      "category": "06 Komedia i UI",
+      "file": "06 Komedia i UI\\24 - Fail Party Horn.wav",
+      "source_page": "https://freesound.org/people/qubodup/sounds/825292/",
+      "preview_used": "https://cdn.freesound.org/previews/825/825292_71257-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 25,
+      "name": "Cartoon Boing",
+      "category": "06 Komedia i UI",
+      "file": "06 Komedia i UI\\25 - Cartoon Boing.wav",
+      "source_page": "https://freesound.org/people/reelworldstudio/sounds/161122/",
+      "preview_used": "https://cdn.freesound.org/previews/161/161122_2750714-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 26,
+      "name": "Vintage Cork Pop",
+      "category": "06 Komedia i UI",
+      "file": "06 Komedia i UI\\26 - Vintage Cork Pop.wav",
+      "source_page": "https://freesound.org/people/craigsmith/sounds/676000/",
+      "preview_used": "https://cdn.freesound.org/previews/676/676000_2524442-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 27,
+      "name": "Retro Game Fail",
+      "category": "06 Komedia i UI",
+      "file": "06 Komedia i UI\\27 - Retro Game Fail.wav",
+      "source_page": "https://freesound.org/people/JulyPink/sounds/848654/",
+      "preview_used": "https://cdn.freesound.org/previews/848/848654_16867777-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    },
+    {
+      "number": 28,
+      "name": "UI Click",
+      "category": "06 Komedia i UI",
+      "file": "06 Komedia i UI\\28 - UI Click.wav",
+      "source_page": "https://freesound.org/people/Ranner/sounds/488534/",
+      "preview_used": "https://cdn.freesound.org/previews/488/488534_5382295-hq.mp3",
+      "license": "CC0 1.0",
+      "processing": "WAV 48 kHz, stereo, PCM 24-bit, loudness target -18 LUFS"
+    }
+  ],
+  "failures": []
+}

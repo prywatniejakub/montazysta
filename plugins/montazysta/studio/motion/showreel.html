@@ -1,0 +1,953 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Motion Showreel</title>
+<style>
+@font-face { font-family: "SUV"; src: url("SegUIVar.ttf"), url("file:///C:/Windows/Fonts/SegUIVar.ttf"); font-weight: 300 700; }
+:root {
+  --font: "SUV", "Segoe UI Variable Display", "Segoe UI", sans-serif;
+  --mono: Consolas, "Cascadia Mono", monospace;
+  --ink: #f4f6fb; --dim: #8b93a7;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: #04050a; }
+body { font-family: var(--font); color: var(--ink); -webkit-font-smoothing: antialiased; font-variation-settings: "opsz" 36; }
+#stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; background: #04050a; }
+.layer { position: absolute; inset: 0; pointer-events: none; }
+.blob { position: absolute; left: 0; top: 0; width: 1900px; height: 1900px; margin: -950px 0 0 -950px; border-radius: 50%; opacity: 0; }
+.scene { position: absolute; inset: 0; perspective: 1600px; display: none; }
+.world, .g { position: absolute; left: 0; top: 0; width: 0; height: 0; transform-style: preserve-3d; }
+.world { left: 960px; top: 540px; }
+.abs { position: absolute; }
+.t { color: var(--ink); white-space: nowrap; letter-spacing: -0.03em; }
+.w { display: inline-block; white-space: nowrap; }
+.c { display: inline-block; }
+.gtext { display: inline-block; color: transparent; -webkit-background-clip: text; background-clip: text;
+  background-repeat: no-repeat; background-size: 250% 100%, 100% 100%; padding: 0 .06em; }
+.g1 { background-image: linear-gradient(100deg, transparent 40%, rgba(255,255,255,.9) 50%, transparent 60%), linear-gradient(90deg, #7fb0ff, #a98bff 50%, #f3a6ff); }
+.g2 { background-image: linear-gradient(100deg, transparent 40%, rgba(255,255,255,.95) 50%, transparent 60%), linear-gradient(90deg, #5ee7ff, #4f8cff 60%, #8b6cff); }
+.gold { background-image: linear-gradient(100deg, transparent 40%, rgba(255,255,255,1) 50%, transparent 60%), linear-gradient(180deg, #fff6dc 0%, #f1d08a 38%, #b98a3e 62%, #f7e2a8 100%); }
+.silver { background-image: linear-gradient(100deg, transparent 40%, rgba(255,255,255,1) 50%, transparent 60%), linear-gradient(180deg, #ffffff 0%, #dfe6f5 45%, #8e9bb8 70%, #eef2ff 100%); }
+
+/* fx */
+#flash { background: #cfe0ff; mix-blend-mode: screen; opacity: 0; }
+#streak { position: absolute; left: 50%; top: 50%; width: 2600px; height: 240px; margin: -120px 0 0 -1300px; opacity: 0; mix-blend-mode: screen; }
+#streak i { position: absolute; left: 0; right: 0; top: 50%; }
+#streak .core { height: 4px; margin-top: -2px; background: linear-gradient(90deg, transparent, rgba(140,180,255,.0) 8%, rgba(210,228,255,1) 50%, rgba(140,180,255,0) 92%, transparent); filter: blur(1px); }
+#streak .halo { height: 60px; margin-top: -30px; background: linear-gradient(90deg, transparent, rgba(80,130,255,.35) 30%, rgba(160,190,255,.55) 50%, rgba(80,130,255,.35) 70%, transparent); filter: blur(22px); }
+#vig { background: radial-gradient(ellipse 75% 70% at 50% 50%, transparent 55%, rgba(0,0,0,.62) 100%); }
+#fade { background: #000; opacity: 0; }
+
+/* code window */
+.win { border-radius: 20px; overflow: hidden;
+  background: linear-gradient(180deg, rgb(26,30,44), rgb(11,13,21));
+  border: 1px solid rgba(255,255,255,.11);
+  box-shadow: 0 50px 120px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.08); }
+.win .bar { height: 50px; display: flex; align-items: center; gap: 9px; padding: 0 20px; border-bottom: 1px solid rgba(255,255,255,.06); background: rgba(255,255,255,.025); }
+.win .bar i { width: 13px; height: 13px; border-radius: 50%; background: #ff5f57; }
+.win .bar i:nth-child(2) { background: #febc2e; } .win .bar i:nth-child(3) { background: #28c840; }
+.win .tab { margin-left: 16px; font: 15px var(--mono); color: #9aa6c2; padding: 6px 14px; background: rgba(255,255,255,.06); border-radius: 8px; }
+.code { font: 27px/1.6 var(--mono); padding: 22px 30px; color: #eeffff; white-space: pre; letter-spacing: 0; }
+.code .ln { display: inline-block; width: 44px; color: #3b4560; }
+.kw { color: #c792ea; } .fn { color: #82aaff; } .str { color: #c3e88d; } .num { color: #f78c6c; }
+.key { color: #89ddff; } .id { color: #eef3ff; } .op { color: #8a9cc4; } .cm { color: #56637f; font-style: italic; }
+.caret { display: inline-block; width: 14px; height: 30px; background: #82aaff; vertical-align: -5px; margin-left: 2px; box-shadow: 0 0 14px #4f8cff; }
+.wglow { border-radius: 50%; background: radial-gradient(closest-side, rgba(70,120,255,.45), transparent); filter: blur(30px); }
+
+/* layers (exploded stack) */
+.lay { border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,.18); background: rgba(16,20,32,.30); box-shadow: 0 30px 80px rgba(0,0,0,.35); }
+.lay img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; display: block; }
+.lay .mk { position: absolute; right: 0; bottom: 0; width: 1px; height: 1px; }
+.lay .tagl { position: absolute; left: 22px; top: 18px; font: 600 17px var(--font); letter-spacing: .14em; color: rgba(255,255,255,.75); }
+.cap { position: absolute; left: 0; right: 0; bottom: 70px; text-align: center; font: 700 58px var(--font); letter-spacing: -.02em; color: #fff; text-shadow: 0 4px 18px rgba(0,0,0,.6); }
+.cap b { color: #ffd84a; }
+.clabel { position: absolute; left: 0; top: 0; display: flex; align-items: center; opacity: 0; }
+.clabel .dot { width: 10px; height: 10px; border-radius: 50%; background: #fff; box-shadow: 0 0 12px #8fb4ff; margin-left: -5px; }
+.clabel .ln2 { height: 1px; width: 90px; background: linear-gradient(90deg, rgba(255,255,255,.8), rgba(255,255,255,.25)); transform-origin: 0 50%; }
+.clabel span { margin-left: 16px; font: 500 26px var(--font); color: #e9eefb; letter-spacing: -.01em; white-space: nowrap; }
+.clabel span b { font-weight: 600; color: #7fa6ff; margin-right: 10px; font-variant-numeric: tabular-nums; }
+
+/* tip cards (grid) */
+.tip { border-radius: 16px; overflow: hidden; background: linear-gradient(160deg, rgba(23,27,33,.97), rgba(8,10,13,.99)); border: 1px solid rgba(255,255,255,.07); }
+.tip .glow { position: absolute; inset: 0; background: radial-gradient(130% 150% at 88% 115%, var(--gc) 0%, transparent 62%); opacity: .55; }
+.tip .lbl { position: absolute; left: 22px; top: 15px; font: 400 19px var(--font); color: #8a909c; }
+.tip .rule { position: absolute; left: 22px; right: 38%; top: 47px; height: 1px; background: rgba(255,255,255,.10); }
+.tip .mask { position: absolute; left: 22px; right: 18px; top: 60px; font: 600 24px var(--font); color: #9aa0a8; letter-spacing: .02em; white-space: nowrap; }
+.tip .pills { position: absolute; left: 22px; bottom: 16px; display: flex; gap: 4px; }
+.tip .pills i { width: 11px; height: 21px; border-radius: 6px; border: 1.6px solid #8f959e; transform: rotate(28deg); }
+.tip .pills i.on { background: #c9ced6; border-color: #c9ced6; }
+.tip .sweep { position: absolute; top: -30%; bottom: -30%; left: 0; width: 45%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.16), transparent); transform: translateX(-150%); }
+.dtitle { display: flex; align-items: center; justify-content: center; gap: 22px; font: 600 70px var(--font); letter-spacing: -.03em; color: #eef2fb; text-shadow: 0 0 40px rgba(140,170,255,.25); }
+.dtitle svg { width: 62px; height: 62px; filter: drop-shadow(0 0 18px rgba(110,150,255,.8)); }
+
+/* title */
+.ext { font: 700 250px/280px var(--font); letter-spacing: -.035em; text-align: center; white-space: nowrap; }
+.rays { border-radius: 50%; background: repeating-conic-gradient(from 0deg, rgba(130,170,255,.16) 0deg 1.6deg, transparent 1.6deg 11deg);
+  -webkit-mask-image: radial-gradient(closest-side, #000 10%, transparent 80%); }
+.hglow { border-radius: 50%; background: radial-gradient(closest-side, rgba(70,120,255,.55), rgba(90,60,255,.18) 55%, transparent); filter: blur(20px); }
+
+/* chapter card */
+.face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.chap { border-radius: 28px; overflow: hidden; background: linear-gradient(155deg, rgba(24,29,36,.98), rgba(7,9,12,.99)); border: 1px solid rgba(140,255,180,.22); box-shadow: 0 60px 140px rgba(0,0,0,.6), 0 0 60px rgba(60,220,120,.12); }
+.chap .glow { position: absolute; inset: 0; background: radial-gradient(90% 120% at 90% 110%, rgba(46,180,90,.55), transparent 60%), radial-gradient(60% 80% at 0% 0%, rgba(80,120,255,.18), transparent 60%); }
+.chap .pill { position: absolute; left: 56px; top: 50px; display: flex; align-items: center; gap: 12px; padding: 10px 20px; border-radius: 40px; background: rgba(120,255,170,.08); border: 1px solid rgba(120,255,170,.25); font: 600 19px var(--font); letter-spacing: .2em; color: #b9f5cc; }
+.chap .pill i { width: 9px; height: 9px; border-radius: 50%; background: #54e38a; box-shadow: 0 0 10px #54e38a; }
+.chap .ttl { position: absolute; left: 56px; top: 140px; font: 650 82px/1.02 var(--font); letter-spacing: -.035em; color: #f7f9fc; }
+.chap .sub { position: absolute; left: 58px; top: 330px; font: 400 28px var(--font); color: #9aa3b5; letter-spacing: -.005em; }
+.chap .mini { position: absolute; right: 56px; top: 64px; width: 250px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.chap .mini i { height: 62px; border-radius: 10px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.07); }
+.chap .mini i.on { background: linear-gradient(135deg, rgba(84,227,138,.45), rgba(84,227,138,.12)); border-color: rgba(120,255,170,.6); box-shadow: 0 0 24px rgba(84,227,138,.35); }
+.chap .prog { position: absolute; left: 58px; right: 190px; bottom: 58px; display: flex; gap: 8px; }
+.chap .prog i { flex: 1; height: 6px; border-radius: 3px; background: rgba(255,255,255,.1); }
+.chap .prog i.on { background: linear-gradient(90deg, #3fcf7a, #7ef0a8); box-shadow: 0 0 12px rgba(84,227,138,.5); }
+.chap .pnum { position: absolute; right: 56px; bottom: 44px; font: 600 30px var(--font); color: #dfe6f0; font-variant-numeric: tabular-nums; }
+
+/* stats panel */
+.panel { border-radius: 28px; overflow: hidden; background: linear-gradient(165deg, rgba(24,28,40,.96), rgba(9,11,18,.98)); border: 1px solid rgba(255,255,255,.10); box-shadow: 0 60px 140px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.07); }
+.panel .glow { position: absolute; inset: 0; background: radial-gradient(80% 90% at 85% 100%, rgba(60,120,255,.35), transparent 60%); }
+.panel .plabel { position: absolute; left: 56px; top: 44px; font: 600 26px var(--font); color: #dfe5f2; }
+.panel .plabel span { color: #6f7890; font-weight: 400; }
+.odo { position: absolute; left: 50px; top: 92px; display: flex; font: 700 150px/150px var(--font); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.odo .col { height: 150px; overflow: hidden; width: .6em; text-align: center; }
+.odo .sp { width: .22em; }
+.odo .strip { display: flex; flex-direction: column; }
+.delta { position: absolute; right: 60px; top: 150px; padding: 12px 22px; border-radius: 40px; font: 700 30px var(--font); color: #7ef0a8; background: rgba(84,227,138,.12); border: 1px solid rgba(84,227,138,.35); box-shadow: 0 0 30px rgba(84,227,138,.2); }
+.chart { position: absolute; left: 40px; bottom: 30px; width: 1100px; height: 250px; overflow: visible; }
+
+/* premium cards */
+.pcard { border-radius: 26px; overflow: hidden; box-shadow: 0 50px 100px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.25); border: 1px solid rgba(255,255,255,.14); }
+.pc0 { background: linear-gradient(135deg, #07163a 0%, #1848c9 55%, #6fb1ff 100%); }
+.pc1 { background: linear-gradient(135deg, #1d0838 0%, #6d2fe0 50%, #f472b6 100%); }
+.pc2 { background: linear-gradient(135deg, #15171c 0%, #4d535f 50%, #d5dae3 100%); }
+.pcard .lines { position: absolute; inset: 0; background: repeating-linear-gradient(115deg, rgba(255,255,255,.035) 0 2px, transparent 2px 9px); mix-blend-mode: overlay; }
+.pcard .sheen { position: absolute; inset: -10%; background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.33) 46%, rgba(255,255,255,.08) 54%, transparent 68%); background-size: 300% 100%; mix-blend-mode: screen; }
+.pcard .brand { position: absolute; left: 36px; top: 30px; font: 600 24px var(--font); color: rgba(255,255,255,.88); letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
+.pcard .brand svg { width: 22px; height: 22px; }
+.pcard .chip { position: absolute; right: 36px; top: 30px; width: 58px; height: 44px; border-radius: 9px; background: linear-gradient(135deg, #f6e3a1, #b88d3a 60%, #f3dd98); box-shadow: inset 0 0 0 1px rgba(0,0,0,.18); }
+.pcard .chip::before { content: ""; position: absolute; inset: 9px 0; border-top: 1px solid rgba(0,0,0,.25); border-bottom: 1px solid rgba(0,0,0,.25); }
+.pcard .nm { position: absolute; left: 36px; bottom: 28px; font: 650 50px var(--font); letter-spacing: -.03em; color: #fff; }
+.pcard .no { position: absolute; right: 36px; bottom: 34px; font: 500 24px var(--mono); color: rgba(255,255,255,.7); }
+
+/* reels */
+.reel { border-radius: 28px; overflow: hidden; border: 1px solid rgba(255,255,255,.18); background: #111; box-shadow: 0 40px 90px rgba(0,0,0,.5); }
+.reel img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.floor { border-radius: 50%; background: radial-gradient(closest-side, rgba(90,130,255,.35), transparent); filter: blur(20px); }
+
+/* kinetic */
+.big { font: 700 260px/300px var(--font); letter-spacing: -.045em; text-align: center; }
+.sline { position: absolute; height: 2px; border-radius: 2px; background: linear-gradient(90deg, transparent, rgba(190,215,255,.85), transparent); opacity: 0; }
+.spark { width: 60px; height: 60px; }
+
+/* hero */
+.ed { position: absolute; left: 0; right: 0; top: 50px; bottom: 0; }
+.pv { position: absolute; left: 22px; top: 20px; width: 600px; height: 338px; border-radius: 12px; overflow: hidden; background: #000; }
+.pv img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+.pv .tc { position: absolute; right: 12px; bottom: 10px; font: 600 16px var(--mono); color: #fff; background: rgba(0,0,0,.5); padding: 3px 8px; border-radius: 6px; }
+.insp { position: absolute; left: 642px; right: 22px; top: 20px; height: 338px; border-radius: 12px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); padding: 18px 18px; }
+.insp h4 { font: 600 17px var(--font); color: #cfd6e6; margin-bottom: 16px; letter-spacing: .02em; }
+.insp .row { display: flex; align-items: center; justify-content: space-between; font: 400 15px var(--font); color: #8b93a7; margin-bottom: 14px; }
+.insp .sl { width: 130px; height: 5px; border-radius: 3px; background: rgba(255,255,255,.08); position: relative; }
+.insp .sl i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 3px; background: linear-gradient(90deg, #4f8cff, #8b6cff); }
+.tl { position: absolute; left: 22px; right: 22px; top: 376px; bottom: 20px; border-radius: 12px; background: rgba(0,0,0,.25); border: 1px solid rgba(255,255,255,.05); overflow: hidden; }
+.tl .tr { position: absolute; left: 12px; right: 12px; height: 22px; }
+.tl .clip { position: absolute; top: 0; bottom: 0; border-radius: 6px; font: 600 12px var(--font); color: rgba(255,255,255,.9); padding: 3px 8px; white-space: nowrap; overflow: hidden; }
+.tl .ph { position: absolute; top: 0; bottom: 0; width: 2px; background: #ff4d6d; box-shadow: 0 0 10px #ff4d6d; }
+.mini-stat { border-radius: 22px; background: linear-gradient(165deg, rgba(24,28,40,.96), rgba(9,11,18,.98)); border: 1px solid rgba(255,255,255,.1); overflow: hidden; }
+.mini-stat .l { position: absolute; left: 26px; top: 20px; font: 500 18px var(--font); color: #8b93a7; }
+.mini-stat .v { position: absolute; left: 24px; top: 46px; font: 700 64px var(--font); letter-spacing: -.02em; }
+.mini-stat svg { position: absolute; left: 0; bottom: 0; width: 100%; height: 90px; }
+.reel .ui { position: absolute; left: 0; right: 0; bottom: 0; height: 40%; background: linear-gradient(transparent, rgba(0,0,0,.7)); }
+.reel .ui b { position: absolute; left: 18px; bottom: 44px; font: 600 16px var(--font); color: #fff; }
+.reel .ui span { position: absolute; left: 18px; bottom: 20px; font: 400 14px var(--font); color: rgba(255,255,255,.8); }
+
+/* logo */
+.wm { font: 650 118px/140px var(--font); letter-spacing: -.035em; white-space: nowrap; }
+.tag { font: 400 38px var(--font); color: #9aa3b8; letter-spacing: -.01em; text-align: center; white-space: nowrap; }
+.meta { font: 400 21px var(--font); color: #5d6579; letter-spacing: .06em; text-align: center; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="layer" id="bg"></div>
+  <div class="layer" id="scenes"></div>
+  <div class="layer" id="fx">
+    <div id="streak"><i class="halo"></i><i class="core"></i></div>
+    <div class="layer" id="flash"></div>
+    <div class="layer" id="vig"></div>
+    <div class="layer" id="fade"></div>
+  </div>
+</div>
+<svg width="0" height="0" style="position:absolute"><defs id="defs">
+  <linearGradient id="sparkG" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#5aa0ff"/><stop offset=".55" stop-color="#8f7bff"/><stop offset="1" stop-color="#e38bff"/>
+  </linearGradient>
+</defs></svg>
+<script>
+"use strict";
+// ---------------------------------------------------------------- utils
+const clamp = (x, a = 0, b = 1) => x < a ? a : x > b ? b : x;
+const mix = (a, b, u) => a + (b - a) * u;
+const E = {
+  lin: u => u,
+  inCubic: u => u * u * u,
+  outCubic: u => 1 - Math.pow(1 - u, 3),
+  inOutCubic: u => u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2,
+  outQuart: u => 1 - Math.pow(1 - u, 4),
+  outQuint: u => 1 - Math.pow(1 - u, 5),
+  outExpo: u => u >= 1 ? 1 : 1 - Math.pow(2, -10 * u),
+  inExpo: u => u <= 0 ? 0 : Math.pow(2, 10 * u - 10),
+  inOutExpo: u => u <= 0 ? 0 : u >= 1 ? 1 : u < .5 ? Math.pow(2, 20 * u - 10) / 2 : (2 - Math.pow(2, -20 * u + 10)) / 2,
+  inOutSine: u => -(Math.cos(Math.PI * u) - 1) / 2,
+  outBack: u => { const s = 1.70158; return 1 + (s + 1) * Math.pow(u - 1, 3) + s * Math.pow(u - 1, 2); },
+};
+const P = (t, a, b, e = E.outExpo) => e(clamp((t - a) / (b - a)));
+function spring(dt, f = 1.6, z = .55) {
+  if (dt <= 0) return 0;
+  const w = 2 * Math.PI * f, wd = w * Math.sqrt(1 - z * z);
+  return 1 - Math.exp(-z * w * dt) * (Math.cos(wd * dt) + (z * w / wd) * Math.sin(wd * dt));
+}
+const pulse = (t, t0, d = .3) => t < t0 ? 0 : Math.exp(-(t - t0) / d);
+function hash(a, b) {
+  let x = (a * 374761393 + b * 668265263) | 0;
+  x = Math.imul(x ^ (x >>> 13), 1274126177);
+  return ((x ^ (x >>> 16)) >>> 0) / 4294967296;
+}
+const NS = "http://www.w3.org/2000/svg";
+const SPARK = '<svg viewBox="0 0 100 100"><path fill="url(#sparkG)" d="M50 0C52 30 70 48 100 50C70 52 52 70 50 100C48 70 30 52 0 50C30 48 48 30 50 0Z"/></svg>';
+
+function el(parent, tag, cls, html) {
+  const e = document.createElement(tag || "div");
+  if (cls) e.className = cls;
+  if (html != null) e.innerHTML = html;
+  parent.appendChild(e);
+  return e;
+}
+function box(parent, cls, w, h, html) {
+  const e = el(parent, "div", "abs " + (cls || ""), html);
+  e.style.width = w + "px"; e.style.height = h + "px";
+  e.style.left = (-w / 2) + "px"; e.style.top = (-h / 2) + "px";
+  return e;
+}
+const grp = (parent, cls) => el(parent, "div", "g " + (cls || ""));
+const tf = (e, s) => { e.style.transform = s; };
+function textBox(parent, text, size, weight, w, align, split) {
+  const h = Math.round(size * 1.3);
+  const e = box(parent, "t", w, h);
+  e.style.fontSize = size + "px"; e.style.fontWeight = weight; e.style.lineHeight = h + "px"; e.style.textAlign = align || "center";
+  if (split) e.chars = splitChars(e, text); else e.textContent = text;
+  return e;
+}
+function splitChars(e, text) {
+  e.innerHTML = "";
+  const chars = [];
+  const words = text.split(" ");
+  words.forEach((word, wi) => {
+    const w = el(e, "span", "w");
+    for (const ch of word) chars.push(el(w, "span", "c", ch === "<" ? "&lt;" : ch));
+    if (wi < words.length - 1) e.appendChild(document.createTextNode(" "));
+  });
+  return chars;
+}
+function reveal(chars, t, t0, o = {}) {
+  const st = o.stagger ?? .03, dur = o.dur ?? .9, y = o.y ?? 40, x = o.x ?? 0, bl = o.blur ?? 16, rx = o.rx ?? 0, z = o.z ?? 0, ease = o.ease || E.outExpo;
+  chars.forEach((c, i) => {
+    const a = t0 + i * st, u = P(t, a, a + dur, ease), op = clamp((t - a) / (dur * .45));
+    c.style.opacity = op;
+    c.style.transform = u >= 1 ? "" : `translate3d(${(1 - u) * x}px,${(1 - u) * y}px,${(1 - u) * z}px) rotateX(${(1 - u) * rx}deg)`;
+    c.style.filter = u > .995 || bl === 0 ? "" : `blur(${(1 - u) * bl}px)`;
+  });
+}
+function conceal(chars, t, t0, o = {}) {
+  const st = o.stagger ?? .02, dur = o.dur ?? .35, y = o.y ?? -30, x = o.x ?? 0, bl = o.blur ?? 14;
+  chars.forEach((c, i) => {
+    const a = t0 + i * st, u = P(t, a, a + dur, E.inCubic);
+    if (u <= 0) return;
+    c.style.opacity = 1 - u;
+    c.style.transform = `translate3d(${u * x}px,${u * y}px,0)`;
+    c.style.filter = `blur(${u * bl}px)`;
+  });
+}
+function wipe(e, u, soft = .3) {
+  if (u >= 1) { e.style.webkitMaskImage = ""; return; }
+  const p = mix(-soft, 1, u) * 100;
+  e.style.webkitMaskImage = `linear-gradient(90deg, #000 ${p}%, transparent ${p + soft * 100}%)`;
+}
+const sheen = (e, u) => { e.style.backgroundPosition = `${mix(125, -25, u)}% 0, 0 0`; };
+
+// per-scene directional blur (svg)
+function dirBlur(id) {
+  const f = document.createElementNS(NS, "filter");
+  f.id = id; f.setAttribute("x", "-40%"); f.setAttribute("y", "-40%"); f.setAttribute("width", "180%"); f.setAttribute("height", "180%");
+  f.setAttribute("color-interpolation-filters", "sRGB");
+  const g = document.createElementNS(NS, "feGaussianBlur");
+  g.setAttribute("stdDeviation", "0 0");
+  f.appendChild(g); document.getElementById("defs").appendChild(f);
+  return (e, bx, by, extra) => {
+    extra = extra || "";
+    if (bx < .4 && by < .4) { e.style.filter = extra; return; }
+    g.setAttribute("stdDeviation", `${bx.toFixed(2)} ${by.toFixed(2)}`);
+    e.style.filter = `url(#${id}) ${extra}`;
+  };
+}
+
+// ---------------------------------------------------------------- timeline (music grid)
+const BAR = 2.52667, BEAT = BAR / 4;
+const H0 = .024, H1 = H0 + BAR, H2 = H0 + 2 * BAR, H3 = H0 + 3 * BAR;  // intro bass hits
+const DROP = H0 + 4 * BAR, D1B = DROP + BAR, D2 = DROP + 2 * BAR, D2B = D2 + BAR, END = DROP + 4 * BAR;
+window.DURATION = 24.6;
+window.MARKS = { H0, H1, H2, H3, DROP, D1B, D2, D2B, END, BEAT };
+
+const scenes = [];
+function scene(id, a, b) {
+  const e = el(document.getElementById("scenes"), "div", "scene");
+  e.id = id;
+  const s = { id, a, b, el: e, world: el(e, "div", "world"), on: false, update: () => {} };
+  scenes.push(s);
+  return s;
+}
+
+// ---------------------------------------------------------------- background
+const BLOBS = [
+  { c: "40,110,255", x: 1680, y: 90, s: 1.15 },
+  { c: "125,60,255", x: 170, y: 1060, s: 1.05 },
+  { c: "30,190,110", x: 260, y: 160, s: .85 },
+  { c: "255,176,70", x: 960, y: 560, s: .9 },
+  { c: "0,200,255", x: 1500, y: 980, s: .9 },
+];
+const blobEls = BLOBS.map(b => {
+  const e = el(document.getElementById("bg"), "div", "blob");
+  e.style.background = `radial-gradient(closest-side, rgba(${b.c},.85) 0%, rgba(${b.c},.32) 42%, rgba(${b.c},.08) 70%, transparent 100%)`;
+  return e;
+});
+// t, blue, violet, green, gold, cyan
+const MOOD = [
+  [0, 0, 0, 0, 0, 0], [.3, .18, .12, 0, 0, 0], [2.4, .32, .26, 0, 0, 0],
+  [H1, .42, .3, 0, 0, .08], [H2 - .1, .4, .28, 0, 0, .1], [H2, .48, .36, .05, 0, .05],
+  [H3 - .1, .4, .3, .05, 0, 0], [H3, .38, .22, .28, 0, 0], [DROP - .1, .3, .2, .3, 0, 0],
+  [DROP, .75, .42, .05, 0, .12], [DROP + 1.2, .5, .38, .1, 0, .05], [11.39, .3, .25, .32, 0, 0],
+  [D1B, .52, .25, 0, 0, .25], [13.9, .45, .45, 0, 0, .05], [14.8, .5, .55, 0, .05, 0],
+  [D2, .55, .35, 0, 0, .2], [16.4, .5, .3, 0, 0, .1], [16.45, .6, .18, 0, 0, .15], [17.05, .35, .15, 0, 0, .35],
+  [17.08, .3, .1, 0, 0, .45], [17.69, .25, .1, 0, 0, .2], [17.71, .12, .06, 0, .45, 0], [18.3, .1, .08, 0, .42, 0],
+  [18.34, .5, .36, .05, 0, .1], [20.1, .5, .4, .05, 0, .08], [END, .6, .5, 0, 0, .1], [23.5, .38, .34, 0, 0, .05], [24.6, 0, 0, 0, 0, 0],
+];
+function mood(t) {
+  let i = 0;
+  while (i < MOOD.length - 2 && MOOD[i + 1][0] <= t) i++;
+  const a = MOOD[i], b = MOOD[i + 1];
+  const u = E.inOutSine(clamp((t - a[0]) / Math.max(1e-6, b[0] - a[0])));
+  return a.slice(1).map((v, k) => mix(v, b[k + 1], u));
+}
+function bgUpdate(t) {
+  const m = mood(t);
+  BLOBS.forEach((b, k) => {
+    const x = b.x + Math.sin(t * .31 + k * 1.7) * 90, y = b.y + Math.cos(t * .27 + k * 2.3) * 70;
+    blobEls[k].style.opacity = m[k];
+    blobEls[k].style.transform = `translate(${x}px,${y}px) scale(${b.s * (1 + .04 * Math.sin(t * .5 + k))})`;
+  });
+}
+
+// ---------------------------------------------------------------- global fx
+const FLASH = [[H0, .10, .6], [H1, .10, .25], [H2, .20, .25], [H3, .10, .25], [DROP, .85, .38], [11.393, .12, .15],
+  [D1B, .22, .2], [13.92, .12, .15], [D2, .45, .3], [17.711, .25, .25], [18.342, .2, .2], [END, .55, .55]];
+const STREAK = [[H0, 1, 1.1], [DROP, .8, .45], [END, 1, 1.2]];
+const fxFlash = document.getElementById("flash"), fxStreak = document.getElementById("streak"), fxFade = document.getElementById("fade");
+function fxUpdate(t) {
+  let f = 0;
+  for (const [t0, a, d] of FLASH) f += a * pulse(t, t0 - .01, d) * clamp((t - t0 + .03) / .03);
+  fxFlash.style.opacity = Math.min(1, f);
+  let s = 0, sx = 1;
+  for (const [t0, a, d] of STREAK) { const p = pulse(t, t0, d) * clamp((t - t0 + .02) / .05) * (1 - P(t, t0 + d * .7, t0 + d * 1.6, E.inOutSine)); if (p > s) { s = p * a; sx = .35 + 1.1 * (1 - Math.pow(p, 3)); } }
+  fxStreak.style.opacity = s;
+  fxStreak.style.transform = `scaleX(${sx})`;
+  fxFade.style.opacity = P(t, 23.75, 24.55, E.inOutSine) + (1 - P(t, 0, .06, E.lin));
+}
+
+// ================================================================ A: hook
+const A = scene("A", 0, 2.7);
+const A1 = textBox(A.world, "Ten film nie powstał", 96, 600, 1800, "center", true);
+const A2 = textBox(A.world, "", 96, 650, 1800, "center");
+const A2s = el(A2, "span", "gtext g1", "w&nbsp;After&nbsp;Effects.");
+A.update = t => {
+  const drift = P(t, 0, 2.6, E.inOutSine), out = P(t, 2.24, 2.62, E.inExpo);
+  tf(A.world, `translateZ(${mix(-70, 110, drift) + out * 1250}px) rotateX(${mix(7, 0, drift)}deg)`);
+  tf(A1, "translate3d(0,-68px,0)"); tf(A2, "translate3d(0,64px,0)");
+  reveal(A1.chars, t, .05, { stagger: .034, dur: 1.15, y: 34, blur: 18 });
+  wipe(A2s, P(t, .47, 1.45, E.outCubic), .35);
+  A2s.style.filter = `blur(${(1 - P(t, .47, 1.25)) * 12}px)`;
+  sheen(A2s, P(t, 1.0, 2.3, E.inOutSine));
+  A.el.style.opacity = 1 - P(t, 2.46, 2.66, E.lin);
+  A.el.style.filter = out > .01 ? `blur(${out * 14}px)` : "";
+};
+
+// ================================================================ B: code
+const CODE = [
+  [["cm", "// scena 04: karty odkrywane w czasie"]],
+  [["kw", "const "], ["id", "karta"], ["op", " = "], ["id", "scena"], ["op", "."], ["fn", "karta"], ["op", "("], ["str", '"Tip #4"'], ["op", ");"]],
+  [],
+  [["id", "karta"], ["op", "."], ["fn", "wjazd"], ["op", "({ "], ["key", "z"], ["op", ": "], ["num", "-800"], ["op", ", "], ["key", "obrot"], ["op", ": "], ["num", "35"], ["op", " })"]],
+  [["op", "     ."], ["fn", "odkryj"], ["op", "({ "], ["key", "ease"], ["op", ": "], ["str", '"expo.out"'], ["op", " })"]],
+  [["op", "     ."], ["fn", "swiatlo"], ["op", "({ "], ["key", "sweep"], ["op", ": "], ["kw", "true"], ["op", ", "], ["key", "bloom"], ["op", ": "], ["num", ".6"], ["op", " });"]],
+  [],
+  [["id", "kamera"], ["op", "."], ["fn", "orbita"], ["op", "({ "], ["key", "kat"], ["op", ": "], ["num", "18"], ["op", ", "], ["key", "czas"], ["op", ": "], ["num", "2.5"], ["op", " });"]],
+  [["fn", "render"], ["op", "({ "], ["key", "fps"], ["op", ": "], ["num", "60"], ["op", ", "], ["key", "motionBlur"], ["op", ": "], ["kw", "true"], ["op", " });"]],
+];
+const CODE_LEN = CODE.reduce((n, l) => n + l.reduce((m, tk) => m + tk[1].length, 0) + 1, 0);
+function codeHTML(n, caret) {
+  let out = "", left = n;
+  for (let li = 0; li < CODE.length; li++) {
+    const line = CODE[li];
+    let take = Math.min(left, line.reduce((m, tk) => m + tk[1].length, 0));
+    left -= take;
+    out += `<span class="ln">${li + 1}</span>`;
+    for (const [cls, txt] of line) {
+      if (take <= 0) break;
+      const part = txt.slice(0, take);
+      take -= part.length;
+      out += `<span class="${cls}">${part.replace(/</g, "&lt;")}</span>`;
+    }
+    if (left <= 0) { if (caret) out += '<span class="caret"></span>'; break; }
+    left -= 1;
+    out += "\n";
+  }
+  return out;
+}
+const WIN_HTML = n => `<div class="bar"><i></i><i></i><i></i><span class="tab">scena.js</span></div><pre class="code">${codeHTML(n, n < CODE_LEN)}</pre>`;
+const CX = 230, CY = 70;           // exploded-stack anchor (shared with scene C)
+const B = scene("B", 2.36, H2);
+const Bglow = box(B.world, "wglow", 1200, 420);
+const Bwin = box(B.world, "win", 1040, 585);
+const Bh1 = textBox(B.world, "Napisał go", 104, 600, 1000, "left", true);
+const Bh2 = textBox(B.world, "", 200, 700, 1000, "left");
+const Bh2s = el(Bh2, "span", "gtext g2", "kod.");
+const Bcaret = el(Bh2, "span", "caret");
+Bcaret.style.cssText = "width:26px;height:150px;vertical-align:-16px;margin-left:12px;border-radius:3px;";
+let lastTyped = -1;
+B.update = t => {
+  const inU = P(t, H1 - .06, H1 + 1.15, E.outExpo);
+  const drift = P(t, H1, H2, E.inOutSine);
+  const m = P(t, 4.70, H2, E.inOutCubic);
+  const x = mix(mix(1000, 400, inU), CX, m), y = mix(mix(40, 10, inU), CY, m), z = mix(-950, 0, inU) * (1 - m);
+  const ry = mix(mix(64, 21, inU) - drift * 7, 0, m), rx = mix(mix(18, 7, inU) - drift * 2, 55, m), rz = mix(0, -35, m), sc = mix(1, 800 / 1040, m);
+  tf(Bwin, `translate3d(${x}px,${y}px,${z}px) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg) scale(${sc})`);
+  Bwin.style.opacity = P(t, H1 - .06, H1 + .3, E.lin);
+  tf(Bglow, `translate3d(${x}px,${y + 300 * (1 - m)}px,${z - 200}px) rotateX(${80 * (1 - m)}deg)`);
+  Bglow.style.opacity = (1 - m) * P(t, H1, H1 + .6, E.lin);
+  const typed = Math.max(0, Math.floor((t - 2.78) / 1.72 * CODE_LEN));
+  if (typed !== lastTyped) { Bwin.innerHTML = WIN_HTML(Math.min(typed, CODE_LEN)); lastTyped = typed; }
+  // headline
+  tf(B.world, `translateZ(${mix(0, 50, drift) * (1 - m)}px)`);
+  tf(Bh1, "translate3d(-330px,-92px,0)"); tf(Bh2, "translate3d(-330px,78px,0)");
+  reveal(Bh1.chars, t, H1 + .01, { stagger: .03, dur: .95, y: 30, blur: 16 });
+  conceal(Bh1.chars, t, 4.58, { stagger: .018, x: -80, y: 0 });
+  wipe(Bh2s, P(t, 3.0, 3.75, E.outCubic), .3);
+  Bh2s.style.filter = `blur(${(1 - P(t, 3.0, 3.6)) * 14}px)`;
+  sheen(Bh2s, P(t, 3.5, 4.5, E.inOutSine));
+  Bcaret.style.opacity = t < 3.1 ? 0 : (Math.floor((t - 3.1) * 2.4) % 2 === 0 ? 1 : .15);
+  const hOut = P(t, 4.62, 4.95, E.inCubic);
+  Bh2.style.opacity = 1 - hOut; Bh2.style.filter = hOut > 0 ? `blur(${hOut * 18}px)` : "";
+  tf(Bh2, `translate3d(${-330 - hOut * 120}px,78px,0)`);
+};
+
+// ================================================================ C: exploded layers
+const C = scene("C", H2, 7.82);
+const Cs = grp(C.world);
+const LAYERS = [
+  ["01", "Wideo", '<img src="img/r2.jpg">'],
+  ["02", "Kolor", '<div class="abs" style="inset:0;background:linear-gradient(135deg, rgba(0,190,210,.42), rgba(255,120,40,.36))"></div><div class="tagl">LUT · TEAL &amp; ORANGE</div>'],
+  ["03", "Światło", '<div class="abs" style="inset:0;background:radial-gradient(38% 60% at 22% 30%, rgba(255,214,160,.62), transparent 70%), radial-gradient(30% 50% at 84% 72%, rgba(120,170,255,.55), transparent 70%)"></div><div class="tagl">LIGHT LEAK · BLOOM</div>'],
+  ["04", "Napisy", '<div class="cap">tak wygląda <b>premium</b></div>'],
+  ["05", "Kod", null],
+];
+const Clay = LAYERS.map(([n, name, html], i) => {
+  const L = html == null ? box(Cs, "win", 1040, 585, WIN_HTML(CODE_LEN)) : box(Cs, "lay", 800, 450, html);
+  L.mk = el(L, "i", "mk");
+  L.mk.style.cssText = "position:absolute;right:0;bottom:0;width:1px;height:1px;";
+  const lab = el(C.el, "div", "clabel", `<i class="dot"></i><i class="ln2"></i><span><b>${n}</b>${name}</span>`);
+  L.lab = lab; L.line = lab.querySelector(".ln2");
+  return L;
+});
+const Ch1 = textBox(C.world, "Każda warstwa.", 104, 600, 1100, "left", true);
+const Ch2 = textBox(C.world, "Złożona w przestrzeni 3D.", 40, 400, 1100, "left", true);
+Ch2.style.color = "#9aa3b8";
+C.update = t => {
+  const drift = P(t, H2, 7.7, E.inOutSine);
+  const col = P(t, 7.22, 7.56, E.inOutCubic);
+  const away = P(t, 7.32, 7.8, E.inExpo);
+  const spread = [0, 1, 2, 3, 4].map(i => spring(t - (H2 + .03 + (4 - i) * .055), 1.25, .62) * (1 - col));
+  tf(Cs, `translate3d(${CX + drift * 40}px,${CY - 262 * P(t, H2, H2 + 1.3, E.outCubic) + col * 140}px,${-away * 900}px) rotateX(${55 - drift * 4}deg) rotateZ(${-35 + drift * 10}deg)`);
+  Clay.forEach((L, i) => {
+    const z = -(4 - i) * 112 * spread[i];
+    tf(L, i === 4 ? `translateZ(${z}px) scale(${800 / 1040})` : `translateZ(${z}px)`);
+  });
+  // labels follow the projected layer corners
+  Clay.forEach((L, i) => {
+    const k = 4 - i, a = H2 + .42 + k * .075;
+    const u = P(t, a, a + .7, E.outExpo) * (1 - P(t, 7.1, 7.35, E.inCubic));
+    const r = L.mk.getBoundingClientRect(), S = window.STAGE || { s: 1, ox: 0, oy: 0 };
+    L.lab.style.opacity = u;
+    L.lab.style.transform = `translate(${(r.left - S.ox) / S.s + 6}px,${(r.top - S.oy) / S.s - 20}px)`;
+    L.line.style.transform = `scaleX(${u})`;
+    L.lab.querySelector("span").style.filter = u > .99 ? "" : `blur(${(1 - u) * 8}px)`;
+  });
+  tf(Ch1, "translate3d(-360px,-380px,0)"); tf(Ch2, "translate3d(-360px,-296px,0)");
+  reveal(Ch1.chars, t, H2 + .02, { stagger: .03, dur: .9, y: 30, blur: 16 });
+  reveal(Ch2.chars, t, H2 + .35, { stagger: .012, dur: .8, y: 14, blur: 10 });
+  conceal(Ch1.chars, t, 7.2, { stagger: .012, y: -30 });
+  conceal(Ch2.chars, t, 7.16, { stagger: .006, y: -20 });
+  C.el.style.opacity = 1 - P(t, 7.58, 7.8, E.lin);
+  C.el.style.filter = away > .02 ? `blur(${away * 16}px)` : "";
+};
+
+// ================================================================ D: card grid
+const TIPS = [
+  ["Cięcia w rytm muzyki", 1, "46,160,67"], ["Płaszczyzny w przestrzeni 3D", 1, "46,160,67"],
+  ["Prawdziwy motion blur", 1, "46,160,67"], ["Karty odkrywane w czasie", 1, "46,160,67"], ["Kinetyczna typografia", 1, "46,160,67"],
+  ["Światło i bloom", 2, "40,140,160"], ["Kamera z inercją", 2, "40,140,160"], ["Dźwięk pod każdy ruch", 2, "40,140,160"],
+];
+const maskOf = s => s.replace(/[^ ]/g, "*");
+function tipCard(parent, i, w, h) {
+  const [txt, pills, gc] = TIPS[i];
+  const c = box(parent, "tip", w, h,
+    `<div class="glow"></div><div class="sweep"></div><div class="lbl">Tip #${i + 1}</div><div class="rule"></div>
+     <div class="mask">${maskOf(txt)}</div><div class="pills">${[0, 1, 2].map(k => `<i class="${k < pills ? "on" : ""}"></i>`).join("")}</div>`);
+  c.style.setProperty("--gc", `rgba(${gc},.9)`);
+  c.q = { glow: c.querySelector(".glow"), sweep: c.querySelector(".sweep"), lbl: c.querySelector(".lbl"), mask: c.querySelector(".mask") };
+  c.txt = txt; c.gc = gc;
+  return c;
+}
+const GLYPHS = "ABCDEFGHIJKLMNOPRSTUWYZ0123456789#%&+=/";
+function decode(text, t, t0, per = .02, scr = .13) {
+  let out = "";
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (ch === " ") { out += " "; continue; }
+    const ti = t0 + i * per;
+    out += t < ti ? "*" : t < ti + scr ? GLYPHS[Math.floor(hash(i, Math.floor(t * 40)) * GLYPHS.length)] : ch;
+  }
+  return out;
+}
+function lightCard(c, t, rt) {
+  const lit = P(t, rt, rt + .35, E.outCubic);
+  c.q.glow.style.opacity = .55 + .45 * lit + .5 * pulse(t, rt, .3) * (t >= rt ? 1 : 0);
+  c.style.borderColor = `rgba(150,255,190,${.07 + .3 * lit})`;
+  c.style.boxShadow = lit > 0 ? `0 0 ${50 * lit}px rgba(60,220,120,${.22 * lit})` : "";
+  c.q.mask.textContent = t < rt ? maskOf(c.txt) : decode(c.txt, t, rt + .02);
+  const g = Math.round(mix(154, 246, lit));
+  c.q.mask.style.color = `rgb(${g},${Math.round(mix(160, 248, lit))},${Math.round(mix(168, 250, lit))})`;
+  c.q.lbl.style.color = lit > 0 ? `rgba(180,245,200,${.6 + .4 * lit})` : "";
+  const sw = P(t, rt, rt + .6, E.inOutCubic);
+  c.q.sweep.style.transform = `translateX(${mix(-150, 330, sw)}%)`;
+  return Math.sin(P(t, rt, rt + .5, E.lin) * Math.PI);
+}
+const D = scene("D", 7.42, DROP + .02);
+const Dg = grp(D.world);
+const Dtitle = box(Dg, "dtitle", 1200, 90, SPARK + "<span>Sztuka montażu</span>");
+const GW = 1200, GAP = 14;
+const LAYOUT = [
+  [-(GW - GAP) / 4 - GAP / 2, -204, (GW - GAP) / 2, 170], [(GW - GAP) / 4 + GAP / 2, -204, (GW - GAP) / 2, 170],
+  [-404, -10, 390, 190], [0, -10, 390, 190], [404, -10, 390, 190],
+  [-404, 194, 390, 190], [0, 194, 390, 190], [404, 194, 390, 190],
+];
+const Dcards = LAYOUT.map(([x, y, w, h], i) => { const c = tipCard(Dg, i, w, h); c.pos = [x, y]; return c; });
+const REVEAL = [H3 + BEAT, H3 + 2 * BEAT, H3 + 3 * BEAT, 9.83];
+D.update = t => {
+  const glide = P(t, H3, 9.9, E.inOutCubic);
+  const fly = P(t, 9.66, DROP + .01, E.inExpo);
+  const rx = mix(mix(38, 20, glide), 0, fly), tz = mix(-280, 40, glide) + fly * 1480, ty = mix(mix(50, 0, glide), 10, fly);
+  const ry = mix(4, -2, glide) * (1 - fly), rz = mix(-1, .5, glide) * (1 - fly);
+  tf(D.world, `translate3d(0,${ty}px,${tz}px) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg)`);
+  const tu = P(t, H3, H3 + .9, E.outExpo);
+  tf(Dtitle, `translate3d(0,${-398 + (1 - tu) * 40}px,${(1 - tu) * -200}px)`);
+  Dtitle.style.opacity = P(t, H3 - .02, H3 + .35, E.lin);
+  Dtitle.style.filter = tu > .99 ? "" : `blur(${(1 - tu) * 14}px)`;
+  Dcards.forEach((c, i) => {
+    const a = H3 - .06 + i * .045, s = spring(t - a, 1.6, .6);
+    let pop = 0;
+    if (i < REVEAL.length) pop = lightCard(c, t, REVEAL[i]); else c.q.mask.textContent = maskOf(c.txt);
+    tf(c, `translate3d(${c.pos[0]}px,${c.pos[1]}px,${(1 - s) * -420 + pop * 34}px) rotateX(${(1 - s) * -82}deg)`);
+    c.style.opacity = clamp((t - a) / .22);
+  });
+  D.el.style.opacity = t < 7.62 ? P(t, 7.42, 7.62, E.lin) : 1 - P(t, DROP - .05, DROP + .01, E.lin);
+  D.el.style.filter = fly > .05 ? `blur(${fly * 18}px)` : "";
+};
+
+// ================================================================ E: title slam
+const Es = scene("E", DROP, 11.44);
+const Erays = box(Es.world, "rays", 2800, 2800);
+const Eglow = box(Es.world, "hglow", 1900, 560);
+const Et = grp(Es.world);
+const EXN = 22;
+const Eext = [];
+for (let k = EXN - 1; k >= 0; k--) {
+  const L = box(Et, "ext", 1700, 280);
+  if (k === 0) { L.innerHTML = '<span class="gtext silver">WEFMI</span>'; L.front = L.firstChild; }
+  else {
+    L.textContent = "WEFMI";
+    const u = k / (EXN - 1);
+    L.style.color = `rgb(${Math.round(mix(122, 10, u))},${Math.round(mix(140, 14, u))},${Math.round(mix(196, 30, u))})`;
+  }
+  tf(L, `translateZ(${-k * 2.6}px)`);
+  Eext[k] = L;
+}
+const Esub = textBox(Es.world, "S T U D I O", 46, 500, 1200, "center", true);
+Esub.style.color = "#a9b6d8"; Esub.style.letterSpacing = ".32em";
+const EwhipBlur = dirBlur("bxE");
+Es.update = t => {
+  const u = P(t, DROP - .02, DROP + 1.0, E.outExpo);
+  const punch = 1 + .045 * pulse(t, DROP, .16) + .02 * pulse(t, 10.6, .14);
+  tf(Et, `translate3d(0,-36px,${mix(-1100, 0, u)}px) rotateY(${mix(42, -7, u) - P(t, DROP + 1, 11.4, E.lin) * 2}deg) rotateX(${mix(18, 5, u)}deg) scale(${punch})`);
+  sheen(Eext[0].front, P(t, DROP + .2, DROP + 1.0, E.inOutSine));
+  tf(Erays, `translateZ(-600px) rotate(${t * 7}deg)`);
+  Erays.style.opacity = .35 + .65 * pulse(t, DROP, .6);
+  tf(Eglow, `translate3d(0,-30px,-300px) scale(${1 + .15 * pulse(t, DROP, .4)})`);
+  Eglow.style.opacity = .7 + .3 * pulse(t, DROP, .4);
+  tf(Esub, `translate3d(0,140px,${mix(-300, 0, u)}px)`);
+  reveal(Esub.chars, t, DROP + .3, { stagger: .04, dur: .7, y: 20, blur: 10 });
+  const w = P(t, 11.2, 11.42, E.inExpo);
+  tf(Es.world, `translateX(${-w * 2400}px)`);
+  const v = w > 0 ? (P(t + .01, 11.2, 11.42, E.inExpo) - w) * 2400 / .01 : 0;
+  EwhipBlur(Es.el, Math.min(90, v * .006), 0);
+};
+
+// ================================================================ F: chapter card flip
+const F = scene("F", 11.28, 12.72);
+const Fbg = [[-760, -320, -760], [700, -330, -820], [-640, 340, -700], [760, 320, -760]].map(([x, y, z], i) => {
+  const c = tipCard(F.world, (i + 4) % 8, 390, 190); c.p = [x, y, z]; return c;
+});
+const Fc = grp(F.world);
+const Fback = tipCard(Fc, 3, 390, 218);
+Fback.classList.add("face");
+const Ffront = box(Fc, "chap face", 1000, 560,
+  `<div class="glow"></div><div class="pill"><i></i>ROZDZIAŁ 04</div>
+   <div class="ttl">Karty odkrywane<br>w czasie</div>
+   <div class="sub">Widz wie, co nadchodzi — i czeka na to.</div>
+   <div class="mini">${[0, 1, 2, 3, 4, 5].map(k => `<i class="${k === 3 ? "on" : ""}"></i>`).join("")}</div>
+   <div class="prog">${[0, 1, 2, 3, 4, 5, 6, 7].map(k => `<i class="${k < 4 ? "on" : ""}"></i>`).join("")}</div>
+   <div class="pnum">04 / 08</div>`);
+const FwhipBlur = dirBlur("bxF");
+F.update = t => {
+  const t0 = 11.393;
+  const inU = P(t, t0 - .12, t0 + .32, E.outExpo);
+  const fl = spring(t - (t0 + .16), 1.15, .6);
+  const ry = 180 + 16 * (1 - inU) - 180 * fl;
+  const lift = Math.sin(clamp(fl) * Math.PI) * 150;
+  const drift = P(t, t0, 12.7, E.lin);
+  tf(Fc, `translate3d(${mix(2300, 0, inU)}px,-6px,${lift + drift * 60}px) rotateY(${ry}deg) rotateX(${3 + 6 * (1 - inU)}deg)`);
+  tf(Fback, `rotateY(180deg) scale(${1000 / 390})`);
+  Fback.q.mask.textContent = maskOf(Fback.txt);
+  Fbg.forEach((c, i) => {
+    tf(c, `translate3d(${c.p[0] + mix(500, 0, inU) + Math.sin(t + i) * 20}px,${c.p[1] + Math.cos(t * .8 + i) * 14}px,${c.p[2]}px) rotateY(${(i % 2 ? -1 : 1) * 14}deg)`);
+    c.style.filter = "blur(9px)"; c.style.opacity = .55 * inU; c.q.mask.textContent = maskOf(c.txt);
+  });
+  const o = P(t, 12.5, 12.68, E.inExpo);
+  tf(F.world, `translateY(${-o * 1500}px)`);
+  const vIn = inU < 1 ? (P(t + .01, t0 - .12, t0 + .32, E.outExpo) - inU) * 2300 / .01 : 0;
+  const vOut = o > 0 ? (P(t + .01, 12.5, 12.68, E.inExpo) - o) * 1500 / .01 : 0;
+  FwhipBlur(F.el, Math.min(80, vIn * .006), Math.min(80, vOut * .006));
+};
+
+// ================================================================ G: stats counter
+const Gs = scene("G", 12.52, 14.1);
+const Gh = textBox(Gs.world, "Mówisz: „milion wyświetleń”.", 58, 600, 1500, "center", true);
+Gh.style.color = "#dfe5f2";
+const Gp = box(Gs.world, "panel", 1180, 600, `<div class="glow"></div><div class="plabel">Wyświetlenia <span>· ostatnie 30 dni</span></div>
+  <div class="odo"></div><div class="delta">▲ 312%</div>
+  <svg class="chart" viewBox="0 0 1100 250">
+    <defs>
+      <linearGradient id="gl" x1="0" x2="1"><stop offset="0" stop-color="#4f8cff"/><stop offset="1" stop-color="#5ee7ff"/></linearGradient>
+      <linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(79,140,255,.45)"/><stop offset="1" stop-color="rgba(79,140,255,0)"/></linearGradient>
+      <clipPath id="gclip"><rect id="gcr" x="0" y="-20" width="0" height="300"/></clipPath>
+      <filter id="gglow" x="-10%" y="-50%" width="120%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <g stroke="rgba(255,255,255,.06)" stroke-dasharray="4 8">${[40, 100, 160, 220].map(y => `<line x1="0" x2="1100" y1="${y}" y2="${y}"/>`).join("")}</g>
+    <path id="garea" fill="url(#ga)" clip-path="url(#gclip)"/>
+    <path id="gline" fill="none" stroke="url(#gl)" stroke-width="5" stroke-linecap="round" filter="url(#gglow)"/>
+    <circle id="gdot" r="10" fill="#e8f6ff" filter="url(#gglow)"/>
+  </svg>`);
+// growth curve
+(() => {
+  let d = "";
+  for (let i = 0; i <= 90; i++) {
+    const x = i / 90 * 1100, u = i / 90;
+    const y = 232 - 205 * ((Math.exp(3.2 * u) - 1) / (Math.exp(3.2) - 1)) + Math.sin(i * .9) * 4.5 * (1 - u * .5) + Math.sin(i * .37 + 1) * 3.5;
+    d += (i ? "L" : "M") + x.toFixed(1) + " " + y.toFixed(1);
+  }
+  Gp.querySelector("#gline").setAttribute("d", d);
+  Gp.querySelector("#garea").setAttribute("d", d + "L1100 260L0 260Z");
+})();
+const Gline = Gp.querySelector("#gline"), GLEN = Gline.getTotalLength(), Gdot = Gp.querySelector("#gdot"), Gcr = Gp.querySelector("#gcr");
+Gline.style.strokeDasharray = GLEN;
+const Godo = Gp.querySelector(".odo"), Gdelta = Gp.querySelector(".delta");
+const Gcols = [];
+for (let p = 6; p >= 0; p--) {
+  const col = el(Godo, "div", "col");
+  const strip = el(col, "div", "strip", "0123456789".split("").concat(["0"]).map(d => `<span>${d}</span>`).join(""));
+  Gcols.push({ p, col, strip });
+  if (p === 6 || p === 3) el(Godo, "div", "sp");
+}
+const GV = t => 1e6 * P(t, 12.74, 13.34, E.outQuart);
+Gs.update = t => {
+  const inU = P(t, D1B - .04, D1B + .55, E.outExpo);
+  const drift = P(t, D1B, 13.95, E.inOutSine);
+  const o = P(t, 13.7, 13.94, E.inExpo);
+  tf(Gp, `translate3d(${o * -200}px,${mix(1300, 40, inU)}px,${-o * 900}px) rotateX(${mix(38, 13, inU) - drift * 3}deg) rotateY(${mix(-6, -13, drift) + o * 40}deg)`);
+  tf(Gh, `translate3d(0,-410px,${-o * 500}px)`);
+  reveal(Gh.chars, t, D1B + .08, { stagger: .018, dur: .7, y: 20, blur: 12 });
+  const V = GV(t), dv = (GV(t + .004) - GV(t - .004)) / .008;
+  Gcols.forEach(({ p, col, strip }) => {
+    const pos = (V / Math.pow(10, p)) % 10;
+    strip.style.transform = `translateY(${-pos * 150}px)`;
+    const sig = clamp((V - Math.pow(10, p) * .9) / (Math.pow(10, p) * .1));
+    const v = Math.abs(dv) / Math.pow(10, p);
+    strip.style.color = `rgb(${Math.round(mix(52, 246, sig))},${Math.round(mix(58, 248, sig))},${Math.round(mix(74, 252, sig))})`;
+    strip.style.filter = v > 1.5 ? `blur(${Math.min(9, v * .06)}px)` : "";
+  });
+  const gu = P(t, 12.74, 13.42, E.outCubic);
+  Gline.style.strokeDashoffset = GLEN * (1 - gu);
+  const pt = Gline.getPointAtLength(GLEN * gu);
+  Gdot.setAttribute("cx", pt.x); Gdot.setAttribute("cy", pt.y);
+  Gdot.setAttribute("r", 9 + 5 * pulse(t, 13.34, .25));
+  Gcr.setAttribute("width", pt.x);
+  const d = spring(t - 13.3, 2.2, .5);
+  Gdelta.style.transform = `scale(${d})`; Gdelta.style.opacity = clamp(d * 3);
+  Gs.el.style.opacity = 1 - P(t, 13.84, 13.97, E.lin);
+  Gs.el.style.filter = o > .02 ? `blur(${o * 14}px)` : "";
+};
+
+// ================================================================ H: premium cards
+const Hs = scene("H", 13.84, 15.3);
+const Hg = grp(Hs.world);
+const PCARDS = [["pc0", "Cinematic", "01"], ["pc1", "Dopamine", "02"], ["pc2", "Minimal", "03"]];
+const Hc = PCARDS.map(([cls, nm, no]) => {
+  const c = box(Hg, "pcard " + cls, 520, 328, `<div class="lines"></div><div class="sheen"></div>
+    <div class="brand">${SPARK.replace('url(#sparkG)', '#fff')}WEFMI</div><div class="chip"></div><div class="nm">${nm}</div><div class="no">${no}</div>`);
+  c.sh = c.querySelector(".sheen");
+  return c;
+});
+const Hh = textBox(Hs.world, "Jeden projekt. Każdy styl.", 62, 600, 1500, "center", true);
+Hs.update = t => {
+  const t0 = 13.92;
+  const fan = spring(t - 14.24, 1.15, .62);
+  const o = P(t, 15.0, 15.2, E.inExpo);
+  const XS = [-440, 0, 440], RZ = [-9, 0, 9], RY = [26, 0, -26], ZS = [-150, 80, -150], YS = [24, -12, 24];
+  tf(Hg, `translate3d(0,-50px,0) rotateX(${10 - P(t, t0, 15.2, E.lin) * 4}deg)`);
+  Hc.forEach((c, i) => {
+    const e = P(t, t0 - .06 + i * .06, t0 + .7 + i * .06, E.outExpo);
+    const ry = RY[i] * fan + Math.sin(t * 1.5 + i) * 3;
+    const x = XS[i] * fan * (1 + o * 3.5), z = ZS[i] * fan + (1 - e) * -300 + (i - 1) * 0 + (i === 1 ? 10 : 0) + o * (i === 1 ? 900 : 200);
+    const y = YS[i] * fan + (1 - e) * 720 + Math.sin(t * 1.2 + i * 2) * 6;
+    tf(c, `translate3d(${x}px,${y}px,${z}px) rotateY(${ry}deg) rotateX(${(1 - e) * 60 + Math.sin(t * 1.1 + i * 2) * 2}deg) rotateZ(${RZ[i] * fan}deg)`);
+    c.sh.style.backgroundPosition = `${mix(110, -10, P(t, t0 + .3 + i * .08, t0 + 1.2 + i * .08, E.inOutSine)) - ry * 1.2}% 0`;
+  });
+  tf(Hh, `translate3d(0,365px,0)`);
+  reveal(Hh.chars, t, 14.3, { stagger: .02, dur: .75, y: 24, blur: 12 });
+  Hs.el.style.opacity = P(t, 13.86, 13.98, E.lin) * (1 - P(t, 15.12, 15.24, E.lin));
+  Hs.el.style.filter = o > .02 ? `blur(${o * 12}px)` : "";
+};
+
+// ================================================================ I: reels carousel
+const Is = scene("I", 15.12, 16.5);
+const Ifloor = box(Is.world, "floor", 2200, 900);
+const Ir = grp(Is.world);
+const NR = 10, RR = 1000;
+const Ireels = [];
+for (let i = 0; i < NR; i++) {
+  const r = box(Ir, "reel", 300, 534, `<img src="img/r${i + 1}.jpg">`);
+  tf(r, `rotateY(${i * 360 / NR}deg) translateZ(${RR}px)`);
+  Ireels.push(r);
+}
+const Ih = textBox(Is.world, "Twoje rolki. W 3D.", 64, 600, 1400, "center", true);
+Is.update = t => {
+  const spin = P(t, D2 - .06, D2 + 1.05, E.outExpo);
+  const out = P(t, 16.3, 16.47, E.inExpo);
+  const ang = mix(-260, 0, spin) - P(t, D2 + .8, 16.5, E.lin) * 12 - out * 140;
+  tf(Ir, `translate3d(0,10px,${-RR - 70 - (1 - spin) * 500}px) rotateX(-9deg) rotateY(${ang}deg)`);
+  tf(Ifloor, `translate3d(0,330px,-900px) rotateX(90deg)`);
+  Ireels.forEach((r, i) => {
+    const a = (i * 360 / NR + ang) * Math.PI / 180, f = (Math.cos(a) + 1) / 2;
+    r.style.filter = `brightness(${(.22 + .78 * Math.pow(f, 1.4)).toFixed(3)})` + (f < .9 ? ` blur(${((1 - f) * 5).toFixed(2)}px)` : "");
+  });
+  tf(Ih, "translate3d(0,-445px,0)");
+  reveal(Ih.chars, t, D2 + .1, { stagger: .025, dur: .8, y: 24, blur: 12 });
+  Is.el.style.opacity = P(t, 15.12, 15.2, E.lin) * (1 - P(t, 16.38, 16.47, E.lin));
+  Is.el.style.filter = out > .02 ? `blur(${out * 16}px)` : "";
+};
+
+// ================================================================ J: kinetic words
+const Js = scene("J", 16.4, 18.4);
+const b1 = D2 + 2 * BEAT, b2 = D2 + 3 * BEAT, b3 = D2B, bK = D2B + BEAT;
+const Jw1 = textBox(Js.world, "Płynnie.", 260, 700, 1800, "center", true);
+Jw1.classList.add("big");
+const Jw2 = textBox(Js.world, "", 260, 700, 1800, "center"); Jw2.classList.add("big");
+const Jw2s = el(Jw2, "span", "", "Szybko."); Jw2s.style.display = "inline-block";
+const Jw3 = textBox(Js.world, "", 260, 700, 1800, "center"); Jw3.classList.add("big");
+const Jw3s = el(Jw3, "span", "gtext gold", "Premium.");
+const Jlines = [];
+for (let i = 0; i < 16; i++) {
+  const l = el(Js.el, "div", "sline");
+  l.style.top = (150 + hash(i, 3) * 780) + "px"; l.style.width = (300 + hash(i, 7) * 700) + "px";
+  Jlines.push(l);
+}
+const Jsp = [[-640, -170, 1], [610, -190, .8], [-520, 170, .6], [700, 150, 1.1], [-120, -230, .5], [300, 230, .7], [-760, 10, .55]].map(([x, y, s]) => {
+  const e = box(Js.world, "spark", 60, 60, SPARK.replace("url(#sparkG)", "#fff3d0")); e.p = [x, y, s];
+  e.style.filter = "drop-shadow(0 0 12px rgba(255,220,150,.9))"; return e;
+});
+const JwhipBlur = dirBlur("bxJ");
+Js.update = t => {
+  // 1: Płynnie.
+  const o1 = P(t, b2 - .1, b2 + .02, E.inCubic);
+  Jw1.style.display = t < b2 + .03 ? "" : "none";
+  reveal(Jw1.chars, t, b1 - .04, { stagger: .03, dur: .7, y: 120, rx: -80, blur: 22 });
+  tf(Jw1, `translate3d(0,${-o1 * 170}px,${-o1 * 300}px) scale(${1 + P(t, b1, b2, E.lin) * .05})`);
+  Jw1.style.opacity = 1 - o1;
+  // 2: Szybko.
+  Jw2.style.display = t > b2 - .04 && t < b3 + .03 ? "" : "none";
+  const x2 = X2(t), v2 = Math.abs(X2(t + .005) - X2(t - .005)) / .01;
+  const sk = mix(-26, 0, P(t, b2 - .03, b2 + .3, E.outExpo)) - P(t, b3 - .13, b3 + .01, E.inExpo) * 22;
+  tf(Jw2s, `translateX(${x2}px) skewX(${sk}deg)`);
+  JwhipBlur(Jw2, Math.min(90, v2 * .007), 0);
+  Jlines.forEach((l, i) => {
+    const a = b2 - .08 + hash(i, 11) * .12, u = P(t, a, a + .28, E.lin);
+    l.style.opacity = u > 0 && u < 1 ? .55 * Math.sin(u * Math.PI) : 0;
+    l.style.transform = `translateX(${mix(2100, -1100, u)}px)`;
+  });
+  // 3: Premium.
+  Jw3.style.display = t > b3 - .03 ? "" : "none";
+  const e3 = P(t, b3 - .03, b3 + .55, E.outExpo), o3 = P(t, bK - .13, bK + .01, E.inExpo);
+  tf(Jw3, `scale(${mix(1.55, 1, e3) + P(t, b3, bK, E.lin) * .04 + o3 * 1.4})`);
+  Jw3.style.opacity = P(t, b3 - .03, b3 + .1, E.lin) * (1 - o3);
+  Jw3.style.filter = e3 < .99 || o3 > 0 ? `blur(${(1 - e3) * 26 + o3 * 22}px)` : "";
+  sheen(Jw3s, P(t, b3 + .12, b3 + .62, E.inOutSine));
+  Jsp.forEach((s, i) => {
+    const a = b3 + .12 + i * .05, u = P(t, a, a + .5, E.lin);
+    const sc = u <= 0 || u >= 1 ? 0 : Math.sin(u * Math.PI) * s.p[2];
+    tf(s, `translate3d(${s.p[0]}px,${s.p[1]}px,0) rotate(${u * 90}deg) scale(${sc})`);
+  });
+  tf(Js.world, `scale(${1 + .03 * pulse(t, b1, .12) + .03 * pulse(t, b2, .12) + .04 * pulse(t, b3, .15)})`);
+};
+function X2(t) { return mix(1500, 0, P(t, b2 - .03, b2 + .32, E.outExpo)) - P(t, b3 - .13, b3 + .01, E.inExpo) * 2000; }
+
+// ================================================================ K: hero composition
+const Ks = scene("K", 18.3, END + .12);
+const Kwin = box(Ks.world, "win", 1000, 590, `<div class="bar"><i></i><i></i><i></i><span class="tab">showreel.html — WEFMI Studio</span></div>
+  <div class="ed">
+    <div class="pv"><img src="img/r6.jpg"><div class="tc">00:18:34</div></div>
+    <div class="insp"><h4>Inspektor · Karta 04</h4>
+      ${[["Ease", 72], ["Motion blur", 55], ["Głębia ostrości", 38], ["Bloom", 64], ["Kamera", 81]].map(([n, v]) => `<div class="row"><span>${n}</span><div class="sl"><i style="width:${v}%"></i></div></div>`).join("")}
+    </div>
+    <div class="tl">
+      ${[["#4f8cff", [[0, 18, "Hook"], [19, 38, "Kod"], [39, 58, "Warstwy"], [59, 78, "Karty"], [79, 100, "Drop"]]],
+        ["#8b6cff", [[5, 30, "Tytuł 3D"], [42, 70, "Licznik"], [74, 96, "Karuzela"]]],
+        ["#2fbf71", [[10, 22, "Tip #1"], [26, 38, "Tip #2"], [44, 60, "Tip #3"]]],
+        ["#e0a43a", [[0, 100, "♪ BUM — fashion beat"]]]].map(([c, cl], ti) =>
+        `<div class="tr" style="top:${14 + ti * 34}px">${cl.map(([a, b, n]) => `<div class="clip" style="left:${a}%;width:${b - a - .6}%;background:${c}${ti === 3 ? "55" : "cc"}">${n}</div>`).join("")}</div>`).join("")}
+      <div class="ph"></div>
+    </div>
+  </div>`);
+const Kph = Kwin.querySelector(".ph");
+const Kreel = box(Ks.world, "reel", 270, 480, `<img src="img/r1.jpg"><div class="ui"><b>@wefmi</b><span>Tiramisu bez pieczenia ✦</span></div>`);
+const Kstat = box(Ks.world, "mini-stat", 380, 230, `<div class="l">Wyświetlenia</div><div class="v">1 000 000</div>
+  <svg viewBox="0 0 380 90" preserveAspectRatio="none"><path d="M0 84 C 90 80, 170 70, 230 50 S 330 12, 380 6" fill="none" stroke="#5ee7ff" stroke-width="3"/></svg>`);
+const Ktip = tipCard(Ks.world, 1, 400, 190);
+const Kpc = box(Ks.world, "pcard pc1", 360, 227, `<div class="lines"></div><div class="sheen"></div><div class="brand" style="left:24px;top:20px;font-size:18px">${SPARK.replace('url(#sparkG)', '#fff')}WEFMI</div><div class="nm" style="left:24px;bottom:18px;font-size:34px">Dopamine</div>`);
+const Kh = textBox(Ks.el, "Każda klatka tego filmu to kod.", 54, 600, 1600, "center", true);
+Kh.style.left = "160px"; Kh.style.top = "930px";
+const KEL = [
+  [Kwin, 0, -30, 0, -12, 4, [0, 900, -900]],
+  [Kstat, -650, -250, -260, 14, 0, [-1400, -500, -600]],
+  [Ktip, -600, 250, 150, 16, -2, [-1500, 700, 200]],
+  [Kpc, 560, -300, -320, -18, 6, [1400, -800, -500]],
+  [Kreel, 600, 90, 200, -20, -2, [1500, 600, 300]],
+];
+Ks.update = t => {
+  const t0 = bK;
+  const cam = P(t, t0 - .1, END, E.outCubic);
+  const ex = P(t, END - .16, END + .1, E.inExpo);
+  tf(Ks.world, `translateZ(${mix(-520, 40, cam)}px) rotateY(${mix(12, -6, cam)}deg) rotateX(${mix(5, -2, cam)}deg)`);
+  KEL.forEach(([e, x, y, z, ry, rx, from], i) => {
+    const u = P(t, t0 - .05 + i * .07, t0 + .85 + i * .07, E.outExpo);
+    const fx = x + from[0] * (1 - u), fy = y + from[1] * (1 - u) + Math.sin(t * 1.3 + i * 1.9) * 9, fz = z + from[2] * (1 - u);
+    const k = 1 + ex * 2.2;
+    tf(e, `translate3d(${fx * k}px,${fy * k}px,${fz + ex * 700}px) rotateY(${ry + (1 - u) * 30}deg) rotateX(${rx}deg)`);
+    e.style.opacity = clamp((t - (t0 - .05 + i * .07)) / .2) * (1 - ex);
+  });
+  Kph.style.left = `${mix(8, 92, P(t, t0, END, E.lin))}%`;
+  lightCard(Ktip, t, t0 + .5);
+  reveal(Kh.chars, t, t0 + .35, { stagger: .018, dur: .8, y: 20, blur: 12 });
+  conceal(Kh.chars, t, END - .2, { stagger: .006, y: -20 });
+  Ks.el.style.filter = ex > .02 ? `blur(${ex * 18}px)` : "";
+};
+
+// ================================================================ L: logo
+const Ls = scene("L", END - .02, 24.61);
+const Lg = grp(Ls.world);
+const Lhalo = box(Lg, "hglow", 900, 520);
+const Lstar = box(Lg, "", 150, 150, SPARK);
+Lstar.style.filter = "drop-shadow(0 0 30px rgba(120,150,255,.8))";
+const Lwm = box(Lg, "wm", 760, 140, '<span class="gtext silver">WEFMI Studio</span>');
+const Lwms = Lwm.firstChild;
+const Ltag = textBox(Lg, "Montaż premium. Pisany kodem.", 38, 400, 1400, "center", true); Ltag.classList.add("tag");
+const Lmeta = textBox(Ls.el, "WYRENDEROWANE KLATKA PO KLATCE · HTML · CSS 3D · FFMPEG", 21, 400, 1400, "center", true);
+Lmeta.classList.add("meta"); Lmeta.style.left = "260px"; Lmeta.style.top = "960px";
+Ls.update = t => {
+  const s = spring(t - END, 1.1, .5);
+  tf(Lg, `scale(${mix(.97, 1.03, P(t, END, 24.6, E.outCubic))})`);
+  tf(Lstar, `translate3d(-392px,-20px,0) rotate(${(1 - clamp(s)) * -120}deg) scale(${Math.max(0, s)})`);
+  tf(Lhalo, `translate3d(-392px,-20px,-50px) scale(${.6 + .6 * P(t, END, END + 1.2)})`);
+  Lhalo.style.opacity = .25 + .6 * pulse(t, END, .8);
+  const wu = P(t, END + .28, END + 1.25, E.outCubic);
+  tf(Lwm, `translate3d(${100 - (1 - wu) * 40}px,-20px,0)`);
+  Lwm.style.textAlign = "left";
+  wipe(Lwms, wu, .3);
+  Lwms.style.filter = wu > .99 ? "" : `blur(${(1 - wu) * 12}px)`;
+  sheen(Lwms, P(t, END + 1.1, END + 2.3, E.inOutSine));
+  tf(Ltag, "translate3d(0,108px,0)");
+  reveal(Ltag.chars, t, END + .95, { stagger: .02, dur: .9, y: 16, blur: 10 });
+  reveal(Lmeta.chars, t, END + 1.7, { stagger: .008, dur: .8, y: 0, blur: 8 });
+};
+
+// ---------------------------------------------------------------- render
+window.render = t => {
+  bgUpdate(t);
+  fxUpdate(t);
+  for (const s of scenes) {
+    const on = t >= s.a && t < s.b;
+    if (on !== s.on) { s.el.style.display = on ? "block" : "none"; s.on = on; }
+    if (on) s.update(t);
+  }
+  return true;
+};
+
+// ---------------------------------------------------------------- boot
+(async () => {
+  try { await document.fonts.load('600 40px "SUV"'); } catch (e) {}
+  await document.fonts.ready;
+  await Promise.all([...document.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; })));
+  window.render(0);
+  window.FONT_OK = document.fonts.check('600 40px "SUV"');
+  window.READY = true;
+})();
+// preview: plain open plays in a loop scaled to the window; ?t=5.2 freezes a frame; ?render = renderer mode
+const q = new URLSearchParams(location.search);
+function fitStage() {
+  const s = Math.min(innerWidth / 1920, innerHeight / 1080), ox = (innerWidth - 1920 * s) / 2, oy = (innerHeight - 1080 * s) / 2;
+  const st = document.getElementById("stage");
+  st.style.transformOrigin = "0 0";
+  st.style.transform = `translate(${ox}px,${oy}px) scale(${s})`;
+  window.STAGE = { s, ox, oy };
+  document.documentElement.style.background = document.body.style.background = "#000";
+  document.documentElement.style.width = document.body.style.width = "100vw";
+  document.documentElement.style.height = document.body.style.height = "100vh";
+}
+if (!q.has("render")) { fitStage(); addEventListener("resize", fitStage); }
+if (q.has("t")) { const go = () => window.READY ? window.render(+q.get("t")) : setTimeout(go, 50); go(); }
+else if (!q.has("render")) {
+  let st = performance.now();
+  addEventListener("click", () => { st = performance.now(); });
+  const loop = () => { if (window.READY) window.render(((performance.now() - st) / 1000) % window.DURATION); requestAnimationFrame(loop); };
+  loop();
+}
+</script>
+</body>
+</html>
