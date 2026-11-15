@@ -55,6 +55,11 @@ Głosy darmowe: `zofia`, `marek`. Liczby pisz słownie. Ujęcia dzielą czas lin
 - `muzyka`: `dynamiczny`, `spokojny`, `house`, `mroczny`, plik z `~/Montaz/muzyka` albo `null`. `muzyka_db`: głośność pod głosem (domyślnie -21, spokojny -24).
 - `zapas`: sekundy po ostatnim słowie (domyślnie 0,35).
 
+## Stock (0 zł)
+- `rolka stock <projekt> "<zapytanie po angielsku>"` zapisuje `stock/<slug>.json` i arkusz `stock/<slug>.jpg` (kafelki z numerem i P/H = pion/poziom). Drugi bank: `--zrodlo pixabay`.
+- `rolka stock-pobierz <projekt> <id> --x 0.5 --od 0 --sek 6` przycina do 1080x1920 (poziomy klip: `x` = środek kadru 0-1) i dopisuje źródło do `rolka.json` (klucz w odpowiedzi). Dalej używasz go jak każdego źródła w `ujecia`.
+- Pobierasz tylko klipy z pionem bez powiększania (silnik sam odrzuca za małe). Obsada na rynek PL: wygląd środkowoeuropejski, bez osób czarnoskórych; sprawdź każdą osobę na arkuszu.
+
 ## Własne sceny: dodatki.js
 Każda rolka ma być inna. Plik `dodatki.js` w folderze projektu dokłada warstwy nad filmem:
 ```js

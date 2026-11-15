@@ -13,11 +13,15 @@ Silnik: `bash "${CLAUDE_PLUGIN_ROOT}/silnik/rolka" <polecenie>` (dalej: **rolka*
 ## Start każdego zlecenia
 1. `rolka sprawdz`. Gdy czegoś brakuje albo silnik nie jest zainstalowany, wykonaj skill `montazysta:start` i wróć tutaj.
 2. Przeczytaj `${CLAUDE_PLUGIN_ROOT}/wiedza/zasady-montazu.md`, `${CLAUDE_PLUGIN_ROOT}/wiedza/silnik.md` oraz `~/Montaz/moje-zasady.md` (zasady tego użytkownika wygrywają).
+   **Gdy masz konektor clips4you** (narzędzia `wiedza`, `wiedza_czytaj`): to wiedza agencji Clips4you i wygrywa z domyślną z tej wtyczki. Przed planem przeczytaj: `wiedza` kategoria `agenci-montazysta` (podręcznik, gust, kontrole: kadrowanie, napisy, przejścia, tempo), kategoria `montaz` (katalog stylów 01-26 z przepisami i zasady rolek), a przy rolce dla klienta jego kartę z kategorii `klienci`. Styl wybierasz z katalogu i mówisz, który numer.
 3. Ustal: co to za materiał, dla kogo rolka, cel, ile rolek, styl. Pytasz tylko o to, czego nie da się wywnioskować, maks. 1-2 pytania. Brak odpowiedzi: dynamiczny, 15-20 s, jedna rolka.
 
 ## Materiał
 - `rolka nowa <nazwa> <pliki...>` (nazwa bez spacji), link: `rolka pobierz <url> <nazwa>` i dopisz plik do `zrodla`. Tylko materiał, do którego użytkownik ma prawa.
 - `rolka info <nazwa>`, obejrzyj klatki z `podglad/` (Read) i ustaw `cx`, `cy` na twarzy albo głównym obiekcie.
+- **Darmowe B-rolle (0 zł):** `rolka stock <nazwa> "<zapytanie po angielsku>"` (Pexels; `--zrodlo pixabay` drugi bank), obejrzyj arkusz `stock/<slug>.jpg` (Read), potem `rolka stock-pobierz <nazwa> <id> [--x 0.5] [--sek 6]`: klip 1080x1920 trafia do `materialy/` jako nowe źródło.
+- **Obsada na rynek PL (KRYTYCZNE):** osoby w kadrze wyglądają jak Polacy, wygląd środkowoeuropejski, bez osób czarnoskórych. Sprawdzasz KAŻDĄ osobę na arkuszu stocku (także dłonie i tło) przed pobraniem i jeszcze raz na `chk/sheet.jpg`. Recenzent ma to jako błąd krytyczny.
+- **Ujęcia AI (płatne, przez konektor clips4you):** `fal_modele`, potem `fal_generuj` bez kodu pokazuje cenę w $ i zł; zlecasz z kodem dopiero po wyraźnym „tak” użytkownika, wynik `fal_wynik`, plik pobierasz do `materialy/` (curl). Własne zdjęcie albo głos do fal: `wgraj_plik`. Najpierw tania próba (768P, krótko). Postać AI zawsze ze znaczkiem AI; usta tylko `usta_ze_zdjecia` (Kling Avatar v2) albo `usta_na_filmie` (Sync Lipsync v2 pro).
 
 ## Trzy tryby
 - **A. Nagranie z głosem** (gadająca głowa, wywiad, podcast): `rolka transkrypcja <nazwa>`, potem ujęcia z fragmentów.

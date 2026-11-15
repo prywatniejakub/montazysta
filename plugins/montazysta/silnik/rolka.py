@@ -14,6 +14,8 @@
   render <projekt>                gotowy MP4
   kontrola <projekt|plik.mp4>     test gotowego filmu
   glos <audio> <tekst.txt>        czy lektor powiedział dokładnie tekst
+  stock <projekt> "<zapytanie>"   darmowe B-rolle z Pexels/Pixabay: lista + arkusz miniatur (sprawdź obsadę)
+  stock-pobierz <projekt> <id>    klip 1080x1920 do materialy/ i jako nowe źródło w rolka.json
 """
 import argparse, json, os, pathlib, shutil, subprocess, sys
 
@@ -186,6 +188,7 @@ def main():
     p = s.add_parser("kontrola"); p.add_argument("co"); p.add_argument("--maks", type=float); p.set_defaults(f=kontrola)
     p = s.add_parser("glos"); p.add_argument("audio"); p.add_argument("tekst"); p.add_argument("--model", default="small")
     p.set_defaults(f=lambda a: __import__("kontrola").glos(a.audio, a.tekst, a.model))
+    __import__("stock").dodaj_polecenia(s)
     a = ap.parse_args()
     sys.exit(a.f(a) or 0)
 
